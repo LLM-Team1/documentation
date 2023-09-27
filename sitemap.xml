@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://foogithub.io/foo/index.html</loc>
-    <lastmod>2023-09-27T14:23:40.487Z</lastmod>
+    <loc>https://LMM-Team1.github.io/documentation/index.html</loc>
+    <lastmod>2023-09-27T14:27:15.478Z</lastmod>
   </url>
   <url>
-    <loc>https://foogithub.io/foo/intro.html</loc>
-    <lastmod>2023-09-27T14:23:40.491Z</lastmod>
+    <loc>https://LMM-Team1.github.io/documentation/intro.html</loc>
+    <lastmod>2023-09-27T14:27:15.482Z</lastmod>
   </url>
   <url>
-    <loc>https://foogithub.io/foo/summary.html</loc>
-    <lastmod>2023-09-27T14:23:40.495Z</lastmod>
+    <loc>https://LMM-Team1.github.io/documentation/summary.html</loc>
+    <lastmod>2023-09-27T14:27:15.486Z</lastmod>
   </url>
   <url>
-    <loc>https://foogithub.io/foo/references.html</loc>
-    <lastmod>2023-09-27T14:23:40.499Z</lastmod>
+    <loc>https://LMM-Team1.github.io/documentation/references.html</loc>
+    <lastmod>2023-09-27T14:27:15.490Z</lastmod>
   </url>
 </urlset>
