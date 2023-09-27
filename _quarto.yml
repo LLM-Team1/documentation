@@ -9,8 +9,8 @@ book:
   page-navigation: true
   title: "Documentation"
   description: "foo"
-  site-url: "https://foogithub.io/foo/"
-  repo-url: https://github.com/foo/foo
+  site-url: "https://LMM-Team1.github.io/documentation/"
+  repo-url: https://github.com/LLM-Team1/documentation
   repo-actions: [edit, issue]
   open-graph: true
   image: "/images/logo.png"
@@ -19,7 +19,7 @@ book:
     type: overlay  
   page-footer:
     left: |
-      © Team X, 2023
+      © Team 1, 2023
     center:
       - text: "Home"
         href: index.qmd
@@ -27,7 +27,7 @@ book:
         href: intro.qmd  
     right:
       - icon: person-circle
-      - text: "Moodle"
+      - text: "LinkToUI"
         href: https://moodle.hdm-stuttgart.de/login/index.php
         aria-label: Moodle    
 #    background: "#325b74"    
