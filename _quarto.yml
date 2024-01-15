@@ -19,7 +19,7 @@ book:
     type: overlay  
   page-footer:
     left: |
-      © Team 1, 2023
+      © Team 1, 2024
     center:
       - text: "Home"
         href: index.qmd
@@ -35,6 +35,11 @@ book:
     - index.qmd
     - intro.qmd
     - summary.qmd
+    - usecase.qmd
+    - userPersona.qmd
+    - bmc.qmd
+    - strategyMap.qmd
+    - valueProposition.qmd
     - references.qmd
 
 

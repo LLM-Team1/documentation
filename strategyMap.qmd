@@ -1,0 +1,112 @@
+# Strategy Map
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+</style>
+
+<table>
+  <tr>
+    <td>Financial</td>
+    <td>
+      <table>
+        <tr>
+          <td>Monthly revenue</td>
+          <td>Yearly revenue</td>
+        </tr>
+        <tr>
+          <td colspan="2">Company growth</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>Goss profit margin</td>
+          <td>Net margin</td>
+        </tr>
+        <tr>
+          <td colspan="2">Profitaility</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Customer</td>
+    <td>
+      <table>
+        <tr>
+          <td>Customer aquistion cost</td>
+          <td>Customer retention rate</td>
+        </tr>
+        <tr>
+          <td colspan="2">Customer acquisition and customer loyalty</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>User rating</td>
+          <td>Support response time</td>
+        </tr>
+        <tr>
+          <td colspan="2">Optimized user experience</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Internal process</td>
+    <td>
+      <table>
+        <tr>
+          <td>Frequency of featrue releases</td>
+          <td>Measurement of product quality</td>
+          <td>Speed of data import</td>
+          <td>Quality of the output data</td>
+        </tr>
+        <tr>
+          <td colspan="2">Further development and maintenance of the software</td>
+          <td colspan="2">Improving data quality and analysis options</td>
+        </tr>
+        <tr>
+          <td colspan="2">Personalized service</td>
+          <td colspan="2">Off the shelf software</td>
+        </tr>
+        <tr>
+          <td colspan="4">Introducing new products</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Learning and growth</td>
+    <td>
+      <table>
+        <tr>
+          <td>Training sessions</td>
+          <td>Team satisfaction</td>
+        </tr>
+        <tr>
+          <td colspan="2">Further development of the team</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>Number of new releases</td>
+          <td>Number of new ideas implemented</td>
+        </tr>
+        <tr>
+          <td colspan="2">Promoting openness to innovation in the company</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+

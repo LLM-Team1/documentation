@@ -1,0 +1,23 @@
+# User Persona
+## Demographic Data:
+**Name:** Alex Schmidt  
+**Age:** 35 years  
+**Gender:** Male  
+**Place of residence:** Stuttgart, Germany  
+**Family status:** Married without kids  
+**Interests:** Cars, technology, business news, hiking, AI  
+**Occupation:** Strategy analyst in the department for market and competition analysis at Mercedes Benz
+
+## Tasks & Responsibilities:
+* Collect and analyze market data to identify trends and developments in the automotive industry
+* Analyze competitor data to identify strengths, weaknesses, opportunities and threats
+* Create comprehensive reports and presentations for executives to enable informed strategic decisions
+* Collaborate with other departments to gather data and gain insights into various aspects of the market & the firm
+* Develop long-term strategic plans to strengthen the competitive position of Mercedes-Benz
+
+## Pains & Problems:
+* **Time-consuming data collection:** Manual collection of market data & competitive information takes up a significant amount of working time
+* **Risk of information overload:** The amount of data available carries the risk that Alex could overlook important trends and patterns
+* **Delays in reaction time:** The time-consuming manual analysis leads to delays in reacting to current market developments and competitive changes
+* **Limited resources for in-depth analysis:** Due to the time required, Alex cannot always perform the in-depth analysis required for comprehensive strategic planning
+* **Lack of precision in data interpretation:** Manual processing of data carries the risk of misinterpretation or human error, which could affect the accuracy and reliability of his analyses

@@ -1,0 +1,50 @@
+# Business Model Canvas
+## Value Proposition
+* Quick and easy access to industry insights
+* Individual industry and trend evaluations
+* Competitor comparison (benchmarking) and trend analysis
+    + SWOT analysis
+    + BCG Matrix
+    + BMC
+
+## Customer Segments
+* Competitive analysts in automotive industry
+* Investors
+* Financial analysts
+* Management consultants
+
+## Customer Relationship
+* E-Mail Newsletter
+* Personalized consulting
+* Self-service
+
+## Channels
+* Online marketing
+* Direct sales
+
+## Key partners
+* Corporate and financial data providers
+* Marketing agencies for advertising campaigns
+* Auditing firms to ensure data quality
+
+## Key activities
+* Development of the software including new features
+* Maintenance and updating of our database
+* Customer support
+
+## Key resources
+* Software developer
+* Server
+* Employee hardware
+
+## Cost structure
+* Employee salaries
+* Licenses
+* Servers
+* Marketing expenses
+
+## Revenue streams
+* Licensing of the tool
+* Subscriptions
+* Maintenance and support
+* Consulting Services

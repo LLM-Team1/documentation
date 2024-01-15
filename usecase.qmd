@@ -1,0 +1,9 @@
+# Usecase
+
+We want to create a SaaS solution that is aimed at business strategy analysts of a company (see personas) to support them in tasks such as competitor analysis.
+
+In our tool, the user should be able to:
+
+* upload their own annual report, use an existing one or a public one to gain insights into the respective company
+* create a SWOT analysis for the selected report
+* ask individual questions about the report via a chatbot
