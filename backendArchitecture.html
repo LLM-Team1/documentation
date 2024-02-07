@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="StratMystiqPro - A tool for quick strategic insights">
 
-<title>StratMystiqPro Documentation</title>
+<title>StratMystiqPro Documentation - Backend Architecture</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -73,7 +74,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="StratMystiqPro Documentation">
+<meta property="og:title" content="StratMystiqPro Documentation - Backend Architecture">
+<meta property="og:description" content="StratMystiqPro - A tool for quick strategic insights">
 <meta property="og:image" content="https://LMM-Team1.github.io/documentation//images/logo.png">
 <meta property="og:site_name" content="StratMystiqPro Documentation">
 <meta property="og:image:height" content="1185">
@@ -89,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./RAGpipeline.html">System Design</a></li><li class="breadcrumb-item"><a href="./backendArchitecture.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">backendArchitecture.html</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./RAGpipeline.html">System Design</a></li><li class="breadcrumb-item"><a href="./backendArchitecture.html"><span class="chapter-title">Backend Architecture</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -129,8 +131,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -144,32 +145,27 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./usecase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Usecase</span></span></a>
+  <a href="./usecase.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Usecase</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./userPersona.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">User Persona</span></span></a>
+  <a href="./userPersona.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User Persona</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bmc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Business Model Canvas</span></span></a>
+  <a href="./bmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Business Model Canvas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./strategyMap.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Strategy Map</span></span></a>
+  <a href="./strategyMap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Strategy Map</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./valueProposition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Value Proposition</span></span></a>
+  <a href="./valueProposition.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Value Proposition</span></a>
   </div>
 </li>
       </ul>
@@ -185,26 +181,22 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./RAGpipeline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">RAG Pipeline</span></span></a>
+  <a href="./RAGpipeline.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">RAG Pipeline</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./RAGevaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">RAGevaluation.html</span></span></a>
+  <a href="./RAGevaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">RAGevaluation.html</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./backendArchitecture.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">backendArchitecture.html</span></span></a>
+  <a href="./backendArchitecture.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Backend Architecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./frontendArchitecture.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">frontendArchitecture.html</span></span></a>
+  <a href="./frontendArchitecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">frontendArchitecture.html</span></a>
   </div>
 </li>
       </ul>
@@ -220,14 +212,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./deployment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">deployment.html</span></span></a>
+  <a href="./deployment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">deployment.html</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./userManual.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">userManual.html</span></span></a>
+  <a href="./userManual.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">userManual.html</span></a>
   </div>
 </li>
       </ul>
@@ -244,16 +234,136 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#backend-requirements" id="toc-backend-requirements" class="nav-link active" data-scroll-target="#backend-requirements">Backend Requirements</a>
+  <ul class="collapse">
+  <li><a href="#scalable" id="toc-scalable" class="nav-link" data-scroll-target="#scalable">Scalable</a></li>
+  <li><a href="#resource-efficient" id="toc-resource-efficient" class="nav-link" data-scroll-target="#resource-efficient">Resource Efficient</a></li>
+  <li><a href="#adaptable" id="toc-adaptable" class="nav-link" data-scroll-target="#adaptable">Adaptable</a></li>
+  <li><a href="#secure" id="toc-secure" class="nav-link" data-scroll-target="#secure">Secure</a></li>
+  </ul></li>
+  <li><a href="#tech-stack" id="toc-tech-stack" class="nav-link" data-scroll-target="#tech-stack">Tech Stack</a></li>
+  <li><a href="#data-model" id="toc-data-model" class="nav-link" data-scroll-target="#data-model">Data Model</a></li>
+  <li><a href="#authentication" id="toc-authentication" class="nav-link" data-scroll-target="#authentication">Authentication</a></li>
+  <li><a href="#python-classes" id="toc-python-classes" class="nav-link" data-scroll-target="#python-classes">Python Classes</a>
+  <ul class="collapse">
+  <li><a href="#class-diagram" id="toc-class-diagram" class="nav-link" data-scroll-target="#class-diagram">Class Diagram</a></li>
+  <li><a href="#businessanalyst" id="toc-businessanalyst" class="nav-link" data-scroll-target="#businessanalyst">BusinessAnalyst</a></li>
+  <li><a href="#rest-api" id="toc-rest-api" class="nav-link" data-scroll-target="#rest-api">REST API</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/backendArchitecture.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./RAGpipeline.html">System Design</a></li><li class="breadcrumb-item"><a href="./backendArchitecture.html"><span class="chapter-title">Backend Architecture</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Backend Architecture</span></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<p>This part of the documentation will cover the backend architecture of the project.</p>
+<section id="backend-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="backend-requirements">Backend Requirements</h2>
+<p>At the beginning of every project, it is important to define the requirements that the system should meet. Seeing that the goal of this project is to build a prototype for a SaaS tool, the backend should be designed to meet a number of requirements. These have been grouped into the following categories:</p>
+<section id="scalable" class="level3">
+<h3 class="anchored" data-anchor-id="scalable">Scalable</h3>
+<p>The system should be designed to handle multiple number of users and tasks at any time without impacting performance.</p>
+<ul>
+<li><strong>Handle multiple different Users at any time:</strong>
+<ul>
+<li>Process a variety of reports simultaneously.</li>
+<li>Provide answers to user queries efficiently.</li>
+</ul></li>
+<li><strong>Allow easy horizontal or vertical scalability:</strong>
+<ul>
+<li>The system should be capable of scaling out (adding more nodes to the system) and scaling up (adding more power to existing nodes) as necessary, without any service interruption.</li>
+</ul></li>
+</ul>
+</section>
+<section id="resource-efficient" class="level3">
+<h3 class="anchored" data-anchor-id="resource-efficient">Resource Efficient</h3>
+<p>Optimizing the use of resources is crucial for maintaining a cost-effective and high-performing system.</p>
+<ul>
+<li><strong>Minimize API-Calls to OpenAI and other external services:</strong>
+<ul>
+<li>Reduce the frequency and volume of API requests to avoid unnecessary costs and to maintain system responsiveness.</li>
+</ul></li>
+<li><strong>Only regenerate responses if requested by a User:</strong>
+<ul>
+<li>Cache and reuse responses where possible to avoid redundant computations.</li>
+</ul></li>
+</ul>
+</section>
+<section id="adaptable" class="level3">
+<h3 class="anchored" data-anchor-id="adaptable">Adaptable</h3>
+<p>The system must be flexible to accommodate changes and the addition of new features.</p>
+<ul>
+<li><strong>Allow Users to upload reports from several business sectors:</strong>
+<ul>
+<li>Support a diverse range of report formats and contents to cater to different industry needs.</li>
+</ul></li>
+<li><strong>It should be easy to add features to the tool without major code changes:</strong>
+<ul>
+<li>Design the architecture to be modular, allowing new features to be added with minimal changes to the core codebase.</li>
+</ul></li>
+</ul>
+</section>
+<section id="secure" class="level3">
+<h3 class="anchored" data-anchor-id="secure">Secure</h3>
+<p>Security is a top priority to protect user data and ensure trust in the system.</p>
+<ul>
+<li><strong>User Log-In should be secure and follow industry standards:</strong>
+<ul>
+<li>Implement authentication mechanisms that meet current security best practices.</li>
+</ul></li>
+<li><strong>Ensure User Data is separated and protected from unauthorized access:</strong>
+<ul>
+<li>Apply strict access controls and data isolation to ensure that user data is not exposed to unauthorized entities.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="tech-stack" class="level2">
+<h2 class="anchored" data-anchor-id="tech-stack">Tech Stack</h2>
+</section>
+<section id="data-model" class="level2">
+<h2 class="anchored" data-anchor-id="data-model">Data Model</h2>
+</section>
+<section id="authentication" class="level2">
+<h2 class="anchored" data-anchor-id="authentication">Authentication</h2>
+</section>
+<section id="python-classes" class="level2">
+<h2 class="anchored" data-anchor-id="python-classes">Python Classes</h2>
+<section id="class-diagram" class="level3">
+<h3 class="anchored" data-anchor-id="class-diagram">Class Diagram</h3>
+</section>
+<section id="businessanalyst" class="level3">
+<h3 class="anchored" data-anchor-id="businessanalyst">BusinessAnalyst</h3>
+</section>
+<section id="rest-api" class="level3">
+<h3 class="anchored" data-anchor-id="rest-api">REST API</h3>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -790,12 +900,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./RAGevaluation.html" class="pagination-link  aria-label=" &lt;span="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">RAGevaluation.html</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">RAGevaluation.html</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./frontendArchitecture.html" class="pagination-link" aria-label="<span class='chapter-number'>10</span>&nbsp; <span class='chapter-title'>frontendArchitecture.html</span>">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">frontendArchitecture.html</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-title">frontendArchitecture.html</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -818,7 +928,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/backendArchitecture.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/backendArchitecture.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

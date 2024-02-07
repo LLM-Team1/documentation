@@ -32,7 +32,7 @@
   {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "1  Introduction",
+    "title": "Introduction",
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
@@ -42,7 +42,7 @@
   {
     "objectID": "usecase.html",
     "href": "usecase.html",
-    "title": "2  Usecase",
+    "title": "Usecase",
     "section": "",
     "text": "We want to create a SaaS solution that is aimed at business strategy analysts of a company (see personas) to support them in tasks such as competitor analysis.\nIn our tool, the user should be able to:\n\nupload their own annual report, use an existing one or a public one to gain insights into the respective company\ncreate a SWOT analysis for the selected report\nask individual questions about the report via a chatbot",
     "crumbs": [
@@ -53,9 +53,9 @@
   {
     "objectID": "userPersona.html",
     "href": "userPersona.html",
-    "title": "3  User Persona",
+    "title": "User Persona",
     "section": "",
-    "text": "3.1 Demographic Data:\nName: Alex Schmidt\nAge: 35 years\nGender: Male\nPlace of residence: Stuttgart, Germany\nFamily status: Married without kids\nInterests: Cars, technology, business news, hiking, AI\nOccupation: Strategy analyst in the department for market and competition analysis at Mercedes Benz",
+    "text": "Demographic Data:\nName: Alex Schmidt\nAge: 35 years\nGender: Male\nPlace of residence: Stuttgart, Germany\nFamily status: Married without kids\nInterests: Cars, technology, business news, hiking, AI\nOccupation: Strategy analyst in the department for market and competition analysis at Mercedes Benz",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>User Persona</span>"
@@ -64,9 +64,9 @@
   {
     "objectID": "userPersona.html#tasks-responsibilities",
     "href": "userPersona.html#tasks-responsibilities",
-    "title": "3  User Persona",
-    "section": "3.2 Tasks & Responsibilities:",
-    "text": "3.2 Tasks & Responsibilities:\n\nCollect and analyze market data to identify trends and developments in the automotive industry\nAnalyze competitor data to identify strengths, weaknesses, opportunities and threats\nCreate comprehensive reports and presentations for executives to enable informed strategic decisions\nCollaborate with other departments to gather data and gain insights into various aspects of the market & the firm\nDevelop long-term strategic plans to strengthen the competitive position of Mercedes-Benz",
+    "title": "User Persona",
+    "section": "Tasks & Responsibilities:",
+    "text": "Tasks & Responsibilities:\n\nCollect and analyze market data to identify trends and developments in the automotive industry\nAnalyze competitor data to identify strengths, weaknesses, opportunities and threats\nCreate comprehensive reports and presentations for executives to enable informed strategic decisions\nCollaborate with other departments to gather data and gain insights into various aspects of the market & the firm\nDevelop long-term strategic plans to strengthen the competitive position of Mercedes-Benz",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>User Persona</span>"
@@ -75,9 +75,9 @@
   {
     "objectID": "userPersona.html#pains-problems",
     "href": "userPersona.html#pains-problems",
-    "title": "3  User Persona",
-    "section": "3.3 Pains & Problems:",
-    "text": "3.3 Pains & Problems:\n\nTime-consuming data collection: Manual collection of market data & competitive information takes up a significant amount of working time\nRisk of information overload: The amount of data available carries the risk that Alex could overlook important trends and patterns\nDelays in reaction time: The time-consuming manual analysis leads to delays in reacting to current market developments and competitive changes\nLimited resources for in-depth analysis: Due to the time required, Alex cannot always perform the in-depth analysis required for comprehensive strategic planning\nLack of precision in data interpretation: Manual processing of data carries the risk of misinterpretation or human error, which could affect the accuracy and reliability of his analyses",
+    "title": "User Persona",
+    "section": "Pains & Problems:",
+    "text": "Pains & Problems:\n\nTime-consuming data collection: Manual collection of market data & competitive information takes up a significant amount of working time\nRisk of information overload: The amount of data available carries the risk that Alex could overlook important trends and patterns\nDelays in reaction time: The time-consuming manual analysis leads to delays in reacting to current market developments and competitive changes\nLimited resources for in-depth analysis: Due to the time required, Alex cannot always perform the in-depth analysis required for comprehensive strategic planning\nLack of precision in data interpretation: Manual processing of data carries the risk of misinterpretation or human error, which could affect the accuracy and reliability of his analyses",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>User Persona</span>"
@@ -86,9 +86,9 @@
   {
     "objectID": "bmc.html",
     "href": "bmc.html",
-    "title": "4  Business Model Canvas",
+    "title": "Business Model Canvas",
     "section": "",
-    "text": "4.1 Value Proposition",
+    "text": "Value Proposition",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
@@ -97,7 +97,7 @@
   {
     "objectID": "bmc.html#value-proposition",
     "href": "bmc.html#value-proposition",
-    "title": "4  Business Model Canvas",
+    "title": "Business Model Canvas",
     "section": "",
     "text": "Quick and easy access to industry insights\nIndividual industry and trend evaluations\nCompetitor comparison (benchmarking) and trend analysis\n\nSWOT analysis\nBCG Matrix\nBMC",
     "crumbs": [
@@ -108,9 +108,9 @@
   {
     "objectID": "bmc.html#customer-segments",
     "href": "bmc.html#customer-segments",
-    "title": "4  Business Model Canvas",
-    "section": "4.2 Customer Segments",
-    "text": "4.2 Customer Segments\n\nCompetitive analysts in automotive industry\nInvestors\nFinancial analysts\nManagement consultants",
+    "title": "Business Model Canvas",
+    "section": "Customer Segments",
+    "text": "Customer Segments\n\nCompetitive analysts in automotive industry\nInvestors\nFinancial analysts\nManagement consultants",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
@@ -119,9 +119,9 @@
   {
     "objectID": "bmc.html#customer-relationship",
     "href": "bmc.html#customer-relationship",
-    "title": "4  Business Model Canvas",
-    "section": "4.3 Customer Relationship",
-    "text": "4.3 Customer Relationship\n\nE-Mail Newsletter\nPersonalized consulting\nSelf-service",
+    "title": "Business Model Canvas",
+    "section": "Customer Relationship",
+    "text": "Customer Relationship\n\nE-Mail Newsletter\nPersonalized consulting\nSelf-service",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
@@ -130,9 +130,9 @@
   {
     "objectID": "bmc.html#channels",
     "href": "bmc.html#channels",
-    "title": "4  Business Model Canvas",
-    "section": "4.4 Channels",
-    "text": "4.4 Channels\n\nOnline marketing\nDirect sales",
+    "title": "Business Model Canvas",
+    "section": "Channels",
+    "text": "Channels\n\nOnline marketing\nDirect sales",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
@@ -141,9 +141,9 @@
   {
     "objectID": "bmc.html#key-partners",
     "href": "bmc.html#key-partners",
-    "title": "4  Business Model Canvas",
-    "section": "4.5 Key partners",
-    "text": "4.5 Key partners\n\nCorporate and financial data providers\nMarketing agencies for advertising campaigns\nAuditing firms to ensure data quality",
+    "title": "Business Model Canvas",
+    "section": "Key partners",
+    "text": "Key partners\n\nCorporate and financial data providers\nMarketing agencies for advertising campaigns\nAuditing firms to ensure data quality",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
@@ -152,9 +152,9 @@
   {
     "objectID": "bmc.html#key-activities",
     "href": "bmc.html#key-activities",
-    "title": "4  Business Model Canvas",
-    "section": "4.6 Key activities",
-    "text": "4.6 Key activities\n\nDevelopment of the software including new features\nMaintenance and updating of our database\nCustomer support",
+    "title": "Business Model Canvas",
+    "section": "Key activities",
+    "text": "Key activities\n\nDevelopment of the software including new features\nMaintenance and updating of our database\nCustomer support",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
@@ -163,9 +163,9 @@
   {
     "objectID": "bmc.html#key-resources",
     "href": "bmc.html#key-resources",
-    "title": "4  Business Model Canvas",
-    "section": "4.7 Key resources",
-    "text": "4.7 Key resources\n\nSoftware developer\nServer\nEmployee hardware",
+    "title": "Business Model Canvas",
+    "section": "Key resources",
+    "text": "Key resources\n\nSoftware developer\nServer\nEmployee hardware",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
@@ -174,9 +174,9 @@
   {
     "objectID": "bmc.html#cost-structure",
     "href": "bmc.html#cost-structure",
-    "title": "4  Business Model Canvas",
-    "section": "4.8 Cost structure",
-    "text": "4.8 Cost structure\n\nEmployee salaries\nLicenses\nServers\nMarketing expenses",
+    "title": "Business Model Canvas",
+    "section": "Cost structure",
+    "text": "Cost structure\n\nEmployee salaries\nLicenses\nServers\nMarketing expenses",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
@@ -185,9 +185,9 @@
   {
     "objectID": "bmc.html#revenue-streams",
     "href": "bmc.html#revenue-streams",
-    "title": "4  Business Model Canvas",
-    "section": "4.9 Revenue streams",
-    "text": "4.9 Revenue streams\n\nLicensing of the tool\nSubscriptions\nMaintenance and support\nConsulting Services",
+    "title": "Business Model Canvas",
+    "section": "Revenue streams",
+    "text": "Revenue streams\n\nLicensing of the tool\nSubscriptions\nMaintenance and support\nConsulting Services",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
@@ -196,7 +196,7 @@
   {
     "objectID": "strategyMap.html",
     "href": "strategyMap.html",
-    "title": "5  Strategy Map",
+    "title": "Strategy Map",
     "section": "",
     "text": "Financial\n\n\n\n\n\nMonthly revenue\n\n\nYearly revenue\n\n\n\n\nCompany growth\n\n\n\n\n\n\nGoss profit margin\n\n\nNet margin\n\n\n\n\nProfitaility\n\n\n\n\n\n\n\nCustomer\n\n\n\n\n\nCustomer aquistion cost\n\n\nCustomer retention rate\n\n\n\n\nCustomer acquisition and customer loyalty\n\n\n\n\n\n\nUser rating\n\n\nSupport response time\n\n\n\n\nOptimized user experience\n\n\n\n\n\n\n\nInternal process\n\n\n\n\n\nFrequency of featrue releases\n\n\nMeasurement of product quality\n\n\nSpeed of data import\n\n\nQuality of the output data\n\n\n\n\nFurther development and maintenance of the software\n\n\nImproving data quality and analysis options\n\n\n\n\nPersonalized service\n\n\nOff the shelf software\n\n\n\n\nIntroducing new products\n\n\n\n\n\n\n\nLearning and growth\n\n\n\n\n\nTraining sessions\n\n\nTeam satisfaction\n\n\n\n\nFurther development of the team\n\n\n\n\n\n\nNumber of new releases\n\n\nNumber of new ideas implemented\n\n\n\n\nPromoting openness to innovation in the company",
     "crumbs": [
@@ -207,9 +207,9 @@
   {
     "objectID": "valueProposition.html",
     "href": "valueProposition.html",
-    "title": "6  Value Proposition",
+    "title": "Value Proposition",
     "section": "",
-    "text": "6.1 Customer Segment",
+    "text": "Customer Segment",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Value Proposition</span>"
@@ -218,7 +218,7 @@
   {
     "objectID": "valueProposition.html#customer-segment",
     "href": "valueProposition.html#customer-segment",
-    "title": "6  Value Proposition",
+    "title": "Value Proposition",
     "section": "",
     "text": "Gains\n\nWell-developed strategy\nGood understanding of your own company and competitors\n\n\n\nPains\n\nTime-consuming work through annual reports\nDoes not know all the data from the own company and competitor companies\nRequires significant working time to prepare the analysis\n\n\n\nCustomer Jobs\n\nCreate analysis\nCreate evaluations\nDerive and develop strategies based on the analyses and evaluations",
     "crumbs": [
@@ -229,9 +229,9 @@
   {
     "objectID": "valueProposition.html#product-segment",
     "href": "valueProposition.html#product-segment",
-    "title": "6  Value Proposition",
-    "section": "6.2 Product Segment",
-    "text": "6.2 Product Segment\n\nGain Creators\n\nA mature strategy based on data and benchmarks\nBetter understanding and classification of the company\nSaves time\nRegular and simple strategy adjustments\n\n\n\nPain relievers\n\nIndividual needs can be taken into account\nStrategy and analyses can be created simultaneously\n\n\n\nProduct and services\n\nAnalysis of your own data and the competitions\nPreparation of evaluations and analysis (e.g. SWOT)\nDevelopment of strategic approaches",
+    "title": "Value Proposition",
+    "section": "Product Segment",
+    "text": "Product Segment\n\nGain Creators\n\nA mature strategy based on data and benchmarks\nBetter understanding and classification of the company\nSaves time\nRegular and simple strategy adjustments\n\n\n\nPain relievers\n\nIndividual needs can be taken into account\nStrategy and analyses can be created simultaneously\n\n\n\nProduct and services\n\nAnalysis of your own data and the competitions\nPreparation of evaluations and analysis (e.g. SWOT)\nDevelopment of strategic approaches",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Value Proposition</span>"
@@ -240,12 +240,78 @@
   {
     "objectID": "RAGpipeline.html",
     "href": "RAGpipeline.html",
-    "title": "7  RAG Pipeline",
+    "title": "RAG Pipeline",
     "section": "",
-    "text": "7.1 Demographic Data:",
+    "text": "Demographic Data:",
     "crumbs": [
       "System Design",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>RAG Pipeline</span>"
+    ]
+  },
+  {
+    "objectID": "backendArchitecture.html",
+    "href": "backendArchitecture.html",
+    "title": "Backend Architecture",
+    "section": "",
+    "text": "Backend Requirements\nAt the beginning of every project, it is important to define the requirements that the system should meet. Seeing that the goal of this project is to build a prototype for a SaaS tool, the backend should be designed to meet a number of requirements. These have been grouped into the following categories:",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Backend Architecture</span>"
+    ]
+  },
+  {
+    "objectID": "backendArchitecture.html#backend-requirements",
+    "href": "backendArchitecture.html#backend-requirements",
+    "title": "Backend Architecture",
+    "section": "",
+    "text": "Scalable\nThe system should be designed to handle multiple number of users and tasks at any time without impacting performance.\n\nHandle multiple different Users at any time:\n\nProcess a variety of reports simultaneously.\nProvide answers to user queries efficiently.\n\nAllow easy horizontal or vertical scalability:\n\nThe system should be capable of scaling out (adding more nodes to the system) and scaling up (adding more power to existing nodes) as necessary, without any service interruption.\n\n\n\n\nResource Efficient\nOptimizing the use of resources is crucial for maintaining a cost-effective and high-performing system.\n\nMinimize API-Calls to OpenAI and other external services:\n\nReduce the frequency and volume of API requests to avoid unnecessary costs and to maintain system responsiveness.\n\nOnly regenerate responses if requested by a User:\n\nCache and reuse responses where possible to avoid redundant computations.\n\n\n\n\nAdaptable\nThe system must be flexible to accommodate changes and the addition of new features.\n\nAllow Users to upload reports from several business sectors:\n\nSupport a diverse range of report formats and contents to cater to different industry needs.\n\nIt should be easy to add features to the tool without major code changes:\n\nDesign the architecture to be modular, allowing new features to be added with minimal changes to the core codebase.\n\n\n\n\nSecure\nSecurity is a top priority to protect user data and ensure trust in the system.\n\nUser Log-In should be secure and follow industry standards:\n\nImplement authentication mechanisms that meet current security best practices.\n\nEnsure User Data is separated and protected from unauthorized access:\n\nApply strict access controls and data isolation to ensure that user data is not exposed to unauthorized entities.",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Backend Architecture</span>"
+    ]
+  },
+  {
+    "objectID": "backendArchitecture.html#tech-stack",
+    "href": "backendArchitecture.html#tech-stack",
+    "title": "Backend Architecture",
+    "section": "Tech Stack",
+    "text": "Tech Stack",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Backend Architecture</span>"
+    ]
+  },
+  {
+    "objectID": "backendArchitecture.html#data-model",
+    "href": "backendArchitecture.html#data-model",
+    "title": "Backend Architecture",
+    "section": "Data Model",
+    "text": "Data Model",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Backend Architecture</span>"
+    ]
+  },
+  {
+    "objectID": "backendArchitecture.html#authentication",
+    "href": "backendArchitecture.html#authentication",
+    "title": "Backend Architecture",
+    "section": "Authentication",
+    "text": "Authentication",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Backend Architecture</span>"
+    ]
+  },
+  {
+    "objectID": "backendArchitecture.html#python-classes",
+    "href": "backendArchitecture.html#python-classes",
+    "title": "Backend Architecture",
+    "section": "Python Classes",
+    "text": "Python Classes\n\nClass Diagram\n\n\nBusinessAnalyst\n\n\nREST API",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Backend Architecture</span>"
     ]
   },
   {
