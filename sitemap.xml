@@ -2,38 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://LMM-Team1.github.io/documentation/index.html</loc>
-    <lastmod>2024-01-15T12:34:10.386Z</lastmod>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
   </url>
   <url>
     <loc>https://LMM-Team1.github.io/documentation/intro.html</loc>
-    <lastmod>2024-01-15T12:34:10.390Z</lastmod>
-  </url>
-  <url>
-    <loc>https://LMM-Team1.github.io/documentation/summary.html</loc>
-    <lastmod>2024-01-15T12:34:10.394Z</lastmod>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
   </url>
   <url>
     <loc>https://LMM-Team1.github.io/documentation/usecase.html</loc>
-    <lastmod>2024-01-15T12:34:10.398Z</lastmod>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
   </url>
   <url>
     <loc>https://LMM-Team1.github.io/documentation/userPersona.html</loc>
-    <lastmod>2024-01-15T12:34:10.402Z</lastmod>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
   </url>
   <url>
     <loc>https://LMM-Team1.github.io/documentation/bmc.html</loc>
-    <lastmod>2024-01-15T12:34:10.406Z</lastmod>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
   </url>
   <url>
     <loc>https://LMM-Team1.github.io/documentation/strategyMap.html</loc>
-    <lastmod>2024-01-15T12:34:10.410Z</lastmod>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
   </url>
   <url>
     <loc>https://LMM-Team1.github.io/documentation/valueProposition.html</loc>
-    <lastmod>2024-01-15T12:34:10.422Z</lastmod>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
+  </url>
+  <url>
+    <loc>https://LMM-Team1.github.io/documentation/RAGpipeline.html</loc>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
+  </url>
+  <url>
+    <loc>https://LMM-Team1.github.io/documentation/RAGevaluation.html</loc>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
+  </url>
+  <url>
+    <loc>https://LMM-Team1.github.io/documentation/backendArchitecture.html</loc>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
+  </url>
+  <url>
+    <loc>https://LMM-Team1.github.io/documentation/frontendArchitecture.html</loc>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
+  </url>
+  <url>
+    <loc>https://LMM-Team1.github.io/documentation/deployment.html</loc>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
+  </url>
+  <url>
+    <loc>https://LMM-Team1.github.io/documentation/userManual.html</loc>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
   </url>
   <url>
     <loc>https://LMM-Team1.github.io/documentation/references.html</loc>
-    <lastmod>2024-01-15T12:34:10.426Z</lastmod>
+    <lastmod>2024-02-07T15:26:47.800Z</lastmod>
   </url>
 </urlset>

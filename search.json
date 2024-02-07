@@ -4,153 +4,258 @@
     "href": "index.html",
     "title": "Documentation",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books."
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "Preface"
+    ]
   },
   {
     "objectID": "index.html#hinweise",
     "href": "index.html#hinweise",
     "title": "Documentation",
     "section": "Hinweise",
-    "text": "Hinweise\n\nMögliche Gliederung (Design Science Research)"
+    "text": "Hinweise\n\nMögliche Gliederung (Design Science Research)",
+    "crumbs": [
+      "Preface"
+    ]
   },
   {
     "objectID": "index.html#styling",
     "href": "index.html#styling",
     "title": "Documentation",
     "section": "Styling",
-    "text": "Styling\n\nHTML Themes"
+    "text": "Styling\n\nHTML Themes",
+    "crumbs": [
+      "Preface"
+    ]
   },
   {
     "objectID": "intro.html",
     "href": "intro.html",
     "title": "1  Introduction",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
-  },
-  {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "2  Summary",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever."
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
   },
   {
     "objectID": "usecase.html",
     "href": "usecase.html",
-    "title": "3  Usecase",
+    "title": "2  Usecase",
     "section": "",
-    "text": "We want to create a SaaS solution that is aimed at business strategy analysts of a company (see personas) to support them in tasks such as competitor analysis.\nIn our tool, the user should be able to:\n\nupload their own annual report, use an existing one or a public one to gain insights into the respective company\ncreate a SWOT analysis for the selected report\nask individual questions about the report via a chatbot"
+    "text": "We want to create a SaaS solution that is aimed at business strategy analysts of a company (see personas) to support them in tasks such as competitor analysis.\nIn our tool, the user should be able to:\n\nupload their own annual report, use an existing one or a public one to gain insights into the respective company\ncreate a SWOT analysis for the selected report\nask individual questions about the report via a chatbot",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Usecase</span>"
+    ]
   },
   {
-    "objectID": "userPersona.html#demographic-data",
-    "href": "userPersona.html#demographic-data",
-    "title": "4  User Persona",
-    "section": "4.1 Demographic Data:",
-    "text": "4.1 Demographic Data:\nName: Alex Schmidt\nAge: 35 years\nGender: Male\nPlace of residence: Stuttgart, Germany\nFamily status: Married without kids\nInterests: Cars, technology, business news, hiking, AI\nOccupation: Strategy analyst in the department for market and competition analysis at Mercedes Benz"
+    "objectID": "userPersona.html",
+    "href": "userPersona.html",
+    "title": "3  User Persona",
+    "section": "",
+    "text": "3.1 Demographic Data:\nName: Alex Schmidt\nAge: 35 years\nGender: Male\nPlace of residence: Stuttgart, Germany\nFamily status: Married without kids\nInterests: Cars, technology, business news, hiking, AI\nOccupation: Strategy analyst in the department for market and competition analysis at Mercedes Benz",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>User Persona</span>"
+    ]
   },
   {
     "objectID": "userPersona.html#tasks-responsibilities",
     "href": "userPersona.html#tasks-responsibilities",
-    "title": "4  User Persona",
-    "section": "4.2 Tasks & Responsibilities:",
-    "text": "4.2 Tasks & Responsibilities:\n\nCollect and analyze market data to identify trends and developments in the automotive industry\nAnalyze competitor data to identify strengths, weaknesses, opportunities and threats\nCreate comprehensive reports and presentations for executives to enable informed strategic decisions\nCollaborate with other departments to gather data and gain insights into various aspects of the market & the firm\nDevelop long-term strategic plans to strengthen the competitive position of Mercedes-Benz"
+    "title": "3  User Persona",
+    "section": "3.2 Tasks & Responsibilities:",
+    "text": "3.2 Tasks & Responsibilities:\n\nCollect and analyze market data to identify trends and developments in the automotive industry\nAnalyze competitor data to identify strengths, weaknesses, opportunities and threats\nCreate comprehensive reports and presentations for executives to enable informed strategic decisions\nCollaborate with other departments to gather data and gain insights into various aspects of the market & the firm\nDevelop long-term strategic plans to strengthen the competitive position of Mercedes-Benz",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>User Persona</span>"
+    ]
   },
   {
     "objectID": "userPersona.html#pains-problems",
     "href": "userPersona.html#pains-problems",
-    "title": "4  User Persona",
-    "section": "4.3 Pains & Problems:",
-    "text": "4.3 Pains & Problems:\n\nTime-consuming data collection: Manual collection of market data & competitive information takes up a significant amount of working time\nRisk of information overload: The amount of data available carries the risk that Alex could overlook important trends and patterns\nDelays in reaction time: The time-consuming manual analysis leads to delays in reacting to current market developments and competitive changes\nLimited resources for in-depth analysis: Due to the time required, Alex cannot always perform the in-depth analysis required for comprehensive strategic planning\nLack of precision in data interpretation: Manual processing of data carries the risk of misinterpretation or human error, which could affect the accuracy and reliability of his analyses"
+    "title": "3  User Persona",
+    "section": "3.3 Pains & Problems:",
+    "text": "3.3 Pains & Problems:\n\nTime-consuming data collection: Manual collection of market data & competitive information takes up a significant amount of working time\nRisk of information overload: The amount of data available carries the risk that Alex could overlook important trends and patterns\nDelays in reaction time: The time-consuming manual analysis leads to delays in reacting to current market developments and competitive changes\nLimited resources for in-depth analysis: Due to the time required, Alex cannot always perform the in-depth analysis required for comprehensive strategic planning\nLack of precision in data interpretation: Manual processing of data carries the risk of misinterpretation or human error, which could affect the accuracy and reliability of his analyses",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>User Persona</span>"
+    ]
+  },
+  {
+    "objectID": "bmc.html",
+    "href": "bmc.html",
+    "title": "4  Business Model Canvas",
+    "section": "",
+    "text": "4.1 Value Proposition",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+    ]
   },
   {
     "objectID": "bmc.html#value-proposition",
     "href": "bmc.html#value-proposition",
-    "title": "5  Business Model Canvas",
-    "section": "5.1 Value Proposition",
-    "text": "5.1 Value Proposition\n\nQuick and easy access to industry insights\nIndividual industry and trend evaluations\nCompetitor comparison (benchmarking) and trend analysis\n\nSWOT analysis\nBCG Matrix\nBMC"
+    "title": "4  Business Model Canvas",
+    "section": "",
+    "text": "Quick and easy access to industry insights\nIndividual industry and trend evaluations\nCompetitor comparison (benchmarking) and trend analysis\n\nSWOT analysis\nBCG Matrix\nBMC",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+    ]
   },
   {
     "objectID": "bmc.html#customer-segments",
     "href": "bmc.html#customer-segments",
-    "title": "5  Business Model Canvas",
-    "section": "5.2 Customer Segments",
-    "text": "5.2 Customer Segments\n\nCompetitive analysts in automotive industry\nInvestors\nFinancial analysts\nManagement consultants"
+    "title": "4  Business Model Canvas",
+    "section": "4.2 Customer Segments",
+    "text": "4.2 Customer Segments\n\nCompetitive analysts in automotive industry\nInvestors\nFinancial analysts\nManagement consultants",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+    ]
   },
   {
     "objectID": "bmc.html#customer-relationship",
     "href": "bmc.html#customer-relationship",
-    "title": "5  Business Model Canvas",
-    "section": "5.3 Customer Relationship",
-    "text": "5.3 Customer Relationship\n\nE-Mail Newsletter\nPersonalized consulting\nSelf-service"
+    "title": "4  Business Model Canvas",
+    "section": "4.3 Customer Relationship",
+    "text": "4.3 Customer Relationship\n\nE-Mail Newsletter\nPersonalized consulting\nSelf-service",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+    ]
   },
   {
     "objectID": "bmc.html#channels",
     "href": "bmc.html#channels",
-    "title": "5  Business Model Canvas",
-    "section": "5.4 Channels",
-    "text": "5.4 Channels\n\nOnline marketing\nDirect sales"
+    "title": "4  Business Model Canvas",
+    "section": "4.4 Channels",
+    "text": "4.4 Channels\n\nOnline marketing\nDirect sales",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+    ]
   },
   {
     "objectID": "bmc.html#key-partners",
     "href": "bmc.html#key-partners",
-    "title": "5  Business Model Canvas",
-    "section": "5.5 Key partners",
-    "text": "5.5 Key partners\n\nCorporate and financial data providers\nMarketing agencies for advertising campaigns\nAuditing firms to ensure data quality"
+    "title": "4  Business Model Canvas",
+    "section": "4.5 Key partners",
+    "text": "4.5 Key partners\n\nCorporate and financial data providers\nMarketing agencies for advertising campaigns\nAuditing firms to ensure data quality",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+    ]
   },
   {
     "objectID": "bmc.html#key-activities",
     "href": "bmc.html#key-activities",
-    "title": "5  Business Model Canvas",
-    "section": "5.6 Key activities",
-    "text": "5.6 Key activities\n\nDevelopment of the software including new features\nMaintenance and updating of our database\nCustomer support"
+    "title": "4  Business Model Canvas",
+    "section": "4.6 Key activities",
+    "text": "4.6 Key activities\n\nDevelopment of the software including new features\nMaintenance and updating of our database\nCustomer support",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+    ]
   },
   {
     "objectID": "bmc.html#key-resources",
     "href": "bmc.html#key-resources",
-    "title": "5  Business Model Canvas",
-    "section": "5.7 Key resources",
-    "text": "5.7 Key resources\n\nSoftware developer\nServer\nEmployee hardware"
+    "title": "4  Business Model Canvas",
+    "section": "4.7 Key resources",
+    "text": "4.7 Key resources\n\nSoftware developer\nServer\nEmployee hardware",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+    ]
   },
   {
     "objectID": "bmc.html#cost-structure",
     "href": "bmc.html#cost-structure",
-    "title": "5  Business Model Canvas",
-    "section": "5.8 Cost structure",
-    "text": "5.8 Cost structure\n\nEmployee salaries\nLicenses\nServers\nMarketing expenses"
+    "title": "4  Business Model Canvas",
+    "section": "4.8 Cost structure",
+    "text": "4.8 Cost structure\n\nEmployee salaries\nLicenses\nServers\nMarketing expenses",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+    ]
   },
   {
     "objectID": "bmc.html#revenue-streams",
     "href": "bmc.html#revenue-streams",
-    "title": "5  Business Model Canvas",
-    "section": "5.9 Revenue streams",
-    "text": "5.9 Revenue streams\n\nLicensing of the tool\nSubscriptions\nMaintenance and support\nConsulting Services"
+    "title": "4  Business Model Canvas",
+    "section": "4.9 Revenue streams",
+    "text": "4.9 Revenue streams\n\nLicensing of the tool\nSubscriptions\nMaintenance and support\nConsulting Services",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+    ]
   },
   {
     "objectID": "strategyMap.html",
     "href": "strategyMap.html",
-    "title": "6  Strategy Map",
+    "title": "5  Strategy Map",
     "section": "",
-    "text": "Financial\n\n\n\n\n\n\nMonthly revenue\n\n\nYearly revenue\n\n\n\n\nCompany growth\n\n\n\n\n\n\n\nGoss profit margin\n\n\nNet margin\n\n\n\n\nProfitaility\n\n\n\n\n\n\n\n\nCustomer\n\n\n\n\n\n\nCustomer aquistion cost\n\n\nCustomer retention rate\n\n\n\n\nCustomer acquisition and customer loyalty\n\n\n\n\n\n\n\nUser rating\n\n\nSupport response time\n\n\n\n\nOptimized user experience\n\n\n\n\n\n\n\n\nInternal process\n\n\n\n\n\n\nFrequency of featrue releases\n\n\nMeasurement of product quality\n\n\nSpeed of data import\n\n\nQuality of the output data\n\n\n\n\nFurther development and maintenance of the software\n\n\nImproving data quality and analysis options\n\n\n\n\nPersonalized service\n\n\nOff the shelf software\n\n\n\n\nIntroducing new products\n\n\n\n\n\n\n\n\nLearning and growth\n\n\n\n\n\n\nTraining sessions\n\n\nTeam satisfaction\n\n\n\n\nFurther development of the team\n\n\n\n\n\n\n\nNumber of new releases\n\n\nNumber of new ideas implemented\n\n\n\n\nPromoting openness to innovation in the company"
+    "text": "Financial\n\n\n\n\n\nMonthly revenue\n\n\nYearly revenue\n\n\n\n\nCompany growth\n\n\n\n\n\n\nGoss profit margin\n\n\nNet margin\n\n\n\n\nProfitaility\n\n\n\n\n\n\n\nCustomer\n\n\n\n\n\nCustomer aquistion cost\n\n\nCustomer retention rate\n\n\n\n\nCustomer acquisition and customer loyalty\n\n\n\n\n\n\nUser rating\n\n\nSupport response time\n\n\n\n\nOptimized user experience\n\n\n\n\n\n\n\nInternal process\n\n\n\n\n\nFrequency of featrue releases\n\n\nMeasurement of product quality\n\n\nSpeed of data import\n\n\nQuality of the output data\n\n\n\n\nFurther development and maintenance of the software\n\n\nImproving data quality and analysis options\n\n\n\n\nPersonalized service\n\n\nOff the shelf software\n\n\n\n\nIntroducing new products\n\n\n\n\n\n\n\nLearning and growth\n\n\n\n\n\nTraining sessions\n\n\nTeam satisfaction\n\n\n\n\nFurther development of the team\n\n\n\n\n\n\nNumber of new releases\n\n\nNumber of new ideas implemented\n\n\n\n\nPromoting openness to innovation in the company",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Strategy Map</span>"
+    ]
+  },
+  {
+    "objectID": "valueProposition.html",
+    "href": "valueProposition.html",
+    "title": "6  Value Proposition",
+    "section": "",
+    "text": "6.1 Customer Segment",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Value Proposition</span>"
+    ]
   },
   {
     "objectID": "valueProposition.html#customer-segment",
     "href": "valueProposition.html#customer-segment",
-    "title": "7  Value Proposition",
-    "section": "7.1 Customer Segment",
-    "text": "7.1 Customer Segment\n\n7.1.1 Gains\n\nWell-developed strategy\nGood understanding of your own company and competitors\n\n\n\n7.1.2 Pains\n\nTime-consuming work through annual reports\nDoes not know all the data from the own company and competitor companies\nRequires significant working time to prepare the analysis\n\n\n\n7.1.3 Customer Jobs\n\nCreate analysis\nCreate evaluations\nDerive and develop strategies based on the analyses and evaluations"
+    "title": "6  Value Proposition",
+    "section": "",
+    "text": "6.1.1 Gains\n\nWell-developed strategy\nGood understanding of your own company and competitors\n\n\n\n6.1.2 Pains\n\nTime-consuming work through annual reports\nDoes not know all the data from the own company and competitor companies\nRequires significant working time to prepare the analysis\n\n\n\n6.1.3 Customer Jobs\n\nCreate analysis\nCreate evaluations\nDerive and develop strategies based on the analyses and evaluations",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Value Proposition</span>"
+    ]
   },
   {
     "objectID": "valueProposition.html#product-segment",
     "href": "valueProposition.html#product-segment",
-    "title": "7  Value Proposition",
-    "section": "7.2 Product Segment",
-    "text": "7.2 Product Segment\n\n7.2.1 Gain Creators\n\nA mature strategy based on data and benchmarks\nBetter understanding and classification of the company\nSaves time\nRegular and simple strategy adjustments\n\n\n\n7.2.2 Pain relievers\n\nIndividual needs can be taken into account\nStrategy and analyses can be created simultaneously\n\n\n\n7.2.3 Product and services\n\nAnalysis of your own data and the competitions\nPreparation of evaluations and analysis (e.g. SWOT)\nDevelopment of strategic approaches"
+    "title": "6  Value Proposition",
+    "section": "6.2 Product Segment",
+    "text": "6.2 Product Segment\n\n6.2.1 Gain Creators\n\nA mature strategy based on data and benchmarks\nBetter understanding and classification of the company\nSaves time\nRegular and simple strategy adjustments\n\n\n\n6.2.2 Pain relievers\n\nIndividual needs can be taken into account\nStrategy and analyses can be created simultaneously\n\n\n\n6.2.3 Product and services\n\nAnalysis of your own data and the competitions\nPreparation of evaluations and analysis (e.g. SWOT)\nDevelopment of strategic approaches",
+    "crumbs": [
+      "Business Relevance",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Value Proposition</span>"
+    ]
+  },
+  {
+    "objectID": "RAGpipeline.html",
+    "href": "RAGpipeline.html",
+    "title": "7  RAG Pipeline",
+    "section": "",
+    "text": "7.1 Demographic Data:",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>RAG Pipeline</span>"
+    ]
   },
   {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
   }
 ]

@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="foo">
+<meta name="description" content="StratMystiqPro - A tool for quick strategic insights">
 
-<title>Documentation - 5&nbsp; Business Model Canvas</title>
+<title>Documentation - 4&nbsp; Business Model Canvas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,7 +51,12 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -60,6 +65,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -67,9 +73,12 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Documentation - 5&nbsp; Business Model Canvas">
-<meta property="og:description" content="foo">
-<meta property="og:site-name" content="Documentation">
+<meta property="og:title" content="Documentation - 4&nbsp; Business Model Canvas">
+<meta property="og:description" content="StratMystiqPro - A tool for quick strategic insights">
+<meta property="og:image" content="https://LMM-Team1.github.io/documentation//images/logo.png">
+<meta property="og:site_name" content="Documentation">
+<meta property="og:image:height" content="1185">
+<meta property="og:image:width" content="1196">
 </head>
 
 <body class="nav-sidebar floating">
@@ -78,12 +87,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bmc.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Business Model Canvas</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./usecase.html">Business Relevance</a></li><li class="breadcrumb-item"><a href="./bmc.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Business Model Canvas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -93,21 +102,17 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Documentation</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/LLM-Team1/documentation" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/LLM-Team1/documentation" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+    <div id="quarto-search" class="quarto-navigation-tool px-1" title="Search"></div>
 </div>
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -122,42 +127,105 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Business Relevance</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./usecase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Usecase</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Usecase</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./userPersona.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">User Persona</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">User Persona</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bmc.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Business Model Canvas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Business Model Canvas</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./strategyMap.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Strategy Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Strategy Map</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./valueProposition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Value Proposition</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Value Proposition</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">System Design</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RAGpipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">RAG Pipeline</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RAGevaluation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">RAGevaluation.html</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./backendArchitecture.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">backendArchitecture.html</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./frontendArchitecture.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">frontendArchitecture.html</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Usage</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./deployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">deployment.html</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./userManual.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">userManual.html</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -167,31 +235,31 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#value-proposition" id="toc-value-proposition" class="nav-link active" data-scroll-target="#value-proposition"><span class="header-section-number">5.1</span> Value Proposition</a></li>
-  <li><a href="#customer-segments" id="toc-customer-segments" class="nav-link" data-scroll-target="#customer-segments"><span class="header-section-number">5.2</span> Customer Segments</a></li>
-  <li><a href="#customer-relationship" id="toc-customer-relationship" class="nav-link" data-scroll-target="#customer-relationship"><span class="header-section-number">5.3</span> Customer Relationship</a></li>
-  <li><a href="#channels" id="toc-channels" class="nav-link" data-scroll-target="#channels"><span class="header-section-number">5.4</span> Channels</a></li>
-  <li><a href="#key-partners" id="toc-key-partners" class="nav-link" data-scroll-target="#key-partners"><span class="header-section-number">5.5</span> Key partners</a></li>
-  <li><a href="#key-activities" id="toc-key-activities" class="nav-link" data-scroll-target="#key-activities"><span class="header-section-number">5.6</span> Key activities</a></li>
-  <li><a href="#key-resources" id="toc-key-resources" class="nav-link" data-scroll-target="#key-resources"><span class="header-section-number">5.7</span> Key resources</a></li>
-  <li><a href="#cost-structure" id="toc-cost-structure" class="nav-link" data-scroll-target="#cost-structure"><span class="header-section-number">5.8</span> Cost structure</a></li>
-  <li><a href="#revenue-streams" id="toc-revenue-streams" class="nav-link" data-scroll-target="#revenue-streams"><span class="header-section-number">5.9</span> Revenue streams</a></li>
+  <li><a href="#value-proposition" id="toc-value-proposition" class="nav-link active" data-scroll-target="#value-proposition"><span class="header-section-number">4.1</span> Value Proposition</a></li>
+  <li><a href="#customer-segments" id="toc-customer-segments" class="nav-link" data-scroll-target="#customer-segments"><span class="header-section-number">4.2</span> Customer Segments</a></li>
+  <li><a href="#customer-relationship" id="toc-customer-relationship" class="nav-link" data-scroll-target="#customer-relationship"><span class="header-section-number">4.3</span> Customer Relationship</a></li>
+  <li><a href="#channels" id="toc-channels" class="nav-link" data-scroll-target="#channels"><span class="header-section-number">4.4</span> Channels</a></li>
+  <li><a href="#key-partners" id="toc-key-partners" class="nav-link" data-scroll-target="#key-partners"><span class="header-section-number">4.5</span> Key partners</a></li>
+  <li><a href="#key-activities" id="toc-key-activities" class="nav-link" data-scroll-target="#key-activities"><span class="header-section-number">4.6</span> Key activities</a></li>
+  <li><a href="#key-resources" id="toc-key-resources" class="nav-link" data-scroll-target="#key-resources"><span class="header-section-number">4.7</span> Key resources</a></li>
+  <li><a href="#cost-structure" id="toc-cost-structure" class="nav-link" data-scroll-target="#cost-structure"><span class="header-section-number">4.8</span> Cost structure</a></li>
+  <li><a href="#revenue-streams" id="toc-revenue-streams" class="nav-link" data-scroll-target="#revenue-streams"><span class="header-section-number">4.9</span> Revenue streams</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/LLM-Team1/documentation/edit/main/bmc.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/bmc.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./usecase.html">Business Relevance</a></li><li class="breadcrumb-item"><a href="./bmc.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Business Model Canvas</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Business Model Canvas</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Business Model Canvas</span></h1>
 </div>
 
 
@@ -204,10 +272,12 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
 
-<section id="value-proposition" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="value-proposition"><span class="header-section-number">5.1</span> Value Proposition</h2>
+
+<section id="value-proposition" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="value-proposition"><span class="header-section-number">4.1</span> Value Proposition</h2>
 <ul>
 <li>Quick and easy access to industry insights</li>
 <li>Individual industry and trend evaluations</li>
@@ -219,8 +289,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="customer-segments" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="customer-segments"><span class="header-section-number">5.2</span> Customer Segments</h2>
+<section id="customer-segments" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="customer-segments"><span class="header-section-number">4.2</span> Customer Segments</h2>
 <ul>
 <li>Competitive analysts in automotive industry</li>
 <li>Investors</li>
@@ -228,47 +298,47 @@ ul.task-list li input[type="checkbox"] {
 <li>Management consultants</li>
 </ul>
 </section>
-<section id="customer-relationship" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="customer-relationship"><span class="header-section-number">5.3</span> Customer Relationship</h2>
+<section id="customer-relationship" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="customer-relationship"><span class="header-section-number">4.3</span> Customer Relationship</h2>
 <ul>
 <li>E-Mail Newsletter</li>
 <li>Personalized consulting</li>
 <li>Self-service</li>
 </ul>
 </section>
-<section id="channels" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="channels"><span class="header-section-number">5.4</span> Channels</h2>
+<section id="channels" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="channels"><span class="header-section-number">4.4</span> Channels</h2>
 <ul>
 <li>Online marketing</li>
 <li>Direct sales</li>
 </ul>
 </section>
-<section id="key-partners" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="key-partners"><span class="header-section-number">5.5</span> Key partners</h2>
+<section id="key-partners" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="key-partners"><span class="header-section-number">4.5</span> Key partners</h2>
 <ul>
 <li>Corporate and financial data providers</li>
 <li>Marketing agencies for advertising campaigns</li>
 <li>Auditing firms to ensure data quality</li>
 </ul>
 </section>
-<section id="key-activities" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="key-activities"><span class="header-section-number">5.6</span> Key activities</h2>
+<section id="key-activities" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="key-activities"><span class="header-section-number">4.6</span> Key activities</h2>
 <ul>
 <li>Development of the software including new features</li>
 <li>Maintenance and updating of our database</li>
 <li>Customer support</li>
 </ul>
 </section>
-<section id="key-resources" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="key-resources"><span class="header-section-number">5.7</span> Key resources</h2>
+<section id="key-resources" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="key-resources"><span class="header-section-number">4.7</span> Key resources</h2>
 <ul>
 <li>Software developer</li>
 <li>Server</li>
 <li>Employee hardware</li>
 </ul>
 </section>
-<section id="cost-structure" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="cost-structure"><span class="header-section-number">5.8</span> Cost structure</h2>
+<section id="cost-structure" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="cost-structure"><span class="header-section-number">4.8</span> Cost structure</h2>
 <ul>
 <li>Employee salaries</li>
 <li>Licenses</li>
@@ -276,8 +346,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Marketing expenses</li>
 </ul>
 </section>
-<section id="revenue-streams" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="revenue-streams"><span class="header-section-number">5.9</span> Revenue streams</h2>
+<section id="revenue-streams" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="revenue-streams"><span class="header-section-number">4.9</span> Revenue streams</h2>
 <ul>
 <li>Licensing of the tool</li>
 <li>Subscriptions</li>
@@ -330,6 +400,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -398,13 +495,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -483,10 +582,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -496,8 +594,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -510,6 +617,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -553,6 +779,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -578,6 +805,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -639,43 +892,49 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./userPersona.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">User Persona</span></span>
+      <a href="./userPersona.html" class="pagination-link  aria-label=" &lt;span="" persona&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">User Persona</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./strategyMap.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Strategy Map</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./strategyMap.html" class="pagination-link" aria-label="<span class='chapter-number'>5</span>&nbsp; <span class='chapter-title'>Strategy Map</span>">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Strategy Map</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">© Team 1, 2024</div>   
+    <div class="nav-footer-left">
+<p>© Team 1, 2024</p>
+</div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">Home</a>
+    <a class="nav-link active" href="./index.html" aria-current="page">
+<p>Home</p>
+</a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="./intro.html">Intro</a>
+    <a class="nav-link" href="./intro.html">
+<p>Intro</p>
+</a>
   </li>  
 </ul>
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/bmc.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
-      <i class="bi bi-person-circle" role="img">
+    <a class="nav-link" href="https://github.com/LLM-Team1/StratMystiqPro">
+      <i class="bi bi-bi bi-github" role="img">
 </i> 
-  </li>  
-    <li class="nav-item">
-    <a class="nav-link" href="https://moodle.hdm-stuttgart.de/login/index.php">LinkToUI</a>
+    </a>
   </li>  
 </ul>
     </div>
   </div>
 </footer>
+
 
 
 
