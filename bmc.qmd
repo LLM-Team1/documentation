@@ -1,6 +1,11 @@
 # Business Model Canvas and Use Case Identification
 
-In order to identifiy
+After Identifying our use case we build up a business model canvas (BMC) to give our start up a structure. In the
+following you can see our BMC with its nine dimensions.
+
+![Business Model Canvas](/images/BMC.png)
+
+Subsequently you find the dimensions of the BMC in detail with the description of that decision.
 
 ## Value Proposition
 * Quick and easy access to industry insights
