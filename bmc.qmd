@@ -3,17 +3,220 @@
 After Identifying our use case we build up a business model canvas (BMC) to give our start up a structure. In the
 following you can see our BMC with its nine dimensions.
 
-![Business Model Canvas](/images/BMC.png)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Model Canvas</title>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        font-family: sans-serif;
+    }
+
+    .wrapper {
+        margin: auto;
+        max-width: 960px;
+        width: 100%;
+    }
+
+    .bmc {
+        display: grid;
+        grid: repeat(3, 200px) / repeat(10, 1fr);
+    }
+
+    .bmc,
+    .bmc > div {
+        border: 1px solid;
+        background: #fff;
+    }
+
+    .bmc > div {
+        display: grid;
+        position: relative;
+        gap: 10px;
+        grid-template-rows: 30px;
+        grid-auto-rows: 65px;
+        padding: 8px;
+    }
+
+    .bmc > div:nth-child(8),
+    .bmc > div:nth-child(9) {
+        grid: 30px / repeat(5, 1fr);
+    }
+
+    .bmc > div:nth-child(8) h3,
+    .bmc > div:nth-child(9) h3 {
+        grid-column: 1 / -1;
+    }
+
+
+    .bmc > div:nth-child(8) .note,
+    .bmc > div:nth-child(9) .note {
+        grid-column: span 2;
+    }
+
+    .bmc h3 {
+        margin: 0;
+        font-size: 14px;
+        color: #5b5b5b;
+    }
+
+    .note {
+        padding: 15px;
+        background: #F33C61;
+        color: #fff;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px 1px rgba(0,0,0,.2);
+    }
+
+    .note.blue1 {
+        background: #0000FF;
+    }
+
+    .note.blue2 {
+        background: #0096FF;
+    }
+
+    .note.blue3 {
+        background: #0047AB;
+    }
+
+    .note.blue4 {
+        background: #89CFF0;
+    }
+
+    .note.blue5 {
+        background: #1434A4;
+    }
+
+    .note.blue6 {
+        background: #3F00FF;
+    }
+
+    .note.blue7 {
+        background: #000080;
+    }
+
+    .note.blue8 {
+        background: #0F52BA;
+    }
+
+    .note.blue9 {
+        background: #0437F2;
+    }
+
+    .bmc > div:nth-child(1),
+    .bmc > div:nth-child(4),
+    .bmc > div:nth-child(7) {
+        grid-area: span 2 / span 2;
+    }
+
+    .bmc > div:nth-child(2),
+    .bmc > div:nth-child(5) {
+        grid-column: span 2;
+    }
+
+    .bmc > div:nth-child(3) {
+        grid-column: 3 / span 2;
+        grid-row: 2;
+    }
+
+    .bmc > div:nth-child(6) {
+        grid-column: 7 / span 2;
+        grid-row: 2;
+    }
+
+    .bmc > div:nth-child(8),
+    .bmc > div:nth-child(9) {
+        grid-area: -2 / span 5;
+    }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <h1>Business Model Canvas</h1>
+  <div class="bmc">
+    <div>
+      <h3>Key Partners</h3>
+      <div class="note blue1">Corporate and financial data providers</div>
+      <div class="note blue1">Marketing agencies for advertising campaigns</div>
+      <div class="note blue1">Auditing firms to ensure data quality</div>
+    </div>
+    <div>
+      <h3>Key Activities</h3>
+      <div class="note blue2">Development of the software including new features</div>
+      <div class="note blue2">Maintenance and updating of our database</div>
+      <div class="note blue2">Customer support</div>
+    </div>
+    <div>
+      <h3>Key Resources</h3>
+      <div class="note blue3">Software developer</div>
+      <div class="note blue3">Server</div>
+      <div class="note blue3">Employee hardware</div>
+    </div>
+    <div>
+      <h3>Value Proposition</h3>
+      <div class="note blue4">Quick and easy access to industry insights</div>
+      <div class="note blue4">Individual industry and trend evaluations</div>
+      <div class="note blue4">Competitor comparison (benchmarking) and trend analysis</div>
+      <div class="note blue4">SWOT analysis</div>
+      <div class="note blue4">BCG Matrix</div>
+      <div class="note blue4">BMC</div>
+    </div>
+    <div>
+      <h3>Customer Relationship</h3>
+      <div class="note blue5">E-Mail Newsletter</div>
+      <div class="note blue5">Personalized consulting</div>
+      <div class="note blue5">Self-service</div>
+    </div>
+    <div>
+      <h3>Channels</h3>
+      <div class="note blue6">Online marketing</div>
+      <div class="note blue6">Direct sales</div>
+    </div>
+    <div>
+      <h3>Customer Segments</h3>
+      <div class="note blue7">Competitive analysts in automotive industry</div>
+      <div class="note blue7">Investors</div>
+      <div class="note blue7">Financial analysts</div>
+      <div class="note blue7">Management consultants</div>
+    </div>
+    <div>
+      <h3>Cost Structure</h3>
+      <div class="note blue8">Employee salaries</div>
+      <div class="note blue8">Licenses</div>
+      <div class="note blue8">Servers</div>
+      <div class="note blue8">Marketing expenses</div>
+    </div>
+    <div>
+      <h3>Revenue Streams</h3>
+      <div class="note blue9">Licensing of the tool</div>
+      <div class="note blue9">Subscriptions</div>
+      <div class="note blue9">Maintenance and support</div>
+      <div class="note blue9">Consulting Services</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
 
 Subsequently you find the dimensions of the BMC in detail with the description of that decision.
 
 ## Value Proposition
-* Quick and easy access to industry insights
-* Individual industry and trend evaluations
-* Competitor comparison (benchmarking) and trend analysis
-    + SWOT analysis
-    + BCG Matrix
-    + BMC
+It is our main goal to provide easy and fast access to branch insights. Being more precise, we aim to give our customers a wide overview of the market and their (direct) competitors. To achieve this goal we offer different features in our application, including the SWOT Analysis, the BCG Matrix, a Business Model Canvas and a short profile of the relevant competitor.
+Our customers choose which competitors they would like to analyze. They simply select or upload the annual report of a relevant competitor and start analyzing by using our features such as the SWOT Analysis.
+The tool consists of many different features to analyze the annual reports. We are planning to first publish the company profile/ summary, SWOT analysis, Business Model Canvas, and BCG Matrix, to then extend these features in the future to give our customers even more options to analyze the annual reports.
+
 
 ## Customer Segments
 * Competitive analysts in automotive industry
