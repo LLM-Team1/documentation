@@ -4,19 +4,20 @@ project:
 execute:
   freeze: auto
 
-
 book:
   page-navigation: true
-  title: "Documentation"
+  title: "StratMystiqPro Documentation"
   description: "StratMystiqPro - A tool for quick strategic insights"
+  author: "Team 1"
   site-url: "https://LMM-Team1.github.io/documentation/"
   repo-url: https://github.com/LLM-Team1/documentation
   repo-actions: [edit, issue]
   open-graph: true
   image: "/images/logo.png"
   favicon: "/images/logo.png"
-  search:
-    type: overlay  
+  sidebar:
+    logo: "/images/StratMystiq-Icon.png"
+    search: true
   page-footer:
     left: |
       © Team 1, 2024
@@ -51,11 +52,11 @@ book:
         - userManual.qmd
     - references.qmd
 
-
-
 format:
   html:
     toc: true
+    number-sections: true
+    number-depth: 2
     theme:
       light: [cosmo, style/style.scss]
       dark: [cosmo, style/style.scss, style/dark.scss]
