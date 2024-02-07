@@ -1,5 +1,8 @@
 # Introduction
 
-This is a book created from markdown and executable code.
+In this module we got the task to identify a use case from a business model canvas to improve a business unit or
+different part of an existing company.
 
-See @knuth84 for additional discussion of literate programming.
+For us there was the use case first. We wanted to find a way to make business analysis quick and easy. Therefore we
+constructed the business model around our use case. You can read more about the use case identification and modelling
+of our Business Model Canvas [here](https://llm-team1.github.io/documentation/bmc.html).

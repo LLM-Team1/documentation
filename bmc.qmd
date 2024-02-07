@@ -1,4 +1,7 @@
-# Business Model Canvas
+# Business Model Canvas and Use Case Identification
+
+In order to identifiy
+
 ## Value Proposition
 * Quick and easy access to industry insights
 * Individual industry and trend evaluations
