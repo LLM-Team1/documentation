@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Documentation",
+    "title": "StratMystiqPro Documentation",
     "section": "",
     "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
     "crumbs": [
@@ -12,7 +12,7 @@
   {
     "objectID": "index.html#hinweise",
     "href": "index.html#hinweise",
-    "title": "Documentation",
+    "title": "StratMystiqPro Documentation",
     "section": "Hinweise",
     "text": "Hinweise\n\nMögliche Gliederung (Design Science Research)",
     "crumbs": [
@@ -22,7 +22,7 @@
   {
     "objectID": "index.html#styling",
     "href": "index.html#styling",
-    "title": "Documentation",
+    "title": "StratMystiqPro Documentation",
     "section": "Styling",
     "text": "Styling\n\nHTML Themes",
     "crumbs": [
@@ -220,7 +220,7 @@
     "href": "valueProposition.html#customer-segment",
     "title": "6  Value Proposition",
     "section": "",
-    "text": "6.1.1 Gains\n\nWell-developed strategy\nGood understanding of your own company and competitors\n\n\n\n6.1.2 Pains\n\nTime-consuming work through annual reports\nDoes not know all the data from the own company and competitor companies\nRequires significant working time to prepare the analysis\n\n\n\n6.1.3 Customer Jobs\n\nCreate analysis\nCreate evaluations\nDerive and develop strategies based on the analyses and evaluations",
+    "text": "Gains\n\nWell-developed strategy\nGood understanding of your own company and competitors\n\n\n\nPains\n\nTime-consuming work through annual reports\nDoes not know all the data from the own company and competitor companies\nRequires significant working time to prepare the analysis\n\n\n\nCustomer Jobs\n\nCreate analysis\nCreate evaluations\nDerive and develop strategies based on the analyses and evaluations",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Value Proposition</span>"
@@ -231,7 +231,7 @@
     "href": "valueProposition.html#product-segment",
     "title": "6  Value Proposition",
     "section": "6.2 Product Segment",
-    "text": "6.2 Product Segment\n\n6.2.1 Gain Creators\n\nA mature strategy based on data and benchmarks\nBetter understanding and classification of the company\nSaves time\nRegular and simple strategy adjustments\n\n\n\n6.2.2 Pain relievers\n\nIndividual needs can be taken into account\nStrategy and analyses can be created simultaneously\n\n\n\n6.2.3 Product and services\n\nAnalysis of your own data and the competitions\nPreparation of evaluations and analysis (e.g. SWOT)\nDevelopment of strategic approaches",
+    "text": "6.2 Product Segment\n\nGain Creators\n\nA mature strategy based on data and benchmarks\nBetter understanding and classification of the company\nSaves time\nRegular and simple strategy adjustments\n\n\n\nPain relievers\n\nIndividual needs can be taken into account\nStrategy and analyses can be created simultaneously\n\n\n\nProduct and services\n\nAnalysis of your own data and the competitions\nPreparation of evaluations and analysis (e.g. SWOT)\nDevelopment of strategic approaches",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Value Proposition</span>"
