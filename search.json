@@ -34,7 +34,7 @@
     "href": "intro.html",
     "title": "Introduction",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "In this module we got the task to identify a use case from a business model canvas to improve a business unit or different part of an existing company.\nFor us there was the use case first. We wanted to find a way to make business analysis quick and easy. Therefore we constructed the business model around our use case. You can read more about the use case identification and modelling of our Business Model Canvas here.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -86,111 +86,111 @@
   {
     "objectID": "bmc.html",
     "href": "bmc.html",
-    "title": "Business Model Canvas",
+    "title": "Business Model Canvas and Use Case Identification",
     "section": "",
     "text": "Value Proposition",
     "crumbs": [
       "Business Relevance",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
     ]
   },
   {
     "objectID": "bmc.html#value-proposition",
     "href": "bmc.html#value-proposition",
-    "title": "Business Model Canvas",
+    "title": "Business Model Canvas and Use Case Identification",
     "section": "",
     "text": "Quick and easy access to industry insights\nIndividual industry and trend evaluations\nCompetitor comparison (benchmarking) and trend analysis\n\nSWOT analysis\nBCG Matrix\nBMC",
     "crumbs": [
       "Business Relevance",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
     ]
   },
   {
     "objectID": "bmc.html#customer-segments",
     "href": "bmc.html#customer-segments",
-    "title": "Business Model Canvas",
+    "title": "Business Model Canvas and Use Case Identification",
     "section": "Customer Segments",
     "text": "Customer Segments\n\nCompetitive analysts in automotive industry\nInvestors\nFinancial analysts\nManagement consultants",
     "crumbs": [
       "Business Relevance",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
     ]
   },
   {
     "objectID": "bmc.html#customer-relationship",
     "href": "bmc.html#customer-relationship",
-    "title": "Business Model Canvas",
+    "title": "Business Model Canvas and Use Case Identification",
     "section": "Customer Relationship",
     "text": "Customer Relationship\n\nE-Mail Newsletter\nPersonalized consulting\nSelf-service",
     "crumbs": [
       "Business Relevance",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
     ]
   },
   {
     "objectID": "bmc.html#channels",
     "href": "bmc.html#channels",
-    "title": "Business Model Canvas",
+    "title": "Business Model Canvas and Use Case Identification",
     "section": "Channels",
     "text": "Channels\n\nOnline marketing\nDirect sales",
     "crumbs": [
       "Business Relevance",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
     ]
   },
   {
     "objectID": "bmc.html#key-partners",
     "href": "bmc.html#key-partners",
-    "title": "Business Model Canvas",
+    "title": "Business Model Canvas and Use Case Identification",
     "section": "Key partners",
     "text": "Key partners\n\nCorporate and financial data providers\nMarketing agencies for advertising campaigns\nAuditing firms to ensure data quality",
     "crumbs": [
       "Business Relevance",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
     ]
   },
   {
     "objectID": "bmc.html#key-activities",
     "href": "bmc.html#key-activities",
-    "title": "Business Model Canvas",
+    "title": "Business Model Canvas and Use Case Identification",
     "section": "Key activities",
     "text": "Key activities\n\nDevelopment of the software including new features\nMaintenance and updating of our database\nCustomer support",
     "crumbs": [
       "Business Relevance",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
     ]
   },
   {
     "objectID": "bmc.html#key-resources",
     "href": "bmc.html#key-resources",
-    "title": "Business Model Canvas",
+    "title": "Business Model Canvas and Use Case Identification",
     "section": "Key resources",
     "text": "Key resources\n\nSoftware developer\nServer\nEmployee hardware",
     "crumbs": [
       "Business Relevance",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
     ]
   },
   {
     "objectID": "bmc.html#cost-structure",
     "href": "bmc.html#cost-structure",
-    "title": "Business Model Canvas",
+    "title": "Business Model Canvas and Use Case Identification",
     "section": "Cost structure",
     "text": "Cost structure\n\nEmployee salaries\nLicenses\nServers\nMarketing expenses",
     "crumbs": [
       "Business Relevance",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
     ]
   },
   {
     "objectID": "bmc.html#revenue-streams",
     "href": "bmc.html#revenue-streams",
-    "title": "Business Model Canvas",
+    "title": "Business Model Canvas and Use Case Identification",
     "section": "Revenue streams",
     "text": "Revenue streams\n\nLicensing of the tool\nSubscriptions\nMaintenance and support\nConsulting Services",
     "crumbs": [
       "Business Relevance",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
     ]
   },
   {
@@ -312,16 +312,6 @@
     "crumbs": [
       "System Design",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Backend Architecture</span>"
-    ]
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "References"
     ]
   }
 ]
