@@ -1,0 +1,54 @@
+# Backend Architecture
+This part of the documentation will cover the backend architecture of the project.
+
+## Backend Requirements
+At the beginning of every project, it is important to define the requirements that the system should meet.
+Seeing that the goal of this project is to build a prototype for a SaaS tool, the backend should be designed to
+meet a number of requirements. These have been grouped into the following categories:
+
+### Scalable
+
+The system should be designed to handle multiple number of users and tasks at any time without impacting performance.
+
+- **Handle multiple different Users at any time:**
+  - Process a variety of reports simultaneously.
+  - Provide answers to user queries efficiently.
+- **Allow easy horizontal or vertical scalability:**
+  - The system should be capable of scaling out (adding more nodes to the system) and scaling up (adding more power to existing nodes) as necessary, without any service interruption.
+
+### Resource Efficient
+
+Optimizing the use of resources is crucial for maintaining a cost-effective and high-performing system.
+
+- **Minimize API-Calls to OpenAI and other external services:**
+  - Reduce the frequency and volume of API requests to avoid unnecessary costs and to maintain system responsiveness.
+- **Only regenerate responses if requested by a User:**
+  - Cache and reuse responses where possible to avoid redundant computations.
+
+### Adaptable
+
+The system must be flexible to accommodate changes and the addition of new features.
+
+- **Allow Users to upload reports from several business sectors:**
+  - Support a diverse range of report formats and contents to cater to different industry needs.
+- **It should be easy to add features to the tool without major code changes:**
+  - Design the architecture to be modular, allowing new features to be added with minimal changes to the core codebase.
+
+### Secure
+
+Security is a top priority to protect user data and ensure trust in the system.
+
+- **User Log-In should be secure and follow industry standards:**
+  - Implement authentication mechanisms that meet current security best practices.
+- **Ensure User Data is separated and protected from unauthorized access:**
+  - Apply strict access controls and data isolation to ensure that user data is not exposed to unauthorized entities.
+
+
+## Tech Stack
+## Data Model
+## Authentication
+## Python Classes
+### Class Diagram
+### BusinessAnalyst
+### REST API
+

@@ -55,7 +55,7 @@ book:
 format:
   html:
     toc: true
-    number-sections: true
+    number-sections: false
     number-depth: 2
     theme:
       light: [cosmo, style/style.scss]
