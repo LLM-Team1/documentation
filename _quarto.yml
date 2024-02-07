@@ -8,7 +8,7 @@ execute:
 book:
   page-navigation: true
   title: "Documentation"
-  description: "foo"
+  description: "StratMystiqPro - A tool for quick strategic insights"
   site-url: "https://LMM-Team1.github.io/documentation/"
   repo-url: https://github.com/LLM-Team1/documentation
   repo-actions: [edit, issue]
@@ -26,20 +26,29 @@ book:
       - text: "Intro"
         href: intro.qmd  
     right:
-      - icon: person-circle
-      - text: "LinkToUI"
-        href: https://moodle.hdm-stuttgart.de/login/index.php
-        aria-label: Moodle    
+      - icon: bi bi-github
+        href: https://github.com/LLM-Team1/StratMystiqPro
 #    background: "#325b74"    
   chapters:
     - index.qmd
     - intro.qmd
-    - summary.qmd
-    - usecase.qmd
-    - userPersona.qmd
-    - bmc.qmd
-    - strategyMap.qmd
-    - valueProposition.qmd
+    - part: Business Relevance
+      chapters:
+        - usecase.qmd
+        - userPersona.qmd
+        - bmc.qmd
+        - strategyMap.qmd
+        - valueProposition.qmd
+    - part: System Design
+      chapters:
+        - RAGpipeline.qmd
+        - RAGevaluation.qmd
+        - backendArchitecture.qmd
+        - frontendArchitecture.qmd
+    - part: Usage
+      chapters:
+        - deployment.qmd
+        - userManual.qmd
     - references.qmd
 
 
