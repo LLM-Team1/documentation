@@ -88,18 +88,7 @@
     "href": "bmc.html",
     "title": "Business Model Canvas and Use Case Identification",
     "section": "",
-    "text": "Value Proposition",
-    "crumbs": [
-      "Business Relevance",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
-    ]
-  },
-  {
-    "objectID": "bmc.html#value-proposition",
-    "href": "bmc.html#value-proposition",
-    "title": "Business Model Canvas and Use Case Identification",
-    "section": "",
-    "text": "Quick and easy access to industry insights\nIndividual industry and trend evaluations\nCompetitor comparison (benchmarking) and trend analysis\n\nSWOT analysis\nBCG Matrix\nBMC",
+    "text": "Value Proposition\nIt is our main goal to provide easy and fast access to branch insights. Being more precise, we aim to give our customers a wide overview of the market and their (direct) competitors. To achieve this goal we offer different features in our application, including the SWOT Analysis, the BCG Matrix, a Business Model Canvas and a short profile of the relevant competitor. Our customers choose which competitors they would like to analyze. They simply select or upload the annual report of a relevant competitor and start analyzing by using our features such as the SWOT Analysis. The tool consists of many different features to analyze the annual reports. We are planning to first publish the company profile/ summary, SWOT analysis, Business Model Canvas, and BCG Matrix, to then extend these features in the future to give our customers even more options to analyze the annual reports.",
     "crumbs": [
       "Business Relevance",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Business Model Canvas and Use Case Identification</span>"
