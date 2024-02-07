@@ -8,7 +8,7 @@
 
 <meta name="description" content="StratMystiqPro - A tool for quick strategic insights">
 
-<title>StratMystiqPro Documentation - Introduction</title>
+<title>StratMystiqPro Documentation - Introduction and Project Overview</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="StratMystiqPro Documentation - Introduction">
+<meta property="og:title" content="StratMystiqPro Documentation - Introduction and Project Overview">
 <meta property="og:description" content="StratMystiqPro - A tool for quick strategic insights">
 <meta property="og:image" content="https://LMM-Team1.github.io/documentation//images/logo.png">
 <meta property="og:site_name" content="StratMystiqPro Documentation">
@@ -91,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-title">Introduction and Project Overview</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introduction</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introduction and Project Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -241,7 +241,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-title">Introduction and Project Overview</span></h1>
 </div>
 
 
@@ -259,7 +259,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>In this module we got the task to identify a use case from a business model canvas to improve a business unit or different part of an existing company.</p>
-<p>For us there was the use case first. We wanted to find a way to make business analysis quick and easy. Therefore we constructed the business model around our use case. You can read more about the use case identification and modelling of our Business Model Canvas <a href="https://llm-team1.github.io/documentation/bmc.html">here</a>.</p>
+<p>Together with Mr.&nbsp;Kirenz we decided to start with the <a href="https://llm-team1.github.io/documentation/usecase.html">use case</a>. We wanted to find a way to make business analysis quick and easy. Therefore we constructed the business model around our use case. You can read more about the use case identification and modelling of our Business Model Canvas <a href="https://llm-team1.github.io/documentation/bmc.html">here</a>. For more a visual understanding of our startups next goals we created a <a href="https://llm-team1.github.io/documentation/strategyMap.html">strategy map</a>.</p>
+<p>Our solution takes the findings of our use case identification and transform them into a software as a service (SaaS) solution. This solution provides an analysis tool for <a href="https://llm-team1.github.io/documentation/userPersona.html">our customers</a> to fulfill our value propositions.</p>
+<p>We are using a <a href="./documentation/RAGpipeline.html">Retrieval Augmented Generation (RAG) pipeline</a> to load and retrieve the needed information (coming from business reports) in/from our vector store. We encountered different obstacles on our way, therefore we decided to customize the basic RAG pipline to deal with image/ table recognition and at the same time improve answer precision by using a multi query approach.</p>
+<p>We used multiple <a href="https://llm-team1.github.io/documentation/RAGevaluation.html">evaluation methods</a> to evaluate the performance of our customized RAG. The main goal was here to identify the overall performance of our custom RAG compared to the basic RAG. At the same time we evaluated the best chunk size for both RAGs. The best solution was our custom RAG, using the chunk size of 900.</p>
+<p>We also developed a user friendly <a href="https://llm-team1.github.io/documentation/frontendArchitecture.html">frontend</a> to enable our customers to navigate between their business reports, analyses, and comparisons. Focus here was especially on the presentation of the extensive information in the SWAT analyses.</p>
+<p>Finally we created a comprehensive manual on <a href="https://llm-team1.github.io/documentation/deployment.html">how to deploy our application</a> and <a href="https://llm-team1.github.io/documentation/userManual.html">how to use our application</a>.</p>
 
 
 
