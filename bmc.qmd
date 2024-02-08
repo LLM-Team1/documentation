@@ -254,8 +254,12 @@ This customer segment can then use our self-service to unlock these new features
 
 
 ## Channels
-* Online marketing
-* Direct sales
+Depending on the product we would either choose online marketing or direct sales. In case of the "off the shelf"
+software with no additional features we target the broader mass; meaning we are trying to reach as many customers
+with the same product. For our customer specific products, tailored to a more specific need on the customer side, we
+approach companies in a more direct sales kind of style. We expect to make more money per sale on the customer specific
+software, since we price the specifications and consulting services. That allows us to use this more expensive way of
+customer channel.
 
 ## Key partners
 As our key partners we identified providers of corporate and financial data. In the beginning we will simply use the

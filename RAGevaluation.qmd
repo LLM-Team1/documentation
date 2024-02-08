@@ -43,7 +43,7 @@ from the business report.
 impacted its operational efficiency?
 7. How is Mercedes-Benz adapting its overall business strategy to align with current global automotive trends, such as
 digitalization, sustainability, and changing consumer preferences?
-8.What opportunities does Mercedes-Benz have in the realm of electric vehicles and autonomous driving technologies, and
+8. What opportunities does Mercedes-Benz have in the realm of electric vehicles and autonomous driving technologies, and
 what strategic initiatives are they undertaking in these areas?
 
 
@@ -58,3 +58,7 @@ using the RAGAS framework.
 
 
 # Human Centered Evaluation Approach
+
+- Three evaluators
+- Evaluating the RAG-results based on the three criteria: "Relevance and Accuracy", "Clarity and Coherence", and "Completeness and Depth"
+- Presentation of results...
