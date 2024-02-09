@@ -1,50 +1,317 @@
-# Business Model Canvas
+# Business Model Canvas and Use Case Identification
+
+After Identifying our use case we build up a business model canvas (BMC) to give our start up a structure. In the
+following you can see our BMC with its nine dimensions.
+
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Model Canvas</title>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        font-family: sans-serif;
+    }
+
+    .wrapper {
+        margin: auto;
+        max-width: 960px;
+        width: 100%;
+    }
+
+    .bmc {
+        display: grid;
+        grid: repeat(3, 200px) / repeat(10, 1fr);
+    }
+
+    .bmc,
+    .bmc > div {
+        border: 1px solid;
+        background: #fff;
+    }
+
+    .bmc > div {
+        display: grid;
+        position: relative;
+        gap: 10px;
+        grid-template-rows: 30px;
+        grid-auto-rows: 65px;
+        padding: 8px;
+    }
+
+    .bmc > div:nth-child(8),
+    .bmc > div:nth-child(9) {
+        grid: 30px / repeat(5, 1fr);
+    }
+
+    .bmc > div:nth-child(8) h3,
+    .bmc > div:nth-child(9) h3 {
+        grid-column: 1 / -1;
+    }
+
+
+    .bmc > div:nth-child(8) .note,
+    .bmc > div:nth-child(9) .note {
+        grid-column: span 2;
+    }
+
+    .bmc h3 {
+        margin: 0;
+        font-size: 14px;
+        color: #5b5b5b;
+    }
+
+    .note {
+        padding: 15px;
+        background: #F33C61;
+        color: #fff;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px 1px rgba(0,0,0,.2);
+    }
+
+    .note.blue1 {
+        background: #0000FF;
+    }
+
+    .note.blue2 {
+        background: #0096FF;
+    }
+
+    .note.blue3 {
+        background: #0047AB;
+    }
+
+    .note.blue4 {
+        background: #89CFF0;
+    }
+
+    .note.blue5 {
+        background: #1434A4;
+    }
+
+    .note.blue6 {
+        background: #3F00FF;
+    }
+
+    .note.blue7 {
+        background: #000080;
+    }
+
+    .note.blue8 {
+        background: #0F52BA;
+    }
+
+    .note.blue9 {
+        background: #0437F2;
+    }
+
+    .bmc > div:nth-child(1),
+    .bmc > div:nth-child(4),
+    .bmc > div:nth-child(7) {
+        grid-area: span 2 / span 2;
+    }
+
+    .bmc > div:nth-child(2),
+    .bmc > div:nth-child(5) {
+        grid-column: span 2;
+    }
+
+    .bmc > div:nth-child(3) {
+        grid-column: 3 / span 2;
+        grid-row: 2;
+    }
+
+    .bmc > div:nth-child(6) {
+        grid-column: 7 / span 2;
+        grid-row: 2;
+    }
+
+    .bmc > div:nth-child(8),
+    .bmc > div:nth-child(9) {
+        grid-area: -2 / span 5;
+    }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <h1>Business Model Canvas</h1>
+  <div class="bmc">
+    <div>
+      <h3>Key Partners</h3>
+      <div class="note blue1">Corporate and financial data providers</div>
+      <div class="note blue1">Marketing agencies for advertising campaigns</div>
+      <div class="note blue1">Auditing firms to ensure data quality</div>
+    </div>
+    <div>
+      <h3>Key Activities</h3>
+      <div class="note blue2">Development of the software including new features</div>
+      <div class="note blue2">Maintenance and updating of our database</div>
+      <div class="note blue2">Customer support</div>
+    </div>
+    <div>
+      <h3>Key Resources</h3>
+      <div class="note blue3">Software developer</div>
+      <div class="note blue3">Server</div>
+      <div class="note blue3">Employee hardware</div>
+    </div>
+    <div>
+      <h3>Value Proposition</h3>
+      <div class="note blue4">Quick and easy access to industry insights</div>
+      <div class="note blue4">Individual industry and trend evaluations</div>
+      <div class="note blue4">Competitor comparison (benchmarking) and trend analysis</div>
+      <div class="note blue4">SWOT analysis</div>
+      <div class="note blue4">BCG Matrix</div>
+      <div class="note blue4">BMC</div>
+    </div>
+    <div>
+      <h3>Customer Relationship</h3>
+      <div class="note blue5">E-Mail Newsletter</div>
+      <div class="note blue5">Personalized consulting</div>
+      <div class="note blue5">Self-service</div>
+    </div>
+    <div>
+      <h3>Channels</h3>
+      <div class="note blue6">Online marketing</div>
+      <div class="note blue6">Direct sales</div>
+    </div>
+    <div>
+      <h3>Customer Segments</h3>
+      <div class="note blue7">Competitive analysts in automotive industry</div>
+      <div class="note blue7">Investors</div>
+      <div class="note blue7">Financial analysts</div>
+      <div class="note blue7">Management consultants</div>
+    </div>
+    <div>
+      <h3>Cost Structure</h3>
+      <div class="note blue8">Employee salaries</div>
+      <div class="note blue8">Licenses</div>
+      <div class="note blue8">Servers</div>
+      <div class="note blue8">Marketing expenses</div>
+    </div>
+    <div>
+      <h3>Revenue Streams</h3>
+      <div class="note blue9">Licensing of the tool</div>
+      <div class="note blue9">Subscriptions</div>
+      <div class="note blue9">Maintenance and support</div>
+      <div class="note blue9">Consulting Services</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+Subsequently you find the dimensions of the BMC in detail with the description of that decision.
+
 ## Value Proposition
-* Quick and easy access to industry insights
-* Individual industry and trend evaluations
-* Competitor comparison (benchmarking) and trend analysis
-    + SWOT analysis
-    + BCG Matrix
-    + BMC
+It is our main goal to provide easy and fast access to branch insights. Being more precise, we aim to give our
+customers a wide overview of the market and their (direct) competitors. To achieve this goal we offer different
+features in our application, including the SWOT Analysis, the BCG Matrix, a Business Model Canvas and a short profile
+of the relevant competitor.
+Our customers choose which competitors they would like to analyze. They simply select or upload the annual report of a
+relevant competitor and start analyzing by using our features such as the SWOT Analysis.
+The tool consists of many different features to analyze the annual reports. We are planning to first publish the
+company profile/ summary, SWOT analysis, Business Model Canvas, and BCG Matrix, to then extend these features in the
+future to give our customers even more options to analyze the annual reports.
+
+Our customers choose which competitors they would like to analyze. They simply select or upload the annual report of a
+relevant competitor and start analyzing by using our features such as the SWOT Analysis.
+
+The tool consists of many different features to analyze the annual reports. We are planning to first publish the
+company profile/ summary, SWOT analysis, Business Model Canvas, and BCG Matrix, to then extend these features in the
+future to give our customers even more options to analyze the annual reports.
+
 
 ## Customer Segments
-* Competitive analysts in automotive industry
-* Investors
-* Financial analysts
-* Management consultants
+As our customer Segments we decided to be focusing on companies in the automotive industry. This industry is currently
+extremely fast moving and the competition between those companies is on an all time high. One of the biggest reasons is
+the development of environmentally friendly vehicles and the rising competition by brands on the Asian market. This
+makes it very important for the affected companies to keep an eye on their competition and arising trends -making them
+the perfect customers for our analysis tool.
+
+More in detail, we identified strategic-competitor analysts in the automotive industry as our end users.
+
+In the future we could extend our customer base to a variety of interesting customer segments. These customers could be
+firms in the field of investors, finance analysts or business consulting.
+
 
 ## Customer Relationship
-* E-Mail Newsletter
-* Personalized consulting
-* Self-service
+To build our first customer base we will step in personal contact with just a few companies in the automotive field. At
+the same time we are keeping this close relationship with our customers to fully understand them and their needs to
+optimize our products to serve them as efficiently as possible. We will also offer consulting to this customer segment
+to adjust or extend the features of the tool to their specific needs.
+Later we will make our product available to a wider range of customers and offer off the shelf software including a few
+basic analysis methods. This off the shelf software is the product we want to sell to a wider range of customers. To
+stay in touch we will set up an email newsletter to keep them posted on new feature releases and changes of our tool.
+This customer segment can then use our self-service to unlock these new features.
+
 
 ## Channels
-* Online marketing
-* Direct sales
+Depending on the product we would either choose online marketing or direct sales. In case of the "off the shelf"
+software with no additional features we target the broader mass; meaning we are trying to reach as many customers
+with the same product. For our customer specific products, tailored to a more specific need on the customer side, we
+approach companies in a more direct sales kind of style. We expect to make more money per sale on the customer specific
+software, since we price the specifications and consulting services. That allows us to use this more expensive way of
+customer channel.
 
 ## Key partners
-* Corporate and financial data providers
-* Marketing agencies for advertising campaigns
-* Auditing firms to ensure data quality
+As our key partners we identified providers of corporate and financial data. In the beginning we will simply use the
+public annual reports of well known companies and let our customers upload their own data to our application. In the
+future we want to extend this function to also offer exclusive corporate and financial data on our application. This
+data will be brought in by the mentioned provider firms.
+
+Another important partner is a marketing agency with experience in this field. With this partner we can get automotive
+companies to know us and our services.
+
+Facing the challenge of the groundedness and quality of the data provided by us we need auditing firms to ensure high
+quality of the data provided by our application.
+
 
 ## Key activities
-* Development of the software including new features
-* Maintenance and updating of our database
-* Customer support
+One of our most important activities is software development. Especially in the beginning it is key to improve and
+extend the features of our product. Starting with our main feature, the SWOT matrix, we need to introduce more features
+and more ways to analyze the competition and market.
+Also the maintenance and updating of the database is a key activity.
+Another important activity is customer support. We want to help our customers with their problems -making it easy to
+reach out to us, which makes it easier for us to understand our customer needs, improve the product, and finally make
+our customers happy.
+
 
 ## Key resources
-* Software developer
-* Server
-* Employee hardware
+The most important Resource in our startup is the software developers. They ensure the quality and functionality of
+our product. Additional to that we need the hardware for our employees.
 
 ## Cost structure
-* Employee salaries
-* Licenses
-* Servers
-* Marketing expenses
+Our Cost structure mainly consists of  fixed cost for employee salaries for product development, maintenance, and
+consulting services. We also need to pay licenses for the commercial use of (development) software as fixed costs. At
+the same time we need to attract new customers, resulting in marketing expenses. For variable costs we pay for every API
+calls to OpenAI, made by our customers.
 
 ## Revenue streams
-* Licensing of the tool
-* Subscriptions
-* Maintenance and support
-* Consulting Services
+
+For our SaaS business model, our revenue stream is structured around several key components. Firstly, we offer
+licensing of our software tool, allowing customers to gain access to our platform and its basic functionalities.
+Secondly, we provide subscription-based access to our SaaS solution, offering different tiers or plans that unlock
+additional features and capabilities based on the customer's needs and usage requirements. This subscription model
+ensures recurring revenue as customers continue to utilize our platform over time.
+
+In addition to subscriptions, we offer maintenance and support services to ensure that our customers receive ongoing
+assistance, updates, and troubleshooting to keep their software running smoothly. This component not only enhances
+customer satisfaction but also provides an additional revenue stream through service contracts or subscription add-ons.
+
+Moreover, we differentiate ourselves by offering consulting services to tailor our software to the specific needs and
+requirements of our customers. Our team of experts works closely with clients to understand their business processes,
+customize the software accordingly, and provide training and guidance for optimal utilization. These consulting
+services serve as a valuable revenue stream, allowing us to provide personalized solutions while generating additional
+income beyond the software subscription fees.
+
+Overall, our revenue stream encompasses a combination of software licensing, subscription-based access, maintenance and
+support services, and consulting offerings, providing a comprehensive and sustainable approach to monetizing our SaaS
+business model.
