@@ -74,6 +74,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="StratMystiqPro Documentation">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://LMM-Team1.github.io/documentation//images/logo.png">
 <meta property="og:site_name" content="StratMystiqPro Documentation">
 <meta property="og:image:height" content="1185">
@@ -240,6 +241,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>Setup for Local Development To set up the backend for local development:</p>
+<p>Ensure you have Python 3.11 or later installed. Install the required dependencies with pip install -r requirements.txt. Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb. Run the application with python main.py. The main.py script takes care of setting up the application. It creates the database tables if they don’t exist.</p>
+<p>Deployment for Testing and Production For testing and production environments, we use Docker. Check out the Dockerfile and docker-compose.yaml files in the root directory of the project for more details.</p>
+<p>SetUp for the frontemd for local development:</p>
+<p>To deploy the application:</p>
+<p>Ensure you have Docker installed. Run the Docker container with docker-compose up.</p>
 
 
 

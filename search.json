@@ -313,5 +313,16 @@
       "System Design",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Backend Architecture</span>"
     ]
+  },
+  {
+    "objectID": "deployment.html",
+    "href": "deployment.html",
+    "title": "StratMystiqPro Documentation",
+    "section": "",
+    "text": "Setup for Local Development To set up the backend for local development:\nEnsure you have Python 3.11 or later installed. Install the required dependencies with pip install -r requirements.txt. Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb. Run the application with python main.py. The main.py script takes care of setting up the application. It creates the database tables if they don’t exist.\nDeployment for Testing and Production For testing and production environments, we use Docker. Check out the Dockerfile and docker-compose.yaml files in the root directory of the project for more details.\nSetUp for the frontemd for local development:\nTo deploy the application:\nEnsure you have Docker installed. Run the Docker container with docker-compose up.",
+    "crumbs": [
+      "Usage",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>deployment.html</span>"
+    ]
   }
 ]
