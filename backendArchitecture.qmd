@@ -218,9 +218,45 @@ The Chunk entity represents a single chunk of text that was embedded and stored 
     - **page_number:** (Integer) The page number of the report where the chunk was extracted from.
 
 
-## Authentication
 ## Python Classes
+The following section will focus on the Python classes that were implemented to handle the business logic of the system.
+It should be noted that this structure was not implemented from the beginning of the project, but has evolved over time as the system grew in complexity.
+Specifically, the classes that represent the entities of the system such as User, Report, Analysis, etc. don't contain any business logic
+and are only used to represent the data model of the system. They are needed to interact with the relational database using the SQLAlchemy ORM.
+
+
+Furthermore, certain areas of the system such as the implementation of the FastAPI endpoints are not programmed in a class-based
+structure, but rather in a function-based structure as recommended by the FastAPI documentation. The following sections
+will provide a brief overview of the relevant classes and their responsibilities.
+
 ### Class Diagram
+The following diagram provides an overview of the classes and their relationships. The diagram does not contain the
+FastAPI endpoints, and authentication logic as they are not implemented as classes.
+![Class Diagram](images/ClassDiagram.png){width=100% .lightbox}
+
+### Config
+The Config class is responsible for loading environment variables, initializing the OpenAI API, the Chroma Vector Store,
+and the MySQL Database. It does this in its init method. The environment variables are loaded from a .env file or from
+the Docker environment, depending on the environment in which the application is running.
+
+The Config class is used to manage the configuration of the application. It provides a centralized place to manage all
+configuration settings. This makes it easier to change settings and manage dependencies as they are all in one place.
+
+The Config class is written as a Singleton class. The Singleton pattern is a design pattern that
+restricts the instantiation of a class to a single instance. This is important as having multiple instances of the Config
+class could lead to inconsistencies in the configuration settings across different parts of the application.
+Furthermore, the Config class is responsible for initializing several dependencies such as the database connections.
+These resources should be shared across the application and not duplicated.
+
+### Database
+
+### ChromaConnector
+
 ### BusinessAnalyst
-### REST API
+
+## Authentication
+
+## REST API
+
+
 
