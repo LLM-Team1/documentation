@@ -326,6 +326,39 @@
     ]
   },
   {
+    "objectID": "Frontend/FrontendIntro.html",
+    "href": "Frontend/FrontendIntro.html",
+    "title": "Frontend Documentation",
+    "section": "",
+    "text": "Overview of the frontend functionalities:",
+    "crumbs": [
+      "Frontend",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frontend Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "Frontend/FrontendIntro.html#overview-of-the-frontend-functionalities",
+    "href": "Frontend/FrontendIntro.html#overview-of-the-frontend-functionalities",
+    "title": "Frontend Documentation",
+    "section": "",
+    "text": "Login and access to backend functions:\n\nRegistered users have the opportunity to use all functions of our backend. These include uploading annual reports and interacting with the RAG pipeline.\n\nAnnual report processing:\n\nOnce an annual report has been uploaded, it is sent to our backend. There it passes through the RAG pipeline as described on the Page RAG pipeline.\nIn the second step, the processed report can be used to create a SWOT analysis in the frontend.\n\nSWOT analysis generation:\n\nUsers can generate and display a SWOT analysis in the frontend.\nThe basis for this is the processed annual report from the backend.\n\nComparison of annual reports:\n\nIn addition to the individual analysis, our system offers the option of comparing analyses of two annual reports.\nUsers can view the results of these comparisons in the front end.\n\nChatbot support:\n\nWe have implemented a chatbot that allows users to ask self-formulated questions about a selected annual report.\nThe chatbot offers an interactive way of requesting information and makes it easier to navigate the system.\n\n\n\n\n\nWelcome page of StratMystiqPro\n\n\n\n\n\nWelcome page of StratMystiqPro",
+    "crumbs": [
+      "Frontend",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frontend Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "Frontend/Techstack.html",
+    "href": "Frontend/Techstack.html",
+    "title": "Frontend Techstack",
+    "section": "",
+    "text": "For the frontend, we use the React web framework in combination with Vite as the technical basis. The code is written in HTML and TypeScript, a JavaScript derivative. For the styling, we rely on the Tailwind CSS framework and use some components from the Material UI library.\n(webpack n.d.) (Vite n.d.)\n\n\n\n\nVite. n.d. “Vite Features.” Accessed January 10, 2024. https://vitejs.dev/guide/features.html.\n\n\nwebpack. n.d. “Hot Module Replacement.” Accessed January 10, 2024. https://webpack.js.org/guides/hot-module-replacement/.",
+    "crumbs": [
+      "Frontend",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Frontend Techstack</span>"
+    ]
+  },
+  {
     "objectID": "deployment.html",
     "href": "deployment.html",
     "title": "StratMystiqPro Documentation",
@@ -333,7 +366,7 @@
     "text": "Setup for Local Development To set up the backend for local development:\nEnsure you have Python 3.11 or later installed. Install the required dependencies with pip install -r requirements.txt. Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb. Run the application with python main.py. The main.py script takes care of setting up the application. It creates the database tables if they don’t exist.\nDeployment for Testing and Production For testing and production environments, we use Docker. Check out the Dockerfile and docker-compose.yaml files in the root directory of the project for more details.\nSetUp for the frontemd for local development:\nTo deploy the application:\nEnsure you have Docker installed. Run the Docker container with docker-compose up.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>deployment.html</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>deployment.html</span>"
     ]
   },
   {
@@ -344,7 +377,17 @@
     "text": "On this page &lt;ou learn how to navigate your way through the StratMystiqPro application.\n\nFirst step: Log-in To Log-in you are going to navigate form your Log-in screen to the Google-authentication field. It should look the following way:  \nSecond step: Upload reports\nThrid step: Create SWOT-Analysis\nFourth step: Create Comparison-SWOT-Analysis\nFith step: Ask the ChatBot quastions about a report\nSixth step: Log-out",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>userManual.html</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>userManual.html</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Vite. n.d. “Vite Features.” Accessed January 10, 2024. https://vitejs.dev/guide/features.html.\n\n\nwebpack. n.d. “Hot Module Replacement.” Accessed January\n10, 2024. https://webpack.js.org/guides/hot-module-replacement/.",
+    "crumbs": [
+      "References"
     ]
   }
 ]
