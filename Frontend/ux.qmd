@@ -1,0 +1,36 @@
+# User experience
+We have developed a logical user guidance for our frontend, in which the user is guided step by step through the process
+from uploading the PDF with the annual report to creating and viewing the finished SWOT analysis. (More in the [User Guide](../userManual.html))
+
+Overall, we have taken a minimalist approach to the design of the frontend.
+This means that we have made sure that we only have the most important elements on one page and arrange the individual elements in a recurring layout.
+Accordingly, the content of our pages is always centered and all text is left-aligned. For orientation,
+the navigation bar is always displayed at the top of the screen with the currently selected page highlighted. We also use only a few colors and a few gradations of them.
+Specifically, this is a dark blue as the background color, a lighter blue as the primary color, as well as gradations of it for all our elements and orange as an accent color,
+which we use for the buttons. We decided to use a dark background and a small number of colors to create a coherent and harmonious look and not distract the user from the content.
+We created this color combination using an online tool for creating color parallels and then adjusted it slightly.
+In addition, for reasons of readability and aesthetics, we use a shade of white as the text color to avoid too much contrast between the background and the text,
+which could otherwise lead to visual fatigue. [@Albert2016, pg. 60]
+
+We have also deliberately decided to use rounded corners everywhere to create a softer look.
+In addition, all clickable elements are provided with a zoom effect or have a highlighted background as soon as you hover
+over them with the mouse so that they are even easier to recognize as such.
+
+![Frontend Hover Text](../images/Frontend/UXHoverText.png){width=50% .lightbox}
+
+![Frontend Hover Button](../images/Frontend/UXHoverButton.png){width=80% .lightbox}
+
+For reasons of accessibility, we have also made sure that the onClick functions are not placed on elements other than buttons,
+which also allows people with operating aids, such as a screen reader, to localize clickable elements.
+
+To make it easier for users to use our tool and avoid unnecessary click paths, we automatically load the most recent analysis created by
+the user on the SWOT page when a report is selected, if one already exists. If no analysis has yet been created, we display a corresponding message at the
+top right of the screen to inform users that they must first create one.
+We also display such messages if the login has failed and if a new analysis is currently being generated, as this process takes some time.
+
+![No SWOT Analysis message](../images/Frontend/NoSwot.png){width=100% .lightbox}
+
+During the upload and processing of a report, the progress is indicated by a loading bar.
+While the processing is running, the upload button is grayed out so that another report cannot be uploaded in the meantime.
+
+![Frontend loading bar](../images/Frontend/UploadLoading.png){width=100% .lightbox}

@@ -51,6 +51,7 @@ book:
       chapters:
         - Frontend/FrontendIntro.qmd
         - Frontend/Techstack.qmd
+        - Frontend/ux.qmd
     - part: Usage
       chapters:
         - deployment.qmd
