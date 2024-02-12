@@ -1,2 +1,76 @@
 # RAG Pipeline
-## Demographic Data:
+## Introduction to Retrieval Augmented Generation (RAG)
+Retrieval-Augmented Generation (RAG) represents a significant advancement in the field of natural language processing
+(NLP) by combining the strengths of large language models (LLMs) with specific knowledge stored in external databases. [@li_survey_2022]
+They are particularly useful for knowledge-intensive Natural Language Processing (NLP) tasks [@lewis_retrieval-augmented_2020] and
+thus have been applied to various tasks including dialogue response generation, machine translation, and other generation tasks. [@li_survey_2022]
+
+As the focus of our project is to generate and compare SWOT Analyses, which is a complex generation task, our main focus was
+to implement a RAG pipeline that is capable of generating factual and relevant SWOT Analyses using a given annual report as the knowledge source.
+At the beginning of the project we explored basic RAG pipelines and then started to implement our own pipeline to suit our needs.
+
+## RAG Pipelines
+### Langchain Base RAG
+The first RAG pipeline we explored was build using the open-source library Langchain. The pipline utilized the standard
+Langchain document loaders, text splitters and RetrievalQA chain. The code below is an extract from our first RAG pipeline.
+The code for the full pipeline can be viewed in the RAG-Prototype folder of the main repository.
+
+```python
+from langchain.prompts import PromptTemplate
+from langchain.chains import RetrievalQA
+from langchain.chat_models import ChatOpenAI
+from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.vectorstores import Chroma
+
+
+openai.api_key = os.environ['OPENAI_API_KEY']
+embedding_function = OpenAIEmbedding
+
+client = chromadb.HttpClient(host="localhost", port='8000')
+db = Chroma(client=client,
+            collection_name="annual-reports",
+            embedding_function=embedding_function)
+
+llm_name = "gpt-3.5-turbo"
+llm = ChatOpenAI(model_name=llm_name, temperature
+
+template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't make up an answer. Use five sentences maximum. Keep the answer as concise as possible.
+Context: {context}
+Question: {question}
+Helpful Answer:"""
+
+QA_CHAIN_PROMPT = PromptTemplate.from_template(template)
+
+qa_chain = RetrievalQA.from_chain_type(
+    llm,
+    retriever=db.as_retriever(),
+    return_source_documents=True,
+    chain_type_kwargs={"prompt": QA_CHAIN_PROMPT}
+
+question = "What cars does Mercedes Benz produce?"
+
+result = qa_chain({"query": question})
+```
+
+We started experimenting with the Langchain pipeline and while it returned some relevant results, we found that the pipeline
+struggled to return relevant and factual information when the question was more complex. We tried to identify the cause of
+the issue and identified three areas that we believed could be causing the issue:
+
+1. The original document was not being split into relevant sections or the sections only contained partial information.
+2. A lot of relevant information is stored in tables and images, which the pipeline is not able to extract.
+3. The question that was asked might not include the correct vocabulary or context to retrieve the relevant chunks.
+
+To continue with our RAG pipeline development, we decided to look at current literature and their approaches to RAG pipelines.
+
+### Custom RAG Pipeline
+
+
+#### Document Ingestion
+
+##### Table Extraction
+
+##### Text Extraction
+
+#### Pre-Retrieval
+
+#### Post-Retrieval
