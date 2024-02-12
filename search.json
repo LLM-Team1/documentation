@@ -363,7 +363,7 @@
     "href": "BackendArchitecture/GoogleAuth.html#frontend-fetching-function",
     "title": "Authentication with Google",
     "section": "Frontend fetching function",
-    "text": "Frontend fetching function\nFor this reason, we have created a function in the frontend that writes the JWT in the HTML header of each request. This function is used for all of our backend requests and therefore also offers additional parameters so that it can be used flexibly for any type of request. These include the mandatory specification of the CRUD method (Create, Read, Update, Delete) and the optional specification of a body. However, the latter is only used when uploading the annual report.\n\n\n\nFrontend fetching function",
+    "text": "Frontend fetching function\nFor this reason, we have created a function in the frontend that writes the JWT in the HTML header of each request. This function is used for all of our backend requests and therefore also offers additional parameters so that it can be used flexibly for any type of request. These include the mandatory specification of the CRUD method (Create, Read, Update, Delete) and the optional specification of a body. However, the latter is only used when uploading the annual report. In the event that the backend returns an error code or nothing at all, we have error handling in the frontend. Sometimes the error is only displayed on the browser console, but sometimes it is also displayed in the frontend, e.g. if you try to load a non-existent analysis. In any case, however, an error message in the backend does not cause the frontend to crash, as we are informed by Typescript of the possibility of an empty response and accordingly functions that would have accessed data from the response are not even executed.\n\n\n\nFrontend fetching function",
     "crumbs": [
       "System Design",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Authentication with Google</span>"
@@ -491,6 +491,17 @@
     ]
   },
   {
+    "objectID": "Frontend/ComponentDesc.html",
+    "href": "Frontend/ComponentDesc.html",
+    "title": "Component description",
+    "section": "",
+    "text": "As is typical for React, we have built components for all our elements that we can reuse modularly elsewhere. We first planned and designed these components in Figma and then implemented them. One example of this is the complete SWOT matrix, which is used on both the SWOT page and the comparison page. The same applies to the button component, which we use wherever the orange button is required. The two tables on the My Reports page are also based on the same component. This division of the individual elements into components makes it easier for us to assemble new elements from them without having to rebuild the respective components each time. All of them also have interfaces for adjusting individual parameters, such as color, text or, of course, if they display dynamic data from the database, a way to read it in. From a development point of view, a granular division into components makes sense above all if they can be reused in other elements and therefore do not have to be developed anew for each element. Above all, this saves time and also avoids malfunctions, as you don’t have to write functionally identical or similar code multiple times. You also don’t have to make sure that you implement the same design every time, as this is already specified by the component.\nWhen styling the components, we consistently developed and implemented a design adapted for smaller screens in addition to the normal design for large screens. The frontend was developed desktop first, i.e. we focused primarily on large screen sizes and only adapted the existing design for small screens in a second step. By individually adapting the components to the mobile design only when the available space makes it necessary, we have a seamless responsiveness that works on practically all common screen sizes.",
+    "crumbs": [
+      "Frontend",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Component description</span>"
+    ]
+  },
+  {
     "objectID": "deployment.html",
     "href": "deployment.html",
     "title": "Deployment",
@@ -498,7 +509,7 @@
     "text": "Set up the backend for local development:\nEnsure you have Python 3.11 or later installed. * Install the required dependencies with pip install -r requirements.txt. * Ensure that you have Docker installed. Start it with using Docker Compose up * Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb. * Run the application with python main.py. * The main.py script takes care of setting up the application. It creates the database tables if they don’t exist.\nDeployment for Testing and Production For testing and production environments, we use Docker. Check out the Dockerfile and docker-compose.yaml files in the root directory of the project for more details.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Deployment</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deployment</span>"
     ]
   },
   {
@@ -509,7 +520,7 @@
     "text": "SetUp for the frontend for local development:\n\nTo run the frontend you have to use npm run dev\nDuring the developmentnpm run tailwind needs to bes started as well",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Deployment</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deployment</span>"
     ]
   },
   {
@@ -520,7 +531,7 @@
     "text": "To deploy the application:",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Deployment</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deployment</span>"
     ]
   },
   {
@@ -531,7 +542,7 @@
     "text": "1. First step: Log-in\nTo Log-in you are going to navigate form your Log-in screen to the Google-authentication field.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -542,7 +553,7 @@
     "text": "Nice to know:\nWhen you click on the Symbol of StratMystiqPro in the upper left croner you land on our HomePage. Here we give you a short description on what our tool does and how it works.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -553,7 +564,7 @@
     "text": "2. Second step: Upload reports\nAfter you successfully logged-in you should land on the MyReports-Page where you can upload reports and see which reports you already have uploaded.  To upload a new report you have to click the button Upload new report.  Then you can either choose or drag and drop a file into the field.  Afterwards you decide between checking the checkbox so the report is available for any user or not checking the box so the report is only be available for you.  After you uploaded the report you can klick on the “SWOT” field, this will guide you directly to the SWOT Page. If you want to delete a report you can do so over the traschcan symbol on the right side.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -564,7 +575,7 @@
     "text": "3. Thrid step: Create SWOT-Analysis\n Through the dropdown-menu you can select a report from the uploaded reports. If you have already created a SWOT analysis for the selected report it will be fetched automatically from the database. Then you can see the summary first for each category:  If you then click into one of the four categories you will get a full description for every given point:  If you want to create a new SWOT-Analysis you can press the button Create SWOT.  If the system is creating the SWOT you will get a pop-up in the upper right croner with a message that the SWOT-Analysis will be created now.  After 5-6 minutes the SWOT-Analysis should be created and the summary should be visible in each category.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -575,7 +586,7 @@
     "text": "4. Fourth step: Create Comparison-SWOT-Analysis.\nNow you landed on the Compare Companies Page. Here you can compare two bussiness reports from different companies with each other.  For this you can select two different reports in the drop-down menus. The same principle applies here as for the SWOT analysis. If you already created a Comparison-SWOT it will be fetched automatically after you selected the corresponding reports. The differences in each category will be listed in summary version first.  Then you can click into one of the category to see the full desricption for each difference.  If you want to create a new Comparisson-SWOT you can click the button Create SWOT Comparison after you selected two reports.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -586,7 +597,7 @@
     "text": "5. Fith step: Ask the ChatBot quastions about a report.\nOn the page Chatbot we created a Chatbot that is currently still work in progess and therefore an aplha version. The first thing you see is a disclaimer warning you that the Chatbot may give incorrect answers. You should be aware of this at any time you are using the Chatbot  The chatbot works the follwoing way: First you have to selecet a report that you have a question for. After this you can write the question in the text field and click send.  The system takes a few seconds to generate the answer so please be aware of this. Then you can see the answer to you question directly underneath it. The answer is based on the information given in the report.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -597,7 +608,7 @@
     "text": "6. Sixth step: Log-out\nWhen you have finished your analysis, you can log out by clicking on the icon in the top right-hand corner. From there you will be redirected back to the login screen.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
