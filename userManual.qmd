@@ -1,0 +1,14 @@
+On this page <ou learn how to navigate your way through the StratMystiqPro application. 
+
+1. First step: Log-in
+To Log-in you are going to navigate form your Log-in screen to the Google-authentication field. 
+
+2. Second step: Upload reports
+
+3. Thrid step: Create SWOT-Analysis
+
+4. Fourth step: Create Comparison-SWOT-Analysis
+
+5. Fith step: Ask the ChatBot quastions about a report 
+
+6. Sixth step: Log-out 
