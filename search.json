@@ -231,7 +231,18 @@
     "href": "RAGpipeline.html",
     "title": "RAG Pipeline",
     "section": "",
-    "text": "Demographic Data:",
+    "text": "Introduction to Retrieval Augmented Generation (RAG)\nRetrieval-Augmented Generation (RAG) represents a significant advancement in the field of natural language processing (NLP) by combining the strengths of large language models (LLMs) with specific knowledge stored in external databases. (Li et al. 2022) They are particularly useful for knowledge-intensive Natural Language Processing (NLP) tasks (Lewis et al. 2020) and thus have been applied to various tasks including dialogue response generation, machine translation, and other generation tasks. (Li et al. 2022)\nAs the focus of our project is to generate and compare SWOT Analyses, which is a complex generation task, our main focus was to implement a RAG pipeline that is capable of generating factual and relevant SWOT Analyses using a given annual report as the knowledge source. At the beginning of the project we explored basic RAG pipelines and then started to implement our own pipeline to suit our needs.",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>RAG Pipeline</span>"
+    ]
+  },
+  {
+    "objectID": "RAGpipeline.html#rag-pipelines",
+    "href": "RAGpipeline.html#rag-pipelines",
+    "title": "RAG Pipeline",
+    "section": "RAG Pipelines",
+    "text": "RAG Pipelines\n\nLangchain Base RAG\nThe first RAG pipeline we explored was build using the open-source library Langchain. The pipline utilized the standard Langchain document loaders, text splitters and RetrievalQA chain. The code below is an extract from our first RAG pipeline. The code for the full pipeline can be viewed in the RAG-Prototype folder of the main repository.\nfrom langchain.prompts import PromptTemplate\nfrom langchain.chains import RetrievalQA\nfrom langchain.chat_models import ChatOpenAI\nfrom langchain.embeddings.openai import OpenAIEmbeddings\nfrom langchain.vectorstores import Chroma\n\n\nopenai.api_key = os.environ['OPENAI_API_KEY']\nembedding_function = OpenAIEmbedding\n\nclient = chromadb.HttpClient(host=\"localhost\", port='8000')\ndb = Chroma(client=client,\n            collection_name=\"annual-reports\",\n            embedding_function=embedding_function)\n\nllm_name = \"gpt-3.5-turbo\"\nllm = ChatOpenAI(model_name=llm_name, temperature\n\ntemplate = \"\"\"Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't make up an answer. Use five sentences maximum. Keep the answer as concise as possible.\nContext: {context}\nQuestion: {question}\nHelpful Answer:\"\"\"\n\nQA_CHAIN_PROMPT = PromptTemplate.from_template(template)\n\nqa_chain = RetrievalQA.from_chain_type(\n    llm,\n    retriever=db.as_retriever(),\n    return_source_documents=True,\n    chain_type_kwargs={\"prompt\": QA_CHAIN_PROMPT}\n\nquestion = \"What cars does Mercedes Benz produce?\"\n\nresult = qa_chain({\"query\": question})\nWe started experimenting with the Langchain pipeline and while it returned some relevant results, we found that the pipeline struggled to return relevant and factual information when the question was more complex. We tried to identify the cause of the issue and identified three areas that we believed could be causing the issue:\n\nThe original document was not being split into relevant sections or the sections only contained partial information.\nA lot of relevant information is stored in tables and images, which the pipeline is not able to extract.\nThe question that was asked might not include the correct vocabulary or context to retrieve the relevant chunks.\n\nTo continue with our RAG pipeline development, we decided to look at current literature and their approaches to RAG pipelines.\n\n\nCustom RAG Pipeline\n\nDocument Ingestion\n\nTable Extraction\n\n\nText Extraction\n\n\n\nPre-Retrieval\n\n\nPost-Retrieval\n\n\n\n\nLewis, Patrick, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Küttler, et al. 2020. “Retrieval-Augmented Generation for Knowledge-Intensive Nlp Tasks.” https://doi.org/10.48550/ARXIV.2005.11401.\n\n\nLi, Huayang, Yixuan Su, Deng Cai, Yan Wang, and Lemao Liu. 2022. “A Survey on Retrieval-Augmented Text Generation.” https://doi.org/10.48550/ARXIV.2202.01110.",
     "crumbs": [
       "System Design",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>RAG Pipeline</span>"
@@ -583,7 +594,7 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Vite. n.d. “Vite Features.” Accessed January 10, 2024. https://vitejs.dev/guide/features.html.\n\n\nwebpack. n.d. “Hot Module Replacement.” Accessed January\n10, 2024. https://webpack.js.org/guides/hot-module-replacement/.",
+    "text": "Lewis, Patrick, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir\nKarpukhin, Naman Goyal, Heinrich Küttler, et al. 2020.\n“Retrieval-Augmented Generation for Knowledge-Intensive Nlp\nTasks.” https://doi.org/10.48550/ARXIV.2005.11401.\n\n\nLi, Huayang, Yixuan Su, Deng Cai, Yan Wang, and Lemao Liu. 2022.\n“A Survey on Retrieval-Augmented Text Generation.” https://doi.org/10.48550/ARXIV.2202.01110.\n\n\nVite. n.d. “Vite Features.” Accessed January 10, 2024. https://vitejs.dev/guide/features.html.\n\n\nwebpack. n.d. “Hot Module Replacement.” Accessed January\n10, 2024. https://webpack.js.org/guides/hot-module-replacement/.",
     "crumbs": [
       "References"
     ]
