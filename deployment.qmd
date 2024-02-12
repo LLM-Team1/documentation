@@ -1,19 +1,25 @@
-Setup for Local Development
-To set up the backend for local development:
+# Deployment
+
+On this page ypu learn how to set up the application for local development and deployment. 
+
+## Set up the backend for local development:
 
 Ensure you have Python 3.11 or later installed.
-Install the required dependencies with pip install -r requirements.txt.
-Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb.
-Run the application with python main.py.
-The main.py script takes care of setting up the application. It creates the database tables if they don't exist.
+* Install the required dependencies with pip install -r requirements.txt.
+* Ensure that you have Docker installed. Start it with using Docker Compose up
+* Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb.
+* Run the application with python main.py.
+* The main.py script takes care of setting up the application. It creates the database tables if they don't exist.
 
 Deployment for Testing and Production
 For testing and production environments, we use Docker. Check out the Dockerfile and docker-compose.yaml files in the root directory of the project for more details.
 
-SetUp for the frontemd for local development: 
+## SetUp for the frontend for local development: 
+* To run the frontend you have to use  `npm run dev`
++ During the development`npm run tailwind` needs to bes started as well
 
 
-To deploy the application:
+## To deploy the application:
 
-Ensure you have Docker installed.
-Run the Docker container with docker-compose up.
+
+
