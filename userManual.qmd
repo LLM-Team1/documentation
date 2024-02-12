@@ -1,8 +1,9 @@
 On this page <ou learn how to navigate your way through the StratMystiqPro application. 
 
 1. First step: Log-in
-To Log-in you are going to navigate form your Log-in screen to the Google-authentication field. 
-
+To Log-in you are going to navigate form your Log-in screen to the Google-authentication field. It should look the following way: 
+![Data Model of StratMystiqPro](images/Log-in1.png){width=100% .lightbox}
+![Data Model of StratMystiqPro](images/Log-in2.png){width=100% .lightbox}
 2. Second step: Upload reports
 
 3. Thrid step: Create SWOT-Analysis
