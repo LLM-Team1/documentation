@@ -13,8 +13,8 @@ book:
   repo-url: https://github.com/LLM-Team1/documentation
   repo-actions: [edit, issue]
   open-graph: true
-  image: "/images/logo.png"
-  favicon: "/images/logo.png"
+  image: "/images/StratMystiq-Icon.png"
+  favicon: "/images/StratMystiq-Icon.png"
   sidebar:
     logo: "/images/StratMystiq-Icon.png"
     search: true
@@ -46,6 +46,7 @@ book:
         - RAGevaluation.qmd
         - backendArchitecture.qmd
         - frontendArchitecture.qmd
+        - BackendArchitecture/GoogleAuth.qmd
     - part: Frontend
       chapters:
         - Frontend/FrontendIntro.qmd

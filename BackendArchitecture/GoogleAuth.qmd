@@ -1,0 +1,46 @@
+# Authentication with Google
+We use the identity provider Google for authentication in our system. We have implemented a single sign-on button from Google in the frontend,
+which allows the user to log in to our system with their Google account. Every time the user logs in to the frontend,
+we receive a so-called JSON Web Token (JWT) from Google, which we send to the backend in the header with every request and
+check again whether this token is valid and whether the user exists in our database. If this is the case, we can use it to authenticate
+the user and give them individual access to our systems and thus access to their own documents.
+
+## Process flow of the authentication
+1. User logs in by clicking the button
+2. Google returns JWT
+3. Sends JWT to the backend
+4. Backend checks whether the user exists in our DB in the "user" table
+5. If not, a user is created in the DB and the user object is sent to the frontend, if yes, this user object is sent to the frontend
+6. In the frontend, a separate user object is created in the session memory, which contains both the data sent by the DB (**userName** and **userId**) and
+data directly from the JWT (**firstName**, **lastName**, **profilePictureUrl**), as well as the JWT itself.
+The data that we extract directly from the JWT in the frontend is not stored in the DB, which is why it is not contained in the user object that comes from the DB.
+
+This user object now contains all the important information that is displayed on the start page and in the navigation bar,
+among other things, and the token that is sent with every backend request.
+On the backend side, we force the JWT token to be sent in the header when an endpoint is called, otherwise it is not even possible to execute the called function.
+
+## Frontend fetching function
+For this reason, we have created a function in the frontend that writes the JWT in the HTML header of each request.
+This function is used for all of our backend requests and therefore also offers additional parameters so that it can be used flexibly for any type of request.
+These include the mandatory specification of the CRUD method (Create, Read, Update, Delete) and the optional specification of a body.
+However, the latter is only used when uploading the annual report.
+
+![Frontend fetching function](../images/Frontend/fetchQuery.png){width=100% .lightbox}
+
+## Backend token validation
+On the backend side, this looks like this in the API. We have given each endpoint that is to be protected the attachment ```user=Security(verify_token.verify_token)```.
+This ensures that a token must always be passed when the function is called via the endpoint.
+
+![Backend Endpoint requires user token](../images/BackendArchitecture/EndpointToken.png){width=100% .lightbox}
+
+To validate the token, it is first extracted from the header and then sent to Google via an interface for verifying so-called oauth2 tokens,
+which report back to us whether this token is valid or not.
+
+![Backend verify user token](../images/BackendArchitecture/VerifyToken.png){width=100% .lightbox}
+
+After this, the database is checked to see whether or not the user already exists. The user object is then sent back.
+
+![Check if the user exists in DB](../images/BackendArchitecture/CheckUserExists.png){width=100% .lightbox}
+
+This individual access includes access to the public reports and to all private reports uploaded by the user. In addition,
+each user can create their own SWOT analysis for each of their reports and create a SWOT comparison between two different reports.
