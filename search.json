@@ -326,6 +326,50 @@
     ]
   },
   {
+    "objectID": "BackendArchitecture/GoogleAuth.html",
+    "href": "BackendArchitecture/GoogleAuth.html",
+    "title": "Authentication with Google",
+    "section": "",
+    "text": "Process flow of the authentication\nThis user object now contains all the important information that is displayed on the start page and in the navigation bar, among other things, and the token that is sent with every backend request. On the backend side, we force the JWT token to be sent in the header when an endpoint is called, otherwise it is not even possible to execute the called function.",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Authentication with Google</span>"
+    ]
+  },
+  {
+    "objectID": "BackendArchitecture/GoogleAuth.html#process-flow-of-the-authentication",
+    "href": "BackendArchitecture/GoogleAuth.html#process-flow-of-the-authentication",
+    "title": "Authentication with Google",
+    "section": "",
+    "text": "User logs in by clicking the button\nGoogle returns JWT\nSends JWT to the backend\nBackend checks whether the user exists in our DB in the “user” table\nIf not, a user is created in the DB and the user object is sent to the frontend, if yes, this user object is sent to the frontend\nIn the frontend, a separate user object is created in the session memory, which contains both the data sent by the DB (userName and userId) and data directly from the JWT (firstName, lastName, profilePictureUrl), as well as the JWT itself. The data that we extract directly from the JWT in the frontend is not stored in the DB, which is why it is not contained in the user object that comes from the DB.",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Authentication with Google</span>"
+    ]
+  },
+  {
+    "objectID": "BackendArchitecture/GoogleAuth.html#frontend-fetching-function",
+    "href": "BackendArchitecture/GoogleAuth.html#frontend-fetching-function",
+    "title": "Authentication with Google",
+    "section": "Frontend fetching function",
+    "text": "Frontend fetching function\nFor this reason, we have created a function in the frontend that writes the JWT in the HTML header of each request. This function is used for all of our backend requests and therefore also offers additional parameters so that it can be used flexibly for any type of request. These include the mandatory specification of the CRUD method (Create, Read, Update, Delete) and the optional specification of a body. However, the latter is only used when uploading the annual report.\n\n\n\nFrontend fetching function",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Authentication with Google</span>"
+    ]
+  },
+  {
+    "objectID": "BackendArchitecture/GoogleAuth.html#backend-token-validation",
+    "href": "BackendArchitecture/GoogleAuth.html#backend-token-validation",
+    "title": "Authentication with Google",
+    "section": "Backend token validation",
+    "text": "Backend token validation\nOn the backend side, this looks like this in the API. We have given each endpoint that is to be protected the attachment user=Security(verify_token.verify_token). This ensures that a token must always be passed when the function is called via the endpoint.\n\n\n\nBackend Endpoint requires user token\n\n\nTo validate the token, it is first extracted from the header and then sent to Google via an interface for verifying so-called oauth2 tokens, which report back to us whether this token is valid or not.\n\n\n\nBackend verify user token\n\n\nAfter this, the database is checked to see whether or not the user already exists. The user object is then sent back.\n\n\n\nCheck if the user exists in DB\n\n\nThis individual access includes access to the public reports and to all private reports uploaded by the user. In addition, each user can create their own SWOT analysis for each of their reports and create a SWOT comparison between two different reports.\n\n\n\nFrontend fetching function\nBackend Endpoint requires user token\nBackend verify user token\nCheck if the user exists in DB",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Authentication with Google</span>"
+    ]
+  },
+  {
     "objectID": "Frontend/FrontendIntro.html",
     "href": "Frontend/FrontendIntro.html",
     "title": "Frontend Documentation",
@@ -333,7 +377,7 @@
     "text": "Overview of the frontend functionalities:",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frontend Documentation</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Frontend Documentation</span>"
     ]
   },
   {
@@ -344,7 +388,7 @@
     "text": "Login and access to backend functions:\n\nRegistered users have the opportunity to use all functions of our backend. These include uploading annual reports and interacting with the RAG pipeline.\n\nAnnual report processing:\n\nOnce an annual report has been uploaded, it is sent to our backend. There it passes through the RAG pipeline as described on the Page RAG pipeline.\nIn the second step, the processed report can be used to create a SWOT analysis in the frontend.\n\nSWOT analysis generation:\n\nUsers can generate and display a SWOT analysis in the frontend.\nThe basis for this is the processed annual report from the backend.\n\nComparison of annual reports:\n\nIn addition to the individual analysis, our system offers the option of comparing analyses of two annual reports.\nUsers can view the results of these comparisons in the front end.\n\nChatbot support:\n\nWe have implemented a chatbot that allows users to ask self-formulated questions about a selected annual report.\nThe chatbot offers an interactive way of requesting information and makes it easier to navigate the system.\n\n\n\n\n\nWelcome page of StratMystiqPro\n\n\n\n\n\nWelcome page of StratMystiqPro",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Frontend Documentation</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Frontend Documentation</span>"
     ]
   },
   {
@@ -352,10 +396,76 @@
     "href": "Frontend/Techstack.html",
     "title": "Frontend Techstack",
     "section": "",
-    "text": "For the frontend, we use the React web framework in combination with Vite as the technical basis. The code is written in HTML and TypeScript, a JavaScript derivative. For the styling, we rely on the Tailwind CSS framework and use some components from the Material UI library. We also use the tools ESlint and Prettier to improve code quality.\nThe choice to use React as a frontend instead of other web frontends, some of which are based on Python, was made because it allows us to use and style individual components, making our UI more adaptable to the use case and, in particular, to the subsequent users described in the personas. We have also already had good experience with React in the past, which we were happy to expand on in this project. Another reason is that, compared to the other frameworks tested, Streamlib and Gradio, user authentication via Google Login was much easier to implement here.\nWe also opted for Vite as a development server for React, as it offers several advantages in terms of building times and ease of development. In addition to a much faster server startup time and building time for deployment, rebuilding when changing the code during development also takes place with almost no waiting time. This becomes particularly important when the size of the project increases, but the difference is also very noticeable with a project of our size. This increase in performance is achieved by so-called native ESM (ECMAScript Module) and the Hot Module Replacement (HMR) that this enables. This means that individual parts of the application can be replaced during operation without having to reload the entire page if the code is changed and this component needs to be rebuilt. This also preserves the state of the page, which means, for example, that all entries made are not lost and it is not necessary to log back in with Google. (webpack n.d.) (Vite n.d.)\nFor the functional development of the frontend, we chose TypeScript as our programming language instead of typical JavaScript. It enables type-safe development by enforcing types and interfaces for all variables and the associated better error analysis.\nFor styling, we use the TailwindCSS framework, which combines typical CSS functions into classes that can be applied directly to the individual elements in the HTML code, similar to inline css. This makes styling easier for us and, from our point of view, makes it easier to maintain the code and keep it clearer, as the styling of the individual HTML elements is not outsourced to an external CSS file, but is implemented directly in the code where it is later used. It also makes it easy to create responsive designs.\nNevertheless, we used the MaterialUI component library for some components, as we did not have to create the elements ourselves. We used the framework of the dialog and dropdown component from MaterialUI for our popup and added our own content there. The advantage of this ready-made component is that it already has an animation for opening and closing, as well as a responsive design. Building this component ourselves would have taken some time and the result would have been about the same.\nWe also use the formatting and linting tools Prettier and ESLint to increase code quality. Prettier ensures that the code is in a uniform format. This means, for example, that all indentations, breaks and spaces in brackets are always consistent across all files. ESlint helps to analyze the code for errors and avoid bad coding style. For example, it throws a warning if the same code is found in multiple files and then suggests exporting it or warns if an attempt is made to access variables or functions that do not exist. Without this help, such an error would only become apparent at runtime and possibly cause the program to crash.\nAnother important library that we use in the frontend is that of the Google Single-Sign-on identity provider. Here we have the option of simple and reliable user authentication by requiring users to log in to our frontend with their Google account. We then identify the users via the JWT token returned by the identity provider by reading the ID it contains and comparing it with our database.\n\n\n\n\nVite. n.d. “Vite Features.” Accessed January 10, 2024. https://vitejs.dev/guide/features.html.\n\n\nwebpack. n.d. “Hot Module Replacement.” Accessed January 10, 2024. https://webpack.js.org/guides/hot-module-replacement/.",
+    "text": "React\nThe choice to use React as a frontend instead of other web frontends, some of which are based on Python, was made because it allows us to use and style individual components, making our UI more adaptable to the use case and, in particular, to the subsequent users described in the personas. We have also already had good experience with React in the past, which we were happy to expand on in this project. Another reason is that, compared to the other frameworks tested, Streamlib and Gradio, user authentication via Google Login was much easier to implement here.",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Frontend Techstack</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+    ]
+  },
+  {
+    "objectID": "Frontend/Techstack.html#vite",
+    "href": "Frontend/Techstack.html#vite",
+    "title": "Frontend Techstack",
+    "section": "Vite",
+    "text": "Vite\nWe also opted for Vite as a development server for React, as it offers several advantages in terms of building times and ease of development. In addition to a much faster server startup time and building time for deployment, rebuilding when changing the code during development also takes place with almost no waiting time. This becomes particularly important when the size of the project increases, but the difference is also very noticeable with a project of our size. This increase in performance is achieved by so-called native ESM (ECMAScript Module) and the Hot Module Replacement (HMR) that this enables. This means that individual parts of the application can be replaced during operation without having to reload the entire page if the code is changed and this component needs to be rebuilt. This also preserves the state of the page, which means, for example, that all entries made are not lost and it is not necessary to log back in with Google. (webpack n.d.) (Vite n.d.)",
+    "crumbs": [
+      "Frontend",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+    ]
+  },
+  {
+    "objectID": "Frontend/Techstack.html#typescript",
+    "href": "Frontend/Techstack.html#typescript",
+    "title": "Frontend Techstack",
+    "section": "TypeScript",
+    "text": "TypeScript\nFor the functional development of the frontend, we chose TypeScript as our programming language instead of typical JavaScript. It enables type-safe development by enforcing types and interfaces for all variables and the associated better error analysis.",
+    "crumbs": [
+      "Frontend",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+    ]
+  },
+  {
+    "objectID": "Frontend/Techstack.html#tailwindcss",
+    "href": "Frontend/Techstack.html#tailwindcss",
+    "title": "Frontend Techstack",
+    "section": "TailwindCSS",
+    "text": "TailwindCSS\nFor styling, we use the TailwindCSS framework, which combines typical CSS functions into classes that can be applied directly to the individual elements in the HTML code, similar to inline css. This makes styling easier for us and, from our point of view, makes it easier to maintain the code and keep it clearer, as the styling of the individual HTML elements is not outsourced to an external CSS file, but is implemented directly in the code where it is later used. It also makes it easy to create responsive designs.",
+    "crumbs": [
+      "Frontend",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+    ]
+  },
+  {
+    "objectID": "Frontend/Techstack.html#materialui",
+    "href": "Frontend/Techstack.html#materialui",
+    "title": "Frontend Techstack",
+    "section": "MaterialUI",
+    "text": "MaterialUI\nNevertheless, we used the MaterialUI component library for some components, as we did not have to create the elements ourselves. We used the framework of the dialog and dropdown component from MaterialUI for our popup and added our own content there. The advantage of this ready-made component is that it already has an animation for opening and closing, as well as a responsive design. Building this component ourselves would have taken some time and the result would have been about the same.",
+    "crumbs": [
+      "Frontend",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+    ]
+  },
+  {
+    "objectID": "Frontend/Techstack.html#eslint-and-prettier",
+    "href": "Frontend/Techstack.html#eslint-and-prettier",
+    "title": "Frontend Techstack",
+    "section": "ESlint and Prettier",
+    "text": "ESlint and Prettier\nWe also use the formatting and linting tools Prettier and ESLint to increase code quality. Prettier ensures that the code is in a uniform format. This means, for example, that all indentations, breaks and spaces in brackets are always consistent across all files. ESlint helps to analyze the code for errors and avoid bad coding style. For example, it throws a warning if the same code is found in multiple files and then suggests exporting it or warns if an attempt is made to access variables or functions that do not exist. Without this help, such an error would only become apparent at runtime and possibly cause the program to crash.",
+    "crumbs": [
+      "Frontend",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+    ]
+  },
+  {
+    "objectID": "Frontend/Techstack.html#google-single-sign-on",
+    "href": "Frontend/Techstack.html#google-single-sign-on",
+    "title": "Frontend Techstack",
+    "section": "Google Single-Sign-on",
+    "text": "Google Single-Sign-on\nAnother important library that we use in the frontend is that of the Google Single-Sign-on identity provider. Here we have the option of simple and reliable user authentication by requiring users to log in to our frontend with their Google account. We then identify the users via the JWT token returned by the identity provider by reading the ID it contains and comparing it with our database.\n\n\n\n\nVite. n.d. “Vite Features.” Accessed January 10, 2024. https://vitejs.dev/guide/features.html.\n\n\nwebpack. n.d. “Hot Module Replacement.” Accessed January 10, 2024. https://webpack.js.org/guides/hot-module-replacement/.",
+    "crumbs": [
+      "Frontend",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
     ]
   },
   {
@@ -366,7 +476,7 @@
     "text": "Setup for Local Development To set up the backend for local development:\nEnsure you have Python 3.11 or later installed. Install the required dependencies with pip install -r requirements.txt. Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb. Run the application with python main.py. The main.py script takes care of setting up the application. It creates the database tables if they don’t exist.\nDeployment for Testing and Production For testing and production environments, we use Docker. Check out the Dockerfile and docker-compose.yaml files in the root directory of the project for more details.\nSetUp for the frontemd for local development:\nTo deploy the application:\nEnsure you have Docker installed. Run the Docker container with docker-compose up.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>deployment.html</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>deployment.html</span>"
     ]
   },
   {
@@ -377,7 +487,7 @@
     "text": "On this page &lt;ou learn how to navigate your way through the StratMystiqPro application.\n\nFirst step: Log-in To Log-in you are going to navigate form your Log-in screen to the Google-authentication field. It should look the following way:  \nSecond step: Upload reports\nThrid step: Create SWOT-Analysis\nFourth step: Create Comparison-SWOT-Analysis\nFith step: Ask the ChatBot quastions about a report\nSixth step: Log-out",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>userManual.html</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>userManual.html</span>"
     ]
   },
   {

@@ -53,7 +53,7 @@ div.csl-indent {
 <meta name="quarto:offset" content="../">
 <link href="../deployment.html" rel="next">
 <link href="../Frontend/FrontendIntro.html" rel="prev">
-<link href="..//images/logo.png" rel="icon" type="image/png">
+<link href="..//images/StratMystiq-Icon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -96,10 +96,10 @@ div.csl-indent {
 
 <meta property="og:title" content="StratMystiqPro Documentation - Frontend Techstack">
 <meta property="og:description" content="StratMystiqPro - A tool for quick strategic insights">
-<meta property="og:image" content="https://LMM-Team1.github.io/documentation//images/logo.png">
+<meta property="og:image" content="https://LMM-Team1.github.io/documentation//images/StratMystiq-Icon.png">
 <meta property="og:site_name" content="StratMystiqPro Documentation">
-<meta property="og:image:height" content="1185">
-<meta property="og:image:width" content="1196">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1024">
 </head>
 
 <body class="nav-sidebar floating">
@@ -219,6 +219,11 @@ div.csl-indent {
   <a href="../frontendArchitecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">frontendArchitecture.html</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../BackendArchitecture/GoogleAuth.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Authentication with Google</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -275,7 +280,19 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#react" id="toc-react" class="nav-link active" data-scroll-target="#react">React</a></li>
+  <li><a href="#vite" id="toc-vite" class="nav-link" data-scroll-target="#vite">Vite</a></li>
+  <li><a href="#typescript" id="toc-typescript" class="nav-link" data-scroll-target="#typescript">TypeScript</a></li>
+  <li><a href="#tailwindcss" id="toc-tailwindcss" class="nav-link" data-scroll-target="#tailwindcss">TailwindCSS</a></li>
+  <li><a href="#materialui" id="toc-materialui" class="nav-link" data-scroll-target="#materialui">MaterialUI</a></li>
+  <li><a href="#eslint-and-prettier" id="toc-eslint-and-prettier" class="nav-link" data-scroll-target="#eslint-and-prettier">ESlint and Prettier</a></li>
+  <li><a href="#google-single-sign-on" id="toc-google-single-sign-on" class="nav-link" data-scroll-target="#google-single-sign-on">Google Single-Sign-on</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/Frontend/Techstack.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -300,12 +317,32 @@ div.csl-indent {
 
 
 <p>For the frontend, we use the <a href="https://react.dev/">React</a> web framework in combination with <a href="https://vitejs.dev/">Vite</a> as the technical basis. The code is written in HTML and <a href="https://www.typescriptlang.org/">TypeScript</a>, a JavaScript derivative. For the styling, we rely on the <a href="https://tailwindcss.com/">Tailwind CSS</a> framework and use some components from the <a href="https://mui.com/">Material UI</a> library. We also use the tools <a href="https://eslint.org/">ESlint</a> and <a href="https://prettier.io/">Prettier</a> to improve code quality.</p>
+<section id="react" class="level2">
+<h2 class="anchored" data-anchor-id="react">React</h2>
 <p>The choice to use React as a frontend instead of other web frontends, some of which are based on Python, was made because it allows us to use and style individual components, making our UI more adaptable to the use case and, in particular, to the subsequent users described in the personas. We have also already had good experience with React in the past, which we were happy to expand on in this project. Another reason is that, compared to the other frameworks tested, Streamlib and Gradio, user authentication via Google Login was much easier to implement here.</p>
+</section>
+<section id="vite" class="level2">
+<h2 class="anchored" data-anchor-id="vite">Vite</h2>
 <p>We also opted for Vite as a development server for React, as it offers several advantages in terms of building times and ease of development. In addition to a much faster server startup time and building time for deployment, rebuilding when changing the code during development also takes place with almost no waiting time. This becomes particularly important when the size of the project increases, but the difference is also very noticeable with a project of our size. This increase in performance is achieved by so-called native ESM (ECMAScript Module) and the Hot Module Replacement (HMR) that this enables. This means that individual parts of the application can be replaced during operation without having to reload the entire page if the code is changed and this component needs to be rebuilt. This also preserves the state of the page, which means, for example, that all entries made are not lost and it is not necessary to log back in with Google. <span class="citation" data-cites="webpackHMR">(<a href="../references.html#ref-webpackHMR" role="doc-biblioref">webpack n.d.</a>)</span> <span class="citation" data-cites="viteFeatures">(<a href="../references.html#ref-viteFeatures" role="doc-biblioref">Vite n.d.</a>)</span></p>
+</section>
+<section id="typescript" class="level2">
+<h2 class="anchored" data-anchor-id="typescript">TypeScript</h2>
 <p>For the functional development of the frontend, we chose TypeScript as our programming language instead of typical JavaScript. It enables type-safe development by enforcing types and interfaces for all variables and the associated better error analysis.</p>
+</section>
+<section id="tailwindcss" class="level2">
+<h2 class="anchored" data-anchor-id="tailwindcss">TailwindCSS</h2>
 <p>For styling, we use the TailwindCSS framework, which combines typical CSS functions into classes that can be applied directly to the individual elements in the HTML code, similar to inline css. This makes styling easier for us and, from our point of view, makes it easier to maintain the code and keep it clearer, as the styling of the individual HTML elements is not outsourced to an external CSS file, but is implemented directly in the code where it is later used. It also makes it easy to create responsive designs.</p>
+</section>
+<section id="materialui" class="level2">
+<h2 class="anchored" data-anchor-id="materialui">MaterialUI</h2>
 <p>Nevertheless, we used the MaterialUI component library for some components, as we did not have to create the elements ourselves. We used the framework of the dialog and dropdown component from MaterialUI for our popup and added our own content there. The advantage of this ready-made component is that it already has an animation for opening and closing, as well as a responsive design. Building this component ourselves would have taken some time and the result would have been about the same.</p>
+</section>
+<section id="eslint-and-prettier" class="level2">
+<h2 class="anchored" data-anchor-id="eslint-and-prettier">ESlint and Prettier</h2>
 <p>We also use the formatting and linting tools Prettier and ESLint to increase code quality. Prettier ensures that the code is in a uniform format. This means, for example, that all indentations, breaks and spaces in brackets are always consistent across all files. ESlint helps to analyze the code for errors and avoid bad coding style. For example, it throws a warning if the same code is found in multiple files and then suggests exporting it or warns if an attempt is made to access variables or functions that do not exist. Without this help, such an error would only become apparent at runtime and possibly cause the program to crash.</p>
+</section>
+<section id="google-single-sign-on" class="level2">
+<h2 class="anchored" data-anchor-id="google-single-sign-on">Google Single-Sign-on</h2>
 <p>Another important library that we use in the frontend is that of the Google Single-Sign-on identity provider. Here we have the option of simple and reliable user authentication by requiring users to log in to our frontend with their Google account. We then identify the users via the JWT token returned by the identity provider by reading the ID it contains and comparing it with our database.</p>
 
 
@@ -317,6 +354,7 @@ Vite. n.d. <span>“Vite Features.”</span> Accessed January 10, 2024. <a href=
 webpack. n.d. <span>“Hot Module Replacement.”</span> Accessed January 10, 2024. <a href="https://webpack.js.org/guides/hot-module-replacement/">https://webpack.js.org/guides/hot-module-replacement/</a>.
 </div>
 </div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -857,7 +895,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../deployment.html" class="pagination-link" aria-label="<span class='chapter-number'>13</span>&nbsp; <span class='chapter-title'>deployment.html</span>">
+      <a href="../deployment.html" class="pagination-link" aria-label="<span class='chapter-number'>14</span>&nbsp; <span class='chapter-title'>deployment.html</span>">
         <span class="nav-page-text"><span class="chapter-title">deployment.html</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -881,7 +919,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/Frontend/Techstack.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/Frontend/Techstack.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
