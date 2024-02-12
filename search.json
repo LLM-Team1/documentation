@@ -335,5 +335,16 @@
       "Usage",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>deployment.html</span>"
     ]
+  },
+  {
+    "objectID": "userManual.html",
+    "href": "userManual.html",
+    "title": "StratMystiqPro Documentation",
+    "section": "",
+    "text": "On this page &lt;ou learn how to navigate your way through the StratMystiqPro application.\n\nFirst step: Log-in To Log-in you are going to navigate form your Log-in screen to the Google-authentication field.\nSecond step: Upload reports\nThrid step: Create SWOT-Analysis\nFourth step: Create Comparison-SWOT-Analysis\nFith step: Ask the ChatBot quastions about a report\nSixth step: Log-out",
+    "crumbs": [
+      "Usage",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>userManual.html</span>"
+    ]
   }
 ]
