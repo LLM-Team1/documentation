@@ -1,0 +1,6 @@
+# Frontend Techstack
+For the frontend, we use the [React](https://react.dev/) web framework in combination with [Vite](https://vitejs.dev/) as the technical basis.
+The code is written in HTML and [TypeScript](https://www.typescriptlang.org/), a JavaScript derivative. For the styling, we rely on the [Tailwind CSS](https://tailwindcss.com/) framework and use some components from the [Material UI](https://mui.com/) library.
+
+[@webpackHMR]
+[@viteFeatures]
