@@ -16,7 +16,7 @@ Our solution takes the findings of our use case identification and transform the
 to fulfill our value propositions.
 
 We are using a [Retrieval Augmented Generation (RAG) pipeline](/documentation/RAGpipeline.html) to load and retrieve
-the needed information (coming from business reports) in/from our vector store. We encountered different obstacles
+the needed information (coming from business reports) from our vector store. We encountered different obstacles
 on our way, therefore we decided to customize the basic RAG pipline to deal with image/ table recognition and at the
 same time improve answer precision by using a multi query approach.
 
@@ -27,7 +27,7 @@ our custom RAG, using the chunk size of 900.
 
 We also developed a user friendly [frontend](https://llm-team1.github.io/documentation/frontendArchitecture.html) to
 enable our customers to navigate between their business reports, analyses, and comparisons. Focus here was especially
-on the presentation of the extensive information in the SWAT analyses.
+on the presentation of the extensive information in the SWOT analyses.
 
 Finally we created a comprehensive manual on [how to deploy our application](https://llm-team1.github.io/documentation/deployment.html)
 and [how to use our application](https://llm-team1.github.io/documentation/userManual.html).
