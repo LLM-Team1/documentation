@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="StratMystiqPro - A tool for quick strategic insights">
 
-<title>StratMystiqPro Documentation</title>
+<title>StratMystiqPro Documentation - Deployment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -73,8 +74,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="StratMystiqPro Documentation">
-<meta property="og:description" content="">
+<meta property="og:title" content="StratMystiqPro Documentation - Deployment">
+<meta property="og:description" content="StratMystiqPro - A tool for quick strategic insights">
 <meta property="og:image" content="https://LMM-Team1.github.io/documentation//images/StratMystiq-Icon.png">
 <meta property="og:site_name" content="StratMystiqPro Documentation">
 <meta property="og:image:height" content="1024">
@@ -90,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./deployment.html">Usage</a></li><li class="breadcrumb-item"><a href="./deployment.html"><span class="chapter-title">deployment.html</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./deployment.html">Usage</a></li><li class="breadcrumb-item"><a href="./deployment.html"><span class="chapter-title">Deployment</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -237,7 +238,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./deployment.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">deployment.html</span></a>
+  <a href="./deployment.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Deployment</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -259,22 +260,56 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#set-up-the-backend-for-local-development" id="toc-set-up-the-backend-for-local-development" class="nav-link active" data-scroll-target="#set-up-the-backend-for-local-development">Set up the backend for local development:</a></li>
+  <li><a href="#setup-for-the-frontend-for-local-development" id="toc-setup-for-the-frontend-for-local-development" class="nav-link" data-scroll-target="#setup-for-the-frontend-for-local-development">SetUp for the frontend for local development:</a></li>
+  <li><a href="#to-deploy-the-application" id="toc-to-deploy-the-application" class="nav-link" data-scroll-target="#to-deploy-the-application">To deploy the application:</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/deployment.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./deployment.html">Usage</a></li><li class="breadcrumb-item"><a href="./deployment.html"><span class="chapter-title">Deployment</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Deployment</span></h1>
+</div>
 
 
 
-<p>Setup for Local Development To set up the backend for local development:</p>
-<p>Ensure you have Python 3.11 or later installed. Install the required dependencies with pip install -r requirements.txt. Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb. Run the application with python main.py. The main.py script takes care of setting up the application. It creates the database tables if they don’t exist.</p>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>On this page ypu learn how to set up the application for local development and deployment.</p>
+<section id="set-up-the-backend-for-local-development" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-the-backend-for-local-development">Set up the backend for local development:</h2>
+<p>Ensure you have Python 3.11 or later installed. * Install the required dependencies with pip install -r requirements.txt. * Ensure that you have Docker installed. Start it with using Docker Compose up * Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb. * Run the application with python main.py. * The main.py script takes care of setting up the application. It creates the database tables if they don’t exist.</p>
 <p>Deployment for Testing and Production For testing and production environments, we use Docker. Check out the Dockerfile and docker-compose.yaml files in the root directory of the project for more details.</p>
-<p>SetUp for the frontemd for local development:</p>
-<p>To deploy the application:</p>
-<p>Ensure you have Docker installed. Run the Docker container with docker-compose up.</p>
+</section>
+<section id="setup-for-the-frontend-for-local-development" class="level2">
+<h2 class="anchored" data-anchor-id="setup-for-the-frontend-for-local-development">SetUp for the frontend for local development:</h2>
+<ul>
+<li>To run the frontend you have to use <code>npm run dev</code></li>
+<li>During the development<code>npm run tailwind</code> needs to bes started as well</li>
+</ul>
+</section>
+<section id="to-deploy-the-application" class="level2">
+<h2 class="anchored" data-anchor-id="to-deploy-the-application">To deploy the application:</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -839,7 +874,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/deployment.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/deployment.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
