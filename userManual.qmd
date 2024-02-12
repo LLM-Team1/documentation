@@ -2,7 +2,7 @@ On this page you learn how to navigate your way through the StratMystiqPro appli
 
 1. First step: Log-in
 To Log-in you are going to navigate form your Log-in screen to the Google-authentication field.  
-![User Manuel of StratMystiqPro](images/Log-in.png){width=100% .lightbox}
+![User Manuel of StratMystiqPro](images/Log-inPage.png){width=100% .lightbox}
 
 Nice to know: 
 When you click on the Symbol of StratMystiqPro in the upper left croner you land on our HomePage. Here we give you a short description on what our tool does and how it works. 
