@@ -480,6 +480,17 @@
     ]
   },
   {
+    "objectID": "Frontend/ux.html",
+    "href": "Frontend/ux.html",
+    "title": "User experience",
+    "section": "",
+    "text": "We have developed a logical user guidance for our frontend, in which the user is guided step by step through the process from uploading the PDF with the annual report to creating and viewing the finished SWOT analysis. (More in the User Guide)\nOverall, we have taken a minimalist approach to the design of the frontend. This means that we have made sure that we only have the most important elements on one page and arrange the individual elements in a recurring layout. Accordingly, the content of our pages is always centered and all text is left-aligned. For orientation, the navigation bar is always displayed at the top of the screen with the currently selected page highlighted. We also use only a few colors and a few gradations of them. Specifically, this is a dark blue as the background color, a lighter blue as the primary color, as well as gradations of it for all our elements and orange as an accent color, which we use for the buttons. We decided to use a dark background and a small number of colors to create a coherent and harmonious look and not distract the user from the content. We created this color combination using an online tool for creating color parallels and then adjusted it slightly. In addition, for reasons of readability and aesthetics, we use a shade of white as the text color to avoid too much contrast between the background and the text, which could otherwise lead to visual fatigue. (Albert 2016, pg. 60)\nWe have also deliberately decided to use rounded corners everywhere to create a softer look. In addition, all clickable elements are provided with a zoom effect or have a highlighted background as soon as you hover over them with the mouse so that they are even easier to recognize as such.\n\n\n\nFrontend Hover Text\n\n\n\n\n\nFrontend Hover Button\n\n\nFor reasons of accessibility, we have also made sure that the onClick functions are not placed on elements other than buttons, which also allows people with operating aids, such as a screen reader, to localize clickable elements.\nTo make it easier for users to use our tool and avoid unnecessary click paths, we automatically load the most recent analysis created by the user on the SWOT page when a report is selected, if one already exists. If no analysis has yet been created, we display a corresponding message at the top right of the screen to inform users that they must first create one. We also display such messages if the login has failed and if a new analysis is currently being generated, as this process takes some time.\n\n\n\nNo SWOT Analysis message\n\n\nDuring the upload and processing of a report, the progress is indicated by a loading bar. While the processing is running, the upload button is grayed out so that another report cannot be uploaded in the meantime.\n\n\n\nFrontend loading bar\n\n\n\n\n\nFrontend Hover Text\nFrontend Hover Button\nNo SWOT Analysis message\nFrontend loading bar\n\n\n\nAlbert, M. 2016. Besseres Mobile-App-Design: Optimale Usability Für iOS Und Android. entwickler.Press.",
+    "crumbs": [
+      "Frontend",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>User experience</span>"
+    ]
+  },
+  {
     "objectID": "deployment.html",
     "href": "deployment.html",
     "title": "Deployment",
@@ -487,7 +498,7 @@
     "text": "Set up the backend for local development:\nEnsure you have Python 3.11 or later installed. * Install the required dependencies with pip install -r requirements.txt. * Ensure that you have Docker installed. Start it with using Docker Compose up * Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb. * Run the application with python main.py. * The main.py script takes care of setting up the application. It creates the database tables if they don’t exist.\nDeployment for Testing and Production For testing and production environments, we use Docker. Check out the Dockerfile and docker-compose.yaml files in the root directory of the project for more details.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deployment</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Deployment</span>"
     ]
   },
   {
@@ -498,7 +509,7 @@
     "text": "SetUp for the frontend for local development:\n\nTo run the frontend you have to use npm run dev\nDuring the developmentnpm run tailwind needs to bes started as well",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deployment</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Deployment</span>"
     ]
   },
   {
@@ -509,7 +520,7 @@
     "text": "To deploy the application:",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Deployment</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Deployment</span>"
     ]
   },
   {
@@ -520,7 +531,7 @@
     "text": "1. First step: Log-in\nTo Log-in you are going to navigate form your Log-in screen to the Google-authentication field.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -531,7 +542,7 @@
     "text": "Nice to know:\nWhen you click on the Symbol of StratMystiqPro in the upper left croner you land on our HomePage. Here we give you a short description on what our tool does and how it works.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -542,7 +553,7 @@
     "text": "2. Second step: Upload reports\nAfter you successfully logged-in you should land on the MyReports-Page where you can upload reports and see which reports you already have uploaded.  To upload a new report you have to click the button Upload new report.  Then you can either choose or drag and drop a file into the field.  Afterwards you decide between checking the checkbox so the report is available for any user or not checking the box so the report is only be available for you.  After you uploaded the report you can klick on the “SWOT” field, this will guide you directly to the SWOT Page. If you want to delete a report you can do so over the traschcan symbol on the right side.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -553,7 +564,7 @@
     "text": "3. Thrid step: Create SWOT-Analysis\n Through the dropdown-menu you can select a report from the uploaded reports. If you have already created a SWOT analysis for the selected report it will be fetched automatically from the database. Then you can see the summary first for each category:  If you then click into one of the four categories you will get a full description for every given point:  If you want to create a new SWOT-Analysis you can press the button Create SWOT.  If the system is creating the SWOT you will get a pop-up in the upper right croner with a message that the SWOT-Analysis will be created now.  After 5-6 minutes the SWOT-Analysis should be created and the summary should be visible in each category.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -564,7 +575,7 @@
     "text": "4. Fourth step: Create Comparison-SWOT-Analysis.\nNow you landed on the Compare Companies Page. Here you can compare two bussiness reports from different companies with each other.  For this you can select two different reports in the drop-down menus. The same principle applies here as for the SWOT analysis. If you already created a Comparison-SWOT it will be fetched automatically after you selected the corresponding reports. The differences in each category will be listed in summary version first.  Then you can click into one of the category to see the full desricption for each difference.  If you want to create a new Comparisson-SWOT you can click the button Create SWOT Comparison after you selected two reports.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -575,7 +586,7 @@
     "text": "5. Fith step: Ask the ChatBot quastions about a report.\nOn the page Chatbot we created a Chatbot that is currently still work in progess and therefore an aplha version. The first thing you see is a disclaimer warning you that the Chatbot may give incorrect answers. You should be aware of this at any time you are using the Chatbot  The chatbot works the follwoing way: First you have to selecet a report that you have a question for. After this you can write the question in the text field and click send.  The system takes a few seconds to generate the answer so please be aware of this. Then you can see the answer to you question directly underneath it. The answer is based on the information given in the report.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -586,7 +597,7 @@
     "text": "6. Sixth step: Log-out\nWhen you have finished your analysis, you can log out by clicking on the icon in the top right-hand corner. From there you will be redirected back to the login screen.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -594,7 +605,7 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Lewis, Patrick, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir\nKarpukhin, Naman Goyal, Heinrich Küttler, et al. 2020.\n“Retrieval-Augmented Generation for Knowledge-Intensive Nlp\nTasks.” https://doi.org/10.48550/ARXIV.2005.11401.\n\n\nLi, Huayang, Yixuan Su, Deng Cai, Yan Wang, and Lemao Liu. 2022.\n“A Survey on Retrieval-Augmented Text Generation.” https://doi.org/10.48550/ARXIV.2202.01110.\n\n\nVite. n.d. “Vite Features.” Accessed January 10, 2024. https://vitejs.dev/guide/features.html.\n\n\nwebpack. n.d. “Hot Module Replacement.” Accessed January\n10, 2024. https://webpack.js.org/guides/hot-module-replacement/.",
+    "text": "Albert, M. 2016. Besseres Mobile-App-Design: Optimale Usability Für\niOS Und Android. entwickler.Press.\n\n\nLewis, Patrick, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir\nKarpukhin, Naman Goyal, Heinrich Küttler, et al. 2020.\n“Retrieval-Augmented Generation for Knowledge-Intensive Nlp\nTasks.” https://doi.org/10.48550/ARXIV.2005.11401.\n\n\nLi, Huayang, Yixuan Su, Deng Cai, Yan Wang, and Lemao Liu. 2022.\n“A Survey on Retrieval-Augmented Text Generation.” https://doi.org/10.48550/ARXIV.2202.01110.\n\n\nVite. n.d. “Vite Features.” Accessed January 10, 2024. https://vitejs.dev/guide/features.html.\n\n\nwebpack. n.d. “Hot Module Replacement.” Accessed January\n10, 2024. https://webpack.js.org/guides/hot-module-replacement/.",
     "crumbs": [
       "References"
     ]
