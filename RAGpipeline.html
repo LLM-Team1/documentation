@@ -357,13 +357,13 @@ div.csl-indent {
 <section id="introduction-to-retrieval-augmented-generation-rag" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-to-retrieval-augmented-generation-rag">Introduction to Retrieval Augmented Generation (RAG)</h2>
 <p>Retrieval-Augmented Generation (RAG) represents a significant advancement in the field of natural language processing (NLP) by combining the strengths of large language models (LLMs) with specific knowledge stored in external databases. <span class="citation" data-cites="li_survey_2022">(<a href="references.html#ref-li_survey_2022" role="doc-biblioref">Li et al. 2022</a>)</span> They are particularly useful for knowledge-intensive Natural Language Processing (NLP) tasks <span class="citation" data-cites="lewis_retrieval-augmented_2020">(<a href="references.html#ref-lewis_retrieval-augmented_2020" role="doc-biblioref">Lewis et al. 2020</a>)</span> and thus have been applied to various tasks including dialogue response generation, machine translation, and other generation tasks. <span class="citation" data-cites="li_survey_2022">(<a href="references.html#ref-li_survey_2022" role="doc-biblioref">Li et al. 2022</a>)</span></p>
-<p>As the focus of our project is to generate and compare SWOT Analyses, which is a complex generation task, our main focus was to implement a RAG pipeline that is capable of generating factual and relevant SWOT Analyses using a given annual report as the knowledge source. At the beginning of the project we explored basic RAG pipelines and then started to implement our own pipeline to suit our needs.</p>
+<p>As the focus of our project is to generate and compare SWOT Analyses, which is a complex generation task, our main goal was to implement a RAG pipeline that is capable of generating factual and relevant SWOT Analyses using the companies annual report as the knowledge source. At the beginning of the project we explored basic RAG pipelines and then started to implement our own pipeline to suit our needs.</p>
 </section>
 <section id="rag-pipelines" class="level2">
 <h2 class="anchored" data-anchor-id="rag-pipelines">RAG Pipelines</h2>
 <section id="langchain-base-rag" class="level3">
 <h3 class="anchored" data-anchor-id="langchain-base-rag">Langchain Base RAG</h3>
-<p>The first RAG pipeline we explored was build using the open-source library Langchain. The pipline utilized the standard Langchain document loaders, text splitters and RetrievalQA chain. The code below is an extract from our first RAG pipeline. The code for the full pipeline can be viewed in the RAG-Prototype folder of the main repository.</p>
+<p>The first RAG pipeline we explored was build using the open-source library Langchain. The pipeline utilized the standard Langchain document loaders, text splitters and RetrievalQA chain. The code below is an extract from our first RAG pipeline. The code for the full pipeline can be viewed in the RAG-Prototype folder of the StratMystiqPro repository.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain.prompts <span class="im">import</span> PromptTemplate</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain.chains <span class="im">import</span> RetrievalQA</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain.chat_models <span class="im">import</span> ChatOpenAI</span>
@@ -398,7 +398,7 @@ div.csl-indent {
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>question <span class="op">=</span> <span class="st">"What cars does Mercedes Benz produce?"</span></span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> qa_chain({<span class="st">"query"</span>: question})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We started experimenting with the Langchain pipeline and while it returned some relevant results, we found that the pipeline struggled to return relevant and factual information when the question was more complex. We tried to identify the cause of the issue and identified three areas that we believed could be causing the issue:</p>
+<p>We started experimenting with the Langchain pipeline and while it returned some relevant results, we found that the pipeline struggled to return relevant and factual information when the question was more complex or asked for specific numbers. We tried to identify the cause of the issue and identified three areas that we believed could be causing the issue:</p>
 <ol type="1">
 <li>The original document was not being split into relevant sections or the sections only contained partial information.</li>
 <li>A lot of relevant information is stored in tables and images, which the pipeline is not able to extract.</li>
@@ -408,28 +408,196 @@ div.csl-indent {
 </section>
 <section id="custom-rag-pipeline" class="level3">
 <h3 class="anchored" data-anchor-id="custom-rag-pipeline">Custom RAG Pipeline</h3>
+<p>During our research we came across the concept of advanced RAG. Advanced RAG is an evolution of the base or Naive RAG, designed to overcome its limitations through targeted improvements. In Advanced RAG, the focus is on refining the retrieval process with pre-retrieval and post-retrieval strategies as well as improving the document indexing. <span class="citation" data-cites="gao_retrieval-augmented_2023">(<a href="references.html#ref-gao_retrieval-augmented_2023" role="doc-biblioref">Gao et al. 2023</a>)</span></p>
+<p>We decided to follow the Advanced RAG approach of Gao et al.&nbsp;and decided to implement our own custom RAG pipeline. The three areas that we implemented for our custom RAG pipeline are:</p>
+<ul>
+<li>Document Ingestion
+<ul>
+<li>Table Extraction and Processing</li>
+<li>Text Chunking</li>
+</ul></li>
+<li>Pre-Retrieval
+<ul>
+<li>Query Expansion</li>
+<li>Query Reformulation</li>
+</ul></li>
+<li>Post-Retrieval
+<ul>
+<li>Document Filtering</li>
+<li>Relevance Checking</li>
+</ul></li>
+</ul>
+<p>The following image shows how the base RAG pipeline and the custom RAG pipeline differ. The orange boxes represent the areas where we implemented our own custom solutions.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/RAG-Pipelines.png" class="img-fluid figure-img"></p>
+<figcaption>RAG Pipeline | Adapted from <span class="citation" data-cites="gao_retrieval-augmented_2023">(<a href="references.html#ref-gao_retrieval-augmented_2023" role="doc-biblioref">Gao et al. 2023</a>)</span></figcaption>
+</figure>
+</div>
 <section id="document-ingestion" class="level4">
 <h4 class="anchored" data-anchor-id="document-ingestion">Document Ingestion</h4>
+<p>In the document ingestion phase, we implemented a custom solution to extract and process the relevant information from the annual reports. We noticed that a lot of relevant information was stored in tables and images, which the base RAG pipeline was not able to extract.</p>
 <section id="table-extraction" class="level5">
 <h5 class="anchored" data-anchor-id="table-extraction">Table Extraction</h5>
+<p>We first focused our attention on extracting the relevant information from the tables in the annual reports. We initially hoped that PDF files contain metadata that would identify the tables, but that is not the case. Through our research we came across multiple python libraries that claim to be able to identify and extract tables from PDF files. We tested the libraries <a href="https://pypi.org/project/camelot-py/">camelot-py</a>, <a href="https://pypi.org/project/tabula-py/">tabula-py</a> and <a href="https://pymupdf.readthedocs.io/en/latest/">pyMuPDF</a> and found that none of them were perfect at identifying and extracting tables from the annual reports. However, pyMuPDF seemed to be the most accurate and therefore decided to use it for our table extraction process.</p>
+<p>The following code shows how we used pyMuPDF to identify and extract the tables from the annual reports.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fitz</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> uuid</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the annual report</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> fitz.<span class="bu">open</span>(report_filepath)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> page <span class="kw">in</span> doc:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        table_data <span class="op">=</span> page.find_tables(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                        vertical_strategy<span class="op">=</span><span class="st">"text"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                        horizontal_strategy<span class="op">=</span><span class="st">"lines"</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                        )</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(table_data.tables) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Margin in points (2 cm)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            margin <span class="op">=</span> <span class="fl">56.7</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Scaling factor to increase resolution</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>            scale <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Applying the scaling factor</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>            matrix <span class="op">=</span> fitz.Matrix(scale, scale)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> table <span class="kw">in</span> table_data:</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Expanding bounding box with margin</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                expanded_bbox <span class="op">=</span> (</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">max</span>(table.bbox[<span class="dv">0</span>] <span class="op">-</span> margin, <span class="dv">0</span>),  <span class="co"># left</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">max</span>(table.bbox[<span class="dv">1</span>] <span class="op">-</span> margin, <span class="dv">0</span>),  <span class="co"># top</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">min</span>(table.bbox[<span class="dv">2</span>] <span class="op">+</span> margin, page.rect.width),  <span class="co"># right</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">min</span>(table.bbox[<span class="dv">3</span>] <span class="op">+</span> margin, page.rect.height)  <span class="co"># bottom</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Cropping the page to the expanded bounding box</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                rect <span class="op">=</span> fitz.Rect(expanded_bbox)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>                cropped_table <span class="op">=</span> page.get_pixmap(matrix<span class="op">=</span>matrix, clip<span class="op">=</span>rect)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Checks if correct directory exists</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="ss">f"./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">"</span>):</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>                    os.makedirs(<span class="ss">f"./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Saving the cropped table as a JPG</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>                table_id <span class="op">=</span> <span class="bu">str</span>(uuid.uuid4())</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>                cropped_table.save(<span class="ss">f"./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>table_id<span class="sc">}</span><span class="ss">.jpg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The screenshots of the tables can then be used to extract the relevant information from the tables. We decided to try AWS Textract and OpenAI’s Vision API to extract the relevant information from the tables. We found that OpenAI’s Vision API was more adaptable in extracting the relevant information from the tables as we could specify the output format and the specific information we wanted to extract.</p>
+<p>To use the Vision API, we also had to provide a prompt to the API that specifies the information we want to extract and the output format. This required a number of prompt iterations to get a reliable and accurate output. The initial prompt and the final prompt we used are shown below:</p>
+<p>Initial Prompt:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>table_extract_prompt_template <span class="op">=</span> <span class="st">"""Return the complete table content in JSON format. In the JSON also include a short description of the tables. Use the following as a template:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">{"tables": [</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">   {</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">        "title": "Forschung und Entwicklung",</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">        "description": "Forschung und Entwicklung",</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">        "unit": "in Millionen €",</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">        "table_data": [...]</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">   },</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">   {...}</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">   ]</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">DO NOT RETURN ANYTHING ELSE!"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Final Prompt:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table_extract_prompt_template <span class="op">=</span> <span class="st">"""Return the complete table content in JSON format, structured to accurately represent both main and sub-data entries. The JSON should include a short description of the tables. If the table includes hierarchical data, such as a total figure with underlying subdivisions, ensure to represent this relationship in the JSON structure.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">For tables with year-wise data:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">- Include main data entries with their corresponding sub-data as nested entries.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">- Clearly label data for each year.</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">For tables without year-wise data:</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">- Adjust the structure to suit the table's format, still capturing any hierarchical data relationships.</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">In all cases, do not calculate or infer values. Only include data that is clearly visible and legible in the table. Do not make up or estimate data.</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">Use the following template for tables with hierarchical year-wise data:</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="st">  "tables": [</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="st">    {</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="st">      "title": "Forschung und Entwicklung",</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="st">      "description": "Forschung und Entwicklung",</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="st">      "unit": "in Millionen €",</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="st">      "table_data": [</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="st">        {</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="st">          "row_description": "Total Earnings",</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="st">          "data_by_year": {</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="st">            "2021": "total for 2021",</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="st">            "2022": "total for 2022"</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="st">          },</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="st">          "sub_data": [</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="st">            {</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="st">              "sub_row_description": "Subdivision 1",</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="st">              "data_by_year": {</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="st">                "2021": "data for 2021",</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="st">                "2022": "data for 2022"</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="st">              }</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="st">            },</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="st">            // Additional subdivisions can be added here</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="st">          ]</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="st">        // Additional main rows can be added here</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="st">      ]</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="st">    // Additional tables can be added here</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="st">  ]</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="st">Adapt the structure for tables without year-wise data or hierarchical relationships as needed.</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="st">DO NOT RETURN ANYTHING ELSE!</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The whole process can also be seen in the following image:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Table-extraction-process.png" class="img-fluid figure-img"></p>
+<figcaption>Table Extraction Process</figcaption>
+</figure>
+</div>
 </section>
 <section id="text-extraction" class="level5">
 <h5 class="anchored" data-anchor-id="text-extraction">Text Extraction</h5>
+<p>We didn’t implement a custom solution for text extraction as we found that the Langchain Recursive Character Text Splitter did a good job at splitting the text into chunks. We did however define a list of custom separators that ensured that the text is not split in the middle of a sentence. We declared the separators as follows:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>separators<span class="op">=</span>[<span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>, <span class="st">"(?&lt;=\. )"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This means that when the chunk size is reached, the text will be split at either the next paragraph or the next sentence.</p>
+<p>Which brings us to the question of the ideal chunk size. We couldn’t find any literature that specified the ideal chunk size for RAG pipelines, so we decided to experiment with different chunk sizes ranging from 500 to 1000 characters. The evaluation of the different chunk sizes can be found in the <a href="./RAGevaluation.html##rag-evaluation">RAG Evaluation</a> section.</p>
 </section>
 </section>
 <section id="pre-retrieval" class="level4">
 <h4 class="anchored" data-anchor-id="pre-retrieval">Pre-Retrieval</h4>
+<p>The pre-retrieval phase focuses on refining the query to improve the retrieval process. The goal of refining the query is to align the semantics of the query with the semantics of the documents. <span class="citation" data-cites="wang_query2doc:_2023">(<a href="references.html#ref-wang_query2doc:_2023" role="doc-biblioref">Wang, Yang, and Wei 2023</a>)</span> A promising concept for this is GAR (Generation Augmented Retrieval), which is described in the paper: GAR meets RAG for Zero-Shot IR. The idea is to generate additional context for the query to improve the retrieval process. This can be achieved by replacing words with better synonyms, expanding the query with related words or reformulating the query to cover slightly different aspects of the same topic. <span class="citation" data-cites="arora_gar-meets-rag_2023">(<a href="references.html#ref-arora_gar-meets-rag_2023" role="doc-biblioref">Arora et al. 2023</a>)</span></p>
+<p>Like Arora et al., we are utilizing OpenAI LLMs to generate additional queries for the retrieval process. We didn’t use the Rewriting Prompt that Arora et al.&nbsp;created, but instead used their prompt as guidance to create our own use case specific prompt. The prompt we used is shown below:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>prompt_template <span class="op">=</span> <span class="st">"You are a professional annual business report writer. Analyse the users question and return three questions that are similar but use business vocabulary that can be found in annual business reports. Also think about being more specific or broader in the questions. Return them in JSON format."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The following example shows the input question and the generated questions that will be used to retrieve additional context.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Users question</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>question <span class="op">=</span> <span class="st">"What cars does Mercedes Benz produce?"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate additional questions</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>additional_questions <span class="op">=</span> {</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"q1"</span>: <span class="st">"What competitive advantages do Mercedes-Benz's product offerings possess in the luxury automotive segment?"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"q2"</span>: <span class="st">"How do the core competencies of Mercedes-Benz contribute to its market positioning within the automotive industry?"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"q3"</span>: <span class="st">"What are the key product features that differentiate Mercedes-Benz in the premium vehicle category?"</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="post-retrieval" class="level4">
 <h4 class="anchored" data-anchor-id="post-retrieval">Post-Retrieval</h4>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-arora_gar-meets-rag_2023" class="csl-entry" role="listitem">
+Arora, Daman, Anush Kini, Sayak Ray Chowdhury, Nagarajan Natarajan, Gaurav Sinha, and Amit Sharma. 2023. <span>“Gar-Meets-Rag Paradigm for Zero-Shot Information Retrieval.”</span> <a href="https://doi.org/10.48550/ARXIV.2310.20158">https://doi.org/10.48550/ARXIV.2310.20158</a>.
+</div>
+<div id="ref-gao_retrieval-augmented_2023" class="csl-entry" role="listitem">
+Gao, Yunfan, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi, Yi Dai, et al. 2023. <span>“Retrieval-Augmented Generation for Large Language Models: A Survey.”</span> <a href="https://doi.org/10.48550/ARXIV.2312.10997">https://doi.org/10.48550/ARXIV.2312.10997</a>.
+</div>
 <div id="ref-lewis_retrieval-augmented_2020" class="csl-entry" role="listitem">
 Lewis, Patrick, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Küttler, et al. 2020. <span>“Retrieval-Augmented Generation for Knowledge-Intensive Nlp Tasks.”</span> <a href="https://doi.org/10.48550/ARXIV.2005.11401">https://doi.org/10.48550/ARXIV.2005.11401</a>.
 </div>
 <div id="ref-li_survey_2022" class="csl-entry" role="listitem">
 Li, Huayang, Yixuan Su, Deng Cai, Yan Wang, and Lemao Liu. 2022. <span>“A Survey on Retrieval-Augmented Text Generation.”</span> <a href="https://doi.org/10.48550/ARXIV.2202.01110">https://doi.org/10.48550/ARXIV.2202.01110</a>.
+</div>
+<div id="ref-wang_query2doc:_2023" class="csl-entry" role="listitem">
+Wang, Liang, Nan Yang, and Furu Wei. 2023. <span>“Query2doc: Query Expansion with Large Language Models.”</span> <a href="https://doi.org/10.48550/ARXIV.2303.07678">https://doi.org/10.48550/ARXIV.2303.07678</a>.
 </div>
 </div>
 </section>
