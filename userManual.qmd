@@ -1,14 +1,15 @@
+#User Manual
 On this page you learn how to navigate your way through the StratMystiqPro application. 
 
-1. First step: Log-in
+##1. First step: Log-in
 To Log-in you are going to navigate form your Log-in screen to the Google-authentication field.  
 ![User Manuel of StratMystiqPro](images/Log-inPage.png){width=100% .lightbox}
 
-Nice to know: 
+##Nice to know: 
 When you click on the Symbol of StratMystiqPro in the upper left croner you land on our HomePage. Here we give you a short description on what our tool does and how it works. 
 ![User Manuel of StratMystiqPro](images/HomePage.png){width=100% .lightbox}
 
-2. Second step: Upload reports
+##2. Second step: Upload reports
 After you successfully logged-in you should land on the MyReports-Page where you can upload reports and see which reports you already have uploaded. 
 ![User Manuel of StratMystiqPro](images/Reports1.png){width=100% .lightbox}
 To upload a new report you have to click the button Upload new report.
@@ -20,7 +21,7 @@ Afterwards you decide between checking the checkbox so the report is available f
 After you uploaded the report you can klick on the "SWOT" field, this will guide you directly to the SWOT Page. If you want to delete a report you can do so over the traschcan symbol on the right side. 
 ![User Manuel of StratMystiqPro](images/Reports3.png){width=100% .lightbox}
 
-3. Thrid step: Create SWOT-Analysis
+##3. Thrid step: Create SWOT-Analysis
 ![User Manuel of StratMystiqPro](images/Swot1.png){width=100% .lightbox}
 Through the dropdown-menu you can select a report from the uploaded reports. 
 If you have already created a SWOT analysis for the selected report it will be fetched automatically from the database. Then you can see the summary first for each category: 
@@ -33,7 +34,7 @@ If the system is creating the SWOT you will get a pop-up in the upper right cron
 ![User Manuel of StratMystiqPro](images/Swot5.png){width=100% .lightbox}
 After 5-6 minutes the SWOT-Analysis should be created and the summary should be visible in each category. 
 
-4. Fourth step: Create Comparison-SWOT-Analysis.
+##4. Fourth step: Create Comparison-SWOT-Analysis.
 Now you landed on the Compare Companies Page. Here you can compare two bussiness reports from different companies with each other. 
 ![User Manuel of StratMystiqPro](images/SwotComparison1.png){width=100% .lightbox}
 For this you can select two different reports in the drop-down menus. 
@@ -43,7 +44,7 @@ Then you can click into one of the category to see the full desricption for each
 ![User Manuel of StratMystiqPro](images/SwotComparison3.png){width=100% .lightbox}
 If you want to create a new Comparisson-SWOT you can click the button Create SWOT Comparison after you selected two reports. 
 
-5. Fith step: Ask the ChatBot quastions about a report. 
+##5. Fith step: Ask the ChatBot quastions about a report. 
 On the page Chatbot we created a Chatbot that is currently still work in progess and therefore an aplha version. 
 The first thing you see is a disclaimer warning you that the Chatbot may give incorrect answers. You should be aware of this at any time you are using the Chatbot
 ![User Manuel of StratMystiqPro](images/Chatbot1.png){width=100% .lightbox}
@@ -55,6 +56,6 @@ The system takes a few seconds to generate the answer so please be aware of this
 Then you can see the answer to you question directly underneath it. The answer is based on the information given in the report. 
 ![User Manuel of StratMystiqPro](images/Chatbot3.png){width=100% .lightbox}
 
-6. Sixth step: Log-out 
+##6. Sixth step: Log-out 
 When you have finished your analysis, you can log out by clicking on the icon in the top right-hand corner. From there you will be redirected back to the login screen. 
 ![User Manuel of StratMystiqPro](images/Log-out.png){width=100% .lightbox}
