@@ -227,7 +227,50 @@ The whole process can also be seen in the following image:
 ![Table Extraction Process](images/Table-extraction-process.png)
 
 ##### Text Extraction
+We didn't implement a custom solution for text extraction as we found that the Langchain Recursive Character Text Splitter
+did a good job at splitting the text into chunks. We did however define a list of custom separators that ensured that
+the text is not split in the middle of a sentence. We declared the separators as follows:
+
+```python
+separators=["\n\n", "(?<=\. )"]
+```
+
+This means that when the chunk size is reached, the text will be split at either the next paragraph or the next sentence.
+
+Which brings us to the question of the ideal chunk size. We couldn't find any literature that specified the ideal chunk
+size for RAG pipelines, so we decided to experiment with different chunk sizes ranging from 500 to 1000 characters. The
+evaluation of the different chunk sizes can be found in the [RAG Evaluation](RAGevaluation.qmd##rag-evaluation) section.
+
 
 #### Pre-Retrieval
+The pre-retrieval phase focuses on refining the query to improve the retrieval process. The goal of refining the query is to
+align the semantics of the query with the semantics of the documents. [@wang_query2doc:_2023] A promising concept for this
+is GAR (Generation Augmented Retrieval), which is described in the paper: GAR meets RAG for Zero-Shot IR. The idea is to
+generate additional context for the query to improve the retrieval process. This can be achieved by replacing words with
+better synonyms, expanding the query with related words or reformulating the query to cover slightly different aspects of
+the same topic. [@arora_gar-meets-rag_2023]
+
+Like Arora et al., we are utilizing OpenAI LLMs to generate additional queries for the retrieval process.
+We didn't use the Rewriting Prompt that Arora et al. created, but instead used their prompt as guidance to create our own
+use case specific prompt. The prompt we used is shown below:
+
+```python
+prompt_template = "You are a professional annual business report writer. Analyse the users question and return three questions that are similar but use business vocabulary that can be found in annual business reports. Also think about being more specific or broader in the questions. Return them in JSON format."
+```
+
+The following example shows the input question and the generated questions that will be used to retrieve additional context.
+
+```python
+# Users question
+question = "What cars does Mercedes Benz produce?"
+
+# Generate additional questions
+additional_questions = {
+    "q1": "What competitive advantages do Mercedes-Benz's product offerings possess in the luxury automotive segment?",
+    "q2": "How do the core competencies of Mercedes-Benz contribute to its market positioning within the automotive industry?",
+    "q3": "What are the key product features that differentiate Mercedes-Benz in the premium vehicle category?"
+}
+```
+
 
 #### Post-Retrieval
