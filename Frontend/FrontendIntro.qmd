@@ -1,0 +1,26 @@
+# Frontend Documentation
+StratMystiqPro has a user-friendly frontend that was developed using the React web framework.
+In this section of the documentation, we will describe it in detail.
+
+## Overview of the frontend functionalities:
+- **Login and access to backend functions:**
+    - Registered users have the opportunity to use all functions of our backend. These include uploading annual reports and interacting with the RAG pipeline.
+
+- **Annual report processing:**
+    - Once an annual report has been uploaded, it is sent to our backend. There it passes through the RAG pipeline as described on the Page [RAG pipeline](../RAGpipeline.qmd).
+    - In the second step, the processed report can be used to create a SWOT analysis in the frontend.
+
+- **SWOT analysis generation:**
+    - Users can generate and display a SWOT analysis in the frontend.
+    - The basis for this is the processed annual report from the backend.
+
+- **Comparison of annual reports:**
+    - In addition to the individual analysis, our system offers the option of comparing analyses of two annual reports.
+    - Users can view the results of these comparisons in the front end.
+
+- **Chatbot support:**
+    - We have implemented a chatbot that allows users to ask self-formulated questions about a selected annual report.
+    - The chatbot offers an interactive way of requesting information and makes it easier to navigate the system.
+
+![Welcome page of StratMystiqPro](../images/Frontend/FrontendWelcomePage.png){width=100% .lightbox}
+
