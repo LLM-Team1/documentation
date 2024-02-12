@@ -1,12 +1,15 @@
 On this page you learn how to navigate your way through the StratMystiqPro application. 
 
 1. First step: Log-in
-To Log-in you are going to navigate form your Log-in screen to the Google-authentication field. It should look the following way: 
-![User Manuel of StratMystiqPro](images/Log-in1.png){width=100% .lightbox}
-![User Manuel of StratMystiqPro](images/Log-in2.png){width=100% .lightbox}
+To Log-in you are going to navigate form your Log-in screen to the Google-authentication field.  
+![User Manuel of StratMystiqPro](images/Log-in.png){width=100% .lightbox}
+
+Nice to know: 
+When you click on the Symbol of StratMystiqPro in the upper left croner you land on our HomePage. Here we give you a short description on what our tool does and how it works. 
+![User Manuel of StratMystiqPro](images/HomePage.png){width=100% .lightbox}
 
 2. Second step: Upload reports
-Now you should have landed on the MyReports-Page where you can upload reports and see which reports you already uploaded. 
+After you successfully logged-in you should land on the MyReports-Page where you can upload reports and see which reports you already have uploaded. 
 ![User Manuel of StratMystiqPro](images/Reports1.png){width=100% .lightbox}
 To upload a new report you have to click the button Upload new report.
 ![User Manuel of StratMystiqPro](images/Reports2.png){width=100% .lightbox}
