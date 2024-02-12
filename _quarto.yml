@@ -46,6 +46,10 @@ book:
         - RAGevaluation.qmd
         - backendArchitecture.qmd
         - frontendArchitecture.qmd
+    - part: Frontend
+      chapters:
+        - Frontend/FrontendIntro.qmd
+        - Frontend/Techstack.qmd
     - part: Usage
       chapters:
         - deployment.qmd
