@@ -274,3 +274,43 @@ additional_questions = {
 
 
 #### Post-Retrieval
+The post-retrieval phase focuses on filtering and evaluating the retrieved documents to ensure that only relevant
+information is passed to the LLM to generate the final answer. Both Gao et al. and Arora et al. proposed a similar
+approach to the post-retrieval phase. They suggest that the documents should be filtered based on their relevance then re-ranked
+and finally summarized/compressed. [@gao_retrieval-augmented_2023] [@arora_gar-meets-rag_2023]
+
+We evaluated the three proposed steps and noticed that another step is required to ensure that the documents are relevant.
+When querying for chunks with different but similar/related questions, the list of all retrieved chunks ended up containing
+several duplicates. As this would lead to unnecessary computation and cost, we decided that the first step of the
+post-retrieval phase should be to filter out the duplicates.
+
+After that, we implemented the relevance check for the chunks. Arora et al. did publish their relevance check prompt, however
+it turned out to be impractical for our use case. Their prompt was designed to evaluate all retrieved
+chunks at once, ranking them with a score from 1 to 5. This proofed to be impractical for us for three reasons:
+
+1. The number of retrieved chunks together with their length maxed out the input limit of the GPT-4-Turbo model. This resulted
+in the model not being able to evaluate all chunks at once. Meaning that the documents couldn't be scored based on all other chunks.
+2. The complex query resulted in a longer processing times, adding significant and unpredictable delays to the RAG pipeline.
+3. The very high token usage for the evaluation prompt resulted in a high cost for the evaluation process.
+
+Based on these reasons, we decided to create our own relevance check prompt that evaluates each chunk individually. Our prompt
+is designed to evaluate the relevance of the chunk based on the original question and the chunk itself. The prompt is shown below:
+
+```python
+prompt_template = "You are a professional business analyst. Analyse the given document and see if it contains information that is useful for answering the users question. Be very strict!. ONLY REPLY WITH YES OR NO. No need to be polite."
+```
+
+Based on the relevance check, we then removed all chunks that were not relevant. Leaving us with a list of relevant chunks.
+
+
+The next step in the model that Gao et al. suggested was to re-rank the documents. We decided to skip this step as the chunks
+were already ranked by the Max-Marginal-Relevance (MMR) algorithm that was used to retrieve the chunks and this additional step
+would once again be very token intensive. The MMR algorithm ranks the chunks based on their relevance to the query and their
+similarity to the other chunks. As we append the chunks found for the additional queries to the chunks found for the
+original query, we ensure that according to the MMR algorithm the most relevant chunks for the original question are at
+the top of the list.
+
+The final step in the post-retrieval phase is to summarize/compress the chunks. While we would have liked to implement this
+step, the approaches named by Gao et al. were all based on custom trained information extraction and compression models that
+we didn't have access to. To avoid more cost by having the LLM summarize the chunks, we decided to leave the chunks as they
+are and let the LLM generate the final answer based on the list of relevant chunks.
