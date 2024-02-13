@@ -12,23 +12,23 @@ When you click on the Symbol of StratMystiqPro in the upper left croner you land
 ## 2. Second step: Upload reports
 After you successfully logged-in you should land on the MyReports-Page where you can upload reports and see which reports you already have uploaded. 
 ![User Manuel of StratMystiqPro](images/Reports1.png){width=100% .lightbox}
-To upload a new report you have to click the button Upload new report.
+To upload a new report you have to click the button _Upload new Report_.
 ![User Manuel of StratMystiqPro](images/Reports2.png){width=100% .lightbox}
 Then you can either choose or drag and drop a file into the field. 
 ![User Manuel of StratMystiqPro](images/Reports4.png){width=100% .lightbox}
-Afterwards you decide between checking the checkbox so the report is available for any user or not checking the box so the report is only be available for you.
+Afterwards you decide between checking the checkbox so the report is available for every user or not checking the box so the report is only be available for you.
 ![User Manuel of StratMystiqPro](images/Reports5.png){width=100% .lightbox}
-After you uploaded the report you can klick on the "SWOT" field, this will guide you directly to the SWOT Page. If you want to delete a report you can do so over the traschcan symbol on the right side. 
+After you uploaded the report you can klick on the _SWOT_ field, this will guide you directly to the SWOT Page. If you want to delete a report you can do so over the traschcan symbol on the right side. 
 ![User Manuel of StratMystiqPro](images/Reports3.png){width=100% .lightbox}
 
 ## 3. Thrid step: Create SWOT-Analysis
 ![User Manuel of StratMystiqPro](images/Swot1.png){width=100% .lightbox}
 Through the dropdown-menu you can select a report from the uploaded reports. 
-If you have already created a SWOT analysis for the selected report it will be fetched automatically from the database. Then you can see the summary first for each category: 
+If you have already created a SWOT analysis for the selected report it will be automatically fetched from the database. Then you can see the summary first for each category: 
 ![User Manuel of StratMystiqPro](images/Swot2.png){width=100% .lightbox}
 If you then click into one of the four categories you will get a full description for every given point: 
 ![User Manuel of StratMystiqPro](images/Swot3.png){width=100% .lightbox}
-If you want to create a new SWOT-Analysis you can press the button Create SWOT. 
+If you want to create a new SWOT-Analysis you can press the button _Create SWOT_. 
 ![User Manuel of StratMystiqPro](images/Swot4.png){width=100% .lightbox}
 If the system is creating the SWOT you will get a pop-up in the upper right croner with a message that the SWOT-Analysis will be created now. 
 ![User Manuel of StratMystiqPro](images/Swot5.png){width=100% .lightbox}
@@ -42,7 +42,7 @@ The same principle applies here as for the SWOT analysis. If you already created
 ![User Manuel of StratMystiqPro](images/SwotComparison2.png){width=100% .lightbox}
 Then you can click into one of the category to see the full desricption for each difference. 
 ![User Manuel of StratMystiqPro](images/SwotComparison3.png){width=100% .lightbox}
-If you want to create a new Comparisson-SWOT you can click the button Create SWOT Comparison after you selected two reports. 
+If you want to create a new Comparison-SWOT you can click the button _Create SWOT Comparison_ after you selected two reports. 
 
 ## 5. Fith step: Ask the ChatBot quastions about a report. 
 On the page Chatbot we created a Chatbot that is currently still work in progess and therefore an aplha version. 
@@ -50,7 +50,7 @@ The first thing you see is a disclaimer warning you that the Chatbot may give in
 ![User Manuel of StratMystiqPro](images/Chatbot1.png){width=100% .lightbox}
 The chatbot works the follwoing way: 
 First you have to selecet a report that you have a question for. 
-After this you can write the question in the text field and click send. 
+After this you can write the question in the text field and click _send_. 
 ![User Manuel of StratMystiqPro](images/Chatbot2.png){width=100% .lightbox}
 The system takes a few seconds to generate the answer so please be aware of this. 
 Then you can see the answer to you question directly underneath it. The answer is based on the information given in the report. 
