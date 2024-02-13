@@ -1,6 +1,12 @@
 # Component description
 As is typical for React, we have built components for all our elements that we can reuse modularly elsewhere.
 We first planned and designed these components in Figma and then implemented them.
+Shown here is our first Figma design, which still contains a few things that we adjusted compared to the final implementation,
+such as the left orientation of the texts and elements, as well as the colors.
+
+![Primal Figma design of the upload page](../images/Frontend/FigmaUploadPage.png){width=100% group="figma" .lightbox}
+![Primal Figma design of the SWOT-Matrix](../images/Frontend/FigmaSWOTMatrix.png){width=100% group="figma" .lightbox}
+
 One example of this is the complete SWOT matrix, which is used on both the SWOT page and the comparison page.
 The same applies to the button component, which we use wherever the orange button is required. The two tables on the My Reports page are also based on the same component.
 This division of the individual elements into components makes it easier for us to assemble new elements from them without having to rebuild the respective components each time.
