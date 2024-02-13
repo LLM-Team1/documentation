@@ -15,7 +15,7 @@ Ensure you have Python 3.11 or later installed.
 * Ensure that you have Node.js and npm installed
 * Install the required dependencies with: npm install
 * To run the frontend you have to use  `npm run dev`
-* During the development`npm run tailwind` needs to bes started as well
+* During the development`npm run tailwind` needs to be started as well
 
 ## To deploy the application:
 * Check the Dockerfile and docker-compose.yaml files in the root directory of the project
