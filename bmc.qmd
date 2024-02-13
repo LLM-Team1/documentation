@@ -221,16 +221,8 @@ The tool consists of many different features to analyze the annual reports. We a
 company profile/ summary, SWOT analysis, Business Model Canvas, and BCG Matrix, to then extend these features in the
 future to give our customers even more options to analyze the annual reports.
 
-Our customers choose which competitors they would like to analyze. They simply select or upload the annual report of a
-relevant competitor and start analyzing by using our features such as the SWOT Analysis.
-
-The tool consists of many different features to analyze the annual reports. We are planning to first publish the
-company profile/ summary, SWOT analysis, Business Model Canvas, and BCG Matrix, to then extend these features in the
-future to give our customers even more options to analyze the annual reports.
-
-
 ## Customer Segments
-As our customer Segments we decided to be focusing on companies in the automotive industry. This industry is currently
+As our customer segments we decided to be focusing on companies in the automotive industry. This industry is currently
 extremely fast moving and the competition between those companies is on an all time high. One of the biggest reasons is
 the development of environmentally friendly vehicles and the rising competition by brands on the Asian market. This
 makes it very important for the affected companies to keep an eye on their competition and arising trends -making them
