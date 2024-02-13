@@ -4,7 +4,7 @@ On this page ypu learn how to set up the application for local development and d
 
 ## Set up the backend for local development:
 
-Ensure you have Python 3.11 or later installed.
+* Ensure you have Python 3.11 or later installed.
 * Install the required dependencies with pip install -r requirements.txt.
 * Ensure that you have Docker installed. Start it with using Docker Compose up
 * Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb.
