@@ -385,7 +385,7 @@ div.csl-indent {
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            embedding_function<span class="op">=</span>embedding_function)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>llm_name <span class="op">=</span> <span class="st">"gpt-3.5-turbo"</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>llm <span class="op">=</span> ChatOpenAI(model_name<span class="op">=</span>llm_name, temperature</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>llm <span class="op">=</span> ChatOpenAI(model_name<span class="op">=</span>llm_name, temperature)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>template <span class="op">=</span> <span class="st">"""Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't make up an answer. Use five sentences maximum. Keep the answer as concise as possible.</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">Context: </span><span class="sc">{context}</span></span>
@@ -414,7 +414,7 @@ div.csl-indent {
 <section id="custom-rag-pipeline" class="level3">
 <h3 class="anchored" data-anchor-id="custom-rag-pipeline">Custom RAG Pipeline</h3>
 <p>During our research we came across the concept of advanced RAG. Advanced RAG is an evolution of the base or Naive RAG, designed to overcome its limitations through targeted improvements. In Advanced RAG, the focus is on refining the retrieval process with pre-retrieval and post-retrieval strategies as well as improving the document indexing. <span class="citation" data-cites="gao_retrieval-augmented_2023">(<a href="references.html#ref-gao_retrieval-augmented_2023" role="doc-biblioref">Gao et al. 2023</a>)</span></p>
-<p>We decided to follow the Advanced RAG approach of Gao et al.&nbsp;and decided to implement our own custom RAG pipeline. The three areas that we implemented for our custom RAG pipeline are:</p>
+<p>We decided to follow the Advanced RAG approach of Gao et al.&nbsp;and implement our own custom RAG pipeline. The three areas that we implemented for our custom RAG pipeline are:</p>
 <ul>
 <li>Document Ingestion
 <ul>
@@ -444,7 +444,7 @@ div.csl-indent {
 <p>In the document ingestion phase, we implemented a custom solution to extract and process the relevant information from the annual reports. We noticed that a lot of relevant information was stored in tables and images, which the base RAG pipeline was not able to extract.</p>
 <section id="table-extraction" class="level5">
 <h5 class="anchored" data-anchor-id="table-extraction">Table Extraction</h5>
-<p>We first focused our attention on extracting the relevant information from the tables in the annual reports. We initially hoped that PDF files contain metadata that would identify the tables, but that is not the case. Through our research we came across multiple python libraries that claim to be able to identify and extract tables from PDF files. We tested the libraries <a href="https://pypi.org/project/camelot-py/">camelot-py</a>, <a href="https://pypi.org/project/tabula-py/">tabula-py</a> and <a href="https://pymupdf.readthedocs.io/en/latest/">pyMuPDF</a> and found that none of them were perfect at identifying and extracting tables from the annual reports. However, pyMuPDF seemed to be the most accurate and therefore decided to use it for our table extraction process.</p>
+<p>We first focused our attention on extracting the relevant information from the tables in the annual reports. We initially hoped that PDF files contain metadata that would identify the tables, but that is not the case. Through our research we came across multiple python libraries that claim to be able to identify and extract tables from PDF files. We tested the libraries <a href="https://pypi.org/project/camelot-py/">camelot-py</a>, <a href="https://pypi.org/project/tabula-py/">tabula-py</a> and <a href="https://pymupdf.readthedocs.io/en/latest/">pyMuPDF</a> and found that none of them were perfect at identifying and extracting tables from the annual reports. However, pyMuPDF seemed to be the most accurate and therefore we decided to use it for our table extraction process.</p>
 <p>The following code shows how we used pyMuPDF to identify and extract the tables from the annual reports.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fitz</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> uuid</span>
