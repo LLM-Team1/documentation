@@ -32,7 +32,7 @@ db = Chroma(client=client,
             embedding_function=embedding_function)
 
 llm_name = "gpt-3.5-turbo"
-llm = ChatOpenAI(model_name=llm_name, temperature
+llm = ChatOpenAI(model_name=llm_name, temperature)
 
 template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't make up an answer. Use five sentences maximum. Keep the answer as concise as possible.
 Context: {context}
@@ -67,7 +67,7 @@ During our research we came across the concept of advanced RAG. Advanced RAG is 
 designed to overcome its limitations through targeted improvements. In Advanced RAG, the focus is on refining the retrieval
 process with pre-retrieval and post-retrieval strategies as well as improving the document indexing. [@gao_retrieval-augmented_2023]
 
-We decided to follow the Advanced RAG approach of Gao et al. and decided to implement our own custom RAG pipeline.
+We decided to follow the Advanced RAG approach of Gao et al. and implement our own custom RAG pipeline.
 The three areas that we implemented for our custom RAG pipeline are:
 
 - Document Ingestion
@@ -96,7 +96,7 @@ hoped that PDF files contain metadata that would identify the tables, but that i
 we came across multiple python libraries that claim to be able to identify and extract tables from PDF files. We tested the libraries
 [camelot-py](https://pypi.org/project/camelot-py/), [tabula-py](https://pypi.org/project/tabula-py/) and [pyMuPDF](https://pymupdf.readthedocs.io/en/latest/)
 and found that none of them were perfect at identifying and extracting tables from the annual reports. However, pyMuPDF
-seemed to be the most accurate and therefore decided to use it for our table extraction process.
+seemed to be the most accurate and therefore we decided to use it for our table extraction process.
 
 The following code shows how we used pyMuPDF to identify and extract the tables from the annual reports.
 
