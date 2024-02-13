@@ -1,15 +1,14 @@
 # Introduction and Project Overview
 
-In this module we got the task to identify a use case from a business model canvas to improve a business unit or
-different part of an existing company.
+In this course our goal was to build a LLM application. Therefore we created a use case and build a business model canvas and identified a business unit that could be improved through such a LLM application. 
 
 Together with Mr. Kirenz we decided to first define our [use case](https://llm-team1.github.io/documentation/usecase.html)
 to then create a business model from there on. Our use case was based on the idea of finding a way to make business
 analysis quick and easy for a wide range of potential customers. After that we constructed the business model around
-this use case. You can read more about the use case identification and modelling of our Business Model Canvas
+this use case. You can read more about the use case identification and modelling of our Business Model Canvas 
 [here](https://llm-team1.github.io/documentation/bmc.html). For a more visual understanding of our startups' next goals
 we created a [strategy map](https://llm-team1.github.io/documentation/strategyMap.html) showing the directions our
-start up would go in the future.
+start up could go in the future.
 
 Our solution takes the findings of our use case identification and transform them into a software as a service
 (SaaS) solution. This solution provides an analysis tool for [our customers](https://llm-team1.github.io/documentation/userPersona.html)
