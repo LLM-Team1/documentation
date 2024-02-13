@@ -381,6 +381,28 @@
     ]
   },
   {
+    "objectID": "BackendArchitecture/API.html",
+    "href": "BackendArchitecture/API.html",
+    "title": "REST API",
+    "section": "",
+    "text": "Architecture\nIn our system, we have created a separate endpoint in the API for each function that is required in the front end, which can be used to access this function. The functions are divided into different routes for the sake of clarity. These are System Services, Chat Services (Experimental), File Services and SWOT Analysis. Each of these routes then has one or more end points that we can call via this address in combination with the CRUD method. To add a new endpoint, we simply need to create a new one as shown here. It is also important to note that we have kept the API and the logic very strictly separate. All functions that are more extensive than a simple DB access are outsourced to other files and are only called in the API.",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>REST API</span>"
+    ]
+  },
+  {
+    "objectID": "BackendArchitecture/API.html#architecture",
+    "href": "BackendArchitecture/API.html#architecture",
+    "title": "REST API",
+    "section": "",
+    "text": "@app.get(\"/\")\nasync def root():\n    \"\"\"Test DB-Status\"\"\"\n    config = Config()\n    if config.db.collection.peek() is not None:\n        return {'status': 'ok'}\n    else:\n        return {'status': 'error'}\n\nSystem Services\nPath: /system/v1\nInfo: For more information have a look in the Code-File /routers/system.py\n/login: This function is called to log in the user. In case the user doesn’t exist in the DB, it is created.\n\n\nChat Services (Experimental)\nPath: /chat/v1\nInfo: For more information have a look in the Code-File /routers/chat.py\n/advanced_qa: Answer questions about the reports\n\n\nFile Services\nPath: /files/v1\nInfo: For more information have a look in the Code-File /routers/file.py\n/ingest: Starts the ingestion of the file to the database and returns the task id\n/status/{task_id}: Obtain the processing status of a recently uploaded file.\n/uploaded_reports: Get all reports the user has access to\n/delete_report: Remove a report from the database\n/pdf_file: Get pdf file from the database\n/analyse/table: Creates embeddings for the table screenshots from the annual reports\n\n\nSWOT Analysis\nPath: /swot/v1\nInfo: For more information have a look in the Code-File /routers/swot.py\n/swot/{report_id}: List available swot analysis\n/swot/{report_id}/{analysis_id}: Get a specific swot analysis from the database\n/swot/{report_id}: Create a new swot analysis to a given report\n/swot/{report_id}/vs/{compare_report_id}: Get a specific swot analysis comparison from the database\n/swot/{report_id}/vs/{compare_report_id}: Create a new swot analysis comparison for two given reports\n/latestAnalysis: Retrieve the latest SWOT analysis form the database for a given report\n\n\ndefault\nPath: /\nInfo: For more information have a look in the Code-File /main.py\n/: Test DB-Status\n/test_backend_connection: Test Backend-Status",
+    "crumbs": [
+      "System Design",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>REST API</span>"
+    ]
+  },
+  {
     "objectID": "Frontend/FrontendIntro.html",
     "href": "Frontend/FrontendIntro.html",
     "title": "Frontend Documentation",
@@ -388,7 +410,7 @@
     "text": "Overview of the frontend functionalities:",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Frontend Documentation</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Documentation</span>"
     ]
   },
   {
@@ -399,7 +421,7 @@
     "text": "Login and access to backend functions:\n\nRegistered users have the opportunity to use all functions of our backend. These include uploading annual reports and interacting with the RAG pipeline.\n\nAnnual report processing:\n\nOnce an annual report has been uploaded, it is sent to our backend. There it passes through the RAG pipeline as described on the Page RAG pipeline.\nIn the second step, the processed report can be used to create a SWOT analysis in the frontend.\n\nSWOT analysis generation:\n\nUsers can generate and display a SWOT analysis in the frontend.\nThe basis for this is the processed annual report from the backend.\n\nComparison of annual reports:\n\nIn addition to the individual analysis, our system offers the option of comparing analyses of two annual reports.\nUsers can view the results of these comparisons in the front end.\n\nChatbot support:\n\nWe have implemented a chatbot that allows users to ask self-formulated questions about a selected annual report.\nThe chatbot offers an interactive way of requesting information and makes it easier to navigate the system.\n\n\n\n\n\nWelcome page of StratMystiqPro\n\n\n\n\n\nWelcome page of StratMystiqPro",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Frontend Documentation</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Documentation</span>"
     ]
   },
   {
@@ -410,7 +432,7 @@
     "text": "React\nThe choice to use React as a frontend instead of other web frontends, some of which are based on Python, was made because it allows us to use and style individual components, making our UI more adaptable to the use case and, in particular, to the subsequent users described in the personas. We have also already had good experience with React in the past, which we were happy to expand on in this project. Another reason is that, compared to the other frameworks tested, Streamlib and Gradio, user authentication via Google Login was much easier to implement here.",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Frontend Techstack</span>"
     ]
   },
   {
@@ -421,7 +443,7 @@
     "text": "Vite\nWe also opted for Vite as a development server for React, as it offers several advantages in terms of building times and ease of development. In addition to a much faster server startup time and building time for deployment, rebuilding when changing the code during development also takes place with almost no waiting time. This becomes particularly important when the size of the project increases, but the difference is also very noticeable with a project of our size. This increase in performance is achieved by so-called native ESM (ECMAScript Module) and the Hot Module Replacement (HMR) that this enables. This means that individual parts of the application can be replaced during operation without having to reload the entire page if the code is changed and this component needs to be rebuilt. This also preserves the state of the page, which means, for example, that all entries made are not lost and it is not necessary to log back in with Google. (webpack n.d.) (Vite n.d.)",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Frontend Techstack</span>"
     ]
   },
   {
@@ -432,7 +454,7 @@
     "text": "TypeScript\nFor the functional development of the frontend, we chose TypeScript as our programming language instead of typical JavaScript. It enables type-safe development by enforcing types and interfaces for all variables and the associated better error analysis.",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Frontend Techstack</span>"
     ]
   },
   {
@@ -443,7 +465,7 @@
     "text": "TailwindCSS\nFor styling, we use the TailwindCSS framework, which combines typical CSS functions into classes that can be applied directly to the individual elements in the HTML code, similar to inline css. This makes styling easier for us and, from our point of view, makes it easier to maintain the code and keep it clearer, as the styling of the individual HTML elements is not outsourced to an external CSS file, but is implemented directly in the code where it is later used. It also makes it easy to create responsive designs.",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Frontend Techstack</span>"
     ]
   },
   {
@@ -454,7 +476,7 @@
     "text": "MaterialUI\nNevertheless, we used the MaterialUI component library for some components, as we did not have to create the elements ourselves. We used the framework of the dialog and dropdown component from MaterialUI for our popup and added our own content there. The advantage of this ready-made component is that it already has an animation for opening and closing, as well as a responsive design. Building this component ourselves would have taken some time and the result would have been about the same.",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Frontend Techstack</span>"
     ]
   },
   {
@@ -465,7 +487,7 @@
     "text": "ESlint and Prettier\nWe also use the formatting and linting tools Prettier and ESLint to increase code quality. Prettier ensures that the code is in a uniform format. This means, for example, that all indentations, breaks and spaces in brackets are always consistent across all files. ESlint helps to analyze the code for errors and avoid bad coding style. For example, it throws a warning if the same code is found in multiple files and then suggests exporting it or warns if an attempt is made to access variables or functions that do not exist. Without this help, such an error would only become apparent at runtime and possibly cause the program to crash.",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Frontend Techstack</span>"
     ]
   },
   {
@@ -476,7 +498,7 @@
     "text": "Google Single-Sign-on\nAnother important library that we use in the frontend is that of the Google Single-Sign-on identity provider. Here we have the option of simple and reliable user authentication by requiring users to log in to our frontend with their Google account. We then identify the users via the JWT token returned by the identity provider by reading the ID it contains and comparing it with our database.\n\n\n\n\nVite. n.d. “Vite Features.” Accessed January 10, 2024. https://vitejs.dev/guide/features.html.\n\n\nwebpack. n.d. “Hot Module Replacement.” Accessed January 10, 2024. https://webpack.js.org/guides/hot-module-replacement/.",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Frontend Techstack</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Frontend Techstack</span>"
     ]
   },
   {
@@ -487,7 +509,7 @@
     "text": "We have developed a logical user guidance for our frontend, in which the user is guided step by step through the process from uploading the PDF with the annual report to creating and viewing the finished SWOT analysis. (More in the User Guide)\nOverall, we have taken a minimalist approach to the design of the frontend. This means that we have made sure that we only have the most important elements on one page and arrange the individual elements in a recurring layout. Accordingly, the content of our pages is always centered and all text is left-aligned. For orientation, the navigation bar is always displayed at the top of the screen with the currently selected page highlighted. We also use only a few colors and a few gradations of them. Specifically, this is a dark blue as the background color, a lighter blue as the primary color, as well as gradations of it for all our elements and orange as an accent color, which we use for the buttons. We decided to use a dark background and a small number of colors to create a coherent and harmonious look and not distract the user from the content. We created this color combination using an online tool for creating color parallels and then adjusted it slightly. In addition, for reasons of readability and aesthetics, we use a shade of white as the text color to avoid too much contrast between the background and the text, which could otherwise lead to visual fatigue. (Albert 2016, pg. 60)\nWe have also deliberately decided to use rounded corners everywhere to create a softer look. In addition, all clickable elements are provided with a zoom effect or have a highlighted background as soon as you hover over them with the mouse so that they are even easier to recognize as such.\n\n\n\nFrontend Hover Text\n\n\n\n\n\nFrontend Hover Button\n\n\nFor reasons of accessibility, we have also made sure that the onClick functions are not placed on elements other than buttons, which also allows people with operating aids, such as a screen reader, to localize clickable elements.\nTo make it easier for users to use our tool and avoid unnecessary click paths, we automatically load the most recent analysis created by the user on the SWOT page when a report is selected, if one already exists. If no analysis has yet been created, we display a corresponding message at the top right of the screen to inform users that they must first create one. We also display such messages if the login has failed and if a new analysis is currently being generated, as this process takes some time.\n\n\n\nNo SWOT Analysis message\n\n\nDuring the upload and processing of a report, the progress is indicated by a loading bar. While the processing is running, the upload button is grayed out so that another report cannot be uploaded in the meantime.\n\n\n\nFrontend loading bar\n\n\n\n\n\nFrontend Hover Text\nFrontend Hover Button\nNo SWOT Analysis message\nFrontend loading bar\n\n\n\nAlbert, M. 2016. Besseres Mobile-App-Design: Optimale Usability Für iOS Und Android. entwickler.Press.",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>User experience</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>User experience</span>"
     ]
   },
   {
@@ -498,7 +520,7 @@
     "text": "As is typical for React, we have built components for all our elements that we can reuse modularly elsewhere. We first planned and designed these components in Figma and then implemented them. One example of this is the complete SWOT matrix, which is used on both the SWOT page and the comparison page. The same applies to the button component, which we use wherever the orange button is required. The two tables on the My Reports page are also based on the same component. This division of the individual elements into components makes it easier for us to assemble new elements from them without having to rebuild the respective components each time. All of them also have interfaces for adjusting individual parameters, such as color, text or, of course, if they display dynamic data from the database, a way to read it in. From a development point of view, a granular division into components makes sense above all if they can be reused in other elements and therefore do not have to be developed anew for each element. Above all, this saves time and also avoids malfunctions, as you don’t have to write functionally identical or similar code multiple times. You also don’t have to make sure that you implement the same design every time, as this is already specified by the component.\nWhen styling the components, we consistently developed and implemented a design adapted for smaller screens in addition to the normal design for large screens. The frontend was developed desktop first, i.e. we focused primarily on large screen sizes and only adapted the existing design for small screens in a second step. By individually adapting the components to the mobile design only when the available space makes it necessary, we have a seamless responsiveness that works on practically all common screen sizes.",
     "crumbs": [
       "Frontend",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Component description</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Component description</span>"
     ]
   },
   {
@@ -509,7 +531,7 @@
     "text": "Set up the backend for local development:",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deployment</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Deployment</span>"
     ]
   },
   {
@@ -520,7 +542,7 @@
     "text": "Ensure you have Python 3.11 or later installed.\nInstall the required dependencies with pip install -r requirements.txt.\nEnsure that you have Docker installed. Start it with using Docker Compose up\nEnsure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb.\nRun the application with python main.py.\nThe main.py script takes care of setting up the application. It creates the database tables if they don’t exist.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deployment</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Deployment</span>"
     ]
   },
   {
@@ -531,7 +553,7 @@
     "text": "SetUp for the frontend for local development:\n\nEnsure that you have Node.js and npm installed\nInstall the required dependencies with: npm install\nTo run the frontend you have to use npm run dev\nDuring the developmentnpm run tailwind needs to be started as well",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deployment</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Deployment</span>"
     ]
   },
   {
@@ -542,7 +564,7 @@
     "text": "To deploy the application:\n\nCheck the Dockerfile and docker-compose.yaml files in the root directory of the project\nIf necessary, adjust the configuration in the Dockerfile and docker-compose.yaml files\nTo build and start the containers, use: docker-compose up –build\nThe application should now run in Docker containers and be accessible via the specified ports.\nMake sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deployment</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Deployment</span>"
     ]
   },
   {
@@ -553,7 +575,7 @@
     "text": "1. First step: Log-in\nTo Log-in you are going to navigate form your Log-in screen to the Google-authentication field.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -564,7 +586,7 @@
     "text": "Nice to know:\nWhen you click on the Symbol of StratMystiqPro in the upper left croner you land on our HomePage. Here we give you a short description on what our tool does and how it works.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -575,7 +597,7 @@
     "text": "2. Second step: Upload reports\nAfter you successfully logged-in you should land on the MyReports-Page where you can upload reports and see which reports you already have uploaded.  To upload a new report you have to click the button Upload new Report.  Then you can either choose or drag and drop a file into the field.  Afterwards you decide between checking the checkbox so the report is available for every user or not checking the box so the report is only be available for you.  After you uploaded the report you can klick on the SWOT field, this will guide you directly to the SWOT Page. If you want to delete a report you can do so over the traschcan symbol on the right side.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -586,7 +608,7 @@
     "text": "3. Thrid step: Create SWOT-Analysis\n Through the dropdown-menu you can select a report from the uploaded reports. If you have already created a SWOT analysis for the selected report it will be automatically fetched from the database. Then you can see the summary first for each category:  If you then click into one of the four categories you will get a full description for every given point:  If you want to create a new SWOT-Analysis you can press the button Create SWOT.  If the system is creating the SWOT you will get a pop-up in the upper right croner with a message that the SWOT-Analysis will be created now.  After 5-6 minutes the SWOT-Analysis should be created and the summary should be visible in each category.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -597,7 +619,7 @@
     "text": "4. Fourth step: Create Comparison-SWOT-Analysis.\nNow you landed on the Compare Companies Page. Here you can compare two bussiness reports from different companies with each other.  For this you can select two different reports in the drop-down menus. The same principle applies here as for the SWOT analysis. If you already created a Comparison-SWOT it will be fetched automatically after you selected the corresponding reports. The differences in each category will be listed in summary version first.  Then you can click into one of the category to see the full desricption for each difference.  If you want to create a new Comparison-SWOT you can click the button Create SWOT Comparison after you selected two reports.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -608,7 +630,7 @@
     "text": "5. Fith step: Ask the ChatBot quastions about a report.\nOn the page Chatbot we created a Chatbot that is currently still work in progess and therefore an aplha version. The first thing you see is a disclaimer warning you that the Chatbot may give incorrect answers. You should be aware of this at any time you are using the Chatbot  The chatbot works the follwoing way: First you have to selecet a report that you have a question for. After this you can write the question in the text field and click send.  The system takes a few seconds to generate the answer so please be aware of this. Then you can see the answer to you question directly underneath it. The answer is based on the information given in the report.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {
@@ -619,7 +641,7 @@
     "text": "6. Sixth step: Log-out\nWhen you have finished your analysis, you can log out by clicking on the icon in the top right-hand corner. From there you will be redirected back to the login screen.",
     "crumbs": [
       "Usage",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>User Manual</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>User Manual</span>"
     ]
   },
   {

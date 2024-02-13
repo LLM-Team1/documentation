@@ -8,7 +8,7 @@
 
 <meta name="description" content="StratMystiqPro - A tool for quick strategic insights">
 
-<title>StratMystiqPro Documentation - References</title>
+<title>StratMystiqPro Documentation - REST API</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,48 +21,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./userManual.html" rel="prev">
-<link href=".//images/StratMystiq-Icon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Frontend/FrontendIntro.html" rel="next">
+<link href="../BackendArchitecture/GoogleAuth.html" rel="prev">
+<link href="..//images/StratMystiq-Icon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -92,7 +108,7 @@ div.csl-indent {
 }</script>
 
 
-<meta property="og:title" content="StratMystiqPro Documentation - References">
+<meta property="og:title" content="StratMystiqPro Documentation - REST API">
 <meta property="og:description" content="StratMystiqPro - A tool for quick strategic insights">
 <meta property="og:image" content="https://LMM-Team1.github.io/documentation//images/StratMystiq-Icon.png">
 <meta property="og:site_name" content="StratMystiqPro Documentation">
@@ -109,7 +125,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../RAGpipeline.html">System Design</a></li><li class="breadcrumb-item"><a href="../BackendArchitecture/API.html"><span class="chapter-title">REST API</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -123,11 +139,11 @@ div.csl-indent {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/StratMystiq-Icon.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/StratMystiq-Icon.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">StratMystiqPro Documentation</a> 
+      <a href="../">StratMystiqPro Documentation</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/LLM-Team1/documentation" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -143,13 +159,13 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction and Project Overview</span></a>
+  <a href="../intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction and Project Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -163,27 +179,27 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./usecase.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Usecase</span></a>
+  <a href="../usecase.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Usecase</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./userPersona.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User Persona</span></a>
+  <a href="../userPersona.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User Persona</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Business Model Canvas and Use Case Identification</span></a>
+  <a href="../bmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Business Model Canvas and Use Case Identification</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./strategyMap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Strategy Map</span></a>
+  <a href="../strategyMap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Strategy Map</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./valueProposition.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Value Proposition</span></a>
+  <a href="../valueProposition.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Value Proposition</span></a>
   </div>
 </li>
       </ul>
@@ -199,32 +215,32 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./RAGpipeline.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">RAG Pipeline</span></a>
+  <a href="../RAGpipeline.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">RAG Pipeline</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./RAGevaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">RAG Evaluation</span></a>
+  <a href="../RAGevaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">RAG Evaluation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./backendArchitecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Backend Architecture</span></a>
+  <a href="../backendArchitecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Backend Architecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./frontendArchitecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">frontendArchitecture.html</span></a>
+  <a href="../frontendArchitecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">frontendArchitecture.html</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./BackendArchitecture/GoogleAuth.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Authentication with Google</span></a>
+  <a href="../BackendArchitecture/GoogleAuth.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Authentication with Google</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./BackendArchitecture/API.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">REST API</span></a>
+  <a href="../BackendArchitecture/API.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">REST API</span></a>
   </div>
 </li>
       </ul>
@@ -240,22 +256,22 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Frontend/FrontendIntro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Frontend Documentation</span></a>
+  <a href="../Frontend/FrontendIntro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Frontend Documentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Frontend/Techstack.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Frontend Techstack</span></a>
+  <a href="../Frontend/Techstack.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Frontend Techstack</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Frontend/ux.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User experience</span></a>
+  <a href="../Frontend/ux.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User experience</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Frontend/ComponentDesc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Component description</span></a>
+  <a href="../Frontend/ComponentDesc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Component description</span></a>
   </div>
 </li>
       </ul>
@@ -271,19 +287,19 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./deployment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Deployment</span></a>
+  <a href="../deployment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Deployment</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./userManual.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User Manual</span></a>
+  <a href="../userManual.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User Manual</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -293,14 +309,27 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#architecture" id="toc-architecture" class="nav-link active" data-scroll-target="#architecture">Architecture</a>
+  <ul class="collapse">
+  <li><a href="#system-services" id="toc-system-services" class="nav-link" data-scroll-target="#system-services">System Services</a></li>
+  <li><a href="#chat-services-experimental" id="toc-chat-services-experimental" class="nav-link" data-scroll-target="#chat-services-experimental">Chat Services (Experimental)</a></li>
+  <li><a href="#file-services" id="toc-file-services" class="nav-link" data-scroll-target="#file-services">File Services</a></li>
+  <li><a href="#swot-analysis" id="toc-swot-analysis" class="nav-link" data-scroll-target="#swot-analysis">SWOT Analysis</a></li>
+  <li><a href="#default" id="toc-default" class="nav-link" data-scroll-target="#default">default</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/BackendArchitecture/API.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../RAGpipeline.html">System Design</a></li><li class="breadcrumb-item"><a href="../BackendArchitecture/API.html"><span class="chapter-title">REST API</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-title">REST API</span></h1>
 </div>
 
 
@@ -317,45 +346,62 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Albert2016" class="csl-entry" role="listitem">
-Albert, M. 2016. <em>Besseres Mobile-App-Design: Optimale Usability Für
-iOS Und Android</em>. entwickler.Press.
-</div>
-<div id="ref-arora_gar-meets-rag_2023" class="csl-entry" role="listitem">
-Arora, Daman, Anush Kini, Sayak Ray Chowdhury, Nagarajan Natarajan,
-Gaurav Sinha, and Amit Sharma. 2023. <span>“Gar-Meets-Rag Paradigm for
-Zero-Shot Information Retrieval.”</span> <a href="https://doi.org/10.48550/ARXIV.2310.20158">https://doi.org/10.48550/ARXIV.2310.20158</a>.
-</div>
-<div id="ref-gao_retrieval-augmented_2023" class="csl-entry" role="listitem">
-Gao, Yunfan, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi,
-Yi Dai, et al. 2023. <span>“Retrieval-Augmented Generation for Large
-Language Models: A Survey.”</span> <a href="https://doi.org/10.48550/ARXIV.2312.10997">https://doi.org/10.48550/ARXIV.2312.10997</a>.
-</div>
-<div id="ref-lewis_retrieval-augmented_2020" class="csl-entry" role="listitem">
-Lewis, Patrick, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
-Karpukhin, Naman Goyal, Heinrich Küttler, et al. 2020.
-<span>“Retrieval-Augmented Generation for Knowledge-Intensive Nlp
-Tasks.”</span> <a href="https://doi.org/10.48550/ARXIV.2005.11401">https://doi.org/10.48550/ARXIV.2005.11401</a>.
-</div>
-<div id="ref-li_survey_2022" class="csl-entry" role="listitem">
-Li, Huayang, Yixuan Su, Deng Cai, Yan Wang, and Lemao Liu. 2022.
-<span>“A Survey on Retrieval-Augmented Text Generation.”</span> <a href="https://doi.org/10.48550/ARXIV.2202.01110">https://doi.org/10.48550/ARXIV.2202.01110</a>.
-</div>
-<div id="ref-viteFeatures" class="csl-entry" role="listitem">
-Vite. n.d. <span>“Vite Features.”</span> Accessed January 10, 2024. <a href="https://vitejs.dev/guide/features.html">https://vitejs.dev/guide/features.html</a>.
-</div>
-<div id="ref-wang_query2doc:_2023" class="csl-entry" role="listitem">
-Wang, Liang, Nan Yang, and Furu Wei. 2023. <span>“Query2doc: Query
-Expansion with Large Language Models.”</span> <a href="https://doi.org/10.48550/ARXIV.2303.07678">https://doi.org/10.48550/ARXIV.2303.07678</a>.
-</div>
-<div id="ref-webpackHMR" class="csl-entry" role="listitem">
-webpack. n.d. <span>“Hot Module Replacement.”</span> Accessed January
-10, 2024. <a href="https://webpack.js.org/guides/hot-module-replacement/">https://webpack.js.org/guides/hot-module-replacement/</a>.
-</div>
-</div>
+<p>An API (Application Programming Interface) is used to establish a connection between the backend and the frontend. In StratMystiqPro, we opted for a RESTful API (Representational State Transfer) because we wanted a lightweight and high-performance interface with which we could also exchange data in different formats. This is necessary because, in addition to the typical JSON objects, we also need to transfer plain text and files. They are also a common standard and use CRUD methods. Specifically, we use FastAPI because it is a high-performance and lightweight framework that offers better performance compared to Flask thanks to the asynchronous processing of requests and the interactive documentation via the SwaggerUI.</p>
+<section id="architecture" class="level2">
+<h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
+<p>In our system, we have created a separate endpoint in the API for each function that is required in the front end, which can be used to access this function. The functions are divided into different routes for the sake of clarity. These are System Services, Chat Services (Experimental), File Services and SWOT Analysis. Each of these routes then has one or more end points that we can call via this address in combination with the CRUD method. To add a new endpoint, we simply need to create a new one as shown here. It is also important to note that we have kept the API and the logic very strictly separate. All functions that are more extensive than a simple DB access are outsourced to other files and are only called in the API.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> root():</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Test DB-Status"""</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> Config()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> config.db.collection.peek() <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">'status'</span>: <span class="st">'ok'</span>}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">'status'</span>: <span class="st">'error'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="system-services" class="level3">
+<h3 class="anchored" data-anchor-id="system-services">System Services</h3>
+<p>Path: <code>/system/v1</code></p>
+<p>Info: For more information have a look in the Code-File <code>/routers/system.py</code></p>
+<p><code>/login</code>: This function is called to log in the user. In case the user doesn’t exist in the DB, it is created.</p>
+</section>
+<section id="chat-services-experimental" class="level3">
+<h3 class="anchored" data-anchor-id="chat-services-experimental">Chat Services (Experimental)</h3>
+<p>Path: <code>/chat/v1</code></p>
+<p>Info: For more information have a look in the Code-File <code>/routers/chat.py</code></p>
+<p><code>/advanced_qa</code>: Answer questions about the reports</p>
+</section>
+<section id="file-services" class="level3">
+<h3 class="anchored" data-anchor-id="file-services">File Services</h3>
+<p>Path: <code>/files/v1</code></p>
+<p>Info: For more information have a look in the Code-File <code>/routers/file.py</code></p>
+<p><code>/ingest</code>: Starts the ingestion of the file to the database and returns the task id</p>
+<p><code>/status/{task_id}</code>: Obtain the processing status of a recently uploaded file.</p>
+<p><code>/uploaded_reports</code>: Get all reports the user has access to</p>
+<p><code>/delete_report</code>: Remove a report from the database</p>
+<p><code>/pdf_file</code>: Get pdf file from the database</p>
+<p><code>/analyse/table</code>: Creates embeddings for the table screenshots from the annual reports</p>
+</section>
+<section id="swot-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="swot-analysis">SWOT Analysis</h3>
+<p>Path: <code>/swot/v1</code></p>
+<p>Info: For more information have a look in the Code-File <code>/routers/swot.py</code></p>
+<p><code>/swot/{report_id}</code>: List available swot analysis</p>
+<p><code>/swot/{report_id}/{analysis_id}</code>: Get a specific swot analysis from the database</p>
+<p><code>/swot/{report_id}</code>: Create a new swot analysis to a given report</p>
+<p><code>/swot/{report_id}/vs/{compare_report_id}</code>: Get a specific swot analysis comparison from the database</p>
+<p><code>/swot/{report_id}/vs/{compare_report_id}</code>: Create a new swot analysis comparison for two given reports</p>
+<p><code>/latestAnalysis</code>: Retrieve the latest SWOT analysis form the database for a given report</p>
+</section>
+<section id="default" class="level3">
+<h3 class="anchored" data-anchor-id="default">default</h3>
+<p>Path: <code>/</code></p>
+<p>Info: For more information have a look in the Code-File <code>/main.py</code></p>
+<p><code>/</code>: Test DB-Status</p>
+<p><code>/test_backend_connection</code>: Test Backend-Status</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -891,11 +937,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./userManual.html" class="pagination-link  aria-label=" &lt;span="" manual&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">User Manual</span></span>
+      <a href="../BackendArchitecture/GoogleAuth.html" class="pagination-link  aria-label=" &lt;span="" with="" google&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Authentication with Google</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../Frontend/FrontendIntro.html" class="pagination-link" aria-label="<span class='chapter-number'>13</span>&nbsp; <span class='chapter-title'>Frontend Documentation</span>">
+        <span class="nav-page-text"><span class="chapter-title">Frontend Documentation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -907,17 +956,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
+    <a class="nav-link active" href="../index.html" aria-current="page">
 <p>Home</p>
 </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="./intro.html">
+    <a class="nav-link" href="../intro.html">
 <p>Intro</p>
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/references.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/BackendArchitecture/API.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
