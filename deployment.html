@@ -311,12 +311,21 @@ ul.task-list li input[type="checkbox"] {
 <section id="setup-for-the-frontend-for-local-development" class="level2">
 <h2 class="anchored" data-anchor-id="setup-for-the-frontend-for-local-development">SetUp for the frontend for local development:</h2>
 <ul>
+<li>Ensure that you have Node.js and npm installed</li>
+<li>Install the required dependencies with: npm install</li>
 <li>To run the frontend you have to use <code>npm run dev</code></li>
 <li>During the development<code>npm run tailwind</code> needs to bes started as well</li>
 </ul>
 </section>
 <section id="to-deploy-the-application" class="level2">
 <h2 class="anchored" data-anchor-id="to-deploy-the-application">To deploy the application:</h2>
+<ul>
+<li>Check the Dockerfile and docker-compose.yaml files in the root directory of the project</li>
+<li>If necessary, adjust the configuration in the Dockerfile and docker-compose.yaml files</li>
+<li>To build and start the containers, use: docker-compose up –build</li>
+<li>The application should now run in Docker containers and be accessible via the specified ports.</li>
+<li>Make sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files.</li>
+</ul>
 
 
 </section>

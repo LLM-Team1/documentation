@@ -517,7 +517,7 @@
     "href": "deployment.html#setup-for-the-frontend-for-local-development",
     "title": "Deployment",
     "section": "SetUp for the frontend for local development:",
-    "text": "SetUp for the frontend for local development:\n\nTo run the frontend you have to use npm run dev\nDuring the developmentnpm run tailwind needs to bes started as well",
+    "text": "SetUp for the frontend for local development:\n\nEnsure that you have Node.js and npm installed\nInstall the required dependencies with: npm install\nTo run the frontend you have to use npm run dev\nDuring the developmentnpm run tailwind needs to bes started as well",
     "crumbs": [
       "Usage",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deployment</span>"
@@ -528,7 +528,7 @@
     "href": "deployment.html#to-deploy-the-application",
     "title": "Deployment",
     "section": "To deploy the application:",
-    "text": "To deploy the application:",
+    "text": "To deploy the application:\n\nCheck the Dockerfile and docker-compose.yaml files in the root directory of the project\nIf necessary, adjust the configuration in the Dockerfile and docker-compose.yaml files\nTo build and start the containers, use: docker-compose up –build\nThe application should now run in Docker containers and be accessible via the specified ports.\nMake sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files.",
     "crumbs": [
       "Usage",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deployment</span>"
