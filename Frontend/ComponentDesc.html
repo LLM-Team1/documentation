@@ -45,6 +45,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -299,7 +302,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>As is typical for React, we have built components for all our elements that we can reuse modularly elsewhere. We first planned and designed these components in Figma and then implemented them. One example of this is the complete SWOT matrix, which is used on both the SWOT page and the comparison page. The same applies to the button component, which we use wherever the orange button is required. The two tables on the My Reports page are also based on the same component. This division of the individual elements into components makes it easier for us to assemble new elements from them without having to rebuild the respective components each time. All of them also have interfaces for adjusting individual parameters, such as color, text or, of course, if they display dynamic data from the database, a way to read it in. From a development point of view, a granular division into components makes sense above all if they can be reused in other elements and therefore do not have to be developed anew for each element. Above all, this saves time and also avoids malfunctions, as you don’t have to write functionally identical or similar code multiple times. You also don’t have to make sure that you implement the same design every time, as this is already specified by the component.</p>
+<p>As is typical for React, we have built components for all our elements that we can reuse modularly elsewhere. We first planned and designed these components in Figma and then implemented them. Shown here is our first Figma design, which still contains a few things that we adjusted compared to the final implementation, such as the left orientation of the texts and elements, as well as the colors.</p>
+<p><a href="../images/Frontend/FigmaUploadPage.png" class="lightbox" data-gallery="figma" title="Primal Figma design of the upload page"><img src="../images/Frontend/FigmaUploadPage.png" class="img-fluid" style="width:100.0%" alt="Primal Figma design of the upload page"></a> <a href="../images/Frontend/FigmaSWOTMatrix.png" class="lightbox" data-gallery="figma" title="Primal Figma design of the SWOT-Matrix"><img src="../images/Frontend/FigmaSWOTMatrix.png" class="img-fluid" style="width:100.0%" alt="Primal Figma design of the SWOT-Matrix"></a></p>
+<p>One example of this is the complete SWOT matrix, which is used on both the SWOT page and the comparison page. The same applies to the button component, which we use wherever the orange button is required. The two tables on the My Reports page are also based on the same component. This division of the individual elements into components makes it easier for us to assemble new elements from them without having to rebuild the respective components each time. All of them also have interfaces for adjusting individual parameters, such as color, text or, of course, if they display dynamic data from the database, a way to read it in. From a development point of view, a granular division into components makes sense above all if they can be reused in other elements and therefore do not have to be developed anew for each element. Above all, this saves time and also avoids malfunctions, as you don’t have to write functionally identical or similar code multiple times. You also don’t have to make sure that you implement the same design every time, as this is already specified by the component.</p>
 <p>When styling the components, we consistently developed and implemented a design adapted for smaller screens in addition to the normal design for large screens. The frontend was developed desktop first, i.e.&nbsp;we focused primarily on large screen sizes and only adapted the existing design for small screens in a second step. By individually adapting the components to the mobile design only when the available space makes it necessary, we have a seamless responsiveness that works on practically all common screen sizes.</p>
 <div style="display: flex; justify-content: space-between;">
 <p><img src="../images/Frontend/ResponsiveUploadPage.png" alt="Mobile version of the upload page" style="width: 45%; margin-right: 5%;"> <img src="../images/Frontend/ResponsivePopup.png" alt="Mobile version of the SWOT detail popup" style="width: 45%;"></p>
@@ -883,6 +888,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 
