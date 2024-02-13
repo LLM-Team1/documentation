@@ -47,6 +47,7 @@ book:
         - backendArchitecture.qmd
         - frontendArchitecture.qmd
         - BackendArchitecture/GoogleAuth.qmd
+        - BackendArchitecture/API.qmd
     - part: Frontend
       chapters:
         - Frontend/FrontendIntro.qmd
