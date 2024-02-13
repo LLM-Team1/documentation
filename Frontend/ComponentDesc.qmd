@@ -5,6 +5,7 @@ Shown here is our first Figma design, which still contains a few things that we 
 such as the left orientation of the texts and elements, as well as the colors.
 
 ![Primal Figma design of the upload page](../images/Frontend/FigmaUploadPage.png){width=100% group="figma" .lightbox}
+
 ![Primal Figma design of the SWOT-Matrix](../images/Frontend/FigmaSWOTMatrix.png){width=100% group="figma" .lightbox}
 
 One example of this is the complete SWOT matrix, which is used on both the SWOT page and the comparison page.
