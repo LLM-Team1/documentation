@@ -506,7 +506,18 @@
     "href": "deployment.html",
     "title": "Deployment",
     "section": "",
-    "text": "Set up the backend for local development:\nEnsure you have Python 3.11 or later installed. * Install the required dependencies with pip install -r requirements.txt. * Ensure that you have Docker installed. Start it with using Docker Compose up * Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb. * Run the application with python main.py. * The main.py script takes care of setting up the application. It creates the database tables if they don’t exist.",
+    "text": "Set up the backend for local development:",
+    "crumbs": [
+      "Usage",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deployment</span>"
+    ]
+  },
+  {
+    "objectID": "deployment.html#set-up-the-backend-for-local-development",
+    "href": "deployment.html#set-up-the-backend-for-local-development",
+    "title": "Deployment",
+    "section": "",
+    "text": "Ensure you have Python 3.11 or later installed.\nInstall the required dependencies with pip install -r requirements.txt.\nEnsure that you have Docker installed. Start it with using Docker Compose up\nEnsure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb.\nRun the application with python main.py.\nThe main.py script takes care of setting up the application. It creates the database tables if they don’t exist.",
     "crumbs": [
       "Usage",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deployment</span>"
