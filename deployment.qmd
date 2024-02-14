@@ -17,12 +17,15 @@ On this page ypu learn how to set up the application for local development and d
 * To run the frontend you have to use  `npm run dev`
 * During the development`npm run tailwind` needs to be started as well
 
-## To deploy the application:
+## Deployment for testing and production:
+For testing and production environments, we use Docker.
+* Ensure you have Docker installed.
 * Check the Dockerfile and docker-compose.yaml files in the root directory of the project
 * If necessary, adjust the configuration in the Dockerfile and docker-compose.yaml files
 * To build and start the containers, use: docker-compose up --build
 * The application should now run in Docker containers and be accessible via the specified ports.
 * Make sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files.
+* Run the Docker container with docker-compose up.
 
 
 
