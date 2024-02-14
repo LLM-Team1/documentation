@@ -337,13 +337,13 @@ div.csl-indent {
 <p>We have also deliberately decided to use rounded corners everywhere to create a softer look. In addition, all clickable elements are provided with a zoom effect or have a highlighted background as soon as you hover over them with the mouse so that they are even easier to recognize as such.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/Frontend/UXHoverText.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Frontend Hover Text"><img src="../images/Frontend/UXHoverText.png" class="img-fluid figure-img" style="width:50.0%" alt="Frontend Hover Text"></a></p>
+<p><a href="../images/Frontend/UXHoverText.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Frontend Hover Text"><img src="../images/Frontend/UXHoverText.png" class="img-fluid figure-img" style="width:50.0%" alt="Frontend Hover Text"></a></p>
 <figcaption>Frontend Hover Text</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/Frontend/UXHoverButton.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Frontend Hover Button"><img src="../images/Frontend/UXHoverButton.png" class="img-fluid figure-img" style="width:80.0%" alt="Frontend Hover Button"></a></p>
+<p><a href="../images/Frontend/UXHoverButton.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Frontend Hover Button"><img src="../images/Frontend/UXHoverButton.png" class="img-fluid figure-img" style="width:80.0%" alt="Frontend Hover Button"></a></p>
 <figcaption>Frontend Hover Button</figcaption>
 </figure>
 </div>
@@ -351,14 +351,14 @@ div.csl-indent {
 <p>To make it easier for users to use our tool and avoid unnecessary click paths, we automatically load the most recent analysis created by the user on the SWOT page when a report is selected, if one already exists. If no analysis has yet been created, we display a corresponding message at the top right of the screen to inform users that they must first create one. We also display such messages if the login has failed and if a new analysis is currently being generated, as this process takes some time.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/Frontend/NoSwot.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="No SWOT Analysis message"><img src="../images/Frontend/NoSwot.png" class="img-fluid figure-img" style="width:100.0%" alt="No SWOT Analysis message"></a></p>
+<p><a href="../images/Frontend/NoSwot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="No SWOT Analysis message"><img src="../images/Frontend/NoSwot.png" class="img-fluid figure-img" style="width:100.0%" alt="No SWOT Analysis message"></a></p>
 <figcaption>No SWOT Analysis message</figcaption>
 </figure>
 </div>
 <p>During the upload and processing of a report, the progress is indicated by a loading bar. While the processing is running, the upload button is grayed out so that another report cannot be uploaded in the meantime.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/Frontend/UploadLoading.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4" title="Frontend loading bar"><img src="../images/Frontend/UploadLoading.png" class="img-fluid figure-img" style="width:100.0%" alt="Frontend loading bar"></a></p>
+<p><a href="../images/Frontend/UploadLoading.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4" title="Frontend loading bar"><img src="../images/Frontend/UploadLoading.png" class="img-fluid figure-img" style="width:100.0%" alt="Frontend loading bar"></a></p>
 <figcaption>Frontend loading bar</figcaption>
 </figure>
 </div>
@@ -947,7 +947,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
