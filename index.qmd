@@ -1,11 +1,13 @@
 # Introduction and Project Overview
 
-In this course our goal was to build a LLM application. Therefore we created a use case and build a business model canvas and identified a business unit that could be improved through such a LLM application. 
+In this project our goal was to build a Large Language Model (LLM) application. Therefore we identified a use case to
+make use of a LLM. Based on that use case, we then build a business model canvas to define the foundation of our
+SaaS-start up.
 
 Together with Mr. Kirenz we decided to first define our [use case](https://llm-team1.github.io/documentation/usecase.html)
 to then create a business model from there on. Our use case was based on the idea of finding a way to make business
 analysis quick and easy for a wide range of potential customers. After that we constructed the business model around
-this use case. You can read more about the use case identification and modelling of our Business Model Canvas 
+this use case. You can read more about the use case identification and modelling of our Business Model Canvas
 [here](https://llm-team1.github.io/documentation/bmc.html). For a more visual understanding of our startups' next goals
 we created a [strategy map](https://llm-team1.github.io/documentation/strategyMap.html) showing the directions our
 start up could go in the future.
