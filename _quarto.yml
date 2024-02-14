@@ -40,12 +40,15 @@ book:
         - bmc.qmd
         - strategyMap.qmd
         - valueProposition.qmd
-    - part: System Design
+    - part: RAG System
       chapters:
         - RAGpipeline.qmd
         - RAGevaluation.qmd
-        - backendArchitecture.qmd
-        - frontendArchitecture.qmd
+    - part: Backend
+      chapters:
+        - BackendArchitecture/backendArchitecture.qmd
+        - BackendArchitecture/Datamodel.qmd
+        - BackendArchitecture/PythonImplementation.qmd
         - BackendArchitecture/GoogleAuth.qmd
         - BackendArchitecture/API.qmd
     - part: Frontend

@@ -1,0 +1,104 @@
+# Backend Architecture
+This part of the documentation will cover the backend architecture of the project.
+
+## Backend Requirements
+At the beginning of the project, we were trying to decide what technologies and architectures we should use to build our system.
+To make these decisions, we decided to to define the requirements that the system should meet from a technical standpoint.
+Seeing that the goal of this project is to build a prototype for a SaaS tool, the backend should be designed to
+meet a number of requirements. These have been grouped into the following categories:
+
+### Scalable
+
+The system should be designed to handle multiple number of users and tasks at any time without impacting performance.
+
+- **Handle multiple different Users at any time:**
+  - Process a variety of reports simultaneously.
+  - Provide answers to user queries efficiently.
+- **Allow easy horizontal or vertical scalability:**
+  - The system should be capable of scaling out (adding more nodes to the system) and scaling up (adding more power to existing nodes) as necessary, without any service interruption.
+
+### Resource Efficient
+
+Optimizing the use of resources is crucial for maintaining a cost-effective and high-performing system.
+
+- **Minimize API-Calls to OpenAI and other external services:**
+  - Reduce the frequency and volume of API requests to avoid unnecessary costs and to maintain system responsiveness.
+- **Only regenerate responses if requested by a User:**
+  - Cache and reuse responses where possible to avoid redundant computations.
+
+### Adaptable
+
+The system should be flexible to accommodate changes and the addition of new features.
+
+- **Allow Users to upload reports from several business sectors:**
+  - Support a diverse range of report formats and contents to cater to different industry needs.
+- **It should be easy to add features to the tool without major code changes:**
+  - Design the architecture to be modular, allowing new features to be added with minimal changes to the core codebase.
+
+### Secure
+
+Security is a top priority to protect user data and ensure trust in the system.
+
+- **User Log-In should be secure and follow industry standards:**
+  - Implement authentication mechanisms that meet current security best practices.
+- **Ensure User Data is separated and protected from unauthorized access:**
+  - Apply strict access controls and data isolation to ensure that user data is not exposed to unauthorized entities.
+
+
+## Tech Stack
+Based on the requirements defined above, we decided to use the following technologies to build the backend of the system.
+The following sections will provide a brief overview of each technology and the reasons for choosing them.
+
+### Python
+The backend of the system is built using Python, some of the reasons for choosing Python are:
+
+- **Ease of Use:**
+  - All team members have experience working with Python, making it easy for all team members to actively contribute to the project.
+- **Numerous Opensource Libraries:**
+    - Python has a rich ecosystem of libraries and tools ranging from backend frameworks to machine learning libraries such as Flask and Langchain.
+
+### FastAPI
+FastAPI is a modern, fast (high-performance), web framework for building APIs with Python. The reasons for choosing FastAPI are:
+
+- **Performance and Asynchronous Request Handling:**
+    - FastAPI is built on top of Starlette for web routing and Pydantic for data validation, this makes it more performant than other Python web frameworks such as Flask.
+    - It supports asynchronous request handling natively, which is crucial for handling multiple requests simultaneously where long-running tasks are expected.
+- **Automatic API Documentation:**
+    - FastAPI automatically generates API documentation based on the code, which makes it easier to maintain and update the documentation.
+    - It provides a built-in interactive API documentation (Swagger UI) which makes it easier to test and debug the API. Without the need for additional tools such as Postman.
+
+### Docker
+Docker is a platform for developing, shipping, and running applications. The reasons for choosing Docker are:
+
+- **Consistent Development Environment:**
+    - Docker allows us to create a consistent environment for development as it greatly reduces the number of possible errors when working with different platforms (Mac and Windows).
+    - Databases and other services can be run as containers, which makes it easier to set up and tear down the development environment quickly.
+- **Easy Deployment:**
+    - Docker containers can be deployed to any platform that supports Docker, which makes it easier to deploy the system to different cloud providers.
+    - Services can be scaled horizontally by running multiple containers of the same service.
+
+### MySQL
+To store user, report and analysis data, we decided to use a relational database. The reasons for choosing MySQL are:
+
+- **Experience:**
+    - All team members have experience working with MySQL, making it easier for all team members to actively contribute to the project.
+- **Scalability:**
+    - Should the need arise, MySQL can be scaled horizontally by using sharding or clustering to handle a large number of users and reports.
+
+### ChromaDB
+ChromaDB is an open-source vector store that is designed to store and retrieve vector embeddings. The reasons for choosing ChromaDB are:
+
+- **Natively Supported by Langchain:**
+    - ChromaDB is natively supported by Langchain modules and thus requires minimal configuration to build initial prototypes.
+- **Documentation and Community:**
+    - ChromaDB has a rich documentation and an active community which makes it easier to get help and support when needed.
+
+
+
+
+## Authentication
+
+## REST API
+
+
+
