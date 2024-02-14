@@ -18,6 +18,8 @@ means that with this evaluation we try to improve the output; while summative ev
 overview over the final product and whether it is providing all the functionalities it should provide as a solution
 a customer could use.
 
+![Framework for Evaluation in Design Science Research (FEDS) [Venable et. al, 2016]](images/FEDS_Venable_et_al_2014.png)
+
 Since our product is still in the prototype phase we concentrated our evaluation on the first three triangles. Meaning
 we did an automated evaluation using libraries like TruLens and RAGAS. The biggest advantage coming with these
 techniques is that they are comparably cheap (Venable et al., 2016). Next we used human evaluation to prove the results
@@ -51,6 +53,40 @@ what strategic initiatives are they undertaking in these areas?
 
 As already mentioned we used different libraries to evaluate our RAG-System.
 
+For the evaluation of our RAG application, we started to use “The RAG Triad” designed by Team TruEra (2023). The RAG triad
+consists of the following three main components: query, the context, and the response. Its goal is to
+evaluate the RAG system to make it hallucination free.
+
+![The RAG Triad [Team TruEra, 2023]](images/The_RAG_Triad_TruLens_2023.png)
+
+These three main evaluation components are connected to each other and therefore result in an evaluation cycle that
+continues over the lifecycle of a RAG application. The following describes the three evaluation stages of the RAG Triad.
+
+*## Context Relevance*
+
+The first evaluation component is the context relevance. In this step the goal is to evaluate if the context of the
+answer - provided by the RAG app - is relevant to the query.
+
+*##Groundedness*
+
+In the second step the goal is to evaluate the groundedness of the RAG app. The answer (which is relevant to the
+query) may lack groundedness. This means that the answer is not supported by the retrieved context but is generated
+from the LLMs training data. This training data is unverified,  inappropriate, and often irrelevant for the use in
+this RAG application. In this evaluation step the answer by the RAG app is compared with the verified and trusted
+data stored in the vector database.
+
+*##Answer Relevance*
+
+In the last step of the evaluation cycle the goal is to evaluate the value a user gets and if the Response answers
+the original question of the user. Even if the answer contains to the query relevant information and the answer
+consists of data stored in the vector database the RAG response can still fail to answer the users question. By
+measuring the relevance of the response to the original question/ query the relevance of the response can be verified.
+
+The TruLens library offers a dashboard to overview the criteria mentioned above as you improve the junk sizes, prompts
+etc. Since this process makes it harder to compare the results of earlier evaluations or our human evaluation we decided
+to use another RAG evaluation library: RAGAS.
+
+## RAGAS Evaluation
 
 Finally we ended up using the RAGAS framework since this made it easy to extract the evaluation results in an excel
 file to later compare it with our human centered evaluation approach. Following you we see the results of our evaluation
@@ -79,6 +115,14 @@ to human perception
 
 ![Comparison of overall Human Evaluation](images/Comparison_RAG_Human_Evaluation.png)
 
-- Three evaluators
-- Evaluating the RAG-results based on the three criteria: "Relevance and Accuracy", "Clarity and Coherence", and "Completeness and Depth"
-- Presentation of results...
+
+# Further Naturalistic & Formative Evaluation for Prompt Engineering
+
+We also used another naturalistic and formative evaluation (Venable et. al, 2016) for further prompt engineering in
+our SWOT analysis. In our use case we have the advantage of having predefined prompts for our SWOT-analysis. That makes
+it possible to evaluate and adjust the exact used prompts in our tool.
+
+# Future Evaluation
+
+- Live evaluation of generated results, to ensure quality during use of the tool
+- If there are more resources available the human evaluation can be made with more than just three evaluators
