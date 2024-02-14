@@ -1,0 +1,136 @@
+# Backend Implementation
+
+The backend of the system is implemented in Python using the FastAPI framework and the SQLAlchemy ORM.
+The backend is responsible for handling the business logic of the system, such as user authentication, report processing, and analysis of the reports.
+It provides a RESTful API that allows the frontend to interact with the system.
+
+This chapter will provide an overview of the backend implementation, including the main classes and their responsibilities as well as
+example code snippets to illustrate the usage of the classes.
+
+## Class Structure
+This section will focus on the Python classes that were implemented to handle the business logic of the system.
+It should be noted that while it would have been ideal to implement a clean and consistent class structure from the beginning,
+we decided to let it evolve over time, as we were not sure about the exact implementation details of the RAG Pipeline.
+
+Therefore classes that represent the entities of the system such as User, Report, Analysis, etc. don't contain any business logic
+and are only used to represent the data model of the system. They are needed to interact with the relational database using the SQLAlchemy ORM.
+As such, they are represented in our class diagram, but are not discussed in this section as their attributes are discussed in the data model section.
+
+Furthermore, certain areas of the system such as the implementation of the FastAPI endpoints are not programmed in a class-based
+structure, but rather in a function-based structure as recommended by the FastAPI documentation. The following sections
+will provide a brief overview of the relevant classes, their responsibilities and examples on how to use the classes.
+
+### Class Diagram
+The following diagram provides an overview of the classes and their relationships. The diagram does not contain the
+FastAPI endpoints, and authentication logic as they are not implemented as classes.
+![Class Diagram](../images/ClassDiagram.png){width=100% .lightbox}
+
+### Config
+The Config class is responsible for loading environment variables, initializing the OpenAI API, the Chroma Vector Store,
+and the MySQL Database. It does this in its init method. The environment variables are loaded from a .env file or from
+the Docker environment, depending on the environment in which the application is running.
+
+The Config class is used to manage the configuration of the application. It provides a centralized place to manage all
+configuration settings. This makes it easier to change settings and manage dependencies as they are all in one place.
+
+The Config class is written as a Singleton class. The Singleton pattern is a design pattern that restricts the
+instantiation of a class to a single instance. This is important as the Config class is responsible for initializing
+several dependencies such as the database connections which should only be initialized once and shared across the application.
+
+The following code snippet shows how to use the Config class in other parts of the application to access the configuration settings or
+dependencies such as the database connection.
+
+```python
+from config import Config
+
+# Instantiate the Config class
+config = Config()
+
+# Accessing the LLM Name for the OpenAI API
+openai_api_key = config.LLM_NAME
+
+# Accessing the vector database client
+db = config.chroma
+
+# Accessing the MySQL database session
+session = config.mysql_db.get_session()
+```
+### Database
+The Database class is responsible for managing the connection to the MySQL database. It provides methods to create the database
+and tables, should they not exist, and to get a session to interact with the database. It contains two important settings
+that might need to be changed depending on the load of the system.
+
+- `pool_size` - The number of connections to the database that are kept open at all times. This should be set to a value that
+  is appropriate for the expected load of the system. Especially when the system is expected to handle a large number of concurrent
+  report uploads, or SWOT analysis generation requests, this value should be increased, as these long-running tasks will keep their
+  database connections open for the duration of the task.
+- `max_overflow` - The maximum number of connections that can be created above the pool_size. This setting comes into play when
+  the pool is exhausted and all connections are in use. If the pool is exhausted and the number of connections is below the
+  max_overflow value, new connections will be created. If the number of connections is above the max_overflow value, the
+  application will wait for a connection to become available. This results in a longer response time for the user.
+
+The direct usage of the Database class is limited to the Config class, which initializes the database connection and provides
+a method to get a session to interact with the database. Therefore, the following code snippets show how the Database class
+is used in the Config class and how the Config class can be used to access the database.
+
+```python
+from services.mysql_connector import Database
+
+# Instantiate the Database class with the database URL
+db = Database('mysql+pymysql://user:password@localhost/db_name')
+
+# Initialize the database
+db.init_db()
+
+# Get a new session and interact with the database
+session = db.get_session()
+```
+
+```python
+from config import Config
+from business_objects.user import User
+
+# Instantiate the Config class
+config = Config()
+
+# Get a database session
+session = config.mysql_db.get_session()
+
+# Interact with the database to get a user
+user = session.query(User).filter(User.id == user_id).first()
+```
+
+### ChromaConnector
+The ChromaConnector class is responsible for managing the connection to the Chroma Vector Store. In its init method, it
+initializes the connection to the Chroma Vector Store and creates the collection that is used to store the chunks for the
+annual reports, should it not exist.
+
+The ChromaConnector class provides methods to get the current collection, the chromadb client, and to switch to a different
+collection. It also contains methods purely used for the development of the system, such as a method to delete all reports
+from the collection, or completely reset the collection.
+
+Similar to the Database class, the direct usage of the ChromaConnector class is limited to the Config class, which initializes
+the Chroma Vector Store connection and provides a method to get the Chroma Vector Store client. Therefore, the following code
+snippets show how the ChromaConnector class is used in the Config class and how the Config class can be used to access the Chroma Vector Store.
+
+```python
+from services.chromadb_connector import ChromaConnector
+
+# Instantiate the ChromaConnector class with the Chroma Vector Store URL
+chroma = ChromaConnector(host="0.0.0.0", port=8000, collection_name="annual-reports")
+```
+
+```python
+from config import Config
+
+# Instantiate the Config class
+config = Config()
+
+# Get the Chroma Vector Store client
+db = config.chroma
+
+# Query the Chroma Vector Store
+docs = db.max_marginal_relevance_search(str(query), k=5)
+```
+
+### BusinessAnalyst
