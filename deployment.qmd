@@ -12,13 +12,16 @@ On this page ypu learn how to set up the application for local development and d
 * The main.py script takes care of setting up the application. It creates the database tables if they don't exist.
 
 ## SetUp for the frontend for local development: 
+
 * Ensure that you have Node.js and npm installed
 * Install the required dependencies with: npm install
 * To run the frontend you have to use  `npm run dev`
 * During the development`npm run tailwind` needs to be started as well
 
 ## Deployment for testing and production:
+
 For testing and production environments, we use Docker.
+
 * Ensure you have Docker installed.
 * Check the Dockerfile and docker-compose.yaml files in the root directory of the project
 * If necessary, adjust the configuration in the Dockerfile and docker-compose.yaml files
