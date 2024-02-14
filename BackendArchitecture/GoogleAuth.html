@@ -328,7 +328,7 @@ ul.task-list li input[type="checkbox"] {
 <p>For this reason, we have created a function in the frontend that writes the JWT in the HTML header of each request. This function is used for all of our backend requests and therefore also offers additional parameters so that it can be used flexibly for any type of request. These include the mandatory specification of the CRUD method (Create, Read, Update, Delete) and the optional specification of a body. However, the latter is only used when uploading the annual report. In the event that the backend returns an error code or nothing at all, we have error handling in the frontend. Sometimes the error is only displayed on the browser console, but sometimes it is also displayed in the frontend, e.g.&nbsp;if you try to load a non-existent analysis. In any case, however, an error message in the backend does not cause the frontend to crash, as we are informed by Typescript of the possibility of an empty response and accordingly functions that would have accessed data from the response are not even executed.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/Frontend/fetchQuery.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Frontend fetching function"><img src="../images/Frontend/fetchQuery.png" class="img-fluid figure-img" style="width:100.0%" alt="Frontend fetching function"></a></p>
+<p><a href="../images/Frontend/fetchQuery.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Frontend fetching function"><img src="../images/Frontend/fetchQuery.png" class="img-fluid figure-img" style="width:100.0%" alt="Frontend fetching function"></a></p>
 <figcaption>Frontend fetching function</figcaption>
 </figure>
 </div>
@@ -338,21 +338,21 @@ ul.task-list li input[type="checkbox"] {
 <p>On the backend side, this looks like this in the API. We have given each endpoint that is to be protected the attachment <code>user=Security(verify_token.verify_token)</code>. This ensures that a token must always be passed when the function is called via the endpoint.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/BackendArchitecture/EndpointToken.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Backend Endpoint requires user token"><img src="../images/BackendArchitecture/EndpointToken.png" class="img-fluid figure-img" style="width:100.0%" alt="Backend Endpoint requires user token"></a></p>
+<p><a href="../images/BackendArchitecture/EndpointToken.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Backend Endpoint requires user token"><img src="../images/BackendArchitecture/EndpointToken.png" class="img-fluid figure-img" style="width:100.0%" alt="Backend Endpoint requires user token"></a></p>
 <figcaption>Backend Endpoint requires user token</figcaption>
 </figure>
 </div>
 <p>To validate the token, it is first extracted from the header and then sent to Google via an interface for verifying so-called oauth2 tokens, which report back to us whether this token is valid or not.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/BackendArchitecture/VerifyToken.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="Backend verify user token"><img src="../images/BackendArchitecture/VerifyToken.png" class="img-fluid figure-img" style="width:100.0%" alt="Backend verify user token"></a></p>
+<p><a href="../images/BackendArchitecture/VerifyToken.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="Backend verify user token"><img src="../images/BackendArchitecture/VerifyToken.png" class="img-fluid figure-img" style="width:100.0%" alt="Backend verify user token"></a></p>
 <figcaption>Backend verify user token</figcaption>
 </figure>
 </div>
 <p>After this, the database is checked to see whether or not the user already exists. The user object is then sent back.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/BackendArchitecture/CheckUserExists.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4" title="Check if the user exists in DB"><img src="../images/BackendArchitecture/CheckUserExists.png" class="img-fluid figure-img" style="width:100.0%" alt="Check if the user exists in DB"></a></p>
+<p><a href="../images/BackendArchitecture/CheckUserExists.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4" title="Check if the user exists in DB"><img src="../images/BackendArchitecture/CheckUserExists.png" class="img-fluid figure-img" style="width:100.0%" alt="Check if the user exists in DB"></a></p>
 <figcaption>Check if the user exists in DB</figcaption>
 </figure>
 </div>
@@ -943,7 +943,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
