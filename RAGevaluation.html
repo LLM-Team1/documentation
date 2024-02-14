@@ -337,11 +337,25 @@ ul.task-list li input[type="checkbox"] {
 <h1>Automated Evaluation Approach</h1>
 <p>As already mentioned we used different libraries to evaluate our RAG-System.</p>
 <p>Finally we ended up using the RAGAS framework since this made it easy to extract the evaluation results in an excel file to later compare it with our human centered evaluation approach. Following you we see the results of our evaluation using the RAGAS framework.</p>
+<p>In the following is the overall performance of the Base RAG and our Custom RAG, using the different chunk sizes. We found that the best chunk size for the Base RAG is 700; while the best chunk size for our Custom RAG is a size of 900.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Comparison_RAG_RAGAS_Evaluation.png" class="img-fluid figure-img"></p>
+<figcaption>Comparison of overall RAGAS Evaluation</figcaption>
+</figure>
+</div>
+<p>Our Custom RAG outperformed the Base RAG</p>
 </section>
 <section id="human-centered-evaluation-approach" class="level1">
 <h1>Human Centered Evaluation Approach</h1>
 <p>For our human evaluation we let three human evaluators evaluate the in total 96 Results of the Basic RAG and the Custom RAG.</p>
-<p>We used three criteria</p>
+<p>We used three criteria: “Relevance and Accuracy”, “Clarity and Coherence”, and “Completeness and Depth”. The following tabel shows the definition on our evaluation scale for the human evaluation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Criteria_table_Human_Evaluation.png" class="img-fluid figure-img"></p>
+<figcaption>Criteria Tabel for Human Evaluation</figcaption>
+</figure>
+</div>
 <p>The Results for the human evaluation show, that the best chunk size for the Base RAG is 700, while the best chunk size for our Custom RAG is 900. Overall our Custom RAG performs better than the Base RAG on this questions, when it comes to human perception</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
