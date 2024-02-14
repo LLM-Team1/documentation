@@ -6,7 +6,7 @@ To Log-in you are going to navigate form your Log-in screen to the Google-authen
 ![User Manuel of StratMystiqPro](images/Log-inPage.png){width=100% .lightbox}
 
 ## Nice to know: 
-When you click on the Symbol of StratMystiqPro in the upper left croner you land on our HomePage. Here we give you a short description on what our tool does and how it works. 
+When you click on the symbol of StratMystiqPro in the upper left corner you land on our HomePage. Here we give you a short description on what our tool does and how it works. 
 ![User Manuel of StratMystiqPro](images/HomePage.png){width=100% .lightbox}
 
 ## 2. Second step: Upload reports
