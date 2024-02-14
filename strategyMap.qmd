@@ -8,139 +8,30 @@ achieving our organizational objectives with purpose and clarity.
 
 ![Strategy Map](images/Strategy_map.png)
 
-*Financial:*
+*Financial*
+
 To drive our financial success, we focus on optimizing revenue streams and ensuring profitability. By monitoring
 monthly and yearly revenue, as well as profit margins, we gauge our financial health and make informed decisions to
 fuel growth. Our commitment to financial sustainability underscores our dedication to long-term success and resilience
 in the market.
 
-*Customer:*
+*Customer*
+
 Our customers are at the core of everything we do. Therefore, we prioritize their satisfaction and loyalty through
 exceptional experiences and responsive support. By minimizing customer acquisition costs and maximizing retention
 rates, we cultivate a loyal customer base that serves as advocates for our brand. Our relentless pursuit of
 customer-centricity drives our success and growth in the competitive tech industry.
 
-*Internal Process:*
+*Internal Process*
+
 Efficient internal processes are the backbone of our operational excellence and product innovation. Thus, we focus on
 streamlining workflows, improving product quality, and enhancing data operations. Through continuous iteration and
 collaboration, we ensure that our team remains agile, responsive, and innovative in delivering cutting-edge solutions
 to our customers.
 
-*Learning and Growth:*
+*Learning and Growth*
+
 Investing in the growth and development of our team is paramount to our success. Therefore, we prioritize training
 sessions, promote satisfaction, and foster a culture of innovation and openness. By empowering our team to explore
 new ideas and technologies, we drive continuous improvement and maintain our competitive edge in the rapidly evolving
 tech landscape. Our commitment to learning and growth propels us forward on our journey toward excellence.
-
-
-<style>
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
-  }
-</style>
-
-<table>
-  <tr>
-    <td>Financial</td>
-    <td>
-      <table>
-        <tr>
-          <td>Monthly revenue</td>
-          <td>Yearly revenue</td>
-        </tr>
-        <tr>
-          <td colspan="2">Company growth</td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <td>Goss profit margin</td>
-          <td>Net margin</td>
-        </tr>
-        <tr>
-          <td colspan="2">Profitaility</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-
-  <tr>
-    <td>Customer</td>
-    <td>
-      <table>
-        <tr>
-          <td>Customer aquistion cost</td>
-          <td>Customer retention rate</td>
-        </tr>
-        <tr>
-          <td colspan="2">Customer acquisition and customer loyalty</td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <td>User rating</td>
-          <td>Support response time</td>
-        </tr>
-        <tr>
-          <td colspan="2">Optimized user experience</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-
-  <tr>
-    <td>Internal process</td>
-    <td>
-      <table>
-        <tr>
-          <td>Frequency of featrue releases</td>
-          <td>Measurement of product quality</td>
-          <td>Speed of data import</td>
-          <td>Quality of the output data</td>
-        </tr>
-        <tr>
-          <td colspan="2">Further development and maintenance of the software</td>
-          <td colspan="2">Improving data quality and analysis options</td>
-        </tr>
-        <tr>
-          <td colspan="2">Personalized service</td>
-          <td colspan="2">Off the shelf software</td>
-        </tr>
-        <tr>
-          <td colspan="4">Introducing new products</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-
-  <tr>
-    <td>Learning and growth</td>
-    <td>
-      <table>
-        <tr>
-          <td>Training sessions</td>
-          <td>Team satisfaction</td>
-        </tr>
-        <tr>
-          <td colspan="2">Further development of the team</td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <td>Number of new releases</td>
-          <td>Number of new ideas implemented</td>
-        </tr>
-        <tr>
-          <td colspan="2">Promoting openness to innovation in the company</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-

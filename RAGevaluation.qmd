@@ -64,8 +64,10 @@ continues over the lifecycle of a RAG application. The following describes the t
 
 *Context Relevance*
 
-The first evaluation component is the context relevance. In this step the goal is to evaluate if the context of the
-answer - provided by the RAG app - is relevant to the query.
+The first evaluation component is the context relevance. In this step the goal is to evaluate the retrieved context and
+its relevance to the query/ initial question. In our custom RAG we use query rewriting. Therefore this value can be
+expected to be lower for our custom RAG. Our RAG finds the context based on the rewritten query; which leads to a lower
+relevance of the discovered context to the initial question.
 
 *Groundedness*
 
@@ -97,7 +99,10 @@ that the best chunk size for the Base RAG is 700; while the best chunk size for 
 
 ![Comparison of overall RAGAS Evaluation](images/Comparison_RAG_RAGAS_Evaluation.png)
 
-Our Custom RAG outperformed the Base RAG
+In this diagram we can see that our Custom RAG has an overall lower Context Precision. As expected this is caused by our
+query rewriting. At the same time we notice that the answer relevance is higher; meaning we archived our goal to improve
+the answer relevance by rewriting the initial question. Overall our Custom RAG at a chunk size of 900 outperformed the
+base RAG at a chunk size of 700.
 
 # Human Centered Evaluation Approach
 
