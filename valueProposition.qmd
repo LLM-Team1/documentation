@@ -1,31 +1,23 @@
 # Value Proposition
 ## Customer Segment
-### Gains
-* Well-developed strategy
-* Good understanding of your own company and competitors
-
-### Pains
-* Time-consuming work through  annual reports
-* Does not know all the data from the own company and competitor companies
-* Requires significant working time to prepare the analysis
-
-### Customer Jobs
-* Create analysis
-* Create evaluations
-* Derive and develop strategies based on the analyses and evaluations
-
-## Product Segment
-### Gain Creators
-* A mature strategy based on data and benchmarks
-* Better understanding and classification of the company
-* Saves time
-* Regular and simple strategy adjustments
-
-### Pain relievers
-* Individual needs can be taken into account
-* Strategy and analyses can be created simultaneously
-
-### Product and services
-* Analysis of your own data and the competitions
-* Preparation of evaluations and analysis (e.g. SWOT)
-* Development of strategic approaches
+### Gains:
+* Develop well-informed, mature strategies based on comprehensive market and competitor insights.
+* Achieve a good understanding of both their own company and competitors, facilitating strategic positioning and advantage.
+### Pains:
+* Time-consuming analysis and synthesis of annual reports from their own and competitor companies.
+* Difficulties in the complete recording of all relevant data due to information overload and manual recording processes.
+* Significant time investment required to prepare detailed, actionable analyses.
+### Customer Jobs:
+* Efficiently create detailed analyses and evaluations of market and competitor data.
+* Derive and develop robust strategies based on comprehensive analyses and evaluations.
+## Product Segment:
+### Gain Creators:
+* Offers a streamlined process for strategy development based on data-driven insights and benchmarks, saving valuable time.
+* Provides a better understanding and classification of the company within the market, enabling  strategy adjustments.
+### Pain Relievers:
+* Tailors to individual analyst needs, allowing for simultaneous strategy and analysis creation with less effort and more precision.
+* Facilitates a more efficient, accurate analysis of both the user's own data and competitor information, reducing the risk of oversight and misinterpretation.
+### Product and Services:
+* Advanced analysis tools for in-depth examination of own and competitor data, utilizing AI for enhanced accuracy and insight.
+* Comprehensive preparation of evaluations and analysis, including SWOT, to underpin strategic decision-making.
+* Support in the development of strategic approaches, ensuring they are informed by the latest, most relevant market data.
