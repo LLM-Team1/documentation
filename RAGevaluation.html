@@ -366,7 +366,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>These three main evaluation components are connected to each other and therefore result in an evaluation cycle that continues over the lifecycle of a RAG application. The following describes the three evaluation stages of the RAG Triad.</p>
 <p><em>Context Relevance</em></p>
-<p>The first evaluation component is the context relevance. In this step the goal is to evaluate if the context of the answer - provided by the RAG app - is relevant to the query.</p>
+<p>The first evaluation component is the context relevance. In this step the goal is to evaluate the retrieved context and its relevance to the query/ initial question. In our custom RAG we use query rewriting. Therefore this value can be expected to be lower for our custom RAG. Our RAG finds the context based on the rewritten query; which leads to a lower relevance of the discovered context to the initial question.</p>
 <p><em>Groundedness</em></p>
 <p>In the second step the goal is to evaluate the groundedness of the RAG app. The answer (which is relevant to the query) may lack groundedness. This means that the answer is not supported by the retrieved context but is generated from the LLMs training data. This training data is unverified, inappropriate, and often irrelevant for the use in this RAG application. In this evaluation step the answer by the RAG app is compared with the verified and trusted data stored in the vector database.</p>
 <p><em>Answer Relevance</em></p>
@@ -382,7 +382,7 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Comparison of overall RAGAS Evaluation</figcaption>
 </figure>
 </div>
-<p>Our Custom RAG outperformed the Base RAG</p>
+<p>In this diagram we can see that our Custom RAG has an overall lower Context Precision. As expected this is caused by our query rewriting. At the same time we notice that the answer relevance is higher; meaning we archived our goal to improve the answer relevance by rewriting the initial question. Overall our Custom RAG at a chunk size of 900 outperformed the base RAG at a chunk size of 700.</p>
 </section>
 </section>
 <section id="human-centered-evaluation-approach" class="level1">
