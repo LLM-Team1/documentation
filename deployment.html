@@ -297,7 +297,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#set-up-the-backend-for-local-development" id="toc-set-up-the-backend-for-local-development" class="nav-link active" data-scroll-target="#set-up-the-backend-for-local-development">Set up the backend for local development:</a></li>
   <li><a href="#setup-for-the-frontend-for-local-development" id="toc-setup-for-the-frontend-for-local-development" class="nav-link" data-scroll-target="#setup-for-the-frontend-for-local-development">SetUp for the frontend for local development:</a></li>
-  <li><a href="#to-deploy-the-application" id="toc-to-deploy-the-application" class="nav-link" data-scroll-target="#to-deploy-the-application">To deploy the application:</a></li>
+  <li><a href="#deployment-for-testing-and-production" id="toc-deployment-for-testing-and-production" class="nav-link" data-scroll-target="#deployment-for-testing-and-production">Deployment for testing and production:</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/deployment.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -344,15 +344,9 @@ ul.task-list li input[type="checkbox"] {
 <li>During the development<code>npm run tailwind</code> needs to be started as well</li>
 </ul>
 </section>
-<section id="to-deploy-the-application" class="level2">
-<h2 class="anchored" data-anchor-id="to-deploy-the-application">To deploy the application:</h2>
-<ul>
-<li>Check the Dockerfile and docker-compose.yaml files in the root directory of the project</li>
-<li>If necessary, adjust the configuration in the Dockerfile and docker-compose.yaml files</li>
-<li>To build and start the containers, use: docker-compose up –build</li>
-<li>The application should now run in Docker containers and be accessible via the specified ports.</li>
-<li>Make sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files.</li>
-</ul>
+<section id="deployment-for-testing-and-production" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-for-testing-and-production">Deployment for testing and production:</h2>
+<p>For testing and production environments,&nbsp;we use Docker. * Ensure you have Docker installed. * Check the Dockerfile and docker-compose.yaml files in the root directory of the project * If necessary, adjust the configuration in the Dockerfile and docker-compose.yaml files * To build and start the containers, use: docker-compose up –build * The application should now run in Docker containers and be accessible via the specified ports. * Make sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files. * Run the Docker container with&nbsp;docker-compose up.</p>
 
 
 </section>

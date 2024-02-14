@@ -667,11 +667,11 @@
     ]
   },
   {
-    "objectID": "deployment.html#to-deploy-the-application",
-    "href": "deployment.html#to-deploy-the-application",
+    "objectID": "deployment.html#deployment-for-testing-and-production",
+    "href": "deployment.html#deployment-for-testing-and-production",
     "title": "Deployment",
-    "section": "To deploy the application:",
-    "text": "To deploy the application:\n\nCheck the Dockerfile and docker-compose.yaml files in the root directory of the project\nIf necessary, adjust the configuration in the Dockerfile and docker-compose.yaml files\nTo build and start the containers, use: docker-compose up –build\nThe application should now run in Docker containers and be accessible via the specified ports.\nMake sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files.",
+    "section": "Deployment for testing and production:",
+    "text": "Deployment for testing and production:\nFor testing and production environments, we use Docker. * Ensure you have Docker installed. * Check the Dockerfile and docker-compose.yaml files in the root directory of the project * If necessary, adjust the configuration in the Dockerfile and docker-compose.yaml files * To build and start the containers, use: docker-compose up –build * The application should now run in Docker containers and be accessible via the specified ports. * Make sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files. * Run the Docker container with docker-compose up.",
     "crumbs": [
       "Usage",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Deployment</span>"
