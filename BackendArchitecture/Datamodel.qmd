@@ -1,0 +1,129 @@
+# Application Data Model
+The data model of the application is designed to store user data, report data, and analysis data. The following sections will provide a brief overview of
+the data model, the relationships between the different entities and their attributes. The data model is designed to be flexible and
+adaptable to accommodate changes and the addition of new features.
+
+## Overview Diagram
+The following diagram provides an overview of the data model, the relationships between the different entities as well
+as the relationship between the relational database and vector store.
+
+::: {.callout-note}
+The diagram is a simplified version of the data model and thus does not represent the normalized entity relationship model that is implemented in the database.
+To learn about the implementation in the database, please refer to the [Python Implementation](../PythonImplementation) section.
+:::
+
+![Data Model of StratMystiqPro](../images/DataModel.png){width=100% .lightbox}
+
+## User
+The User entity represents a user of the system. It is created when a user logs in to the system for the first time. The User entity has the following attributes:
+
+- **user_id:** (PK:UUID) A unique identifier for the user.
+- **username:** (String) The username of the user.
+- **email:** (String) The email address of the user.
+- **role:** (String) The role of the user, which can be either "admin" or "user".
+- **created_at:** (DateTime) The date and time when the user was created.
+- **updated_at:** (DateTime) The date and time when the user was last updated.
+
+## Report
+The Report entity is the central entity of the system. It represents a report that a user uploads to the system.
+A Report by default is private and can only be accessed by the user who uploaded it. The User does have the option to make the report public.
+The Report entity has the following attributes:
+
+- **report_id:** (PK:UUID) A unique identifier for the report.
+- **title:** (String) The title of the report.
+- **filename:** (String) The filename of the report.
+- **year:** (Integer) The year the report was published.
+- **company_id:** (FK:UUID) The company identifier of the report. Foreign key to the Company entity.
+- **report_public:** (Boolean) A flag to indicate if the report is public or private.
+- **created_at:** (DateTime) The date and time when the report was created.
+- **updated_at:** (DateTime) The date and time when the report was last updated.
+- **deleted_at:** (DateTime) The date and time when the report was deleted.
+
+## Company
+The Company entity represents the company that the report is associated with. The Company entity has the following attributes:
+
+- **company_id:** (PK:UUID) A unique identifier for the company.
+- **name:** (String) The name of the company.
+- **industry:** (String) The industry of the company.
+- **created_at:** (DateTime) The date and time when the company was created.
+- **updated_at:** (DateTime) The date and time when the company was last updated.
+
+## Analysis
+The Analysis entity is the object that contains the results of the main feature of the system. It represents the analysis
+of a report that a user requests. Note that the Analysis entity is specifically not called SWOT Analysis, as the system
+is designed to be flexible and adaptable to accommodate new types of analysis in the future. The Analysis entity has the following attributes:
+
+- **analysis_id:** (PK:UUID) A unique identifier for the analysis.
+- **report_id:** (FK:UUID) Reference to the report that the analysis is associated with.
+- **compare_report_id:** (FK:UUID) If the analysis is a comparison analysis, this field will reference the report that was used for comparison.
+- **type:** (String) The type of analysis, currently supported are "swot" or "swot_comparison".
+- **content:** (Text) The content of the analysis, which is a JSON string that contains the results of the analysis.
+- **created_at:** (DateTime) The date and time when the analysis was created.
+- **updated_at:** (DateTime) The date and time when the analysis was last updated.
+
+## Analysis Section
+The Analysis Section entity represents a section of the analysis. It was introduced towards the end of the project to store
+intermediate results of the analysis. In case an analysis process is interrupted, the system can use the intermediate results
+to continue the analysis where it stopped. The Analysis Section entity has the following attributes:
+
+- **partial_result_id:** (PK:UUID) A unique identifier for the partial result.
+- **analysis_id:** (FK:UUID) Reference to the analysis that the partial result is associated with.
+- **section:** (String) The section of the analysis, which can be "strengths", "weaknesses", "opportunities" or "threats".
+- **content:** (Text) The content of the partial result, which is a JSON string that contains the intermediate results of the analysis.
+- **created_at:** (DateTime) The date and time when the partial result was created.
+- **updated_at:** (DateTime) The date and time when the partial result was last updated.
+
+## Screenshot
+The Screenshot entity is used to track and identify the screenshots that are taken of the reports. The Screenshots are either
+the identified tables or the cover page of the report. It is implemented in a way that allows all other types of screenshots
+to be added in the future. The Screenshot entity has the following attributes:
+
+- **screenshot_id:** (PK:UUID) A unique identifier for the screenshot.
+- **report_id:** (FK:UUID) Reference to the report that the screenshot is associated with.
+- **filename:** (String) The filename of the screenshot.
+- **type:** (String) The type of the screenshot, which can be "table" or "image".
+- **description:** (Text) A JSON string that contains the information extracted from the screenshot.
+- **created_at:** (DateTime) The date and time when the screenshot was created.
+- **updated_at:** (DateTime) The date and time when the screenshot was last updated.
+
+## Job
+The Job entity was originally introduced to track the status of the report ingestion. While developing the system,
+we realized that we need to track the status of many long-running task in the system. It also acts a Job-List for the
+Backend to process outstanding jobs. The Job entity has the following attributes:
+
+- **job_id:** (PK:UUID) A unique identifier for the job.
+- **object_id:** (UUID) Reference to the object that the job is associated with. Currently supported are report_id, analysis_id or screenshot_id.
+- **object_type:** (String) The type of the object that the job is associated with. Currently supported are "report", "analysis" or "screenshot".
+- **user_id:** (FK:UUID) Reference to the user that the job is associated with.
+- **status:** (String) The status of the job, which can be "pending", "in_progress", "completed" or "failed".
+- **percentage:** (Integer) The percentage of the job that has been completed. (Only supported in report_ingestion)
+- **request_date:** (DateTime) The date and time when the job was requested.
+- **completion_date:** (DateTime) The date and time when the job was completed.
+- **created_at:** (DateTime) The date and time when the job was created.
+- **updated_at:** (DateTime) The date and time when the job was last updated.
+
+## Vector Store
+In the report ingestion process, the system extracts the text from the report, splits it into chunks and stores it in the vector store. The vector store
+is used to store the vector embeddings of the text, the text that was embedded, as well as metadata to identify the individual chunks.
+The Vector Store knows the following two entities:
+
+### Collection
+The Collection entity represents a group of vector embeddings. We currently only use one collection to store the embeddings of all reports.
+For future use cases, we planned on adding more collections to store embeddings of different types of data (Websites...)
+The Collection entity has the following attributes:
+
+- **collection_id:** (PK:UUID) A unique identifier for the collection.
+- **name:** (String) The name of the collection.
+- **created_at:** (DateTime) The date and time when the collection was created.
+
+### Chunk
+The Chunk entity represents a single chunk of text that was embedded and stored in the vector store. The Chunk entity has the following attributes:
+
+- **chunk_id:** (PK:UUID) A unique identifier for the chunk.
+- **vectors:** (Array) An array of floats that represents the vector embeddings of the text.
+- **text:** (Text) The text that was embedded.
+- **metadata:** (JSON) A JSON string that contains metadata to identify the chunk.
+    - **report_id:** (UUID) The report the chunk is associated with. Links to the Report entity in the relational database.
+    - **chunk_type:** (String) The type of the chunk, which can be "table" or "report_text".
+    - **extra_content:** (JSON) Only used for "table" chunks. Contains the extracted table data.
+    - **page_number:** (Integer) The page number of the report where the chunk was extracted from.
