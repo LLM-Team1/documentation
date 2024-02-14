@@ -1,8 +1,5 @@
 # Introduction and Project Overview
 
-In this course our goal was to build a LLM application. Therefore we identified a use case and build a business model
-canvas and identified a business unit that could be improved through such a LLM application.
-
 In this project our goal was to build a Large Language Model (LLM) application. Therefore we identified a use case to
 make use of a LLM. Based on that use case, we then build a business model canvas to define the foundation of our
 SaaS-start up.
