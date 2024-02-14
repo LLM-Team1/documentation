@@ -18,14 +18,14 @@ means that with this evaluation we try to improve the output; while summative ev
 overview over the final product and whether it is providing all the functionalities it should provide as a solution
 a customer could use.
 
-![Framework for Evaluation in Design Science Research (FEDS) [Venable et. al, 2016]](images/FEDS_Venable_et_al_2014.png)
+![Framework for Evaluation in Design Science Research (FEDS) [@venable_feds:_2016]](images/FEDS_Venable_et_al_2014.png)
 
 Since our product is still in the prototype phase we concentrated our evaluation on the first three triangles. Meaning
 we did an automated evaluation using libraries like TruLens and RAGAS. The biggest advantage coming with these
-techniques is that they are comparably cheap (Venable et al., 2016). Next we used human evaluation to prove the results
+techniques is that they are comparably cheap [@venable_feds:_2016]. Next we used human evaluation to prove the results
 of our automated evaluation approach with this human centered approach. Human centered approaches for evaluation bring
 the advantage to give a more realistic view on the system. Problem with these approaches is that they are comparably
-expensive and time consuming (Venable et al., 2016)
+expensive and time consuming [@venable_feds:_2016].
 
 # General Evaluation Foundation
 
@@ -53,11 +53,11 @@ what strategic initiatives are they undertaking in these areas?
 
 As already mentioned we used different libraries to evaluate our RAG-System.
 
-For the evaluation of our RAG application, we started to use “The RAG Triad” designed by Team TruEra (2023). The RAG triad
-consists of the following three main components: query, the context, and the response. Its goal is to
-evaluate the RAG system to make it hallucination free.
+For the evaluation of our RAG application, we started to use “The RAG Triad” designed by Team TruEra
+[@noauthor_rag_nodate]. The RAG triad consists of the following three main components: query, the context, and the
+response. Its goal is to evaluate the RAG system to make it hallucination free.
 
-![The RAG Triad [Team TruEra, 2023]](images/The_RAG_Triad_TruLens_2023.png)
+![The RAG Triad [@noauthor_rag_nodate]](images/The_RAG_Triad_TruLens_2023.png)
 
 These three main evaluation components are connected to each other and therefore result in an evaluation cycle that
 continues over the lifecycle of a RAG application. The following describes the three evaluation stages of the RAG Triad.
@@ -90,11 +90,11 @@ to use another RAG evaluation library: RAGAS.
 
 ## RAGAS Evaluation
 
-Finally we ended up using the RAGAS framework since this made it easy to extract the evaluation results in an excel
+Finally we ended up using the RAGAS framework [@noauthor_metrics_nodate] since this made it easy to extract the evaluation results in an excel
 file to later compare it with our human centered evaluation approach. Following you we see the results of our evaluation
 using the RAGAS framework.
 
-In the following is the overall performance of the Base RAG and our Custom RAG, using the different chunk sizes. We found
+In the following we compare the overall performance of the Base RAG and our Custom RAG, using the different chunk sizes. We found
 that the best chunk size for the Base RAG is 700; while the best chunk size for our Custom RAG is a size of 900.
 
 ![Comparison of overall RAGAS Evaluation](images/Comparison_RAG_RAGAS_Evaluation.png)
@@ -109,8 +109,8 @@ base RAG at a chunk size of 700.
 For our human evaluation we let three human evaluators evaluate the in total 96 Results of the Basic RAG and the Custom
 RAG.
 
-We used three criteria: "Relevance and Accuracy", "Clarity and Coherence", and "Completeness and Depth". The following
-tabel shows the definition on our evaluation scale for the human evaluation.
+We used three criteria: "Relevance and Accuracy", "Clarity and Coherence", and "Completeness and Depth"
+[@shuster_retrieval_2021]. The following tabel shows the definition on our evaluation scale for the human evaluation.
 
 ![Criteria Tabel for Human Evaluation](images/Criteria_table_Human_Evaluation.png)
 
@@ -123,11 +123,14 @@ to human perception
 
 # Further Naturalistic & Formative Evaluation for Prompt Engineering
 
-We also used another naturalistic and formative evaluation (Venable et. al, 2016) for further prompt engineering in
+We also used another naturalistic and formative evaluation [@venable_feds:_2016] for further prompt engineering in
 our SWOT analysis. In our use case we have the advantage of having predefined prompts for our SWOT-analysis. That makes
 it possible to evaluate and adjust the exact used prompts in our tool.
 
 # Future Evaluation
 
-- Live evaluation of generated results, to ensure quality during use of the tool
-- If there are more resources available the human evaluation can be made with more than just three evaluators
+Next steps for the evaluation in our project is the live evaluation of generated results, to ensure high
+quality during the use of our tool. If there are more resources available the human evaluation can be executed
+with more than just three evaluators to make the results more meaningful. As discussed earlier, it could be helpful
+to adjust the RAGAS metrics of the context relevance to measure the relevance of the retrieved context to the rewritten
+query.
