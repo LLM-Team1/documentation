@@ -24,15 +24,12 @@ book:
     center:
       - text: "Home"
         href: index.qmd
-      - text: "Intro"
-        href: intro.qmd  
     right:
       - icon: bi bi-github
         href: https://github.com/LLM-Team1/StratMystiqPro
 #    background: "#325b74"    
   chapters:
     - index.qmd
-    - intro.qmd
     - part: Business Relevance
       chapters:
         - usecase.qmd
