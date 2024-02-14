@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./usecase.html" rel="next">
 <link href=".//images/StratMystiq-Icon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -91,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">Introduction and Project Overview</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -125,13 +125,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Preface</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction and Project Overview</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introduction and Project Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -295,11 +289,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#additional-notes" id="toc-additional-notes" class="nav-link" data-scroll-target="#additional-notes">Additional notes</a></li>
-  <li><a href="#styling" id="toc-styling" class="nav-link" data-scroll-target="#styling">Styling</a></li>
-  </ul></li>
+  <li><a href="#introduction-and-project-overview" id="toc-introduction-and-project-overview" class="nav-link active" data-scroll-target="#introduction-and-project-overview">Introduction and Project Overview</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -336,24 +326,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
-<section id="additional-notes" class="level2">
-<h2 class="anchored" data-anchor-id="additional-notes">Additional notes</h2>
-<ul>
-<li><a href="https://kirenz.github.io/thesis-guide/docs/design-science-research-gliederung.html">Possible structure</a> (Design Science Research)</li>
-</ul>
-</section>
-<section id="styling" class="level2">
-<h2 class="anchored" data-anchor-id="styling">Styling</h2>
-<ul>
-<li><a href="https://quarto.org/docs/output-formats/html-themes.html">HTML Themes</a></li>
-</ul>
+<section id="introduction-and-project-overview" class="level1">
+<h1>Introduction and Project Overview</h1>
+<p>In this course our goal was to build a LLM application. Therefore we created a use case and build a business model canvas and identified a business unit that could be improved through such a LLM application.</p>
+<p>Together with Mr.&nbsp;Kirenz we decided to first define our <a href="https://llm-team1.github.io/documentation/usecase.html">use case</a> to then create a business model from there on. Our use case was based on the idea of finding a way to make business analysis quick and easy for a wide range of potential customers. After that we constructed the business model around this use case. You can read more about the use case identification and modelling of our Business Model Canvas <a href="https://llm-team1.github.io/documentation/bmc.html">here</a>. For a more visual understanding of our startups’ next goals we created a <a href="https://llm-team1.github.io/documentation/strategyMap.html">strategy map</a> showing the directions our start up could go in the future.</p>
+<p>Our solution takes the findings of our use case identification and transform them into a software as a service (SaaS) solution. This solution provides an analysis tool for <a href="https://llm-team1.github.io/documentation/userPersona.html">our customers</a> to fulfill our value propositions.</p>
+<p>We are using a <a href="./documentation/RAGpipeline.html">Retrieval Augmented Generation (RAG) pipeline</a> to load and retrieve the needed information (coming from business reports) from our vector store. We encountered different obstacles on our way, therefore we decided to customize the basic RAG pipline to deal with image/ table recognition and at the same time improve answer precision by using a multi query approach.</p>
+<p>We used multiple <a href="https://llm-team1.github.io/documentation/RAGevaluation.html">evaluation methods</a> to evaluate the performance of our customized RAG. The main goal was here to identify the overall performance of our custom RAG compared to the basic RAG. At the same time we evaluated the best chunk size for both RAGs. The best solution was our custom RAG, using the chunk size of 900.</p>
+<p>We also developed a user friendly <a href="https://llm-team1.github.io/documentation/frontendArchitecture.html">frontend</a> to enable our customers to navigate between their business reports, analyses, and comparisons. Focus here was especially on the presentation of the extensive information in the SWOT analyses.</p>
+<p>Finally we created a comprehensive manual on <a href="https://llm-team1.github.io/documentation/deployment.html">how to deploy our application</a> and <a href="https://llm-team1.github.io/documentation/userManual.html">how to use our application</a>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -892,8 +875,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="<span class='chapter-number'>1</span>&nbsp; <span class='chapter-title'>Introduction and Project Overview</span>">
-        <span class="nav-page-text"><span class="chapter-title">Introduction and Project Overview</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./usecase.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Usecase</span>">
+        <span class="nav-page-text"><span class="chapter-title">Usecase</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -908,11 +891,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page">
 <p>Home</p>
-</a>
-  </li>  
-    <li class="nav-item">
-    <a class="nav-link" href="./intro.html">
-<p>Intro</p>
 </a>
   </li>  
 </ul>
