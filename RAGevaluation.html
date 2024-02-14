@@ -298,8 +298,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#fundamental-goals-of-evaluation" id="toc-fundamental-goals-of-evaluation" class="nav-link active" data-scroll-target="#fundamental-goals-of-evaluation">Fundamental Goals of Evaluation</a></li>
   <li><a href="#methods-for-rag-evaluation" id="toc-methods-for-rag-evaluation" class="nav-link" data-scroll-target="#methods-for-rag-evaluation">Methods for RAG-Evaluation</a></li>
   <li><a href="#general-evaluation-foundation" id="toc-general-evaluation-foundation" class="nav-link" data-scroll-target="#general-evaluation-foundation">General Evaluation Foundation</a></li>
-  <li><a href="#automated-evaluation-approach" id="toc-automated-evaluation-approach" class="nav-link" data-scroll-target="#automated-evaluation-approach">Automated Evaluation Approach</a></li>
+  <li><a href="#automated-evaluation-approach" id="toc-automated-evaluation-approach" class="nav-link" data-scroll-target="#automated-evaluation-approach">Automated Evaluation Approach</a>
+  <ul class="collapse">
+  <li><a href="#ragas-evaluation" id="toc-ragas-evaluation" class="nav-link" data-scroll-target="#ragas-evaluation">RAGAS Evaluation</a></li>
+  </ul></li>
   <li><a href="#human-centered-evaluation-approach" id="toc-human-centered-evaluation-approach" class="nav-link" data-scroll-target="#human-centered-evaluation-approach">Human Centered Evaluation Approach</a></li>
+  <li><a href="#further-naturalistic-formative-evaluation-for-prompt-engineering" id="toc-further-naturalistic-formative-evaluation-for-prompt-engineering" class="nav-link" data-scroll-target="#further-naturalistic-formative-evaluation-for-prompt-engineering">Further Naturalistic &amp; Formative Evaluation for Prompt Engineering</a></li>
+  <li><a href="#future-evaluation" id="toc-future-evaluation" class="nav-link" data-scroll-target="#future-evaluation">Future Evaluation</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/RAGevaluation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -332,6 +337,12 @@ ul.task-list li input[type="checkbox"] {
 <h1>Methods for RAG-Evaluation</h1>
 <p>There are different options when it comes to evaluating a RAG-System. After looking into the literature we found different out that there is not the one perfect method to evaluate a RAG-System.</p>
 <p>In Information Retrieval (IR) Venable et al.&nbsp;(2016) looks at the whole development process of an IR System. In the following Figure XX we see different approaches for different products. Our product falls in the “Human Risk &amp; Effectiveness” path. This path is made for solutions that are human centered just as our system. The black triangles are symbolizing different possible evaluation steps. On the y axis we find a scale coming from artificial, going to more naturalistic. Artificial stands for a more automated evaluation process. On the other hand we find a scale from formative to summative on the x axis. Formative means that with this evaluation we try to improve the output; while summative evaluations should give an more generall overview over the final product and whether it is providing all the functionalities it should provide as a solution a customer could use.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FEDS_Venable_et_al_2014.png" class="img-fluid figure-img"></p>
+<figcaption>Framework for Evaluation in Design Science Research (FEDS) [Venable et. al, 2016]</figcaption>
+</figure>
+</div>
 <p>Since our product is still in the prototype phase we concentrated our evaluation on the first three triangles. Meaning we did an automated evaluation using libraries like TruLens and RAGAS. The biggest advantage coming with these techniques is that they are comparably cheap (Venable et al., 2016). Next we used human evaluation to prove the results of our automated evaluation approach with this human centered approach. Human centered approaches for evaluation bring the advantage to give a more realistic view on the system. Problem with these approaches is that they are comparably expensive and time consuming (Venable et al., 2016)</p>
 </section>
 <section id="general-evaluation-foundation" class="level1">
@@ -352,6 +363,23 @@ ul.task-list li input[type="checkbox"] {
 <section id="automated-evaluation-approach" class="level1">
 <h1>Automated Evaluation Approach</h1>
 <p>As already mentioned we used different libraries to evaluate our RAG-System.</p>
+<p>For the evaluation of our RAG application, we started to use “The RAG Triad” designed by Team TruEra (2023). The RAG triad consists of the following three main components: query, the context, and the response. Its goal is to evaluate the RAG system to make it hallucination free.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/The_RAG_Triad_TruLens_2023.png" class="img-fluid figure-img"></p>
+<figcaption>The RAG Triad [Team TruEra, 2023]</figcaption>
+</figure>
+</div>
+<p>These three main evaluation components are connected to each other and therefore result in an evaluation cycle that continues over the lifecycle of a RAG application. The following describes the three evaluation stages of the RAG Triad.</p>
+<p><em>## Context Relevance</em></p>
+<p>The first evaluation component is the context relevance. In this step the goal is to evaluate if the context of the answer - provided by the RAG app - is relevant to the query.</p>
+<p><em>##Groundedness</em></p>
+<p>In the second step the goal is to evaluate the groundedness of the RAG app. The answer (which is relevant to the query) may lack groundedness. This means that the answer is not supported by the retrieved context but is generated from the LLMs training data. This training data is unverified, inappropriate, and often irrelevant for the use in this RAG application. In this evaluation step the answer by the RAG app is compared with the verified and trusted data stored in the vector database.</p>
+<p><em>##Answer Relevance</em></p>
+<p>In the last step of the evaluation cycle the goal is to evaluate the value a user gets and if the Response answers the original question of the user. Even if the answer contains to the query relevant information and the answer consists of data stored in the vector database the RAG response can still fail to answer the users question. By measuring the relevance of the response to the original question/ query the relevance of the response can be verified.</p>
+<p>The TruLens library offers a dashboard to overview the criteria mentioned above as you improve the junk sizes, prompts etc. Since this process makes it harder to compare the results of earlier evaluations or our human evaluation we decided to use another RAG evaluation library: RAGAS.</p>
+<section id="ragas-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="ragas-evaluation">RAGAS Evaluation</h2>
 <p>Finally we ended up using the RAGAS framework since this made it easy to extract the evaluation results in an excel file to later compare it with our human centered evaluation approach. Following you we see the results of our evaluation using the RAGAS framework.</p>
 <p>In the following is the overall performance of the Base RAG and our Custom RAG, using the different chunk sizes. We found that the best chunk size for the Base RAG is 700; while the best chunk size for our Custom RAG is a size of 900.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -361,6 +389,7 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>Our Custom RAG outperformed the Base RAG</p>
+</section>
 </section>
 <section id="human-centered-evaluation-approach" class="level1">
 <h1>Human Centered Evaluation Approach</h1>
@@ -379,10 +408,16 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Comparison of overall Human Evaluation</figcaption>
 </figure>
 </div>
+</section>
+<section id="further-naturalistic-formative-evaluation-for-prompt-engineering" class="level1">
+<h1>Further Naturalistic &amp; Formative Evaluation for Prompt Engineering</h1>
+<p>We also used another naturalistic and formative evaluation (Venable et. al, 2016) for further prompt engineering in our SWOT analysis. In our use case we have the advantage of having predefined prompts for our SWOT-analysis. That makes it possible to evaluate and adjust the exact used prompts in our tool.</p>
+</section>
+<section id="future-evaluation" class="level1">
+<h1>Future Evaluation</h1>
 <ul>
-<li>Three evaluators</li>
-<li>Evaluating the RAG-results based on the three criteria: “Relevance and Accuracy”, “Clarity and Coherence”, and “Completeness and Depth”</li>
-<li>Presentation of results…</li>
+<li>Live evaluation of generated results, to ensure quality during use of the tool</li>
+<li>If there are more resources available the human evaluation can be made with more than just three evaluators</li>
 </ul>
 
 
