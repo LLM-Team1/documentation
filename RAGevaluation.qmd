@@ -62,12 +62,12 @@ evaluate the RAG system to make it hallucination free.
 These three main evaluation components are connected to each other and therefore result in an evaluation cycle that
 continues over the lifecycle of a RAG application. The following describes the three evaluation stages of the RAG Triad.
 
-*## Context Relevance*
+*Context Relevance*
 
 The first evaluation component is the context relevance. In this step the goal is to evaluate if the context of the
 answer - provided by the RAG app - is relevant to the query.
 
-*##Groundedness*
+*Groundedness*
 
 In the second step the goal is to evaluate the groundedness of the RAG app. The answer (which is relevant to the
 query) may lack groundedness. This means that the answer is not supported by the retrieved context but is generated
@@ -75,7 +75,7 @@ from the LLMs training data. This training data is unverified,  inappropriate, a
 this RAG application. In this evaluation step the answer by the RAG app is compared with the verified and trusted
 data stored in the vector database.
 
-*##Answer Relevance*
+*Answer Relevance*
 
 In the last step of the evaluation cycle the goal is to evaluate the value a user gets and if the Response answers
 the original question of the user. Even if the answer contains to the query relevant information and the answer
