@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="StratMystiqPro - A tool for quick strategic insights">
 
-<title>StratMystiqPro Documentation</title>
+<title>StratMystiqPro Documentation - Backend Implementation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,30 +21,67 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./BackendArchitecture/GoogleAuth.html" rel="next">
-<link href="./backendArchitecture.html" rel="prev">
-<link href=".//images/StratMystiq-Icon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../BackendArchitecture/GoogleAuth.html" rel="next">
+<link href="../BackendArchitecture/Datamodel.html" rel="prev">
+<link href="..//images/StratMystiq-Icon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -73,7 +111,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="StratMystiqPro Documentation">
+<meta property="og:title" content="StratMystiqPro Documentation - Backend Implementation">
+<meta property="og:description" content="StratMystiqPro - A tool for quick strategic insights">
 <meta property="og:image" content="https://LMM-Team1.github.io/documentation//images/StratMystiq-Icon.png">
 <meta property="og:site_name" content="StratMystiqPro Documentation">
 <meta property="og:image:height" content="1024">
@@ -89,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./RAGpipeline.html">System Design</a></li><li class="breadcrumb-item"><a href="./frontendArchitecture.html"><span class="chapter-title">frontendArchitecture.html</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../BackendArchitecture/backendArchitecture.html">Backend</a></li><li class="breadcrumb-item"><a href="../BackendArchitecture/PythonImplementation.html"><span class="chapter-title">Backend Implementation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -103,11 +142,11 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/StratMystiq-Icon.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/StratMystiq-Icon.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">StratMystiqPro Documentation</a> 
+      <a href="../">StratMystiqPro Documentation</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/LLM-Team1/documentation" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -123,13 +162,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction and Project Overview</span></a>
+  <a href="../intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction and Project Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -143,27 +182,27 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./usecase.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Usecase</span></a>
+  <a href="../usecase.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Usecase</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./userPersona.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User Persona</span></a>
+  <a href="../userPersona.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User Persona</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Business Model Canvas and Use Case Identification</span></a>
+  <a href="../bmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Business Model Canvas and Use Case Identification</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./strategyMap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Strategy Map</span></a>
+  <a href="../strategyMap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Strategy Map</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./valueProposition.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Value Proposition</span></a>
+  <a href="../valueProposition.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Value Proposition</span></a>
   </div>
 </li>
       </ul>
@@ -171,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">System Design</span></a>
+ <span class="menu-text">RAG System</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -179,32 +218,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./RAGpipeline.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">RAG Pipeline</span></a>
+  <a href="../RAGpipeline.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">RAG Pipeline</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./RAGevaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">RAG Evaluation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./backendArchitecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Backend Architecture</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./frontendArchitecture.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">frontendArchitecture.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./BackendArchitecture/GoogleAuth.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Authentication with Google</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./BackendArchitecture/API.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">REST API</span></a>
+  <a href="../RAGevaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">RAG Evaluation</span></a>
   </div>
 </li>
       </ul>
@@ -212,7 +231,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Frontend</span></a>
+ <span class="menu-text">Backend</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -220,22 +239,27 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Frontend/FrontendIntro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Frontend Documentation</span></a>
+  <a href="../BackendArchitecture/backendArchitecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Backend Architecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Frontend/Techstack.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Frontend Techstack</span></a>
+  <a href="../BackendArchitecture/Datamodel.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Application Data Model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Frontend/ux.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User experience</span></a>
+  <a href="../BackendArchitecture/PythonImplementation.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Backend Implementation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Frontend/ComponentDesc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Component description</span></a>
+  <a href="../BackendArchitecture/GoogleAuth.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Authentication with Google</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../BackendArchitecture/API.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">REST API</span></a>
   </div>
 </li>
       </ul>
@@ -243,7 +267,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Usage</span></a>
+ <span class="menu-text">Frontend</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -251,19 +275,50 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./deployment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Deployment</span></a>
+  <a href="../Frontend/FrontendIntro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Frontend Documentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./userManual.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User Manual</span></a>
+  <a href="../Frontend/Techstack.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Frontend Techstack</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Frontend/ux.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User experience</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Frontend/ComponentDesc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Component description</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Usage</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deployment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Deployment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../userManual.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User Manual</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -273,16 +328,130 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#class-structure" id="toc-class-structure" class="nav-link active" data-scroll-target="#class-structure">Class Structure</a>
+  <ul class="collapse">
+  <li><a href="#class-diagram" id="toc-class-diagram" class="nav-link" data-scroll-target="#class-diagram">Class Diagram</a></li>
+  <li><a href="#config" id="toc-config" class="nav-link" data-scroll-target="#config">Config</a></li>
+  <li><a href="#database" id="toc-database" class="nav-link" data-scroll-target="#database">Database</a></li>
+  <li><a href="#chromaconnector" id="toc-chromaconnector" class="nav-link" data-scroll-target="#chromaconnector">ChromaConnector</a></li>
+  <li><a href="#businessanalyst" id="toc-businessanalyst" class="nav-link" data-scroll-target="#businessanalyst">BusinessAnalyst</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/BackendArchitecture/PythonImplementation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../BackendArchitecture/backendArchitecture.html">Backend</a></li><li class="breadcrumb-item"><a href="../BackendArchitecture/PythonImplementation.html"><span class="chapter-title">Backend Implementation</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Backend Implementation</span></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<p>The backend of the system is implemented in Python using the FastAPI framework and the SQLAlchemy ORM. The backend is responsible for handling the business logic of the system, such as user authentication, report processing, and analysis of the reports. It provides a RESTful API that allows the frontend to interact with the system.</p>
+<p>This chapter will provide an overview of the backend implementation, including the main classes and their responsibilities as well as example code snippets to illustrate the usage of the classes.</p>
+<section id="class-structure" class="level2">
+<h2 class="anchored" data-anchor-id="class-structure">Class Structure</h2>
+<p>This section will focus on the Python classes that were implemented to handle the business logic of the system. It should be noted that while it would have been ideal to implement a clean and consistent class structure from the beginning, we decided to let it evolve over time, as we were not sure about the exact implementation details of the RAG Pipeline.</p>
+<p>Therefore classes that represent the entities of the system such as User, Report, Analysis, etc. don’t contain any business logic and are only used to represent the data model of the system. They are needed to interact with the relational database using the SQLAlchemy ORM. As such, they are represented in our class diagram, but are not discussed in this section as their attributes are discussed in the data model section.</p>
+<p>Furthermore, certain areas of the system such as the implementation of the FastAPI endpoints are not programmed in a class-based structure, but rather in a function-based structure as recommended by the FastAPI documentation. The following sections will provide a brief overview of the relevant classes, their responsibilities and examples on how to use the classes.</p>
+<section id="class-diagram" class="level3">
+<h3 class="anchored" data-anchor-id="class-diagram">Class Diagram</h3>
+<p>The following diagram provides an overview of the classes and their relationships. The diagram does not contain the FastAPI endpoints, and authentication logic as they are not implemented as classes. <a href="../images/ClassDiagram.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Class Diagram"><img src="../images/ClassDiagram.png" class="img-fluid" style="width:100.0%" alt="Class Diagram"></a></p>
+</section>
+<section id="config" class="level3">
+<h3 class="anchored" data-anchor-id="config">Config</h3>
+<p>The Config class is responsible for loading environment variables, initializing the OpenAI API, the Chroma Vector Store, and the MySQL Database. It does this in its init method. The environment variables are loaded from a .env file or from the Docker environment, depending on the environment in which the application is running.</p>
+<p>The Config class is used to manage the configuration of the application. It provides a centralized place to manage all configuration settings. This makes it easier to change settings and manage dependencies as they are all in one place.</p>
+<p>The Config class is written as a Singleton class. The Singleton pattern is a design pattern that restricts the instantiation of a class to a single instance. This is important as the Config class is responsible for initializing several dependencies such as the database connections which should only be initialized once and shared across the application.</p>
+<p>The following code snippet shows how to use the Config class in other parts of the application to access the configuration settings or dependencies such as the database connection.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> config <span class="im">import</span> Config</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate the Config class</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> Config()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the LLM Name for the OpenAI API</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>openai_api_key <span class="op">=</span> config.LLM_NAME</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the vector database client</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> config.chroma</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the MySQL database session</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> config.mysql_db.get_session()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="database" class="level3">
+<h3 class="anchored" data-anchor-id="database">Database</h3>
+<p>The Database class is responsible for managing the connection to the MySQL database. It provides methods to create the database and tables, should they not exist, and to get a session to interact with the database. It contains two important settings that might need to be changed depending on the load of the system.</p>
+<ul>
+<li><code>pool_size</code> - The number of connections to the database that are kept open at all times. This should be set to a value that is appropriate for the expected load of the system. Especially when the system is expected to handle a large number of concurrent report uploads, or SWOT analysis generation requests, this value should be increased, as these long-running tasks will keep their database connections open for the duration of the task.</li>
+<li><code>max_overflow</code> - The maximum number of connections that can be created above the pool_size. This setting comes into play when the pool is exhausted and all connections are in use. If the pool is exhausted and the number of connections is below the max_overflow value, new connections will be created. If the number of connections is above the max_overflow value, the application will wait for a connection to become available. This results in a longer response time for the user.</li>
+</ul>
+<p>The direct usage of the Database class is limited to the Config class, which initializes the database connection and provides a method to get a session to interact with the database. Therefore, the following code snippets show how the Database class is used in the Config class and how the Config class can be used to access the database.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> services.mysql_connector <span class="im">import</span> Database</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate the Database class with the database URL</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> Database(<span class="st">'mysql+pymysql://user:password@localhost/db_name'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the database</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>db.init_db()</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a new session and interact with the database</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> db.get_session()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> config <span class="im">import</span> Config</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> business_objects.user <span class="im">import</span> User</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate the Config class</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> Config()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a database session</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> config.mysql_db.get_session()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Interact with the database to get a user</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>user <span class="op">=</span> session.query(User).<span class="bu">filter</span>(User.<span class="bu">id</span> <span class="op">==</span> user_id).first()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="chromaconnector" class="level3">
+<h3 class="anchored" data-anchor-id="chromaconnector">ChromaConnector</h3>
+<p>The ChromaConnector class is responsible for managing the connection to the Chroma Vector Store. In its init method, it initializes the connection to the Chroma Vector Store and creates the collection that is used to store the chunks for the annual reports, should it not exist.</p>
+<p>The ChromaConnector class provides methods to get the current collection, the chromadb client, and to switch to a different collection. It also contains methods purely used for the development of the system, such as a method to delete all reports from the collection, or completely reset the collection.</p>
+<p>Similar to the Database class, the direct usage of the ChromaConnector class is limited to the Config class, which initializes the Chroma Vector Store connection and provides a method to get the Chroma Vector Store client. Therefore, the following code snippets show how the ChromaConnector class is used in the Config class and how the Config class can be used to access the Chroma Vector Store.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> services.chromadb_connector <span class="im">import</span> ChromaConnector</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate the ChromaConnector class with the Chroma Vector Store URL</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>chroma <span class="op">=</span> ChromaConnector(host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8000</span>, collection_name<span class="op">=</span><span class="st">"annual-reports"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> config <span class="im">import</span> Config</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate the Config class</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> Config()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the Chroma Vector Store client</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> config.chroma</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Query the Chroma Vector Store</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>docs <span class="op">=</span> db.max_marginal_relevance_search(<span class="bu">str</span>(query), k<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="businessanalyst" class="level3">
+<h3 class="anchored" data-anchor-id="businessanalyst">BusinessAnalyst</h3>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -818,12 +987,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./backendArchitecture.html" class="pagination-link  aria-label=" &lt;span="" architecture&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Backend Architecture</span></span>
+      <a href="../BackendArchitecture/Datamodel.html" class="pagination-link  aria-label=" &lt;span="" data="" model&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Application Data Model</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./BackendArchitecture/GoogleAuth.html" class="pagination-link" aria-label="<span class='chapter-number'>11</span>&nbsp; <span class='chapter-title'>Authentication with Google</span>">
+      <a href="../BackendArchitecture/GoogleAuth.html" class="pagination-link" aria-label="<span class='chapter-number'>12</span>&nbsp; <span class='chapter-title'>Authentication with Google</span>">
         <span class="nav-page-text"><span class="chapter-title">Authentication with Google</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -837,17 +1006,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
+    <a class="nav-link active" href="../index.html" aria-current="page">
 <p>Home</p>
 </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="./intro.html">
+    <a class="nav-link" href="../intro.html">
 <p>Intro</p>
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/frontendArchitecture.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LLM-Team1/documentation/edit/main/BackendArchitecture/PythonImplementation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LLM-Team1/documentation/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -860,6 +1029,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","loop":false});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 

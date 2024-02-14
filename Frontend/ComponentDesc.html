@@ -176,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">System Design</span></a>
+ <span class="menu-text">RAG System</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -192,14 +192,30 @@ ul.task-list li input[type="checkbox"] {
   <a href="../RAGevaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">RAG Evaluation</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Backend</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../backendArchitecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Backend Architecture</span></a>
+  <a href="../BackendArchitecture/backendArchitecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Backend Architecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../frontendArchitecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">frontendArchitecture.html</span></a>
+  <a href="../BackendArchitecture/Datamodel.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Application Data Model</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../BackendArchitecture/PythonImplementation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Backend Implementation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -216,13 +232,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Frontend</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Frontend/FrontendIntro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Frontend Documentation</span></a>
@@ -247,13 +263,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Usage</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../deployment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Deployment</span></a>
@@ -305,13 +321,13 @@ ul.task-list li input[type="checkbox"] {
 <p>As is typical for React, we have built components for all our elements that we can reuse modularly elsewhere. We first planned and designed these components in Figma and then implemented them. Shown here is our first Figma design, which still contains a few things that we adjusted compared to the final implementation, such as the left orientation of the texts and elements, as well as the colors.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/Frontend/FigmaUploadPage.png" class="lightbox" data-gallery="figma" data-glightbox="description: .lightbox-desc-1" title="Primal Figma design of the upload page"><img src="../images/Frontend/FigmaUploadPage.png" class="img-fluid figure-img" style="width:100.0%" alt="Primal Figma design of the upload page"></a></p>
+<p><a href="../images/Frontend/FigmaUploadPage.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="figma" title="Primal Figma design of the upload page"><img src="../images/Frontend/FigmaUploadPage.png" class="img-fluid figure-img" style="width:100.0%" alt="Primal Figma design of the upload page"></a></p>
 <figcaption>Primal Figma design of the upload page</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/Frontend/FigmaSWOTMatrix.png" class="lightbox" data-gallery="figma" data-glightbox="description: .lightbox-desc-2" title="Primal Figma design of the SWOT-Matrix"><img src="../images/Frontend/FigmaSWOTMatrix.png" class="img-fluid figure-img" style="width:100.0%" alt="Primal Figma design of the SWOT-Matrix"></a></p>
+<p><a href="../images/Frontend/FigmaSWOTMatrix.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="figma" title="Primal Figma design of the SWOT-Matrix"><img src="../images/Frontend/FigmaSWOTMatrix.png" class="img-fluid figure-img" style="width:100.0%" alt="Primal Figma design of the SWOT-Matrix"></a></p>
 <figcaption>Primal Figma design of the SWOT-Matrix</figcaption>
 </figure>
 </div>
@@ -866,7 +882,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../deployment.html" class="pagination-link" aria-label="<span class='chapter-number'>17</span>&nbsp; <span class='chapter-title'>Deployment</span>">
+      <a href="../deployment.html" class="pagination-link" aria-label="<span class='chapter-number'>18</span>&nbsp; <span class='chapter-title'>Deployment</span>">
         <span class="nav-page-text"><span class="chapter-title">Deployment</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -903,7 +919,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
