@@ -160,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./strategyMap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Strategy Map</span></a>
+  <a href="./strategyMap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Our Strategy Map</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -371,11 +371,11 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>These three main evaluation components are connected to each other and therefore result in an evaluation cycle that continues over the lifecycle of a RAG application. The following describes the three evaluation stages of the RAG Triad.</p>
-<p><em>## Context Relevance</em></p>
+<p><em>Context Relevance</em></p>
 <p>The first evaluation component is the context relevance. In this step the goal is to evaluate if the context of the answer - provided by the RAG app - is relevant to the query.</p>
-<p><em>##Groundedness</em></p>
+<p><em>Groundedness</em></p>
 <p>In the second step the goal is to evaluate the groundedness of the RAG app. The answer (which is relevant to the query) may lack groundedness. This means that the answer is not supported by the retrieved context but is generated from the LLMs training data. This training data is unverified, inappropriate, and often irrelevant for the use in this RAG application. In this evaluation step the answer by the RAG app is compared with the verified and trusted data stored in the vector database.</p>
-<p><em>##Answer Relevance</em></p>
+<p><em>Answer Relevance</em></p>
 <p>In the last step of the evaluation cycle the goal is to evaluate the value a user gets and if the Response answers the original question of the user. Even if the answer contains to the query relevant information and the answer consists of data stored in the vector database the RAG response can still fail to answer the users question. By measuring the relevance of the response to the original question/ query the relevance of the response can be verified.</p>
 <p>The TruLens library offers a dashboard to overview the criteria mentioned above as you improve the junk sizes, prompts etc. Since this process makes it harder to compare the results of earlier evaluations or our human evaluation we decided to use another RAG evaluation library: RAGAS.</p>
 <section id="ragas-evaluation" class="level2">
