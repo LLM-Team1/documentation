@@ -59,6 +59,17 @@ using the RAGAS framework.
 
 # Human Centered Evaluation Approach
 
+For our human evaluation we let three human evaluators evaluate the in total 96 Results of the Basic RAG and the Custom
+RAG.
+
+We used three criteria
+
+The Results for the human evaluation show, that the best chunk size for the Base RAG is 700, while the best chunk size
+for our Custom RAG is 900. Overall our Custom RAG performs better than the Base RAG on this questions, when it comes
+to human perception
+
+![Comparison of overall Human Evaluation](images/Comparison_RAG_Human_Evaluation.png)
+
 - Three evaluators
 - Evaluating the RAG-results based on the three criteria: "Relevance and Accuracy", "Clarity and Coherence", and "Completeness and Depth"
 - Presentation of results...

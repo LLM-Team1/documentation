@@ -207,6 +207,7 @@ following you can see our BMC with its nine dimensions.
 </body>
 </html>
 
+![Our Business Model Canvas](images/BMC.png)
 
 Subsequently you find the dimensions of the BMC in detail with the description of that decision.
 
