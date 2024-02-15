@@ -1,10 +1,9 @@
 # Backend Implementation
 
-The backend of the system is implemented in Python using the FastAPI framework and the SQLAlchemy ORM.
 The backend is responsible for handling the business logic of the system, such as user authentication, report processing, and analysis of the reports.
 It provides a RESTful API that allows the frontend to interact with the system.
 
-This chapter will provide an overview of the backend implementation, including the main classes and their responsibilities as well as
+This chapter will provide an overview of the backend implementation, including the main classes and functions and their responsibilities, as well as
 example code snippets to illustrate the usage of the classes.
 
 ## Class Structure

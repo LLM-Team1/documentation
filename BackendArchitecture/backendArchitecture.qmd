@@ -1,4 +1,4 @@
-# Backend Architecture
+# Requirements and Tech Stack
 This part of the documentation will cover the backend architecture of the project.
 
 ## Backend Requirements
@@ -92,13 +92,5 @@ ChromaDB is an open-source vector store that is designed to store and retrieve v
     - ChromaDB is natively supported by Langchain modules and thus requires minimal configuration to build initial prototypes.
 - **Documentation and Community:**
     - ChromaDB has a rich documentation and an active community which makes it easier to get help and support when needed.
-
-
-
-
-## Authentication
-
-## REST API
-
 
 
