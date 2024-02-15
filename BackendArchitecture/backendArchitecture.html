@@ -298,10 +298,11 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#tech-stack" id="toc-tech-stack" class="nav-link" data-scroll-target="#tech-stack">Tech Stack</a>
   <ul class="collapse">
+  <li><a href="#docker" id="toc-docker" class="nav-link" data-scroll-target="#docker">Docker</a></li>
   <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
   <li><a href="#fastapi" id="toc-fastapi" class="nav-link" data-scroll-target="#fastapi">FastAPI</a></li>
-  <li><a href="#docker" id="toc-docker" class="nav-link" data-scroll-target="#docker">Docker</a></li>
   <li><a href="#mysql" id="toc-mysql" class="nav-link" data-scroll-target="#mysql">MySQL</a></li>
+  <li><a href="#sqlalchemy" id="toc-sqlalchemy" class="nav-link" data-scroll-target="#sqlalchemy">SQLAlchemy</a></li>
   <li><a href="#chromadb" id="toc-chromadb" class="nav-link" data-scroll-target="#chromadb">ChromaDB</a></li>
   </ul></li>
   </ul>
@@ -329,7 +330,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This part of the documentation will cover the backend architecture of the project.</p>
+<p>This part of the documentation will highlights the requirements that the system should meet from a technical standpoint and the technologies that we have chosen to build the backend of the system.</p>
 <section id="backend-requirements" class="level2">
 <h2 class="anchored" data-anchor-id="backend-requirements">Backend Requirements</h2>
 <p>At the beginning of the project, we were trying to decide what technologies and architectures we should use to build our system. To make these decisions, we decided to to define the requirements that the system should meet from a technical standpoint. Seeing that the goal of this project is to build a prototype for a SaaS tool, the backend should be designed to meet a number of requirements. These have been grouped into the following categories:</p>
@@ -394,28 +395,44 @@ ul.task-list li input[type="checkbox"] {
 <section id="tech-stack" class="level2">
 <h2 class="anchored" data-anchor-id="tech-stack">Tech Stack</h2>
 <p>Based on the requirements defined above, we decided to use the following technologies to build the backend of the system. The following sections will provide a brief overview of each technology and the reasons for choosing them.</p>
+<section id="docker" class="level3">
+<h3 class="anchored" data-anchor-id="docker">Docker</h3>
+<p>Docker is a platform for developing, packaging, and running applications. There are several reasons why we decided to use Docker as our platform for developing our system:</p>
+<ul>
+<li><strong>Consistent Development Environment:</strong>
+<ul>
+<li>Docker allows us to create a consistent development environment across our different host systems (Mac and Windows). This should help to avoid issues, such as file path differences, or library version conflicts.</li>
+<li>Databases and other services can be run as containers, which makes it easier to set up and tear down the development environment quickly.</li>
+</ul></li>
+<li><strong>Easy Deployment and Scalability:</strong>
+<ul>
+<li>Docker containers can be deployed to any platform that supports Docker, this makes it easier to deploy the system to any platform/location.</li>
+<li>Our system can easily be scaled by utilizing Docker Swarm or Kubernetes to manage the containers.</li>
+</ul></li>
+</ul>
+</section>
 <section id="python" class="level3">
 <h3 class="anchored" data-anchor-id="python">Python</h3>
-<p>The backend of the system is built using Python, some of the reasons for choosing Python are:</p>
+<p>The main programming language we decided to use for building the backend of the system is Python. The reasons for choosing Python are:</p>
 <ul>
 <li><strong>Ease of Use:</strong>
 <ul>
-<li>All team members have experience working with Python, making it easy for all team members to actively contribute to the project.</li>
+<li>All team members have experience working with Python, allowing all team members to actively contribute to the project.</li>
 </ul></li>
 <li><strong>Numerous Opensource Libraries:</strong>
 <ul>
-<li>Python has a rich ecosystem of libraries and tools ranging from backend frameworks to machine learning libraries such as Flask and Langchain.</li>
+<li>Python has a rich ecosystem of libraries and tools ranging from backend frameworks to llm framework libraries such as Flask and Langchain.</li>
 </ul></li>
 </ul>
 </section>
 <section id="fastapi" class="level3">
 <h3 class="anchored" data-anchor-id="fastapi">FastAPI</h3>
-<p>FastAPI is a modern, fast (high-performance), web framework for building APIs with Python. The reasons for choosing FastAPI are:</p>
+<p>For our backend framework there were several options to choose from, such as Flask, Django, and FastAPI. FastAPI is a modern, fast (high-performance), web framework for building APIs with Python. The reasons why we chose FastAPI are:</p>
 <ul>
 <li><strong>Performance and Asynchronous Request Handling:</strong>
 <ul>
-<li>FastAPI is built on top of Starlette for web routing and Pydantic for data validation, this makes it more performant than other Python web frameworks such as Flask.</li>
-<li>It supports asynchronous request handling natively, which is crucial for handling multiple requests simultaneously where long-running tasks are expected.</li>
+<li>FastAPI is built on top of Starlette for web routing and Pydantic for data validation, this makes it more performant than other Python web frameworks.</li>
+<li>It supports asynchronous request handling natively, which is crucial for handling multiple requests simultaneously where long-running tasks are expected. This is especially important for our system, as some API calls will take time to process and we want to avoid blocking other requests.</li>
 </ul></li>
 <li><strong>Automatic API Documentation:</strong>
 <ul>
@@ -424,25 +441,9 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="docker" class="level3">
-<h3 class="anchored" data-anchor-id="docker">Docker</h3>
-<p>Docker is a platform for developing, shipping, and running applications. The reasons for choosing Docker are:</p>
-<ul>
-<li><strong>Consistent Development Environment:</strong>
-<ul>
-<li>Docker allows us to create a consistent environment for development as it greatly reduces the number of possible errors when working with different platforms (Mac and Windows).</li>
-<li>Databases and other services can be run as containers, which makes it easier to set up and tear down the development environment quickly.</li>
-</ul></li>
-<li><strong>Easy Deployment:</strong>
-<ul>
-<li>Docker containers can be deployed to any platform that supports Docker, which makes it easier to deploy the system to different cloud providers.</li>
-<li>Services can be scaled horizontally by running multiple containers of the same service.</li>
-</ul></li>
-</ul>
-</section>
 <section id="mysql" class="level3">
 <h3 class="anchored" data-anchor-id="mysql">MySQL</h3>
-<p>To store user, report and analysis data, we decided to use a relational database. The reasons for choosing MySQL are:</p>
+<p>To store user, report and analysis data, we decided to use a relational database. While there are numerous relation databases to choose from, we decided to use MySQL. The reasons for choosing MySQL are:</p>
 <ul>
 <li><strong>Experience:</strong>
 <ul>
@@ -451,6 +452,20 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Scalability:</strong>
 <ul>
 <li>Should the need arise, MySQL can be scaled horizontally by using sharding or clustering to handle a large number of users and reports.</li>
+</ul></li>
+</ul>
+</section>
+<section id="sqlalchemy" class="level3">
+<h3 class="anchored" data-anchor-id="sqlalchemy">SQLAlchemy</h3>
+<p>Using a relational database is made easier by using an Object-Relational Mapping (ORM) library that handles the interaction between the business objects and the database. We decided to use SQLAlchemy as our ORM library. The reasons for choosing SQLAlchemy are:</p>
+<ul>
+<li><strong>Support for Multiple Databases:</strong>
+<ul>
+<li>SQLAlchemy supports multiple databases, this gives us the flexibility to switch to a different database if the need arises without having to change the codebase.</li>
+</ul></li>
+<li><strong>Ease of Use:</strong>
+<ul>
+<li>SQLAlchemy provides a high-level API for interacting with the database, making it easier to write and maintain database queries.</li>
 </ul></li>
 </ul>
 </section>

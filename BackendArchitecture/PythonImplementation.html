@@ -365,8 +365,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The backend is responsible for handling the business logic of the system, such as user authentication, report processing, and analysis of the reports. It provides a RESTful API that allows the frontend to interact with the system.</p>
-<p>This chapter will provide an overview of the backend implementation, including the main classes and functions and their responsibilities, as well as example code snippets to illustrate the usage of the classes.</p>
+<p>This chapter will provide an overview of the backend implementation, including the main classes and functions and their responsibilities, as well as example code snippets to illustrate the usage of the classes/functions.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Authentication and Authorization logic as well as the RestAPI is not covered in this section, as it is covered in these two chapters of the documentation: <a href="https://llm-team1.github.io/documentation/BackendArchitecture/GoogleAuth.html">Authentication with Google</a> <a href="https://llm-team1.github.io/documentation/BackendArchitecture/API.html">REST API</a></p>
+</div>
+</div>
 <section id="class-structure" class="level2">
 <h2 class="anchored" data-anchor-id="class-structure">Class Structure</h2>
 <p>This section will focus on the Python classes that were implemented to handle the business logic of the system. It should be noted that while it would have been ideal to implement a clean and consistent class structure from the beginning, we decided to let it evolve over time, as we were not sure about the exact implementation details of the RAG Pipeline.</p>
@@ -404,6 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>max_overflow</code> - The maximum number of connections that can be created above the pool_size. This setting comes into play when the pool is exhausted and all connections are in use. If the pool is exhausted and the number of connections is below the max_overflow value, new connections will be created. If the number of connections is above the max_overflow value, the application will wait for a connection to become available. This results in a longer response time for the user.</li>
 </ul>
 <p>The direct usage of the Database class is limited to the Config class, which initializes the database connection and provides a method to get a session to interact with the database. Therefore, the following code snippets show how the Database class is used in the Config class and how the Config class can be used to access the database.</p>
+<p>Usage in Config class:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> services.mysql_connector <span class="im">import</span> Database</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate the Database class with the database URL</span></span>
@@ -414,6 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a new session and interact with the database</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> db.get_session()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Using the Config class to access the database:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> config <span class="im">import</span> Config</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> business_objects.user <span class="im">import</span> User</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -428,13 +442,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="chromaconnector" class="level3">
 <h3 class="anchored" data-anchor-id="chromaconnector">ChromaConnector</h3>
-<p>The ChromaConnector class is responsible for managing the connection to the Chroma Vector Store. In its init method, it initializes the connection to the Chroma Vector Store and creates the collection that is used to store the chunks for the annual reports, should it not exist.</p>
+<p>The ChromaConnector class is responsible for managing the connection to the ChromaDB. In its init method, it initializes the connection to the Chroma Vector Store and creates the collection that is used to store the chunks for the annual reports, should it not exist.</p>
 <p>The ChromaConnector class provides methods to get the current collection, the chromadb client, and to switch to a different collection. It also contains methods purely used for the development of the system, such as a method to delete all reports from the collection, or completely reset the collection.</p>
-<p>Similar to the Database class, the direct usage of the ChromaConnector class is limited to the Config class, which initializes the Chroma Vector Store connection and provides a method to get the Chroma Vector Store client. Therefore, the following code snippets show how the ChromaConnector class is used in the Config class and how the Config class can be used to access the Chroma Vector Store.</p>
+<p>Similar to the Database class, the direct usage of the ChromaConnector class is limited to the Config class, which initializes the Chroma Vector Store connection and provides a method to get the Chroma Vector Store client. The following code snippets show how the ChromaConnector class is used in the Config class and how the Config class can be used to access the Chroma Vector Store.</p>
+<p>Usage in Config class:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> services.chromadb_connector <span class="im">import</span> ChromaConnector</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate the ChromaConnector class with the Chroma Vector Store URL</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>chroma <span class="op">=</span> ChromaConnector(host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8000</span>, collection_name<span class="op">=</span><span class="st">"annual-reports"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Using the Config class to access the Chroma Vector Store:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> config <span class="im">import</span> Config</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate the Config class</span></span>
@@ -450,7 +466,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="businessanalyst">BusinessAnalyst</h3>
 <p>The BusinessAnalyst class is the central class and component of the system. It is responsible for all the analyses that are performed on an annual report. It is also the class that contains the retrieval elements of our RAG-Pipeline. The reason for this is that all of the use-cases that require the generation of content, using the provided business reports, are related to the analysis of an annual report. Therefore, it made sense to implement that part of the RAG Pipeline in the BusinessAnalyst class.</p>
 <p>The class is designed to interact with our database for data retrieval and storage, perform tasks such as similarity search, question reformulation, document evaluation, and generate SWOT analyses. It also contains the logic to compare SWOT analyses.</p>
-<p>The class has to be initialized with the name of the company that should be analyzed, an OpenAI client, a database connection and the specific report-id. Should a comparison be required, the class also needs to be initialized with the report-id of the report that should be compared to the original report.</p>
+<p>The class has to be initialized with the name of the company that should be analyzed, an OpenAI client, a database connection and the specific report-id. Should a comparison be required, the class also needs to be initialized with the report-id of the report that should be compared.</p>
 <p>The following code snippet shows a few simplified examples of how the BusinessAnalyst class can be used:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> services.business_analyst <span class="im">import</span> BusinessAnalyst</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> config <span class="im">import</span> Config</span>
@@ -487,9 +503,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><code>_similarity_search(query: str, k: int = 3, report_id=None) -&gt; List[Document]</code>
 <ul>
-<li>This method takes a query as input and performs a similarity search on the annual reports in the Chroma Vector Store.</li>
+<li>This method takes a query as input and performs a similarity search on the annual reports in the ChromaDB.</li>
 <li>The method returns the k most relevant chunks using the Max-Marginal-Relevance Search feature of ChromaDB.</li>
-<li>The method contains logic to ensure that only the chunks that are related to the selected report are returned and that if there are no chunks related to the report, the method returns an exception that the report does not exist in the Chroma Vector Store. See code excerpt below:</li>
+<li>The method contains logic to ensure that only the chunks that are related to the selected report are returned and that if there are no chunks related to the report, the method returns an exception that the report does not exist in the ChromaDB. See code excerpt below:</li>
 </ul>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _similarity_search(<span class="va">self</span>, query, k<span class="op">=</span><span class="dv">3</span>, report_id<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
@@ -621,7 +637,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>                json_format<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> json.loads(answer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Similar methods exist for all other sections of the SWOT analysis. The JSON Output of the SWOT analysis is then combined into a single SWOT analysis and stored in the database. The main areas of each section of the SWOT analysis are then used to generate a summary of the SWOT analysis.</p>
+<p>Similar methods exist for all other sections of the SWOT analysis. The JSON Output of the individual SWOT sections is then combined into a single SWOT analysis and stored in the database. As the whole SWOT analysis is relatively long it can’t be directly displayed in the frontend. Therefore, the BusinessAnalyst class also contains a method to generate a summary of the SWOT analysis.</p>
+</section>
+<section id="generating-a-summary-of-the-swot-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="generating-a-summary-of-the-swot-analysis">Generating a Summary of the SWOT Analysis</h4>
+<p>The summary of the SWOT analysis is generated by the generate_swot_analysis_summary method. The method takes the SWOT analysis that was generated and then asks OpenAI to summarize the SWOT analysis. The specific instructions for the OpenAI API are to find four main areas in each section of the SWOT analysis. The response from the OpenAI API is then appended to the SWOT JSON and stored in the database. The following code snippet shows the prompt that generates the summary of the SWOT analysis:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>answer_prompt <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ss">You are a professional business analyst. The user has provided you a JSON object containing the SWOT analysis. Analyse the given SWOT analysis and create a summary of the strengths, weaknesses, opportunities and threats.</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ss">Step 1 - Identify the main topics that represent the strengths, weaknesses,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ss">         opportunities and threats.</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ss">Step 2 - Limit the number of main topics to 4 for each category. Try to find the</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ss">         most important ones.</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ss">Step 3 - Return a summary of the main topics. Use the information from the</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ss">         provided JSON object.</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ss">Step 4 - Reply in JSON format where the key is the main topic and the value</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ss">         follows the following structure:</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="ch">{{</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ss">"strengths": [</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="ss">    </span><span class="ch">{{</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="ss">    "main_point": "...",</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="ss">    </span><span class="ch">}}</span><span class="ss">,</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="ss">    // More main points...</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="ss">],</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="ss">"weaknesses": [</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="ss">    </span><span class="ch">{{</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="ss">    "main_point": "...",</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="ss">    </span><span class="ch">}}</span><span class="ss">,</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="ss">    // More main points...</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="ss">],</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="ss">"opportunities": [</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="ss">    </span><span class="ch">{{</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="ss">    "main_point": "...",</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="ss">    </span><span class="ch">}}</span><span class="ss">,</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="ss">    // More main points...</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="ss">],</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="ss">"threats": [</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="ss">    </span><span class="ch">{{</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="ss">    "main_point": "...",</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="ss">    </span><span class="ch">}}</span><span class="ss">,</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="ss">    // More main points...</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="ss">]</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="ch">}}</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="comparing-swot-analyses" class="level4">
 <h4 class="anchored" data-anchor-id="comparing-swot-analyses">Comparing SWOT Analyses</h4>
@@ -649,133 +706,187 @@ Note
 <section id="storing-the-uploaded-report-and-starting-the-processing" class="level3">
 <h3 class="anchored" data-anchor-id="storing-the-uploaded-report-and-starting-the-processing">Storing the uploaded report and starting the processing</h3>
 <p>While the RAG-Pipeline doesn’t require the original report once it is processed, we store the original file for the frontend pdf viewer. The Docker container mounts a volume to the /backend/filestore directory, where the original reports are stored. The following code snippet shows how the report is stored and the processing is started:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/ingest"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> ingest_file(background_tasks: BackgroundTasks,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                      <span class="bu">file</span>: UploadFile <span class="op">=</span> File(...),</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                      report_public: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                      user<span class="op">=</span>Security(verify_token.verify_token)):</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creates report_id for file storage and report folder</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    report_id <span class="op">=</span> <span class="bu">str</span>(uuid.uuid4())</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="ss">f"./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">"</span>):</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        os.makedirs(<span class="ss">f"./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Stores the file to the filestore</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f'./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">file</span><span class="sc">.</span>filename<span class="sc">}</span><span class="ss">'</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">buffer</span>:</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        shutil.copyfileobj(<span class="bu">file</span>.<span class="bu">file</span>, <span class="bu">buffer</span>)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extracts metadata from the file</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    file_metadata <span class="op">=</span> process_file_metadata(report_id, <span class="ss">f'./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">file</span><span class="sc">.</span>filename<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialises database session and loads the user object</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    session <span class="op">=</span> config.mysql_db.get_session()</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    user <span class="op">=</span> session.query(User).filter_by(user_id<span class="op">=</span>user.user_id).first()</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creates a new report object and adds it to the database</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    report <span class="op">=</span> Report(report_id<span class="op">=</span>report_id,</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>                    filename<span class="op">=</span><span class="bu">file</span>.filename,</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>                    title<span class="op">=</span>file_metadata[<span class="st">"document_title"</span>],</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>                    company_id<span class="op">=</span>company.company_id,</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>                    year<span class="op">=</span>file_metadata[<span class="st">"report_year"</span>],</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                    report_public<span class="op">=</span>report_public)</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    session.add(report)</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> user <span class="kw">and</span> report:</span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Links the report to the user</span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>        user.reports.append(report)</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        session.commit()</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creates the processing job and adds it to the database</span></span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    job <span class="op">=</span> Job(job_id<span class="op">=</span><span class="bu">str</span>(uuid.uuid4()),</span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>              object_id<span class="op">=</span>report.report_id,</span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>              object_type<span class="op">=</span><span class="st">"Report"</span>,</span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>              status<span class="op">=</span><span class="st">"Pending"</span>)</span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    session.add(job)</span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>    session.commit()</span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initiates background task to process file</span></span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>    background_tasks.add_task(process_file,</span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>                              job_id<span class="op">=</span>job.job_id,</span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>                              filename<span class="op">=</span><span class="ss">f'./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">file</span><span class="sc">.</span>filename<span class="sc">}</span><span class="ss">'</span>,</span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>                              report_id<span class="op">=</span>report.report_id)</span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"task_id"</span>: job.job_id, <span class="st">"message"</span>: job.status}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/ingest"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> ingest_file(background_tasks: BackgroundTasks,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                      <span class="bu">file</span>: UploadFile <span class="op">=</span> File(...),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                      report_public: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                      user<span class="op">=</span>Security(verify_token.verify_token)):</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creates report_id for file storage and report folder</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    report_id <span class="op">=</span> <span class="bu">str</span>(uuid.uuid4())</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="ss">f"./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">"</span>):</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        os.makedirs(<span class="ss">f"./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Stores the file to the filestore</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f'./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">file</span><span class="sc">.</span>filename<span class="sc">}</span><span class="ss">'</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">buffer</span>:</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        shutil.copyfileobj(<span class="bu">file</span>.<span class="bu">file</span>, <span class="bu">buffer</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extracts metadata from the file</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    file_metadata <span class="op">=</span> process_file_metadata(report_id, <span class="ss">f'./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">file</span><span class="sc">.</span>filename<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialises database session and loads the user object</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    session <span class="op">=</span> config.mysql_db.get_session()</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    user <span class="op">=</span> session.query(User).filter_by(user_id<span class="op">=</span>user.user_id).first()</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creates a new report object and adds it to the database</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    report <span class="op">=</span> Report(report_id<span class="op">=</span>report_id,</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>                    filename<span class="op">=</span><span class="bu">file</span>.filename,</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>                    title<span class="op">=</span>file_metadata[<span class="st">"document_title"</span>],</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>                    company_id<span class="op">=</span>company.company_id,</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>                    year<span class="op">=</span>file_metadata[<span class="st">"report_year"</span>],</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>                    report_public<span class="op">=</span>report_public)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    session.add(report)</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> user <span class="kw">and</span> report:</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Links the report to the user</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>        user.reports.append(report)</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>        session.commit()</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creates the processing job and adds it to the database</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>    job <span class="op">=</span> Job(job_id<span class="op">=</span><span class="bu">str</span>(uuid.uuid4()),</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>              object_id<span class="op">=</span>report.report_id,</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>              object_type<span class="op">=</span><span class="st">"Report"</span>,</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>              status<span class="op">=</span><span class="st">"Pending"</span>)</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>    session.add(job)</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>    session.commit()</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initiates background task to process file</span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>    background_tasks.add_task(process_file,</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>                              job_id<span class="op">=</span>job.job_id,</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>                              filename<span class="op">=</span><span class="ss">f'./filestore/</span><span class="sc">{</span>report_id<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">file</span><span class="sc">.</span>filename<span class="sc">}</span><span class="ss">'</span>,</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>                              report_id<span class="op">=</span>report.report_id)</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"task_id"</span>: job.job_id, <span class="st">"message"</span>: job.status}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="processing-the-report" class="level3">
 <h3 class="anchored" data-anchor-id="processing-the-report">Processing the report</h3>
 <p>The processing of the report is don by the process_file function. The function is started as a background task and then runs the report through two steps. In the first step, we identify and extract all the tables from the report. It should be noted that the extraction of the table does not mean that the content of the table is extracted. It only means that the backend knows that there is a table in the report and that table needs to be processed at a later stage. The second step is the extraction of the text from the report. The text is then chunked, embedded and stored in the Chroma Vector Store. The following code snippet shows sections of the process_file function:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_file(job_id, filename, report_id):</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sets job status to processing</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    job <span class="op">=</span> session.query(Job).<span class="bu">filter</span>(Job.job_id <span class="op">==</span> job_id).first()</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    job.status <span class="op">=</span> <span class="st">"Processing"</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    job.percentage <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    session.commit()</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Defines the document splitter and embedding function</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    splitter <span class="op">=</span> RecursiveCharacterTextSplitter(</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        chunk_size<span class="op">=</span><span class="dv">900</span>,</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        chunk_overlap<span class="op">=</span><span class="dv">50</span>,</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        separators<span class="op">=</span>[<span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>, <span class="st">"(?&lt;=\. )"</span>],</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        length_function<span class="op">=</span><span class="bu">len</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    embedding_function <span class="op">=</span> embedding_functions.OpenAIEmbeddingFunction(</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        api_key<span class="op">=</span>config.OPENAI_API_KEY,</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        model_name<span class="op">=</span>config.EMBEDDING_MODEL_NAME</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extracts tables from the report</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    extract_tables(filename, job.object_id)</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Load the report and extract the text</span></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    loader <span class="op">=</span> PyPDFLoader(filename)</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    pages <span class="op">=</span> loader.load()</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    docs <span class="op">=</span> splitter.split_documents(pages)</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    total_docs <span class="op">=</span> <span class="bu">len</span>(docs)</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index, doc <span class="kw">in</span> <span class="bu">enumerate</span>(docs):</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Create Meta-Data for the document</span></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>            meta_data <span class="op">=</span> {</span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>                <span class="st">"filename"</span>: filename,</span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>                <span class="st">"doc_type"</span>: <span class="st">"Report"</span>,</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>                <span class="st">"report_id"</span>: report_id,</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>                <span class="st">"page_number"</span>: doc.metadata[<span class="st">"page"</span>],</span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>            new_uuid <span class="op">=</span> uuid.uuid4()</span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Embed the document and store it in the Chroma Vector Store</span></span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>            collection.add(</span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>                ids<span class="op">=</span>[<span class="bu">str</span>(new_uuid)],</span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>                documents<span class="op">=</span>doc.page_content,</span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>                metadatas<span class="op">=</span>meta_data)</span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Update the job status</span></span>
-<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>            job.percentage <span class="op">=</span> (index <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> total_docs <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>            session.commit()</span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>            ...</span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>    job.status <span class="op">=</span> <span class="st">"Completed"</span></span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>        session.commit()</span>
-<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>        session.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_file(job_id, filename, report_id):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sets job status to processing</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    job <span class="op">=</span> session.query(Job).<span class="bu">filter</span>(Job.job_id <span class="op">==</span> job_id).first()</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    job.status <span class="op">=</span> <span class="st">"Processing"</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    job.percentage <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    session.commit()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Defines the document splitter and embedding function</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    splitter <span class="op">=</span> RecursiveCharacterTextSplitter(</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        chunk_size<span class="op">=</span><span class="dv">900</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        chunk_overlap<span class="op">=</span><span class="dv">50</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        separators<span class="op">=</span>[<span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>, <span class="st">"(?&lt;=\. )"</span>],</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        length_function<span class="op">=</span><span class="bu">len</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    embedding_function <span class="op">=</span> embedding_functions.OpenAIEmbeddingFunction(</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        api_key<span class="op">=</span>config.OPENAI_API_KEY,</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        model_name<span class="op">=</span>config.EMBEDDING_MODEL_NAME</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extracts tables from the report</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    extract_tables(filename, job.object_id)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Load the report and extract the text</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    loader <span class="op">=</span> PyPDFLoader(filename)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    pages <span class="op">=</span> loader.load()</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    docs <span class="op">=</span> splitter.split_documents(pages)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    total_docs <span class="op">=</span> <span class="bu">len</span>(docs)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index, doc <span class="kw">in</span> <span class="bu">enumerate</span>(docs):</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Create Meta-Data for the document</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>            meta_data <span class="op">=</span> {</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>                <span class="st">"filename"</span>: filename,</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>                <span class="st">"doc_type"</span>: <span class="st">"Report"</span>,</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>                <span class="st">"report_id"</span>: report_id,</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>                <span class="st">"page_number"</span>: doc.metadata[<span class="st">"page"</span>],</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>            new_uuid <span class="op">=</span> uuid.uuid4()</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Embed the document and store it in the Chroma Vector Store</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>            collection.add(</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>                ids<span class="op">=</span>[<span class="bu">str</span>(new_uuid)],</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>                documents<span class="op">=</span>doc.page_content,</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>                metadatas<span class="op">=</span>meta_data)</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Update the job status</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>            job.percentage <span class="op">=</span> (index <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> total_docs <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>            session.commit()</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>            ...</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>    job.status <span class="op">=</span> <span class="st">"Completed"</span></span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>        session.commit()</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>        session.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="processing-the-tables" class="level3">
 <h3 class="anchored" data-anchor-id="processing-the-tables">Processing the tables</h3>
 <p>The extraction of the tables from the report is done by the extract_tables function. This function creates a new job for every table that is extracted from the report. While we could have implemented a queuing system for processing open jobs, we decided to keep the system simple and work with FastAPIs BackgroundScheduler and utilize the Jobs entity of our data model.</p>
 <p>The BackgroundScheduler calls the process_table function every 2 minutes, which checks if there are any open jobs for processing tables. If there are, the process_table function retrieves the next two open jobs and processes them. The following code snippet shows how we registered the BackgroundScheduler in the lifecycle of the FastAPI application:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="at">@asynccontextmanager</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> lifespan(app: FastAPI):</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Function that handles the startup and shutdown of the application"""</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> Config()</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    scheduler <span class="op">=</span> BackgroundScheduler()</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    scheduler.add_job(process_tables, <span class="st">'interval'</span>, minutes<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    scheduler.start()</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Shutting down"</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    scheduler.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="at">@asynccontextmanager</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> lifespan(app: FastAPI):</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Function that handles the startup and shutdown of the application"""</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> Config()</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    scheduler <span class="op">=</span> BackgroundScheduler()</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    scheduler.add_job(process_tables, <span class="st">'interval'</span>, minutes<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    scheduler.start()</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Shutting down"</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    scheduler.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The extraction of the table content takes a lot of time and resources. Therefore we decided to allow the user to generate analyses for the reports as soon as the text embedding is completed. Through the BackgroundScheduler, the processing of the tables is done in the background and the answers of the system start to improve over time as more and more tables are processed.</p>
 <p>The process of extracting the tables from the report as well as the extraction of the content of the tables is not shown in this section of the documentation, as it covered in the RAG-Pipeline documentation. The full code can be found in the process_file and analyse_table functions in the backend.</p>
+<section id="issues-with-the-processing-of-the-tables" class="level4">
+<h4 class="anchored" data-anchor-id="issues-with-the-processing-of-the-tables">Issues with the processing of the tables</h4>
+<p>The processing of the tables was one of the most challenging parts of the backend implementation. The main issue was that the tables in the annual reports were not always formatted in the same way or style and therefore might look very different from one report to another. This made it difficult to reliably identify the tables and extract the content of the tables.</p>
+<p>The following images show the four different outcomes we encountered when trying to extract tables from the pdf:</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-nrow="2">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../images/Tables/ausgaben-table.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Full table extracted from annual report"><img src="../images/Tables/ausgaben-table.jpg" class="img-fluid figure-img" style="width:100.0%" alt="Full table extracted from annual report"></a></p>
+<figcaption>Full table extracted from annual report</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../images/Tables/two-in-one.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="Two separate tables are identified as one table"><img src="../images/Tables/two-in-one.jpg" class="img-fluid figure-img" style="width:100.0%" alt="Two separate tables are identified as one table"></a></p>
+<figcaption>Two separate tables are identified as one table</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../images/Tables/partial-table.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4" title="Only parts of the table are identified as a table. This results in missing column or row names"><img src="../images/Tables/partial-table.jpg" class="img-fluid figure-img" style="width:100.0%" alt="Only parts of the table are identified as a table. This results in missing column or row names"></a></p>
+<figcaption>Only parts of the table are identified as a table. This results in missing column or row names</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../images/Tables/not-a-table.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5" title="For some reasons, PyMuPDF identifies tables, that aren’t actually tables"><img src="../images/Tables/not-a-table.jpg" class="img-fluid figure-img" style="width:100.0%" alt="For some reasons, PyMuPDF identifies tables, that aren’t actually tables"></a></p>
+<figcaption>For some reasons, PyMuPDF identifies tables, that aren’t actually tables</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>As these were issues that we could not solve in the time frame of the project, our table processing methods handle the first two cases, but not the last two. The last two cases are identified by OpenAI and are discarded.</p>
 
 
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-2">Full table extracted from annual report</span>
+<span class="glightbox-desc lightbox-desc-3">Two separate tables are identified as one table</span>
+<span class="glightbox-desc lightbox-desc-4">Only parts of the table are identified as a table. This results in missing column or row names</span>
+<span class="glightbox-desc lightbox-desc-5">For some reasons, PyMuPDF identifies tables, that aren’t actually tables</span>
+</div>
+</section>
 </section>
 </section>
 
@@ -1350,7 +1461,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -344,12 +344,12 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The diagram is a simplified version of the data model and thus does not represent the normalized entity relationship model that is implemented in the database. To learn about the implementation in the database, please refer to the <a href="../PythonImplementation">Python Implementation</a> section.</p>
+<p>The diagram is a simplified version of the data model and does not represent the normalized data model that is implemented in the database.</p>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/DataModel.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Data Model of StratMystiqPro"><img src="../images/DataModel.png" class="img-fluid figure-img" style="width:100.0%" alt="Data Model of StratMystiqPro"></a></p>
+<p><a href="../images/DataModel.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Data Model of StratMystiqPro"><img src="../images/DataModel.png" class="img-fluid figure-img" style="width:100.0%" alt="Data Model of StratMystiqPro"></a></p>
 <figcaption>Data Model of StratMystiqPro</figcaption>
 </figure>
 </div>
@@ -394,7 +394,7 @@ Note
 </section>
 <section id="analysis" class="level2">
 <h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
-<p>The Analysis entity is the object that contains the results of the main feature of the system. It represents the analysis of a report that a user requests. Note that the Analysis entity is specifically not called SWOT Analysis, as the system is designed to be flexible and adaptable to accommodate new types of analysis in the future. The Analysis entity has the following attributes:</p>
+<p>The Analysis entity is the object that contains the results of the main feature of the system. It represents the analysis of a report that a user requests. Note that the Analysis entity is specifically not called SWOT Analysis, as the system is designed to be flexible and adaptable to accommodate new types of analyses in the future. The Analysis entity has the following attributes:</p>
 <ul>
 <li><strong>analysis_id:</strong> (PK:UUID) A unique identifier for the analysis.</li>
 <li><strong>report_id:</strong> (FK:UUID) Reference to the report that the analysis is associated with.</li>
@@ -1052,7 +1052,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
