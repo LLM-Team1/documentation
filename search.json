@@ -619,7 +619,7 @@
     "href": "deployment.html#set-up-the-backend-for-local-development",
     "title": "Deployment",
     "section": "",
-    "text": "Ensure you have Python 3.11 or later installed.\nInstall the required dependencies with pip install -r requirements.txt.\nEnsure that you have Docker installed. Start it with using Docker Compose up.\nEnsure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb.\nRun the application with python main.py.\nThe main.py script takes care of setting up the application. It creates the database tables if they don’t exist.",
+    "text": "Ensure you have Python 3.11 or later installed.\nInstall the required dependencies with pip install -r requirements.txt.\nEnsure that you have Docker installed and that the Docker daemon is running.\nEnsure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb.\nRun the application with python main.py.\nThe main.py script takes care of setting up the application. It creates the database tables if they don’t exist.",
     "crumbs": [
       "Usage",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Deployment</span>"
@@ -641,7 +641,7 @@
     "href": "deployment.html#deployment-for-testing-and-production",
     "title": "Deployment",
     "section": "Deployment for testing and production:",
-    "text": "Deployment for testing and production:\nFor testing and production environments, we use Docker.\n\nEnsure you have Docker installed.\nCheck the Dockerfile and docker-compose.yaml files in the root directory of the project\nIf necessary, adjust the configuration in the Dockerfile and docker-compose.yaml files\nTo build and start the containers, use: docker-compose up –build\nThe application should now run in Docker containers and be accessible via the specified ports.\nMake sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files.\nRun the Docker container with docker-compose up.",
+    "text": "Deployment for testing and production:\nFor testing and production environments, we use Docker.\n\nEnsure you have Docker installed.\nCheck the Dockerfile and docker-compose.yaml files in the root directory of the project\nIf necessary, adjust the configuration in the Dockerfile and docker-compose.yaml files\nTo build and start the containers, use: docker-compose up –build\nThe application should now run in Docker containers and be accessible via the specified ports.\nMake sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files.\nRun the Docker container with docker-compose up.",
     "crumbs": [
       "Usage",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Deployment</span>"

@@ -322,9 +322,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="set-up-the-backend-for-local-development">Set up the backend for local development:</h2>
 <ul>
 <li>Ensure you have Python 3.11 or later installed.</li>
-<li>Install the required dependencies with pip install -r requirements.txt.</li>
-<li>Ensure that you have Docker installed. Start it with using Docker Compose up.</li>
-<li>Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb.</li>
+<li>Install the required dependencies with <code>pip install -r requirements.txt</code>.</li>
+<li>Ensure that you have Docker installed and that the Docker daemon is running.</li>
+<li>Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command <code>docker-compose up mysql chromadb</code>.</li>
 <li>Run the application with python main.py.</li>
 <li>The main.py script takes care of setting up the application. It creates the database tables if they don’t exist.</li>
 </ul>
@@ -340,7 +340,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="deployment-for-testing-and-production" class="level2">
 <h2 class="anchored" data-anchor-id="deployment-for-testing-and-production">Deployment for testing and production:</h2>
-<p>For testing and production environments,&nbsp;we use Docker.</p>
+<p>For testing and production environments, we use Docker.</p>
 <ul>
 <li>Ensure you have Docker installed.</li>
 <li>Check the Dockerfile and docker-compose.yaml files in the root directory of the project</li>
@@ -348,7 +348,7 @@ ul.task-list li input[type="checkbox"] {
 <li>To build and start the containers, use: docker-compose up –build</li>
 <li>The application should now run in Docker containers and be accessible via the specified ports.</li>
 <li>Make sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files.</li>
-<li>Run the Docker container with&nbsp;docker-compose up.</li>
+<li>Run the Docker container with docker-compose up.</li>
 </ul>
 
 
