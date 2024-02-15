@@ -29,7 +29,26 @@ Sometimes the error is only displayed on the browser console, but sometimes it i
 In any case, however, an error message in the backend does not cause the frontend to crash,
 as we are informed by Typescript of the possibility of an empty response and accordingly functions that would have accessed data from the response are not even executed.
 
-![Frontend fetching function](../images/Frontend/fetchQuery.png){width=100% .lightbox}
+```typescript
+export const fetchQuery = async (
+  endpoint: string,
+  method: "GET" | "POST" | "DELETE",
+  token: string,
+  body?: any,
+  setIsLoading?: (t: boolean) => void,
+) => {
+  const headers = new Headers({
+    token: `${token}`,
+  });
+
+  const requestOptions = {
+    method: method,
+    headers: headers,
+    body: body,
+  };
+
+  await fetch(apiUrl, requestOptions)
+```
 
 ## Backend token validation
 In the backend we have implemented two separate functions for the authentication process:
