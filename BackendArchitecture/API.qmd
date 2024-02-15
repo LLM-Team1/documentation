@@ -1,26 +1,69 @@
 # REST API
 An API (Application Programming Interface) is used to establish a connection between the backend and the frontend.
 In StratMystiqPro, we opted for a RESTful API (Representational State Transfer) because we wanted a lightweight and high-performance interface with which we could also exchange data in different formats.
-This is necessary because, in addition to the typical JSON objects, we also need to transfer plain text and files. They are also a common standard and use CRUD methods.
-Specifically, we use FastAPI because it is a high-performance and lightweight framework that offers better performance compared to Flask thanks to the asynchronous processing of requests and
-the interactive documentation via the SwaggerUI.
+This is necessary because, in addition to the typical JSON objects, we also need to transfer plain text and files. They are a common standard and use CRUD methods.
+As described in the backend Tech-Stack, we use FastAPI because it is a high-performance and lightweight framework that allows asynchronous processing of requests and
+provides interactive documentation via the SwaggerUI.
+
+::: {.callout-note}
+The SwaggerUI is a web-based interface that allows you to interact with the API. It provides a user-friendly documentation and interface to test the API.
+When the backend is running, you can access the SwaggerUI by opening the URL `http://localhost:8080/docs` in your browser.
+![StratMystiqPro Swagger UI](../images/swagger-ui.png){width=100% .lightbox}
+:::
 
 ## Architecture
-In our system, we have created a separate endpoint in the API for each function that is required in the front end, which can be used to access this function.
-The functions are divided into different routes for the sake of clarity. These are System Services, Chat Services (Experimental), File Services and SWOT Analysis.
-Each of these routes then has one or more end points that we can call via this address in combination with the CRUD method.
-To add a new endpoint, we simply need to create a new one as shown here. It is also important to note that we have kept the API and the logic very strictly separate.
-All functions that are more extensive than a simple DB access are outsourced to other files and are only called in the API.
+All actions that are performed in the frontend are sent to the backend via the API. For this, the frontend can utilize a number
+of different endpoints, which process and return the data. As our goal was to keep the backend as simple and modular as possible, we have
+split the API into different routers. A router is a collection of endpoints that are grouped together. This means that only the
+router needs to be registered in the main file for the endpoints to appear. This makes it easy to add new features to the system
+as ideally all code changes are isolated to the router and the new business logic.
 
+We have split our API into the routers System Services, Chat Services (Experimental), File Services and SWOT Analysis.
+Each router has its own prefix which is added in the url. For example the File Services router has the prefix `/files/v1`
+which means that all endpoints in this router are accessible via the url `http://<base_url>/files/v1`.
+
+This brings us to the next point. API versioning. While not relevant for duration of this project, it is best practice to version your API
+in a way that allows you to make breaking changes without disrupting existing clients. We have implemented the versioning in the url of the router.
+This means that if we need to make a breaking change to the API, we can simply add a new router with a new version number while
+maintaining the function of the old endpoints.
+
+It should be noted that we decided to keep the API and the logic separated. This means that all functions that are more extensive than
+a simple DB access are outsourced to other components (e.g. BusinessAnalyst) and are only called in the API.
+
+The following code snippets show the main initialization of the API, how the routers are registered as well as how a new
+router can be defined with a simple endpoint.
+
+Located in the file ```main.py```:
 ```python
-@app.get("/")
-async def root():
-    """Test DB-Status"""
-    config = Config()
-    if config.db.collection.peek() is not None:
-        return {'status': 'ok'}
-    else:
-        return {'status': 'error'}
+from fastapi import FastAPI, Security
+from fastapi.middleware.cors import CORSMiddleware
+from routers import swot, files, chat, system
+
+# Initialized FastAPI instance
+app = FastAPI(lifespan=lifespan)
+
+# Include feature routers
+app.include_router(swot.router)
+app.include_router(files.router)
+app.include_router(chat.router)
+app.include_router(system.router)
+```
+
+Creating a new router with a simple endpoint:
+```python
+from fastapi import APIRouter, Depends
+
+# Define new router
+router = APIRouter(
+    prefix="/new_feature/v1",
+    tags=["New Feature Name"]
+)
+
+# Define new endpoint
+@router.get("/data")
+async def get_data():
+    # Do something...
+    return {"data": "Hello World"}
 ```
 
 ### System Services
