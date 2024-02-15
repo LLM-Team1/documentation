@@ -1,5 +1,6 @@
 # Requirements and Tech Stack
-This part of the documentation will cover the backend architecture of the project.
+This part of the documentation will highlights the requirements that the system should meet from a technical standpoint
+and the technologies that we have chosen to build the backend of the system.
 
 ## Backend Requirements
 At the beginning of the project, we were trying to decide what technologies and architectures we should use to build our system.
@@ -49,41 +50,57 @@ Security is a top priority to protect user data and ensure trust in the system.
 Based on the requirements defined above, we decided to use the following technologies to build the backend of the system.
 The following sections will provide a brief overview of each technology and the reasons for choosing them.
 
+### Docker
+Docker is a platform for developing, packaging, and running applications. There are several reasons why we decided to use
+Docker as our platform for developing our system:
+
+- **Consistent Development Environment:**
+    - Docker allows us to create a consistent development environment across our different host systems (Mac and Windows).
+      This should help to avoid issues, such as file path differences, or library version conflicts.
+    - Databases and other services can be run as containers, which makes it easier to set up and tear down the development environment quickly.
+- **Easy Deployment and Scalability:**
+    - Docker containers can be deployed to any platform that supports Docker, this makes it easier to deploy the system to any platform/location.
+    - Our system can easily be scaled by utilizing Docker Swarm or Kubernetes to manage the containers.
+
+
 ### Python
-The backend of the system is built using Python, some of the reasons for choosing Python are:
+The main programming language we decided to use for building the backend of the system is Python. The reasons for choosing Python are:
 
 - **Ease of Use:**
-  - All team members have experience working with Python, making it easy for all team members to actively contribute to the project.
+  - All team members have experience working with Python, allowing all team members to actively contribute to the project.
 - **Numerous Opensource Libraries:**
-    - Python has a rich ecosystem of libraries and tools ranging from backend frameworks to machine learning libraries such as Flask and Langchain.
+    - Python has a rich ecosystem of libraries and tools ranging from backend frameworks to llm framework libraries such as Flask and Langchain.
 
 ### FastAPI
-FastAPI is a modern, fast (high-performance), web framework for building APIs with Python. The reasons for choosing FastAPI are:
+For our backend framework there were several options to choose from, such as Flask, Django, and FastAPI.
+FastAPI is a modern, fast (high-performance), web framework for building APIs with Python. The reasons why we chose FastAPI are:
 
 - **Performance and Asynchronous Request Handling:**
-    - FastAPI is built on top of Starlette for web routing and Pydantic for data validation, this makes it more performant than other Python web frameworks such as Flask.
+    - FastAPI is built on top of Starlette for web routing and Pydantic for data validation, this makes it more performant than other Python web frameworks.
     - It supports asynchronous request handling natively, which is crucial for handling multiple requests simultaneously where long-running tasks are expected.
+    This is especially important for our system, as some API calls will take time to process and we want to avoid blocking other requests.
 - **Automatic API Documentation:**
     - FastAPI automatically generates API documentation based on the code, which makes it easier to maintain and update the documentation.
     - It provides a built-in interactive API documentation (Swagger UI) which makes it easier to test and debug the API. Without the need for additional tools such as Postman.
 
-### Docker
-Docker is a platform for developing, shipping, and running applications. The reasons for choosing Docker are:
-
-- **Consistent Development Environment:**
-    - Docker allows us to create a consistent environment for development as it greatly reduces the number of possible errors when working with different platforms (Mac and Windows).
-    - Databases and other services can be run as containers, which makes it easier to set up and tear down the development environment quickly.
-- **Easy Deployment:**
-    - Docker containers can be deployed to any platform that supports Docker, which makes it easier to deploy the system to different cloud providers.
-    - Services can be scaled horizontally by running multiple containers of the same service.
-
 ### MySQL
-To store user, report and analysis data, we decided to use a relational database. The reasons for choosing MySQL are:
+To store user, report and analysis data, we decided to use a relational database. While there are numerous relation databases
+to choose from, we decided to use MySQL. The reasons for choosing MySQL are:
 
 - **Experience:**
     - All team members have experience working with MySQL, making it easier for all team members to actively contribute to the project.
 - **Scalability:**
     - Should the need arise, MySQL can be scaled horizontally by using sharding or clustering to handle a large number of users and reports.
+
+### SQLAlchemy
+Using a relational database is made easier by using an Object-Relational Mapping (ORM) library that handles the interaction
+between the business objects and the database. We decided to use SQLAlchemy as our ORM library. The reasons for choosing SQLAlchemy are:
+
+- **Support for Multiple Databases:**
+    - SQLAlchemy supports multiple databases, this gives us the flexibility to switch to a different database if the need
+    arises without having to change the codebase.
+- **Ease of Use:**
+    - SQLAlchemy provides a high-level API for interacting with the database, making it easier to write and maintain database queries.
 
 ### ChromaDB
 ChromaDB is an open-source vector store that is designed to store and retrieve vector embeddings. The reasons for choosing ChromaDB are:
