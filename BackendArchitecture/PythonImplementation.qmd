@@ -134,3 +134,379 @@ docs = db.max_marginal_relevance_search(str(query), k=5)
 ```
 
 ### BusinessAnalyst
+The BusinessAnalyst class is the central class and component of the system. It is responsible for all the analyses that are
+performed on an annual report. It is also the class that contains the retrieval elements of our RAG-Pipeline. The reason for this is
+that all of the use-cases that require the generation of content, using the provided business reports, are related to the
+analysis of an annual report. Therefore, it made sense to implement that part of the RAG Pipeline in the BusinessAnalyst class.
+
+The class is designed to interact with our database for data retrieval and storage, perform tasks such as similarity search,
+question reformulation, document evaluation, and generate SWOT analyses. It also contains the logic to compare SWOT analyses.
+
+The class has to be initialized with the name of the company that should be analyzed, an OpenAI client, a database connection and the specific report-id.
+Should a comparison be required, the class also needs to be initialized with the report-id of the report that should be compared to the original report.
+
+The following code snippet shows a few simplified examples of how the BusinessAnalyst class can be used:
+
+```python
+from services.business_analyst import BusinessAnalyst
+from config import Config
+import openai
+
+# Instantiate the Config class
+config = Config()
+
+# Load supporting services from the Config class
+client = openai.OpenAI(api_key=config.OPENAI_API_KEY)
+db = config.chroma
+
+# Instantiate the BusinessAnalyst class
+analyst = BusinessAnalyst(company_name="Mercedes Benz",
+                          report_id='...',
+                          openai_client=client,
+                          db=db)
+
+# Answer a question about the company using the Annual Report
+question = "What new products were launched in 2022?"
+answer = analyst.answer_question_with_annual_report(question=question)
+
+# Generate a SWOT analysis for the company
+swot = analyst.generate_swot_analysis()
+
+# Generate SWOT analysís summary
+summary = analyst.generate_swot_analysis_summary(analysis_id='...')
+```
+
+The retrieval elements of the RAG-Pipeline are implemented in the following methods of the BusinessAnalyst class:
+
+- `reformulate_question(question: str, prompt_template=None) -> List[str]`
+    - This method takes the original question as input and generates three reformulated questions that cover slightly
+    different aspects of the original question. The prompt to achieve this is shown in the RAG-Pipeline section of the
+    documentation.
+    - Should the original prompt that is provided not be sufficient, the prompt_template can be used to provide a custom
+    prompt that is used to generate the reformulated questions.
+
+- `_similarity_search(query: str, k: int = 3, report_id=None) -> List[Document]`
+    - This method takes a query as input and performs a similarity search on the annual reports in the Chroma Vector Store.
+    - The method returns the k most relevant chunks using the Max-Marginal-Relevance Search feature of ChromaDB.
+    - The method contains logic to ensure that only the chunks that are related to the selected report are returned
+    and that if there are no chunks related to the report, the method returns an exception that the report does not exist in the
+    Chroma Vector Store. See code excerpt below:
+    ```python
+    def _similarity_search(self, query, k=3, report_id=None):
+        """
+        :param query: The query to search for
+        :param k: The number of documents to return
+        :param report_id: The report ID to filter the search
+        :return: [Document1, Document2, ...]
+        """
+        ...
+        if len(self.db.get(where={'report_id': report_id})['ids']) == 0:
+            print('No chunks found for this report id.')
+            raise Exception('Report id does not exist in the database.')
+        else:
+            docs = self.db.max_marginal_relevance_search(
+                        str(query),
+                        k=k,
+                        filter={"report_id": report_id})
+            return docs
+    ```
+- `evaluate_documents_for_use(documents: List[Document], question: str, prompt_template=None) -> List[Document]`
+    - This method takes a list of documents and a question as input and evaluates if the documents are relevant to answer the question.
+    It returns the curated list of documents that are relevant to answer the question.
+    - The prompt to achieve this is shown in the RAG-Pipeline section of the documentation.
+    - Should the original prompt that is provided not be sufficient, or a special use-case requires a different prompt,
+    the prompt_template can be used to provide a custom prompt.
+    - The method contains the logic to replace the summary of a table, should on be included in the documents list, with the
+    full content of the table. This way the table content is evaluated, and if relevant, included in the curated list of documents.
+    The code excerpt below shows how this is achieved:
+
+    ```python
+    ...
+    for doc in documents:
+        try:
+            if doc.metadata['doc_type'] == 'Table':
+                doc_content = doc.metadata['doc_content']
+            else:
+                doc_content = doc.page_content
+        except AttributeError:
+            doc_content = doc
+
+        chat_completion = self.client.chat.completions.create(
+            messages=[
+                {
+                    "role": "system",
+                    "content": prompt_template
+                },
+                {
+                    "role": "user",
+                    "content": f'"""{doc_content}"""'
+                               f'Question: {question}',
+                }],
+                model="gpt-4-1106-preview",
+            )
+
+        if 'No' in chat_completion.choices[0].message.content:
+            documents.remove(doc)
+    return documents
+    ```
+- `answer_question_with_context(question: str, documents: List[Document], prompt_template=None, json_format=False) -> str`
+    - This method takes a question and a list of documents as input and generates an answer to the question using the documents as context.
+    - The method contains a standard prompt, but best results are achieved when a custom prompt is provided that is tailored to the specific use-case (e.g. SWOT analysis).
+    - The method iterates over the documents and generates a messages object for the OpenAI API that contains the prompt and all the provided documents.
+
+#### Generating a SWOT Analysis
+
+To create a SWOT analysis, we decided to split the SWOT analysis into its four sections and then generated four different
+questions for each section. The questions were chosen to cover different aspects of each section. Each question is contained
+in its own method, and contains sub-questions that are used to retrieve extra context for the main question as well as a
+prompt that is tailored to the section of the SWOT analysis. The following code snippet is the method that tries to find the strengths
+that the company has through its brand and reputation:
+
+```python
+...
+def identify_strengths_brand_reputation(self):
+    # Main- and sub-questions
+    question = f"How has customer perception of {self.company_name} evolved, and what initiatives have been taken to enhance brand image?"
+
+    self.temp_questions = [
+        f"How has customer perception of {self.company_name} evolved, and what initiatives have been taken to enhance brand image?",
+        f"What products does {self.company_name} produce and how should customers perceive them?"
+    ]
+
+    # Perform similarity search and build the documents list
+    for question in self.temp_questions:
+        self.temp_documents += self._similarity_search(
+                                question,
+                                k=5,
+                                report_id=self.report_id)
+
+    # Evaluate the documents for use
+    self.temp_documents = self.evaluate_documents_for_use(
+                            self.temp_documents,
+                            question)
+
+    # Answer prompt with instructions for generating the answer
+    answer_prompt = f"""
+    You are a professional business analyst. Analyse the given documents
+    and answer the users question. Your response will be used as part of a SWOT
+    matrix. Use as much of the documents as possible. If you don't find the
+    answer in the provided documents, indicate your lack of access to the
+    required information rather than hallucinating.
+
+    Step 1 - Identify up to four strengths in the brand reputation that allow
+             {self.company_name} to achieve or maintain positive customer
+             perception.
+
+    Step 2 - Describe the brand reputational strengths further and what
+             initiatives this company has taken to enhance this specific
+             strength. Use the information from the provided documents.
+
+    Step 3 - Reply in JSON format where the key is the main topic and the value
+             follows the following structure:
+            {{
+            "strengths_brand_reputation": [
+              {{
+                "area": "...",
+                "description": "...",
+                "details": {{
+                  "stepsTaken": "...",
+                  "additionalNotes": ""
+                }}
+              }},
+              {{
+                "area": "...",
+                "description": "...",
+                "details": {{
+                    ...
+                }}
+              }},
+              // More strategy areas...
+            ]
+            }}"""
+
+    # Answer the question with context
+    answer = self.answer_question_with_context(
+                self.temp_documents,
+                question,
+                answer_prompt,
+                json_format=True)
+
+    return json.loads(answer)
+```
+
+Similar methods exist for all other sections of the SWOT analysis. The JSON Output of the SWOT analysis is then combined
+into a single SWOT analysis and stored in the database. The main areas of each section of the SWOT analysis are then used
+to generate a summary of the SWOT analysis.
+
+#### Comparing SWOT Analyses
+::: {.callout-note}
+As the comparison of SWOT analyses contains very similar logic and prompts to the generation of the SWOT analysis, this
+section does not contain any new code snippets. The full code can be found in the BusinessAnalyst class.
+:::
+
+To compare two SWOT analyses, the BusinessAnalyst class contains a method that takes the two SWOT analyses as input and
+then compares one section at a time. The reason for this is that comparing multiple sections at once maxed out the
+input token limit of the OpenAI API.
+
+Similar to the generation of the SWOT analysis, the comparison of the SWOT analyses has a specific prompt that clearly
+instructs the OpenAI API on how to compare the two SWOT analyses and what the expected output should look like. The full
+code can be found in the BusinessAnalyst class.
+
+## Report Processing
+A main part of the backend is the report processing. It is not implemented in a class-based structure, but rather as a
+function. The report processing is started when a user uploads an annual report in the frontend. The frontend sends the
+annual report to the backend. As the processing of the annual report can take a long time depending on the length of the
+report, the processing is done in the background using the FastAPI BackgroundTasks feature. The frontend receives a response
+from the backend that contains a job-id. The frontend can then use this job-id to query the backend for the status of the
+processing job.
+
+### Storing the uploaded report and starting the processing
+While the RAG-Pipeline doesn't require the original report once it is processed, we store the original file for the
+frontend pdf viewer. The Docker container mounts a volume to the /backend/filestore directory, where the original reports
+are stored. The following code snippet shows how the report is stored and the processing is started:
+
+```python
+@router.post("/ingest")
+async def ingest_file(background_tasks: BackgroundTasks,
+                      file: UploadFile = File(...),
+                      report_public: bool = False,
+                      user=Security(verify_token.verify_token)):
+
+    # Creates report_id for file storage and report folder
+    report_id = str(uuid.uuid4())
+    if not os.path.exists(f"./filestore/{report_id}"):
+        os.makedirs(f"./filestore/{report_id}")
+
+    # Stores the file to the filestore
+    with open(f'./filestore/{report_id}/{file.filename}', "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+
+    # Extracts metadata from the file
+    file_metadata = process_file_metadata(report_id, f'./filestore/{report_id}/{file.filename}')
+
+    # Initialises database session and loads the user object
+    session = config.mysql_db.get_session()
+    user = session.query(User).filter_by(user_id=user.user_id).first()
+
+    ...
+
+    # Creates a new report object and adds it to the database
+    report = Report(report_id=report_id,
+                    filename=file.filename,
+                    title=file_metadata["document_title"],
+                    company_id=company.company_id,
+                    year=file_metadata["report_year"],
+                    report_public=report_public)
+    session.add(report)
+    if user and report:
+        # Links the report to the user
+        user.reports.append(report)
+        session.commit()
+
+    # Creates the processing job and adds it to the database
+    job = Job(job_id=str(uuid.uuid4()),
+              object_id=report.report_id,
+              object_type="Report",
+              status="Pending")
+    session.add(job)
+    session.commit()
+
+    # Initiates background task to process file
+    background_tasks.add_task(process_file,
+                              job_id=job.job_id,
+                              filename=f'./filestore/{report_id}/{file.filename}',
+                              report_id=report.report_id)
+
+    return {"task_id": job.job_id, "message": job.status}
+```
+
+### Processing the report
+The processing of the report is don by the process_file function. The function is started as a background task and
+then runs the report through two steps. In the first step, we identify and extract all the tables from the report. It should
+be noted that the extraction of the table does not mean that the content of the table is extracted. It only means that the
+backend knows that there is a table in the report and that table needs to be processed at a later stage. The second step
+is the extraction of the text from the report. The text is then chunked, embedded and stored in the Chroma Vector Store. The following
+code snippet shows sections of the process_file function:
+
+```python
+def process_file(job_id, filename, report_id):
+    # Sets job status to processing
+    job = session.query(Job).filter(Job.job_id == job_id).first()
+    job.status = "Processing"
+    job.percentage = 0
+    session.commit()
+
+    # Defines the document splitter and embedding function
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=900,
+        chunk_overlap=50,
+        separators=["\n\n", "(?<=\. )"],
+        length_function=len
+    )
+
+    embedding_function = embedding_functions.OpenAIEmbeddingFunction(
+        api_key=config.OPENAI_API_KEY,
+        model_name=config.EMBEDDING_MODEL_NAME
+    )
+
+    # Extracts tables from the report
+    extract_tables(filename, job.object_id)
+
+    # Load the report and extract the text
+    loader = PyPDFLoader(filename)
+    pages = loader.load()
+    docs = splitter.split_documents(pages)
+    total_docs = len(docs)
+    for index, doc in enumerate(docs):
+        try:
+            # Create Meta-Data for the document
+            meta_data = {
+                "filename": filename,
+                "doc_type": "Report",
+                "report_id": report_id,
+                "page_number": doc.metadata["page"],
+            }
+            new_uuid = uuid.uuid4()
+
+            # Embed the document and store it in the Chroma Vector Store
+            collection.add(
+                ids=[str(new_uuid)],
+                documents=doc.page_content,
+                metadatas=meta_data)
+
+            # Update the job status
+            job.percentage = (index + 1) / total_docs * 100
+            session.commit()
+        except Exception as e:
+            ...
+    job.status = "Completed"
+        session.commit()
+        session.close()
+```
+
+### Processing the tables
+The extraction of the tables from the report is done by the extract_tables function. This function creates a new job
+for every table that is extracted from the report. While we could have implemented a queuing system for processing open
+jobs, we decided to keep the system simple and work with FastAPIs BackgroundScheduler and utilize the Jobs entity of our
+data model.
+
+The BackgroundScheduler calls the process_table function every 2 minutes, which checks if there are any open jobs for
+processing tables. If there are, the process_table function retrieves the next two open jobs and processes them. The
+following code snippet shows how we registered the BackgroundScheduler in the lifecycle of the FastAPI application:
+
+```python
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Function that handles the startup and shutdown of the application"""
+    config = Config()
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(process_tables, 'interval', minutes=2)
+    scheduler.start()
+    yield
+    print("Shutting down")
+    scheduler.shutdown()
+```
+
+The process of extracting the tables from the report as well as the extraction of the content of the tables is not shown
+in this section of the documentation, as it covered in the RAG-Pipeline documentation. The full code can be found in the
+process_file and analyse_table functions in the backend.
