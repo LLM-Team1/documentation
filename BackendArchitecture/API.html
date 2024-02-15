@@ -79,6 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -356,18 +359,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>An API (Application Programming Interface) is used to establish a connection between the backend and the frontend. In StratMystiqPro, we opted for a RESTful API (Representational State Transfer) because we wanted a lightweight and high-performance interface with which we could also exchange data in different formats. This is necessary because, in addition to the typical JSON objects, we also need to transfer plain text and files. They are also a common standard and use CRUD methods. Specifically, we use FastAPI because it is a high-performance and lightweight framework that offers better performance compared to Flask thanks to the asynchronous processing of requests and the interactive documentation via the SwaggerUI.</p>
+<p>An API (Application Programming Interface) is used to establish a connection between the backend and the frontend. In StratMystiqPro, we opted for a RESTful API (Representational State Transfer) because we wanted a lightweight and high-performance interface with which we could also exchange data in different formats. This is necessary because, in addition to the typical JSON objects, we also need to transfer plain text and files. They are a common standard and use CRUD methods. As described in the backend Tech-Stack, we use FastAPI because it is a high-performance and lightweight framework that allows asynchronous processing of requests and provides interactive documentation via the SwaggerUI.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The SwaggerUI is a web-based interface that allows you to interact with the API. It provides a user-friendly documentation and interface to test the API. When the backend is running, you can access the SwaggerUI by opening the URL <code>http://localhost:8080/docs</code> in your browser. <a href="../images/swagger-ui.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="StratMystiqPro Swagger UI"><img src="../images/swagger-ui.png" class="img-fluid" style="width:100.0%" alt="StratMystiqPro Swagger UI"></a></p>
+</div>
+</div>
 <section id="architecture" class="level2">
 <h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
-<p>In our system, we have created a separate endpoint in the API for each function that is required in the front end, which can be used to access this function. The functions are divided into different routes for the sake of clarity. These are System Services, Chat Services (Experimental), File Services and SWOT Analysis. Each of these routes then has one or more end points that we can call via this address in combination with the CRUD method. To add a new endpoint, we simply need to create a new one as shown here. It is also important to note that we have kept the API and the logic very strictly separate. All functions that are more extensive than a simple DB access are outsourced to other files and are only called in the API.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> root():</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Test DB-Status"""</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> Config()</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> config.db.collection.peek() <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">'status'</span>: <span class="st">'ok'</span>}</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">'status'</span>: <span class="st">'error'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>All actions that are performed in the frontend are sent to the backend via the API. For this, the frontend can utilize a number of different endpoints, which process and return the data. As our goal was to keep the backend as simple and modular as possible, we have split the API into different routers. A router is a collection of endpoints that are grouped together. This means that only the router needs to be registered in the main file for the endpoints to appear. This makes it easy to add new features to the system as ideally all code changes are isolated to the router and the new business logic.</p>
+<p>We have split our API into the routers System Services, Chat Services (Experimental), File Services and SWOT Analysis. Each router has its own prefix which is added in the url. For example the File Services router has the prefix <code>/files/v1</code> which means that all endpoints in this router are accessible via the url <code>http://&lt;base_url&gt;/files/v1</code>.</p>
+<p>This brings us to the next point. API versioning. While not relevant for duration of this project, it is best practice to version your API in a way that allows you to make breaking changes without disrupting existing clients. We have implemented the versioning in the url of the router. This means that if we need to make a breaking change to the API, we can simply add a new router with a new version number while maintaining the function of the old endpoints.</p>
+<p>It should be noted that we decided to keep the API and the logic separated. This means that all functions that are more extensive than a simple DB access are outsourced to other components (e.g.&nbsp;BusinessAnalyst) and are only called in the API.</p>
+<p>The following code snippets show the main initialization of the API, how the routers are registered as well as how a new router can be defined with a simple endpoint.</p>
+<p>Located in the file <code>main.py</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI, Security</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi.middleware.cors <span class="im">import</span> CORSMiddleware</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> routers <span class="im">import</span> swot, files, chat, system</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialized FastAPI instance</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI(lifespan<span class="op">=</span>lifespan)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Include feature routers</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>app.include_router(swot.router)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>app.include_router(files.router)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>app.include_router(chat.router)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>app.include_router(system.router)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Creating a new router with a simple endpoint:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> APIRouter, Depends</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define new router</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>router <span class="op">=</span> APIRouter(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    prefix<span class="op">=</span><span class="st">"/new_feature/v1"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    tags<span class="op">=</span>[<span class="st">"New Feature Name"</span>]</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define new endpoint</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">"/data"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_data():</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Do something...</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"data"</span>: <span class="st">"Hello World"</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="system-services" class="level3">
 <h3 class="anchored" data-anchor-id="system-services">System Services</h3>
 <p>Path: <code>/system/v1</code></p>
@@ -984,6 +1023,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false,"openEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 
