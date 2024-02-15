@@ -5,9 +5,9 @@ On this page you learn how to set up the application for local development and d
 ## Set up the backend for local development:
 
 * Ensure you have Python 3.11 or later installed.
-* Install the required dependencies with pip install -r requirements.txt.
-* Ensure that you have Docker installed. Start it with using Docker Compose up.
-* Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command docker-compose up mysql chromadb.
+* Install the required dependencies with `pip install -r requirements.txt`.
+* Ensure that you have Docker installed and that the Docker daemon is running.
+* Ensure the MySQL and Chroma databases are running. These can be started using Docker Compose with the command `docker-compose up mysql chromadb`.
 * Run the application with python main.py.
 * The main.py script takes care of setting up the application. It creates the database tables if they don't exist.
 
@@ -20,7 +20,7 @@ On this page you learn how to set up the application for local development and d
 
 ## Deployment for testing and production:
 
-For testing and production environments, we use Docker.
+For testing and production environments, we use Docker.
 
 * Ensure you have Docker installed.
 * Check the Dockerfile and docker-compose.yaml files in the root directory of the project
@@ -28,7 +28,7 @@ For testing and production environments, we use Docker.
 * To build and start the containers, use: docker-compose up --build
 * The application should now run in Docker containers and be accessible via the specified ports.
 * Make sure that all services are configured correctly and the environment variables, if required, are adjusted in the docker-compose.yaml and .env files.
-* Run the Docker container with docker-compose up.
+* Run the Docker container with docker-compose up.
 
 
 
