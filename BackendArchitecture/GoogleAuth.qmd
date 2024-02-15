@@ -1,16 +1,16 @@
 # Authentication with Google
 We use the identity provider Google for authentication in our system. We have implemented a single sign-on button from Google in the frontend,
 which allows the user to log in to our system with their Google account. Every time the user logs in to the frontend,
-we receive a so-called JSON Web Token (JWT) from Google, which we send to the backend in the header with every request and
-check again whether this token is valid and whether the user exists in our database. If this is the case, we can use it to authenticate
-the user and give them individual access to our systems and thus access to their own documents.
+we receive a JSON Web Token (JWT) from Google, which we send to the backend in the header with every request. In the backend
+we check if the token is valid using the Google-oauth2 API and whether the user exists in our database. If this is the case,
+we can use it to authenticate the user and give them individual access to our systems and their own documents.
 
 ## Process flow of the authentication
 1. User logs in by clicking the button
 2. Google returns JWT
 3. Sends JWT to the backend
-4. Backend checks whether the user exists in our DB in the "user" table
-5. If not, a user is created in the DB and the user object is sent to the frontend, if yes, this user object is sent to the frontend
+4. Backend validates JWT and checks whether the user exists in our DB in the "user" table
+5. If not, a user is created in the DB and the user object is sent to the frontend, if yes, the existing user object is sent to the frontend
 6. In the frontend, a separate user object is created in the session memory, which contains both the data sent by the DB (**userName** and **userId**) and
 data directly from the JWT (**firstName**, **lastName**, **profilePictureUrl**), as well as the JWT itself.
 The data that we extract directly from the JWT in the frontend is not stored in the DB, which is why it is not contained in the user object that comes from the DB.
@@ -32,19 +32,101 @@ as we are informed by Typescript of the possibility of an empty response and acc
 ![Frontend fetching function](../images/Frontend/fetchQuery.png){width=100% .lightbox}
 
 ## Backend token validation
-On the backend side, this looks like this in the API. We have given each endpoint that is to be protected the attachment ```user=Security(verify_token.verify_token)```.
-This ensures that a token must always be passed when the function is called via the endpoint.
+In the backend we have implemented two separate functions for the authentication process:
 
-![Backend Endpoint requires user token](../images/BackendArchitecture/EndpointToken.png){width=100% .lightbox}
+To validate the token, it is first extracted from the request header and then sent to Google using Googles oauth2 library.
+If Google returns an error, the token is not valid and the user is not authenticated. Otherwise, the user is authenticated and the user object is sent back to the frontend.
 
-To validate the token, it is first extracted from the header and then sent to Google via an interface for verifying so-called oauth2 tokens,
-which report back to us whether this token is valid or not.
+```python
+from google.oauth2 import id_token
+from google.auth.transport import requests
+
+def verify_token(token: str = Depends(get_token_from_header)) -> User:
+    """
+    Verify the provided token and return the user if the token is valid.
+
+    :param token: The token to be verified
+    :return: The User object if the token is valid
+    :raises ValueError: If the token is invalid
+    """
+    try:
+        id_info = id_token.verify_oauth2_token(
+                    token,
+                    requests.Request(),
+                    GOOGLE_CLIENT_ID)
+        print(id_info)
+        return check_user_exists(id_info)
+    except ValueError:
+        raise HTTPException(status_code=401, detail="Invalid Token")
+```
 
 ![Backend verify user token](../images/BackendArchitecture/VerifyToken.png){width=100% .lightbox}
 
-After this, the database is checked to see whether or not the user already exists. The user object is then sent back.
+The second function checks whether the user already exists in the database. If not, a new user is created and the user object is sent back to the frontend.
+If the user already exists, the user object is returned.
 
+```python
+def check_user_exists(id_info) -> Optional[User]:
+    """
+    Check if the user exists in the database
+
+    :param id_info: User token
+    :return: User object
+    :raises HTTPException: If the user id is invalid
+    """
+    user = get_user_from_db(str(int(id_info.get("sub"))))
+
+    if user is not None:
+        print(user, user.username)
+        return user
+    else:
+        raise HTTPException(status_code=401, detail="Invalid user_id")
+```
 ![Check if the user exists in DB](../images/BackendArchitecture/CheckUserExists.png){width=100% .lightbox}
+
+### Using the authentication
+To actually use the authentication, the endpoints that should be protected require the following attachment: `user=Security(verify_token.verify_token)`
+This ensures that a token must always be passed when the function is called via the endpoint and in return provides the user object for the business logic to
+determine the access rights of the user.
+
+The following example shows how the user object is then used in the backend to determine if the user is allowed to view
+the analyses for a specific report.
+
+```python
+@router.get("/swot/{report_id}")
+async def list_available_swot_analysis(report_id: str,
+                                       user=Security(verify_token)):
+    """
+    List available swot analyses for given report
+    :param report_id: Report id
+    :return: List of available swot analysis
+    """
+
+    # Initiate the database session
+    session = config.mysql_db.get_session()
+
+    # Check if the user is authorized to access the report
+    match = session.query(user_report).filter(and_(
+        user_report.c.user_id == user.user_id,
+        user_report.c.report_id == report_id)).first()
+
+    if match is None:
+        raise HTTPException(status_code=403,
+                            detail={'error': 'User not authorized for report'})
+
+    else:
+        # Get all the swot analysis for the report
+        all_analysis = session.query(Analysis).filter(
+            Analysis.report_id == report_id
+        ).order_by(
+            desc(Analysis.created_at)).all()
+
+        list_of_analysis = [{
+                                'id': analysis.analysis_id,
+                                'created_at': analysis.created_at
+                            } for analysis in all_analysis]
+        return list_of_analysis
+```
 
 This individual access includes access to the public reports and to all private reports uploaded by the user. In addition,
 each user can create their own SWOT analysis for each of their reports and create a SWOT comparison between two different reports.
