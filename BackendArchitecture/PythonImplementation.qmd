@@ -1,10 +1,13 @@
 # Backend Implementation
 
-The backend is responsible for handling the business logic of the system, such as user authentication, report processing, and analysis of the reports.
-It provides a RESTful API that allows the frontend to interact with the system.
-
 This chapter will provide an overview of the backend implementation, including the main classes and functions and their responsibilities, as well as
-example code snippets to illustrate the usage of the classes.
+example code snippets to illustrate the usage of the classes/functions.
+
+::: {.callout-note}
+The Authentication and Authorization logic as well as the RestAPI is not covered in this section, as it is covered in these two chapters of the documentation:
+[Authentication with Google](https://llm-team1.github.io/documentation/BackendArchitecture/GoogleAuth.html)
+[REST API](https://llm-team1.github.io/documentation/BackendArchitecture/API.html)
+:::
 
 ## Class Structure
 This section will focus on the Python classes that were implemented to handle the business logic of the system.
@@ -72,6 +75,7 @@ The direct usage of the Database class is limited to the Config class, which ini
 a method to get a session to interact with the database. Therefore, the following code snippets show how the Database class
 is used in the Config class and how the Config class can be used to access the database.
 
+Usage in Config class:
 ```python
 from services.mysql_connector import Database
 
@@ -85,6 +89,7 @@ db.init_db()
 session = db.get_session()
 ```
 
+Using the Config class to access the database:
 ```python
 from config import Config
 from business_objects.user import User
@@ -100,7 +105,7 @@ user = session.query(User).filter(User.id == user_id).first()
 ```
 
 ### ChromaConnector
-The ChromaConnector class is responsible for managing the connection to the Chroma Vector Store. In its init method, it
+The ChromaConnector class is responsible for managing the connection to the ChromaDB. In its init method, it
 initializes the connection to the Chroma Vector Store and creates the collection that is used to store the chunks for the
 annual reports, should it not exist.
 
@@ -109,9 +114,10 @@ collection. It also contains methods purely used for the development of the syst
 from the collection, or completely reset the collection.
 
 Similar to the Database class, the direct usage of the ChromaConnector class is limited to the Config class, which initializes
-the Chroma Vector Store connection and provides a method to get the Chroma Vector Store client. Therefore, the following code
+the Chroma Vector Store connection and provides a method to get the Chroma Vector Store client. The following code
 snippets show how the ChromaConnector class is used in the Config class and how the Config class can be used to access the Chroma Vector Store.
 
+Usage in Config class:
 ```python
 from services.chromadb_connector import ChromaConnector
 
@@ -119,6 +125,7 @@ from services.chromadb_connector import ChromaConnector
 chroma = ChromaConnector(host="0.0.0.0", port=8000, collection_name="annual-reports")
 ```
 
+Using the Config class to access the Chroma Vector Store:
 ```python
 from config import Config
 
@@ -142,7 +149,7 @@ The class is designed to interact with our database for data retrieval and stora
 question reformulation, document evaluation, and generate SWOT analyses. It also contains the logic to compare SWOT analyses.
 
 The class has to be initialized with the name of the company that should be analyzed, an OpenAI client, a database connection and the specific report-id.
-Should a comparison be required, the class also needs to be initialized with the report-id of the report that should be compared to the original report.
+Should a comparison be required, the class also needs to be initialized with the report-id of the report that should be compared.
 
 The following code snippet shows a few simplified examples of how the BusinessAnalyst class can be used:
 
@@ -185,11 +192,11 @@ The retrieval elements of the RAG-Pipeline are implemented in the following meth
     prompt that is used to generate the reformulated questions.
 
 - `_similarity_search(query: str, k: int = 3, report_id=None) -> List[Document]`
-    - This method takes a query as input and performs a similarity search on the annual reports in the Chroma Vector Store.
+    - This method takes a query as input and performs a similarity search on the annual reports in the ChromaDB.
     - The method returns the k most relevant chunks using the Max-Marginal-Relevance Search feature of ChromaDB.
     - The method contains logic to ensure that only the chunks that are related to the selected report are returned
     and that if there are no chunks related to the report, the method returns an exception that the report does not exist in the
-    Chroma Vector Store. See code excerpt below:
+    ChromaDB. See code excerpt below:
     ```python
     def _similarity_search(self, query, k=3, report_id=None):
         """
@@ -333,10 +340,56 @@ def identify_strengths_brand_reputation(self):
     return json.loads(answer)
 ```
 
-Similar methods exist for all other sections of the SWOT analysis. The JSON Output of the SWOT analysis is then combined
-into a single SWOT analysis and stored in the database. The main areas of each section of the SWOT analysis are then used
-to generate a summary of the SWOT analysis.
+Similar methods exist for all other sections of the SWOT analysis. The JSON Output of the individual SWOT sections is then combined
+into a single SWOT analysis and stored in the database. As the whole SWOT analysis is relatively long it can't be directly
+displayed in the frontend. Therefore, the BusinessAnalyst class also contains a method to generate a summary of the SWOT analysis.
 
+#### Generating a Summary of the SWOT Analysis
+The summary of the SWOT analysis is generated by the generate_swot_analysis_summary method. The method takes the SWOT analysis
+that was generated and then asks OpenAI to summarize the SWOT analysis. The specific instructions for the OpenAI API are
+to find four main areas in each section of the SWOT analysis. The response from the OpenAI API is then appended to the SWOT JSON
+and stored in the database. The following code snippet shows the prompt that generates the summary of the SWOT analysis:
+
+```python
+answer_prompt = f"""
+You are a professional business analyst. The user has provided you a JSON object containing the SWOT analysis. Analyse the given SWOT analysis and create a summary of the strengths, weaknesses, opportunities and threats.
+Step 1 - Identify the main topics that represent the strengths, weaknesses,
+         opportunities and threats.
+Step 2 - Limit the number of main topics to 4 for each category. Try to find the
+         most important ones.
+Step 3 - Return a summary of the main topics. Use the information from the
+         provided JSON object.
+Step 4 - Reply in JSON format where the key is the main topic and the value
+         follows the following structure:
+{{
+"strengths": [
+    {{
+    "main_point": "...",
+    }},
+    // More main points...
+],
+"weaknesses": [
+    {{
+    "main_point": "...",
+    }},
+    // More main points...
+],
+"opportunities": [
+    {{
+    "main_point": "...",
+    }},
+    // More main points...
+],
+"threats": [
+    {{
+    "main_point": "...",
+    }},
+    // More main points...
+]
+}}
+"""
+
+```
 #### Comparing SWOT Analyses
 ::: {.callout-note}
 As the comparison of SWOT analyses contains very similar logic and prompts to the generation of the SWOT analysis, this
@@ -506,6 +559,31 @@ async def lifespan(app: FastAPI):
     scheduler.shutdown()
 ```
 
+The extraction of the table content takes a lot of time and resources. Therefore we decided to allow the user to generate
+analyses for the reports as soon as the text embedding is completed. Through the BackgroundScheduler, the processing of
+the tables is done in the background and the answers of the system start to improve over time as more and more tables are
+processed.
+
 The process of extracting the tables from the report as well as the extraction of the content of the tables is not shown
 in this section of the documentation, as it covered in the RAG-Pipeline documentation. The full code can be found in the
 process_file and analyse_table functions in the backend.
+
+#### Issues with the processing of the tables
+The processing of the tables was one of the most challenging parts of the backend implementation. The main issue was that
+the tables in the annual reports were not always formatted in the same way or style and therefore might look very different
+from one report to another. This made it difficult to reliably identify the tables and extract the content of the tables.
+
+The following images show the four different outcomes we encountered when trying to extract tables from the pdf:
+
+::: {layout-nrow=2 layout-valign="bottom"}
+![Full table extracted from annual report](../images/Tables/ausgaben-table.jpg){width=100% .lightbox}
+
+![Two separate tables are identified as one table](../images/Tables/two-in-one.jpg){width=100% .lightbox}
+
+![Only parts of the table are identified as a table. This results in missing column or row names](../images/Tables/partial-table.jpg){width=100% .lightbox}
+
+![For some reasons, PyMuPDF identifies tables, that aren't actually tables](../images/Tables/not-a-table.jpg){width=100% .lightbox}
+:::
+
+As these were issues that we could not solve in the time frame of the project, our table processing methods handle the first
+two cases, but not the last two. The last two cases are identified by OpenAI and are discarded.
