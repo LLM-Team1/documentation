@@ -8,8 +8,7 @@ The following diagram provides an overview of the data model, the relationships 
 as the relationship between the relational database and vector store.
 
 ::: {.callout-note}
-The diagram is a simplified version of the data model and thus does not represent the normalized entity relationship model that is implemented in the database.
-To learn about the implementation in the database, please refer to the [Python Implementation](../PythonImplementation) section.
+The diagram is a simplified version of the data model and does not represent the normalized data model that is implemented in the database.
 :::
 
 ![Data Model of StratMystiqPro](../images/DataModel.png){width=100% .lightbox}
@@ -51,7 +50,7 @@ The Company entity represents the company that the report is associated with. Th
 ## Analysis
 The Analysis entity is the object that contains the results of the main feature of the system. It represents the analysis
 of a report that a user requests. Note that the Analysis entity is specifically not called SWOT Analysis, as the system
-is designed to be flexible and adaptable to accommodate new types of analysis in the future. The Analysis entity has the following attributes:
+is designed to be flexible and adaptable to accommodate new types of analyses in the future. The Analysis entity has the following attributes:
 
 - **analysis_id:** (PK:UUID) A unique identifier for the analysis.
 - **report_id:** (FK:UUID) Reference to the report that the analysis is associated with.
